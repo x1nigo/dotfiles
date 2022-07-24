@@ -51,11 +51,11 @@
 " -- Colors and Theming
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-highlight LineNr	ctermfg=blue	ctermbg=none	cterm=none
-highlight Comment	ctermfg=blue	ctermbg=none	cterm=italic
-highlight Constant	ctermfg=red	ctermbg=none	cterm=italic
-highlight Special	ctermfg=cyan	ctermbg=none	cterm=italic
-highlight Statement	ctermfg=cyan	ctermbg=none	cterm=none
+"highlight LineNr	ctermfg=blue	ctermbg=none	cterm=none
+"highlight Comment	ctermfg=blue	ctermbg=none	cterm=none
+"highlight Constant	ctermfg=red	ctermbg=none	cterm=none
+"highlight Special	ctermfg=cyan	ctermbg=none	cterm=none
+"highlight Statement	ctermfg=cyan	ctermbg=none	cterm=none
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " -- Status Line
