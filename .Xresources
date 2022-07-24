@@ -1,2 +1,24 @@
-#include ".Xresources.d/colors"
-#include ".Xresources.d/fonts"
+*font:  xft:monospace:regular:pixelsize=14:antialias=true:autohint=true
+URxvt.font: xft:monospace:regular:pixelsize=14:antialias=true:autohint=true
+
+*background: #212337
+*foreground: #b8dcff
+*cursorColor: #b8dcff
+
+*color0:    #000000
+*color1:    #ff5555
+*color2:    #50fa7b
+*color3:    #f1fa8c
+*color4:    #005577
+*color5:    #5555ff
+*color6:    #8be9fd
+*color7:    #bfbfbf
+
+*color8:    #575b70
+*color9:    #ff6e67
+*color10:   #5af78e
+*color11:   #f4f99d
+*color12:   #484868
+*color13:   #7755ff
+*color14:   #9aedfe
+*color15:   #e6e6e6
