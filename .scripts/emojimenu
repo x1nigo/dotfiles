@@ -1,0 +1,10 @@
+#! /bin/sh
+
+emoji=$(cat $HOME/.scripts/emojis.txt | dmenu -p "Pick an emoji:" -l 8 -g 4 | awk '{ print $1 }')
+
+if [ -z $emoji ]
+then
+	echo 'nothing here' >/dev/null
+else
+	echo $emoji | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send -t 2000 "Copied to clipboard!"
+fi

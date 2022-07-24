@@ -1,0 +1,20 @@
+#! /bin/sh
+
+total=$(cat /sys/class/leds/*kbd_backlight/max_brightness)
+current=$(cat /sys/class/leds/*kbd_backlight/brightness)
+
+inc() {
+	file="/sys/class/leds/*kbd_backlight/brightness"
+	increment=$(( $total / 20 ))
+	echo $(( $current + $increment )) > $file
+}
+
+dec() {
+	file="/sys/class/leds/*kbd_backlight/brightness"
+	increment=$(( $total / 20 ))
+	echo $(( $current - $increment )) > $file
+}
+
+$1
+
+# NOTE: Make sure you have updated the udev rules first!
