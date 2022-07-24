@@ -1,5 +1,0 @@
-#! /bin/sh
-
-username="xtianikov"
-getThis="$1"
-git clone https://gitlab.com/$username/$getThis.git
