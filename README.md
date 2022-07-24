@@ -1,4 +1,4 @@
-# dotfiles
+# x1nigo's dotfiles
 These are my personal dotfiles, which include scripts to my other respositories.
 
 ## Requirements
