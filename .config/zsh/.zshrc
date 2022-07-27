@@ -32,6 +32,11 @@ alias diff="diff --color=auto"
 # Commands
 alias merge="xrdb -merge $HOME/.Xresources"
 alias lf="lfrun"
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias b="bluetoothctl"
+alias hs="hugo server --noHTTPCache"
 
 # Prompt Commands
 # neofetch
