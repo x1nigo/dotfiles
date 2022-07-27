@@ -28,6 +28,7 @@ alias fgrep="fgrep --color=auto"
 alias ip="ip --color=auto"
 alias pacman="pacman --color always"
 alias diff="diff --color=auto"
+alias bat="bat --color=always --style=full"
 
 # Commands
 alias merge="xrdb -merge $HOME/.Xresources"
