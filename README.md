@@ -1,5 +1,5 @@
 # x1nigo's dotfiles
-These are my personal dotfiles, which include scripts to my other respositories.
+These are my personal dotfiles, which include scripts to my other repositories.
 
 ## Requirements
 - Make sure to add the `.scripts` folder in your $PATH.
