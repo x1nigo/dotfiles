@@ -21,9 +21,9 @@ list_choices() {
 capture=$(list_choices | dmenu -p "Record Screen:" -l ${#choices[@]})
 
 if [ $capture = ${choices[0]} ]; then
-	record_screen_with_audio
+	record_screen_with_audio & notify-send -t 2000 "⏺️ Recording screen..."
 elif [ $capture = ${choices[1]} ]; then
-	record_screen_no_audio
+	record_screen_no_audio & notify-send -t 2000 "⏺️ Recording screen..."
 elif [ $capture = ${choices[2]} ]; then
 	echo "cancelled" > /dev/null
 fi
