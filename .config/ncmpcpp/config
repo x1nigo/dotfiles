@@ -1,0 +1,17 @@
+# NCMPCPP directory
+ncmpcpp_directory = "~/.config/ncmpcpp"
+
+# Connection settings
+mpd_host = "localhost"
+mpd_port = "6600"
+
+# MPD Music directory
+mpd_music_dir = "~/mus"
+
+# Visualizer
+visualizer_output_name = "my_fifo"
+visualizer_in_stereo = "yes"
+visualizer_type = "spectrum"
+visualizer_look = "+|"
+visualizer_color = blue, cyan, green, yellow, magenta, red
+visualizer_data_source = "localhost:5555"
