@@ -1,4 +1,4 @@
-include /usr/share/doc/newsboat/contrib/colorschemes/solarized-dark
+include /usr/share/doc/newsboat/contrib/colorschemes/inkpot
 
 auto-reload yes
 reload-time 25
