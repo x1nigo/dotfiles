@@ -1,0 +1,16 @@
+"Install vim-airline if not yet already.
+
+silent ![ -z $(ls $HOME/.vim/bundle/ | grep 'vim-airline') ] && git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline >/dev/null 2>&1
+
+silent ![ -z $(ls $HOME/.vim/autoload/ | grep 'pathogen.vim') ] && mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim >/dev/null 2>&1
+
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+set title
+set number relativenumber
+set numberwidth=4
+set nohlsearch
+set noshowmode
+set noshowcmd
