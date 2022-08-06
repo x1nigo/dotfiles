@@ -1,5 +1,4 @@
 " Install vim-airline if not already.
-
 if !empty(glob('$HOME/.vim/bundle/vim-airline'))
 
 else
