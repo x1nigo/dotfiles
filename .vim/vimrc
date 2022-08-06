@@ -1,16 +1,51 @@
-"Install vim-airline if not yet already.
+" Install vim-airline if not already.
 
-silent ![ -z $(ls $HOME/.vim/bundle/ | grep 'vim-airline') ] && git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline >/dev/null 2>&1
+if !empty(glob('$HOME/.vim/bundle/vim-airline'))
 
-silent ![ -z $(ls $HOME/.vim/autoload/ | grep 'pathogen.vim') ] && mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim >/dev/null 2>&1
+else
+        echom "Installing vim-airline...(1/2)"
+        silent !git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline 2>/dev/null
+endif
 
+if !empty(glob('$HOME/.vim/autoload/pathogen.vim'))
+
+else
+        echom "Installing vim-airline...(2/2)"
+        silent !mkdir -p ~/.vim/autoload ~/.vim/bundle && curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim 2>/dev/null
+endif
+
+" Color Scheme
+colorscheme default
+
+" Syntax / Plugins
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-set title
+" Indentation
+set autoindent
+set expandtab
+
+" Search
+set hlsearch
+set ignorecase
+set incsearch
+set smartcase
+
+" Text Rendering
+set encoding=utf-8
+set linebreak
+set wrap
+
+" User Interface
+set wildmenu
 set number relativenumber
-set numberwidth=4
-set nohlsearch
-set noshowmode
-set noshowcmd
+set title
+set background=light
+
+" Code Folding
+set foldmethod=manual
+set foldnestmax=5
+
+" Miscellaneous
+set confirm
