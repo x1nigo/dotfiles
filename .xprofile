@@ -1,0 +1,9 @@
+#! /bin/sh
+
+# List of applications to start
+autostart="picom setwallpaper dwmblocks"
+
+for program in $autostart
+do
+        pgrep -x $program >/dev/null || $program &
+done
