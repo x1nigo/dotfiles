@@ -7,7 +7,7 @@ map <tab> shell
 set hidden
 set icons
 
-map e $vim "$f"
+map e $${EDITOR:-vim:-vi} "$f"
 map D delete
 map R rename
 map <backspace2> set hidden!
