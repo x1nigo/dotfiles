@@ -1,0 +1,4 @@
+#! /bin/sh
+
+cam=$(ls /dev/video* | grep 0)
+[ -z $cam ] && notify-send -t 2000 "❎ No webcam found!" || mpv $cam

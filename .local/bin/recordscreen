@@ -1,0 +1,29 @@
+#! /bin/sh
+
+getscreen=$(xrandr --current | awk '/Screen 0:/ { print $8$9$10 }' | sed 's/\,//')
+
+record_screen_no_audio() {
+	st -e ffmpeg -f x11grab -video_size $getscreen -framerate 25 -i $DISPLAY -c:v ffvhuff recording.mkv
+}
+
+record_screen_with_audio() {
+	st -e ffmpeg -f x11grab -video_size $getscreen -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac recording.mp4
+}
+
+choices=( "With-audio" "NO-audio" "Cancel" )
+
+list_choices() {
+	for i in ${choices[@]}; do
+		echo $i
+	done
+}
+
+capture=$(list_choices | dmenu -p "Record Screen:" -l ${#choices[@]})
+
+if [ $capture = ${choices[0]} ]; then
+	record_screen_with_audio
+elif [ $capture = ${choices[1]} ]; then
+	record_screen_no_audio
+elif [ $capture = ${choices[2]} ]; then
+	echo "cancelled" > /dev/null
+fi
