@@ -1,0 +1,10 @@
+#! /bin/sh
+
+case $BUTTON in
+	1) sh ~/.local/bin/lockscreen ;;
+	3) st -e $EDITOR ~/.local/bin/statusbar/db-lock ;;
+	4) sh ~/.local/bin/systemmenu ;;
+	5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
+esac
+
+echo 🔒
