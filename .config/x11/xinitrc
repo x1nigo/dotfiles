@@ -1,4 +1,7 @@
 #! /bin/sh
 
+# Source ~/.xprofile for autostart functions
+[ -f ~/.xprofile ] && . ~/.xprofile
+
 # Start suckless's dynamic window manager:
 exec dwm
