@@ -1,10 +1,10 @@
 #
-# This is my zsh configuration.
+# X1nigo's config for the `Z Shell`.
 #
 
 # Prompt Variables
-root='%B%F{blue}[%f%F{red}%n%f%F{yellow}@%f%F{cyan}%m%f %F{magenta}%1~%f%F{blue}]%f%F{red}#%f%b '
-user='%B%F{red}[%f%F{blue}%n%f%F{green}@%f%F{yellow}%m%f %F{magenta}%1~%f%F{red}]%f%F{cyan}$%f%b '
+root='%B%F{blue}[%f%F{red}%n%f%F{yellow}@%f%F{cyan}%m%f %F{magenta}%~%f%F{blue}]%f%F{red}#%f%b '
+user='%B%F{red}[%f%F{blue}%n%f%F{green}@%f%F{yellow}%m%f %F{magenta}%~%f%F{red}]%f%F{cyan}$%f%b '
 
 # Prompt Function
 [ $(whoami) = "root" ] && PROMPT=$root || PROMPT=$user
@@ -12,13 +12,6 @@ user='%B%F{red}[%f%F{blue}%n%f%F{green}@%f%F{yellow}%m%f %F{magenta}%1~%f%F{red}
 # Settings (auto cd into dir & stop ctrl-s from freezing terminal)
 setopt autocd
 stty stop undef
-
-# Programs
-export EDITOR="nvim"
-export TERMINAL="st"
-export BROWSER="firefox"
-export VISUAL="nvim"
-export MANPAGER="less -R --use-color -Dd+g -Du+b"
 
 # Syntax Colors
 alias ls="ls --color=auto"
@@ -38,10 +31,8 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias b="bluetoothctl"
 alias hs="hugo server --noHTTPCache"
-
-# Add to PATH
-PATH=$HOME/.scripts:$PATH
+alias s="systemctl"
 
 # Syntax Highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
