@@ -1,24 +1,24 @@
 *font:  xft:monospace:regular:pixelsize=14:antialias=true:autohint=true
 URxvt.font: xft:monospace:regular:pixelsize=14:antialias=true:autohint=true
 
-*background: #212337
-*foreground: #b8dcff
-*cursorColor: #b8dcff
+*background: #121228
+*foreground: #eeeeee
+*cursorColor: #eeeeee
 
 *color0:    #000000
 *color1:    #ff5555
-*color2:    #50fa7b
-*color3:    #f1fa8c
+*color2:    #009898
+*color3:    #fea44c
 *color4:    #005577
-*color5:    #5555ff
-*color6:    #8be9fd
-*color7:    #bfbfbf
+*color5:    #7777ff
+*color6:    #00bbdd
+*color7:    #e6e6e6
 
-*color8:    #575b70
-*color9:    #ff6e67
-*color10:   #5af78e
-*color11:   #f4f99d
-*color12:   #484868
-*color13:   #7755ff
-*color14:   #9aedfe
-*color15:   #e6e6e6
+*color8:    #8c42ab
+*color9:    #ec0101
+*color10:   #47d4b9
+*color11:   #ff8a18
+*color12:   #212338
+*color13:   #d71655
+*color14:   #00ddff
+*color15:   #ffffff
