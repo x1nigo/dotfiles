@@ -1,0 +1,35 @@
+#! /bin/sh
+
+bglink=${XDG_DATA_HOME:-$HOME/.local/share}/bg
+
+helppls() {
+        echo "
+setwallpaper            A script by x1nigo to set desktop backgrounds
+                        with xwallpaper.
+
+Usage:
+        -s              set wallpaper with dmenu
+
+        -h              display this help text
+
+        \`none\`          having no option will simply render the last
+                        configured wallpaper
+"
+}
+
+selectbg() {
+        bgselect="$(ls ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds | dmenu -l 5)"
+        if [ -z "$bgselect" ]; then
+                xwallpaper --zoom "$bglink" && exit
+        else
+                ln -sf ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/$bgselect $bglink
+        fi
+}
+
+option="$1"
+case $option in
+        -s) selectbg ;;
+        -h) helppls ;;
+esac
+
+xwallpaper --zoom "$bglink"
