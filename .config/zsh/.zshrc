@@ -14,10 +14,10 @@ setopt autocd
 stty stop undef
 
 # Programs
-export EDITOR="vim"
+export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="brave"
-export VISUAL="vim"
+export BROWSER="firefox"
+export VISUAL="nvim"
 export MANPAGER="less -R --use-color -Dd+g -Du+b"
 
 # Syntax Colors
@@ -38,11 +38,6 @@ alias cp="cp -i"
 alias mv="mv -i"
 alias b="bluetoothctl"
 alias hs="hugo server --noHTTPCache"
-
-# Prompt Commands
-# neofetch
-# pfetch
-# colorscript -r
 
 # Add to PATH
 PATH=$HOME/.scripts:$PATH
