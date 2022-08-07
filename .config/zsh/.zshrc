@@ -32,6 +32,7 @@ alias mv="mv -i"
 alias b="bluetoothctl"
 alias hs="hugo server --noHTTPCache"
 alias s="systemctl"
+alias startx="startx $XINITRC"
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
