@@ -1,0 +1,46 @@
+#! /bin/sh
+
+# Variables
+choices=( "Shutdown" "Reboot" "Logout" "Cancel" )
+confirm=( "Yes" "No" )
+
+# Functions
+list_choices() {
+        for i in ${!choices[@]}; do
+                echo ${choices[$i]}
+        done
+}
+
+system_menu() {
+        list_choices | dmenu -p "System Menu:" -l ${#choices[@]}
+}
+
+confirm_now() {
+        for i in ${!confirm[@]}; do
+                echo ${confirm[$i]}
+        done
+}
+
+final_prompt() {
+        confirm_now | dmenu -p "Are you sure?" -l ${#choices[@]}
+}
+
+# main
+action=$(system_menu)
+
+if [ $action = ${choices[0]} ]; then
+        confirm_final=$(final_prompt)
+        if [ $confirm_final = ${confirm[0]} ]; then
+                [ $(uname -r | grep artix) ] && loginctl poweroff || shutdown now
+        fi
+elif [ $action = ${choices[1]} ]; then
+        confirm_final=$(final_prompt)
+        if [ $confirm_final = ${confirm[0]} ]; then
+                [ $(uname -r | grep artix) ] && loginctl reboot || reboot
+        fi
+elif [ $action = ${choices[2]} ]; then
+        confirm_final=$(final_prompt)
+        if [ $confirm_final = ${confirm[0]} ]; then
+                killall dwm
+        fi
+fi
