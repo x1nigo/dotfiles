@@ -1,7 +1,0 @@
-#! /bin/sh
-
-if pgrep -a ffmpeg | grep recording >/dev/null 2>&1 ; then
-	killall ffmpeg && notify-send -t 2000 "⚔ Recording process killed."
-else
-	notify-send -t 2000 "😕 No recording process found." && exit
-fi

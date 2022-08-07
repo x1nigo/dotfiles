@@ -1,8 +1,0 @@
-#! /bin/sh
-
-texdir="/home/$USER/dox/"
-texlist=$(ls -R $texdir | wc -l)
-texfind=$(ls -R $texdir | grep "\.pdf" | dmenu -p "Open Pdf File:" -l $texlist)
-texsource=$(find $texdir | grep $texfind)
-
-[ -z $texfind ] && echo "cancelled" > /dev/null || st -e zathura "$texsource"
