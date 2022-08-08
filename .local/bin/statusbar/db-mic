@@ -4,7 +4,7 @@ mic=$(pamixer --default-source --get-volume)
 [ "$(pamixer --default-source --get-mute)" = true ] && exit || icon="🎙"
 
 case $BUTTON in
-        1) pamixer --default-source -t && notify-send -t 2000 "$icon microphone is \`$(pamixer --default-source --get-volume-human)\`!" ;;
+        1) pamixer --default-source -t ;;
         3) st -e $EDITOR ~/.local/bin/statusbar/db-mic ;;
         4) st -e pulsemixer ;;
         5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
