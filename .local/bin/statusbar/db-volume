@@ -17,10 +17,10 @@ if [ $(pamixer --get-mute) = false ]; then
 fi
 
 case $BUTTON in
-        1) pamixer -t && notify-send -t 2000 "🗣 volume is \`$(pamixer --get-volume-human)\`" ;;
+        1) pamixer -t ;;
         3) st -e $EDITOR ~/.local/bin/statusbar/db-volume ;;
         4) st -e pulsemixer ;;
         5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
 esac
 
-printf "%s %s%%\n" "$icon" "$vol"
+printf "%s%s%%\n" "$icon" "$vol"
