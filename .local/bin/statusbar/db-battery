@@ -15,4 +15,4 @@ case $BUTTON in
         5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
 esac
 
-printf "%s%s %s%%\n" "$warn" "$icon" "$bat"
+printf "%s%s%s%%\n" "$warn" "$icon" "$bat"
