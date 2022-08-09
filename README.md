@@ -16,7 +16,7 @@ just copy init.vim from `.config/nvim` and replace it with either
 ## NOTE
 My dotfiles are meant to work together with my other repositories, namely the
 suckless software ones:
-- [dwm](https://github.com/x1nigo/dwm)
-- [st](https://github.com/x1nigo/st)
-- [dmenu](https://github.com/x1nigo/dmenu)
-- [dwmblocks](https://github.com/x1nigo/dwmblocks)
+- [dwm](https://github.com/x1nigo/dwm) &ndash; The window manager
+- [st](https://github.com/x1nigo/st) &ndash; The terminal emulator
+- [dmenu](https://github.com/x1nigo/dmenu) &ndash; The dynamic menu launcher
+- [dwmblocks](https://github.com/x1nigo/dwmblocks) &ndash; The status bar
