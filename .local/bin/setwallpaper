@@ -18,9 +18,9 @@ Usage:
 }
 
 selectbg() {
-        bgselect="$(ls ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds | dmenu -p "Set wallpaper:" -l 5)"
+        bgselect="$(ls ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds | dmenu -l 5)"
         if [ -z "$bgselect" ]; then
-                xwallpaper --zoom "$bglink" && exit
+                notify-send -t 5000 "no wallpaper selected." && exit
         else
                 ln -sf ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/$bgselect $bglink
         fi
@@ -30,6 +30,7 @@ option="$1"
 case $option in
         -s) selectbg ;;
         -h) helppls ;;
+         *) helppls && exit ;;
 esac
 
 xwallpaper --zoom "$bglink" && notify-send -t 5000 "🖼️ \`$bgselect\` set as wallpaper!"
