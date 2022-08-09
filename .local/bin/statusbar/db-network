@@ -9,7 +9,7 @@ fi
 [ $(grep -x 'up' /sys/class/net/e*/operstate) >/dev/null 2>&1 ] && ethicon="🌎" || ethicon=
 
 case $BUTTON in
-        1) notify-send -t 5000 "🌐 connected to: \`$(nmcli -t -f name connection show --active)\` ;;
+        1) notify-send -t 5000 "🌐 connected to: \`$(nmcli -t -f name connection show --active)\`" ;;
         3) st -e $EDITOR ~/.local/bin/statusbar/db-network ;;
         4) st -e nmtui ;;
         5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
