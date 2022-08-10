@@ -18,7 +18,7 @@ Usage:
 }
 
 selectbg() {
-        bgselect="$(ls ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds | dmenu -l 5)"
+        bgselect="$(ls ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds | dmenu -p "Set wallpaper:" -l 5)"
         if [ -z "$bgselect" ]; then
                 notify-send -t 5000 "no wallpaper selected." && exit
         else
