@@ -1,8 +1,9 @@
 #! /bin/sh
 
-texdir="/home/$USER/dox/"
-texlist=$(ls -R $texdir | wc -l)
-texfind=$(ls -R $texdir | grep "\.pdf" | dmenu -p "Open Pdf File:" -l $texlist)
-texsource=$(find $texdir | grep $texfind)
+# The script looks for pdf files here:
+texdir="${XDG_DOCUMENTS_DIR:-$HOME/dox}/"
 
-[ -z $texfind ] && echo "cancelled" > /dev/null || st -e zathura "$texsource"
+count=$(find $texdir | wc -l)
+texfile=$(find $texdir | grep "\.pdf" | dmenu -p "Open Pdf File:" -l $count)
+
+[ -z $texfile ] && echo "cancelled" > /dev/null || st -e zathura "$texfile"
