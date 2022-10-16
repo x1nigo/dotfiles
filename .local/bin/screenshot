@@ -11,7 +11,7 @@ list_choices() {
 shoot=$(list_choices | dmenu -p "Take Screenshot?" -l ${#choices[@]})
 
 if [ $shoot = ${choices[0]} ]; then
-	scrot && notify-send -t 2000 "Screenshot taken!"
+	scrot && notify-send -t 2000 "📸 Screenshot taken!"
 elif [ $shoot = ${choices[1]} ]; then
 	echo "cancelled" > /dev/null
 fi
