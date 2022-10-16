@@ -8,7 +8,7 @@ export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
 export VISUAL="nvim"
-export MANPAGER="less -R --use-color -Dg+d -Du+b"
+export MANPAGER="less -R --use-color -Dd+g -Du+b"
 
 # XDG base directories:
 export XDG_CONFIG_HOME="$HOME/.config"
