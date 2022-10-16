@@ -27,4 +27,4 @@ else
 	transmitted="$tx" && echo $tx > /tmp/tx.txt
 fi
 
-printf "%s%6sB/s%s%6sB/s\n" "🔻" "$(numfmt --to=iec-i $received)" "🔺" "$(numfmt --to=iec-i $transmitted)"
+printf "%s%6sB/s%s%6sB/s\n" "🔽" "$(numfmt --to=iec-i $received)" "🔼" "$(numfmt --to=iec-i $transmitted)"
