@@ -23,6 +23,7 @@ selectbg() {
                 notify-send -t 5000 "no wallpaper selected." && exit
         else
                 ln -sf ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/$bgselect $bglink
+                xwallpaper --zoom "$bglink" && notify-send -t 5000 "🖼 \`$bgselect\` set as wallpaper!" && exit
         fi
 }
 
@@ -30,7 +31,6 @@ option="$1"
 case $option in
         -s) selectbg ;;
         -h) helppls ;;
-         *) helppls && exit ;;
 esac
 
-xwallpaper --zoom "$bglink" && notify-send -t 5000 "🖼️ \`$bgselect\` set as wallpaper!"
+xwallpaper --zoom "$bglink"
