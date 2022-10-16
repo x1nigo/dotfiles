@@ -4,7 +4,7 @@ dir="/sys/class/power_supply/BAT0"
 bat=$(cat $dir/capacity) && stat=$(cat $dir/status)
 
 case $stat in
-        Discharging) icon="🔋" && [ $bat -le 10 ] && notify-send -t 5000 "❗ warning: low battery, please charge soon!" ;;
+        Discharging) icon="🔋" && [ $bat -le 10 ] && notify-send -t 5000 "💀❗❗ warning: low battery, please charge soon!" ;;
         Charging) icon="🔌" ;;
         Full) icon="⚡" ;;
 esac
