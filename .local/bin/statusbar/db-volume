@@ -23,4 +23,4 @@ case $BUTTON in
         5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
 esac
 
-printf "%s %s%%\n" "$icon" "$vol"
+printf " %s %s%%\n" "$icon" "$vol"
