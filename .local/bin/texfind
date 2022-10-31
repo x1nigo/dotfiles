@@ -3,6 +3,6 @@
 # The script looks for pdf files here:
 texdir="${XDG_DOCUMENTS_DIR:-$HOME/dox}/"
 
-texfile=$(find $texdir | grep "\.pdf" | dmenu -p "Open Pdf File:" -l 28)
+texfile=$(find $texdir | grep "\.pdf" | dmenu -p "Open Pdf File:" -g 1 -l 28)
 
 [ -z $texfile ] && echo "cancelled" > /dev/null || st -e zathura "$texfile"
