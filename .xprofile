@@ -1,9 +1,12 @@
 #! /bin/sh
 
 # List of applications to start
-autostart="dunst picom setwallpaper dwmblocks"
+autostart="dunst setwallpaper dwmblocks"
 
 for program in $autostart
 do
         pgrep -x $program >/dev/null || $program &
 done
+
+unique="picom --experimental-backends"
+pgrep -x $unique >/dev/null || $unique &
