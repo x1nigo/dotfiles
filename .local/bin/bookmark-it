@@ -14,7 +14,11 @@ list_answers() {
 confirm=$(list_answers | dmenu -p "Add this bookmark?" -l ${#answers[@]})
 
 if [ $confirm = ${answers[0]} ]; then
-        echo $bookmark >> $file && notify-send -t 2000 "🔖 Bookmark added!"
-elif [ $confirm = ${answers[1]} ]; then
+        if grep -q "^$bookmark$" "$file"; then
+                notify-send -t 2000 "Already bookmarked!"
+        else
+                echo $bookmark >> $file && notify-send -t 2000 "🔖 Bookmark added!"
+        fi
+else
         notify-send -t 2000 "No added bookmark."
 fi
