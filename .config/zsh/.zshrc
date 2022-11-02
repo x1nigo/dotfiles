@@ -33,6 +33,7 @@ alias b="bluetoothctl"
 alias hs="hugo server --noHTTPCache"
 alias s="systemctl"
 alias startx="startx $XINITRC"
+alias smci="sudo make clean install"
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
