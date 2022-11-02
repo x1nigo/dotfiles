@@ -1,0 +1,10 @@
+#! /bin/sh
+
+bookmark=$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks.txt | dmenu -p "Pick a bookmark:" -l 8 -g 4 | awk '{print $1'})
+
+if [ -z $bookmark ]
+then
+        echo 'nothing here' >/dev/null
+else
+        printf $bookmark | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send -t 2000 "🔖 Bookmark copied to clipboard!"
+fi

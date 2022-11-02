@@ -1,0 +1,20 @@
+#! /bin/sh
+
+bookmark=$(xclip -o)
+file="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks.txt"
+
+answers=( "Yes" "No" )
+
+list_answers() {
+        for i in ${answers[@]}; do
+                echo $i
+        done
+}
+
+confirm=$(list_answers | dmenu -p "Add this bookmark?" -l ${#answers[@]})
+
+if [ $confirm = ${answers[0]} ]; then
+        echo $bookmark >> $file && notify-send -t 2000 "🔖 Bookmark added!"
+elif [ $confirm = ${answers[1]} ]; then
+        notify-send -t 2000 "No added bookmark."
+fi
