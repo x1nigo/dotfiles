@@ -20,9 +20,9 @@ date=$(date +'%a, %b %d') && dateicon="📅"
 time=$(date +'%I:%M %P')
 
 case $BUTTON in
-        1) notify-send -t 5000 "📅 here's what we got..." "$(cal)" ;;
+        1) notify-send -t 6000 "📅 here's what we got..." "$(cal)" ;;
         3) st -e $EDITOR ~/.local/bin/statusbar/db-date ;;
-        4) notify-send -t 5000 "📅 whoa! it's the entire year!" "$(cal -y)" ;;
+        4) notify-send -t 6000 "📅 whoa! it's the entire year!" "$(cal -y)" ;;
         5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
 esac
 
