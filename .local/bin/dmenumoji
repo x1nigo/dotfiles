@@ -1,10 +1,10 @@
 #! /bin/sh
 
-emoji=$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/emojis.txt | dmenu -p "Pick an emoji:" -l 8 -g 4 | awk '{print $1}')
+emoji=$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/emojis.txt | dmenu -p "Pick an emoji:" -l 12 | awk '{print $1}')
 
 if [ -z $emoji ]
 then
 	echo 'nothing here' >/dev/null
 else
-	printf $emoji | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send -t 5000 "$emoji Copied to clipboard!"
+	printf $emoji | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send -t 6000 "$emoji Copied to clipboard!"
 fi
