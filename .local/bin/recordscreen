@@ -10,20 +10,13 @@ record_screen_with_audio() {
 	st -e ffmpeg -f x11grab -video_size $getscreen -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac recording.mp4
 }
 
-choices=( "With-audio" "NO-audio" "Cancel" )
+choices="With-audio No-audio"
+capture=$(for i in $choices; do echo $i; done | dmenu -p "Record Screen:")
 
-list_choices() {
-	for i in ${choices[@]}; do
-		echo $i
-	done
-}
-
-capture=$(list_choices | dmenu -p "Record Screen:" -l ${#choices[@]})
-
-if [ $capture = ${choices[0]} ]; then
+if [ $capture = "With-audio" ]; then
 	record_screen_with_audio & notify-send -t 6000 "⏺️ Recording screen w/ audio."
-elif [ $capture = ${choices[1]} ]; then
+elif [ $capture = "No-audio" ]; then
 	record_screen_no_audio & notify-send -t 6000 "⏺️ Recording screen."
-elif [ $capture = ${choices[2]} ]; then
-	echo "cancelled" > /dev/null
+else
+        notify-send -t 6000 "⛔ Recording script cancelled."
 fi

@@ -1,17 +1,10 @@
 #! /bin/sh
 
-choices=( "Yes" "No" )
+choices="Yes No"
+shoot=$(for i in $choices; do echo $i; done | dmenu -p "Take Screenshot?")
 
-list_choices() {
-	for i in ${choices[@]}; do
-		echo $i
-	done
-}
-
-shoot=$(list_choices | dmenu -p "Take Screenshot?" -l ${#choices[@]})
-
-if [ $shoot = ${choices[0]} ]; then
+if [ $shoot = "Yes" ]; then
 	scrot && notify-send -t 6000 "📸 Screenshot taken!"
-elif [ $shoot = ${choices[1]} ]; then
-	echo "cancelled" > /dev/null
+else
+        notify-send -t 6000 "⛔ No screenshot taken."
 fi

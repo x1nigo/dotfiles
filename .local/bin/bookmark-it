@@ -3,17 +3,10 @@
 bookmark=$(xclip -o)
 file="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks.txt"
 
-answers=( "Yes" "No" )
+answers="Yes No"
+confirm=$(for i in $answers; do echo $i; done | dmenu -p "Add this bookmark?")
 
-list_answers() {
-        for i in ${answers[@]}; do
-                echo $i
-        done
-}
-
-confirm=$(list_answers | dmenu -p "Add this bookmark?" -l ${#answers[@]})
-
-if [ $confirm = ${answers[0]} ]; then
+if [ $confirm = "Yes" ]; then
         if grep -q "^$bookmark$" "$file"; then
                 notify-send -t 6000 "🤡 Already bookmarked!"
         else
