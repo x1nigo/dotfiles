@@ -1,0 +1,10 @@
+#! /bin/sh
+
+menu=$(printf "🖥️ shutdown\n♻️ reboot\n🚪 logout\n🔒 lock" | dmenu -p "System Controls:")
+
+case $menu in
+        "🖥️ shutdown") shutdown now ;;
+        "♻ reboot") reboot ;;
+        "🚪 logout") killall dwm ;;
+        "🔒 lock") xlock -mode blot ;;
+esac
