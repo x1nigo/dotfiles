@@ -14,26 +14,28 @@ setopt autocd
 stty stop undef
 
 # Syntax Colors
-alias ls="ls --color=auto"
-alias grep="grep --color=auto"
-alias egrep="egrep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias ip="ip --color=auto"
-alias pacman="pacman --color always"
-alias diff="diff --color=auto"
-alias bat="bat --color=always --style=full"
+alias \
+	ls="ls --color=auto" \
+	grep="grep --color=auto" \
+	egrep="egrep --color=auto" \
+	fgrep="fgrep --color=auto" \
+	ip="ip --color=auto" \
+	pacman="pacman --color always" \
+	diff="diff --color=auto" \
+	bat="bat --color=always --style=full"
 
 # Commands
-alias merge="xrdb -merge $HOME/.Xresources"
-alias lf="lfrun"
-alias rm="rm -i"
-alias cp="cp -i"
-alias mv="mv -i"
-alias b="bluetoothctl"
-alias hs="hugo server --noHTTPCache"
-alias s="systemctl"
-alias startx="startx $XINITRC"
-alias smci="sudo make clean install"
+alias \
+	merge="xrdb -merge $HOME/.Xresources" \
+	lf="lfrun" \
+	rm="rm -i" \
+	cp="cp -i" \
+	mv="mv -i" \
+	b="bluetoothctl" \
+	hs="hugo server --noHTTPCache" \
+	s="systemctl" \
+	startx="startx $XINITRC" \
+	smci="sudo make clean install"
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
