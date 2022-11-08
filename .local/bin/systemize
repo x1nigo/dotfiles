@@ -1,10 +1,17 @@
 #! /bin/sh
 
-menu=$(printf "🖥️ shutdown\n♻️ reboot\n🚪 logout\n🔒 lock" | dmenu -p "System Controls:")
+menu=$(printf "🖥️ shutdown\n🥾 reboot\n🚪 logout\n🔒 lock" | dmenu -p "System Controls:")
+
+wm="dwm"
+if ls -l /sbin/init | grep "systemd"; then
+	cmd="systemctl"
+else
+	cmd="loginctl"
+fi
 
 case $menu in
-        "🖥️ shutdown") shutdown now ;;
-        "♻ reboot") reboot ;;
-        "🚪 logout") killall dwm ;;
+        "🖥️ shutdown") $cmd poweroff ;;
+        "🥾 reboot") $cmd reboot ;;
+        "🚪 logout") killall $wm ;;
         "🔒 lock") xlock -mode blot ;;
 esac
