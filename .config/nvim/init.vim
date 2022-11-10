@@ -58,4 +58,4 @@ autocmd BufWritePost config.h !sudo make clean install
 autocmd BufWritePost blocks.h !sudo make clean install && { killall -q dwmblocks; setsid -f dwmblocks }
 
 " Recompile LaTeX documents automatically
-autocmd BufWritePost *\.tex !pdflatex %
+autocmd BufWritePost *\.tex !pdflatex "%"
