@@ -52,3 +52,10 @@ set foldnestmax=5
 
 " miscellaneous
 set confirm
+
+" Recompile suckless programs automatically
+autocmd BufWritePost config.h !sudo make clean install
+autocmd BufWritePost blocks.h !sudo make clean install && { killall -q dwmblocks; setsid -f dwmblocks }
+
+" Recompile LaTeX documents automatically
+autocmd BufWritePost *\.tex !pdflatex *\.tex
