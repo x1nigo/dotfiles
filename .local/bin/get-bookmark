@@ -1,5 +1,5 @@
 #! /bin/sh
 
-bookmark=$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks.txt | dmenu -p "Pick a bookmark:" -l 12 | awk '{print $1'})
+bookmark="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks.txt | dmenu -p 'Pick a bookmark:' -l 12 | awk '{print $1'})"
 
-[ -z $bookmark ] && notify-send -t 6000 "⛔ No bookmark selected." && exit || printf $bookmark | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send -t 6000 "🔖 Bookmark copied to clipboard!"
+[ -z "$bookmark" ] && notify-send -t 6000 '⛔ No bookmark selected.' && exit || printf $bookmark | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send -t 6000 '🔖 Bookmark copied to clipboard!'

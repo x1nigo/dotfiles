@@ -1,0 +1,14 @@
+#! /bin/sh
+
+file="$1"
+base="${file%.*}"
+ext="${file##*.}"
+
+case "$ext" in
+        c) gcc "$file" -o "$base" && "$base" ;;
+        cpp) g++ "$file" -o "$base" && "$base" ;;
+        h) sudo make clean install ;;
+        ms) groff -ms -tbl -T pdf "$file" > "$base".pdf ;;
+        py) python "$file" ;;
+        tex) pdflatex "$file" ;;
+esac

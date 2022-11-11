@@ -1,6 +1,6 @@
 #! /bin/sh
 
-bglink=${XDG_DATA_HOME:-$HOME/.local/share}/bg
+bglink="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
 
 helppls() {
         echo "
@@ -12,7 +12,7 @@ Usage:
 
         -h              display this help text
 
-        \`none\`          having no option will simply render the last
+        \`none\`        having no option will simply render the last
                         configured wallpaper
 "
 }
@@ -28,7 +28,7 @@ selectbg() {
 }
 
 option="$1"
-case $option in
+case "$option" in
         -s) selectbg ;;
         -h) helppls ;;
 esac
