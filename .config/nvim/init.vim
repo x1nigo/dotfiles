@@ -53,9 +53,11 @@ set foldnestmax=5
 " miscellaneous
 set confirm
 
-" Recompile suckless programs automatically
-autocmd BufWritePost config.h !sudo make clean install
-autocmd BufWritePost blocks.h !sudo make clean install && { killall -q dwmblocks; setsid -f dwmblocks }
+" Automatically read the file type after write
+        autocmd BufWritePost * filetype detect
 
-" Recompile LaTeX documents automatically
-autocmd BufWritePost *\.tex !pdflatex "%"
+" Use compiler script for other programs
+        autocmd BufWritePost * !compiler %
+ 
+" Restart dwmblocks automatically after compilation
+        autocmd BufWritePost blocks.h !killall -q dwmblocks; setsid -f dwmblocks
