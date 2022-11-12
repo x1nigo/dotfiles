@@ -56,8 +56,11 @@ set confirm
 " Automatically read the file type after write
         autocmd BufWritePost * filetype detect
 
+" Recompile suckless software automatically
+        autocmd BufWritePost config.h,config.def.h !sudo make clean install
+
 " Use compiler script for other programs
-        autocmd BufWritePost * !compiler %
+"        autocmd BufWritePost * !compiler %
  
 " Restart dwmblocks automatically after compilation
-        autocmd BufWritePost blocks.h !killall -q dwmblocks; setsid -f dwmblocks
+        autocmd BufWritePost blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
