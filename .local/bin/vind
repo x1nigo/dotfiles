@@ -1,0 +1,5 @@
+#! /bin/sh
+
+file="$(find $HOME | fzf --height=28 --layout=reverse)"
+
+[ -z $file ] && exit || $EDITOR $file
