@@ -1,6 +1,6 @@
 #! /bin/sh
 
-menu=$(printf "🖥️ shutdown\n🥾 reboot\n🚪 logout\n🔒 lock" | dmenu -p "System Controls:")
+menu=$(printf "🖥️ shutdown\n🥾 reboot\n🚪 logout\n💤 sleep\n🔒 lock" | dmenu -p "System Controls:")
 
 wm="dwm"
 if ls -l /sbin/init | grep "systemd"; then
@@ -13,5 +13,6 @@ case $menu in
         "🖥️ shutdown") $cmd poweroff ;;
         "🥾 reboot") $cmd reboot ;;
         "🚪 logout") killall $wm ;;
-        "🔒 lock") xlock -mode blot ;;
+        "💤 sleep") slock $cmd suspend -i && $(notify-send -t 6000 "😑 You finally woke up.") ;;
+        "🔒 lock") slock && $(notify-send -t 6000 "🎉 Welcome back, $USER!") ;;
 esac
