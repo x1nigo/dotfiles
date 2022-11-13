@@ -1,6 +1,0 @@
-#! /bin/sh
-
-modes="anemone blot demon galaxy matrix pacman rain scooter space worm"
-lock="$(for i in $modes; do echo $i; done | dmenu -p 'Lock Screen Mode:')"
-
-[ -z "$lock" ] && notify-send -t 6000 '🔓 Session is still unlocked.' || xlock -mode $lock
