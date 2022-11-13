@@ -59,8 +59,11 @@ set confirm
 " Recompile suckless software automatically
         autocmd BufWritePost config.h,config.def.h !sudo make clean install
 
-" Use compiler script for other programs
-"        autocmd BufWritePost * !compiler %
- 
 " Restart dwmblocks automatically after compilation
         autocmd BufWritePost blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
+
+" Recompile LaTeX documents automatically
+        autocmd BufWritePost *\.tex !pdflatex %
+
+" Use compiler script for other programs
+"        autocmd BufWritePost *\.h,*\.ms,*\.py,*\.tex !compiler %
