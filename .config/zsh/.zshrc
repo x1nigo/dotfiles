@@ -1,10 +1,10 @@
 #
-# X1nigo's config for the `Z Shell`.
+# x1nigo's config for the `Z Shell`.
 #
 
 # Prompt Variables
-root='%B%F{blue}[%f%F{red}%n%f%F{yellow}@%f%F{cyan}%m%f %F{magenta}%~%f%F{blue}]%f%F{red}#%f%b '
-user='%B%F{red}[%f%F{magenta}%n%f%F{green}@%f%F{yellow}%m%f %F{blue}%~%f%F{red}]%f%F{cyan}$%f%b '
+root='%B%F{red}[%m%f %~%F{red}]#%f%b '
+user='%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%~%f%F{red}]%f%F{cyan}$%f%b '
 
 # Prompt Function
 [ $(whoami) = "root" ] && PROMPT=$root || PROMPT=$user
