@@ -1,5 +1,7 @@
 #! /bin/sh
 
 file="$(find $HOME | fzf --height=28 --layout=reverse)"
+backtrack="$(pwd)"
+directory="${file%/*}"
 
-[ -z $file ] && exit || $EDITOR $file
+[ -z $file ] && exit || cd $directory && $EDITOR $file && cd $backtrack
