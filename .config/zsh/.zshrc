@@ -35,7 +35,8 @@ alias \
 	hs="hugo server --noHTTPCache" \
 	s="systemctl" \
 	startx="startx $XINITRC" \
-	cm="sudo make clean install"
+	rc="sudo make clean install" \
+        bk="cd $HOME/dox/books/"
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
