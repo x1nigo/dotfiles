@@ -18,9 +18,9 @@ fi
 
 case $BUTTON in
         1) pamixer -t ;;
-        3) st -e $EDITOR ~/.local/bin/statusbar/db-volume ;;
+        3) st -e $EDITOR $HOME/.local/bin/statusbar/db-volume ;;
         4) st -e pulsemixer ;;
-        5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
+        5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
 printf " %s %s%%\n" "$icon" "$vol"

@@ -7,12 +7,13 @@ case $stat in
         Discharging) icon="🔋" && [ $bat -le 10 ] && notify-send -t 6000 "💀❗❗ warning: low battery, please charge soon!" ;;
         Charging) icon="🔌" ;;
         Full) icon="⚡" ;;
+        *) icon="🦥" ;;
 esac
 
 case $BUTTON in
         1) notify-send -t 6000 "$icon battery device is \`$stat\`!" ;;
-        3) st -e $EDITOR ~/.local/bin/statusbar/db-battery ;;
-        5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
+        3) st -e $EDITOR $HOME/.local/bin/statusbar/db-battery ;;
+        5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
 printf "%s %s%%\n" "$icon" "$bat"

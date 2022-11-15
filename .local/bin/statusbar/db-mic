@@ -5,9 +5,9 @@ mic=$(pamixer --default-source --get-volume)
 
 case $BUTTON in
         1) pamixer --default-source -t ;;
-        3) st -e $EDITOR ~/.local/bin/statusbar/db-mic ;;
+        3) st -e $EDITOR $HOME/.local/bin/statusbar/db-mic ;;
         4) st -e pulsemixer ;;
-        5) st -e $EDITOR ~/.config/dwmblocks/blocks.h ;;
+        5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
 printf "%s %s%%\n" "$icon" "$mic"
