@@ -16,5 +16,3 @@ dec() {
 }
 
 $1
-
-# NOTE: Make sure you have updated the udev rules first!

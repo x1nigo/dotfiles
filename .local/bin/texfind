@@ -3,6 +3,6 @@
 # The script looks for pdf files here:
 texdir="$HOME"
 
-texfile="$(find $texdir | grep '.\+\.pdf$' | dmenu -p 'Open Pdf File:' -l 12)"
+texfile="$(find $texdir | grep '.\+\.pdf$' | dmenu)"
 
-[ -z "$texfile" ] && notify-send -t 6000 "⛔ No file selected." || st -e zathura "$texfile"
+[ -z "$texfile" ] && exit 0 || st -e zathura "$texfile"

@@ -18,5 +18,5 @@ if [ $capture = "${choices%% *}" ]; then
 elif [ $capture = "${choices##* }" ]; then
 	record_screen_no_audio & notify-send -t 6000 "⏺️ Recording screen."
 else
-        notify-send -t 6000 "⛔ Recording script cancelled."
+        exit 0
 fi

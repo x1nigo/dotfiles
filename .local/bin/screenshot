@@ -6,5 +6,5 @@ shoot="$(for i in $choices; do echo $i; done | dmenu -p 'Take Screenshot?')"
 if [ "$shoot" = "${choices%% *}" ]; then
 	scrot && notify-send -t 6000 "📸 Screenshot taken!"
 else
-        notify-send -t 6000 "⛔ No screenshot taken."
+        exit 0
 fi
