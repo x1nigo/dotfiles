@@ -1,0 +1,5 @@
+#! /bin/sh
+
+prog="$1"
+
+[ -z $prog ] && exit 0 || killall $prog; setsid -f $prog

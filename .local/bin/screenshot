@@ -1,10 +1,3 @@
 #! /bin/sh
 
-choices="Yes No"
-shoot="$(for i in $choices; do echo $i; done | dmenu -p 'Take Screenshot?')"
-
-if [ "$shoot" = "${choices%% *}" ]; then
-	scrot && notify-send -t 6000 "📸 Screenshot taken!"
-else
-        exit 0
-fi
+scrot && notify-send -t 6000 "📸 Screenshot taken!"

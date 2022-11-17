@@ -11,7 +11,7 @@ record_screen_with_audio() {
 }
 
 choices="With-audio No-audio"
-capture=$(for i in $choices; do echo $i; done | dmenu -p "Record Screen:")
+capture=$(for i in $choices; do echo $i; done | dmenu -p "Record screen?")
 
 if [ $capture = "${choices%% *}" ]; then
 	record_screen_with_audio & notify-send -t 6000 "⏺️ Recording screen w/ audio."
