@@ -1,0 +1,19 @@
+#! /bin/sh
+
+file="$1"
+base="${file%.*}"
+ext="${file##*.}"
+
+case $ext in
+        png) sxiv "$file" ;;
+        jpeg) sxiv "$file" ;;
+        jpg) sxiv "$file" ;;
+        pdf) zathura "$file" ;;
+        mp4) mpv "$file" ;;
+        docx) libreoffice "$file" ;;
+        doc) libreoffice "$file" ;;
+        xlsx) libreoffice "$file" ;;
+        pptx) libreoffice "$file" ;;
+        ppt) libreoffice "$file" ;;
+        *) $EDITOR "$file" ;;
+esac
