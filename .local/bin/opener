@@ -10,6 +10,8 @@ case $ext in
         jpg) sxiv "$file" ;;
         pdf) zathura "$file" ;;
         mp4) mpv "$file" ;;
+        m4a) mpv "$file" ;;
+        opus) mpv "$file" ;;
         docx) libreoffice "$file" ;;
         doc) libreoffice "$file" ;;
         xlsx) libreoffice "$file" ;;
