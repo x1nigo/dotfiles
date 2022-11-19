@@ -7,16 +7,9 @@ map <tab> shell
 set hidden
 set icons
 
-map e $${EDITOR:-vim:-vi} "$f"
+map e $opener "$f"
 map D delete
 map R rename
 map <backspace2> set hidden!
 map M $mkdir New_Folder
 map N $touch New_File
-map P $zathura "$f"
-map S $sxiv "$f"
-map L $libreoffice "$f"
-map V $mpv "$f"
-map C $pdflatex "$f"
-map I $sudo make clean install
-map <c-c> $groff -ms -Tpdf "$f" > $(echo "$f" | sed 's/\..*//').pdf
