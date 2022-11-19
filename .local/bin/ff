@@ -4,4 +4,4 @@ file="$(find $HOME | fzf --height=28 --layout=reverse)"
 backtrack="$(pwd)"
 directory="${file%/*}"
 
-[ -z $file ] && exit 0 || cd $directory && $EDITOR $file && cd $backtrack
+[ -z "$file" ] && exit 0 || cd "$directory" && $EDITOR "$file" && cd "$backtrack"
