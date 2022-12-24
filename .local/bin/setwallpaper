@@ -22,15 +22,22 @@ selectbg() {
         if [ -z "$bgselect" ]; then
                 exit 0
         else
+                type="$(echo -e 'center\nmaximize\nstretch\ntile\nzoom' | dmenu)"
+                if [ -z "$type" ]; then
+                        exit 0
+                else
+                        echo $type > /tmp/bgtype
+                fi
                 ln -sf ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/$bgselect $bglink
-                xwallpaper --zoom "$bglink" && notify-send -t 6000 "🖼️ \`$bgselect\` set as wallpaper!" && exit
+                xwallpaper --$type "$bglink" && notify-send -t 6000 "🖼️ \`$bgselect\` set as wallpaper!" && exit
         fi
 }
 
 option="$1"
+bgtype="$(cat /tmp/bgtype)"
 case "$option" in
         -s) selectbg ;;
         -h) helppls ;;
 esac
 
-xwallpaper --zoom "$bglink"
+xwallpaper --$bgtype "$bglink"
