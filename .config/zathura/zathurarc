@@ -1,2 +1,3 @@
 set selection-clipboard clipboard
 set default-bg \#121218
+set guioptions ""
