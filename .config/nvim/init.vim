@@ -22,10 +22,11 @@ au VimLeave,VimSuspend * set guicursor=a:ver20-blinkon1
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+colorscheme default
 
 " basics:
 set title
-set bg=light
+set bg=dark
 
 " indentation options:
 set autoindent
@@ -63,7 +64,8 @@ set confirm
         autocmd BufWritePost blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
 
 " Recompile LaTeX documents automatically
-        autocmd BufWritePost *\.tex !pdflatex %
+"        autocmd BufWritePost *\.tex !pdflatex "%"
+        autocmd BufWritePost *\.tex !xelatex "%"
 
 " Use compiler script for other programs
 "        autocmd BufWritePost *\.h,*\.ms,*\.py,*\.tex !compiler %
