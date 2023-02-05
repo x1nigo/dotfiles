@@ -8,6 +8,7 @@ case $ext in
         png) sxiv "$file" ;;
         jpeg) sxiv "$file" ;;
         jpg) sxiv "$file" ;;
+        gif) sxiv -a "$file" ;;
         pdf) zathura "$file" ;;
         epub) zathura "$file" ;;
         mp4) mpv "$file" ;;

@@ -1,0 +1,38 @@
+#! /bin/sh
+
+# Functions
+mountit() {
+        sudo mount $name $mountpoint &&
+                notify-send -t 6000 "🖥️ Drive successfully mounted."
+}
+
+decrypt() {
+        ${TERMINAL:-st} -n "stFLOAT" -g 70x1 -e sudo cryptsetup open $name drive &&
+                sudo mount /dev/mapper/drive $mountpoint &&
+                notify-send -t 6000 "🔓 Successfully decrypted and mounted drive."
+}
+
+# We need to use this to separate the drives properly.
+IFS=''
+
+# Simple output of the lsblk command.
+output=$(lsblk -rpo "name,size,fstype,type,mountpoint" | grep "part $")
+
+# Get encrypted drives.
+encrypted=$(echo $output | grep crypto_LUKS | awk '{print $1}')
+# Get regular drives.
+regular=$(echo $output | grep -v crypto_LUKS | awk '{print $1}')
+
+# Jam everything into one variable for convenience.
+alldrives=$(echo "$encrypted
+$regular")
+drive=$(echo $alldrives | dmenu -p 'Select drive to mount:')
+[ -z $drive ] && exit 1
+name=$(echo $drive | awk '{print $1}')
+# Get filesystem type.
+fstype=$(echo $output | grep $drive | awk '{print $3}')
+# Mountpoints
+mountpoint="$(find /mnt -maxdepth 2 -type d | dmenu -p 'Select a mountpoint:')"
+[ -z $mountpoint ] && exit 1
+
+[ "$fstype" = "crypto_LUKS" ] && decrypt || mountit

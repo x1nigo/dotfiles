@@ -1,0 +1,36 @@
+#! /bin/sh
+
+# Functions
+unmountit() {
+        sudo umount $mountpoint &&
+                notify-send -t 6000 "🍃 Unmounted drive successfully."
+}
+
+reencrypt() {
+        sudo umount $mountpoint &&
+                sudo cryptsetup close drive &&
+                notify-send -t 6000 "🔒 Successfully re-encrypted and unmounted drive."
+}
+
+# We need to use this to separate the drives properly.
+IFS=''
+
+# Simple output of the lsblk command.
+output=$(lsblk -rpo "name,size,fstype,type,mountpoint" | grep "/mnt")
+
+# Get encrypted drives.
+encrypted=$(echo $output | grep crypt | awk '{print $1}')
+# Get regular drives.
+regular=$(echo $output | grep -v crypt | awk '{print $1}')
+
+# Just mash everything into one variable for convenience.
+alldrives=$(echo "$encrypted
+$regular")
+drive=$(echo $alldrives | dmenu -p 'Unmount which drive?')
+[ -z $drive ] && exit 1
+name=$(echo $drive | awk '{print $1}')
+fstype=$(echo $output | grep $drive | awk '{print $3}')
+mountpoint=$(echo $output | grep $drive | awk '{print $5}')
+[ -z $mountpoint ] && exit 1
+
+[ "$fstype" = "btrfs" ] && reencrypt || unmountit
