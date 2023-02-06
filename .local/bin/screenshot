@@ -1,3 +1,6 @@
 #! /bin/sh
 
-scrot && notify-send -t 6000 "📸 Screenshot taken!"
+filename=$(echo -n '' | dmenu -p "Enter filename (e.g. file.jpg):")
+[ -z $filename ] && exit 1
+
+scrot $filename -q 100 && notify-send -t 6000 "📸 Screen captured and labeled as \`$filename\`!"

@@ -1,0 +1,12 @@
+#! /bin/sh
+
+dwmdir="${XDG_CONFIG_HOME:-$HOME/.config}/dwm"
+stdir="${XDG_CONFIG_HOME:-$HOME/.config}/st"
+dmenudir="${XDG_CONFIG_HOME:-$HOME/.config}/dmenu"
+currentdir=$(pwd)
+
+cd "$dwmdir" && sudo make clean install
+cd "$stdir" && sudo make clean install
+cd "$dmenudir" && sudo make clean install
+
+cd "$currentdir"

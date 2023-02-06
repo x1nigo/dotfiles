@@ -3,11 +3,11 @@
 getscreen=$(xrandr --current | awk '/Screen 0:/ { print $8$9$10 }' | sed 's/\,//')
 
 record_screen_no_audio() {
-	st -e ffmpeg -f x11grab -video_size $getscreen -framerate 25 -i $DISPLAY -c:v ffvhuff recording.mkv
+	ffmpeg -f x11grab -video_size $getscreen -framerate 25 -i $DISPLAY -c:v ffvhuff recording.mkv
 }
 
 record_screen_with_audio() {
-	st -e ffmpeg -f x11grab -video_size $getscreen -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac recording.mp4
+	ffmpeg -f x11grab -video_size $getscreen -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac recording.mp4
 }
 
 choices="With-audio No-audio"
