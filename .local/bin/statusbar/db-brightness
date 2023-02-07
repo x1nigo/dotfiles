@@ -10,4 +10,4 @@ case $BUTTON in
 	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
-printf "%s %s%%\n" "$icon" "$perc"
+printf "%s%s%%\n" "$icon" "$perc"

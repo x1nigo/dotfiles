@@ -10,4 +10,4 @@ esac
 mic=$(pamixer --default-source --get-volume)
 [ "$(pamixer --default-source --get-mute)" = true ] && printf "🎙️❌\n" && exit 0 || icon="🎙️"
 
-printf "%s %s%%\n" "$icon" "$mic"
+printf "%s%s%%\n" "$icon" "$mic"
