@@ -18,8 +18,8 @@
     transparency = 28
     separator_height = 2
     padding = 2
-    horizontal_padding = 2
-    frame_color = "#aaaaaa"
+    horizontal_padding = 8
+    frame_color = "#0a0f14"
     separator_color = frame
     sort = yes
     font = Bitstream Vera Sans Mono 10
@@ -31,6 +31,8 @@
     corner_radius = 0
 
 [experimental]
+    background = "#005577"
+    foreground = "#d3ebe9"
     per_monitor_dpi = false
 
 [urgency_low]
