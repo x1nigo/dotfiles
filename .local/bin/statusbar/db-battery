@@ -11,7 +11,7 @@ case $stat in
 esac
 
 case $BUTTON in
-        1) notify-send -t 6000 "$icon Battery device status is \`$stat\`!" ;;
+        1) notify-send -t 6000 "$icon Battery device status is '$stat'!" ;;
         3) st -e $EDITOR $HOME/.local/bin/statusbar/db-battery ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
