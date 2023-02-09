@@ -5,7 +5,7 @@ currentfont="$(fc-match monospace | awk '{print $2, $3}' | sed "s/\"//" | sed "s
 # Find said font in your user-file.
 findfont=$(grep "$currentfont" ${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/conf.d/60-latin.conf)
 # Create a prompt to change or leave font as is.
-prompt=$(printf "Yes\nNo" | dmenu -p "Current font is \`$currentfont\`. Change it?")
+prompt=$(printf "Yes\nNo" | dmenu -p "Current font is '$currentfont'. Change it?")
 
 if [ "$prompt" = "Yes" ]; then
         newfont="$(echo -n '' | dmenu -p 'Enter font name:')"
@@ -16,4 +16,4 @@ fi
 
 # The final command to change fonts. Make sure to restart your wm.
 sed -i "s/$currentfont/$newfont/" "${XDG_CONFIG_HOME:-$HOME/.config}/fontconfig/conf.d/60-latin.conf" &&
-        notify-send -t 6000 "📔 Font changed to \`$newfont\`❗"
+        notify-send -t 6000 "📔 Font has now been changed to '$newfont'."

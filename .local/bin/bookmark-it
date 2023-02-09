@@ -10,5 +10,5 @@ file="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks"
 if grep -q "^$bookmark" "$file"; then
         notify-send -t 6000 "🤡 Already bookmarked!"
 else
-        echo "$bookmark" >> "$file" && notify-send -t 6000 "🔖 Bookmark added!" "$bookmark"
+        echo "$bookmark" >> "$file" && notify-send -t 6000 "🔖 Bookmark added!" "'$bookmark'"
 fi

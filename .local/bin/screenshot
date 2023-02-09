@@ -3,4 +3,4 @@
 filename=$(echo -n '' | dmenu -p "Enter filename (e.g. file.jpg):")
 [ -z $filename ] && exit 1
 
-scrot $filename -q 100 && notify-send -t 6000 "📸 Screen captured and labeled as \`$filename\`!"
+scrot $filename -q 100 && notify-send -t 6000 "📸 Screen captured and labeled as '$filename'."

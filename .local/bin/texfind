@@ -2,7 +2,7 @@
 
 # The script looks for pdf files here:
 texdir="$HOME"
-
+# Locate the proper file through dmenu.
 texfile="$(find $texdir | grep '.\+\.pdf$' | dmenu)"
 
 [ -z "$texfile" ] && exit 0 || st -e zathura "$texfile"

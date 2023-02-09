@@ -1,6 +1,6 @@
 #! /bin/sh
 
-menu=$(printf "🖥️ shutdown\n♻️ reboot\n🚪 logout\n💤 sleep\n🔒 lock" | dmenu)
+menu=$(printf "🖥️ shutdown\n♻️ reboot\n🚪 logout\n💤 sleep\n🔒 lock" | dmenu -l 0)
 
 wm="dwm"
 if ls -l /sbin/init | grep "systemd"; then
@@ -13,6 +13,6 @@ case $menu in
         "🖥️ shutdown") $cmd poweroff ;;
         "♻️ reboot") $cmd reboot ;;
         "🚪 logout") killall $wm ;;
-        "💤 sleep") slock $cmd suspend -i && $(notify-send -t 6000 "😑 You finally woke up.") ;;
-        "🔒 lock") slock && $(notify-send -t 6000 "🥳 Welcome back, $USER!") ;;
+        "💤 sleep") slock $cmd suspend -i && $(notify-send -t 6000 "💡 Computer session recovered from sleep.") ;;
+        "🔒 lock") slock && $(notify-send -t 6000 "🔓 Computer session unlocked.") ;;
 esac
