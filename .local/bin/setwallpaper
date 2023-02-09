@@ -1,6 +1,7 @@
 #! /bin/sh
 
 bglink="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
+bgdir="${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/"
 
 helppls() {
         echo "
@@ -10,11 +11,18 @@ setwallpaper            A script by x1nigo to set desktop backgrounds
 Usage:
         -s              set wallpaper with dmenu
 
+        -a              add image to backgrounds folder
+
         -h              display this help text
 
         \`none\`        having no option will simply render the last
                         configured wallpaper
 "
+}
+
+addbg() {
+        [ -z $file ] && notify-send "hello" && exit 1
+        cp $file $bgdir
 }
 
 selectbg() {
@@ -34,10 +42,12 @@ selectbg() {
 }
 
 option="$1"
+file="$2"
 bgtype="$(cat /tmp/bgtype)"
 case "$option" in
         -s) selectbg ;;
         -h) helppls ;;
+        -a) addbg ;;
 esac
 
 xwallpaper --$bgtype "$bglink"
