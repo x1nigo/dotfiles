@@ -9,10 +9,10 @@ fi
 [ $(grep -x 'up' /sys/class/net/e*/operstate) >/dev/null 2>&1 ] && ethicon="🌎" || ethicon=❎
 
 case $BUTTON in
-        1) notify-send -t 6000 "🌐 connected to: '$(nmcli -t -f name connection show --active)'" ;;
+        1) notify-send "🌐 connected to: '$(nmcli -t -f name connection show --active)'" ;;
         3) st -e $EDITOR $HOME/.local/bin/statusbar/db-network ;;
         4) st -e nmtui ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
-printf "%s%s %s\n" "$wlicon" "$perc" "$ethicon"
+printf "%s %s %s\n" "$wlicon" "$perc" "$ethicon"

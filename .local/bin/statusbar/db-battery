@@ -4,14 +4,14 @@ dir="/sys/class/power_supply/BAT0"
 bat=$(cat $dir/capacity) && stat=$(cat $dir/status)
 
 case $stat in
-        Discharging) icon="🔋" && [ $bat -le 5 ] && notify-send -t 6000 "💀 Pretty please, charge me right now. . . with a little bit of sugar on top." || [ $bat -le 10 ] && [ $bat -gt 5 ] && notify-send -t 6000 "💀 I swear, if you don't charge me soon, I'm going to die❗" ;;
+        Discharging) icon="🔋" && [ $bat -le 5 ] && notify-send "💀 Pretty please, charge me right now. . . with a little bit of sugar on top." || [ $bat -le 10 ] && [ $bat -gt 5 ] && notify-send "💀 I swear, if you don't charge me soon, I'm going to die❗" ;;
         Charging) icon="🔌" ;;
-        Full) icon="⚡" && notify-send -t 6000 "⚡ Hey, I'm fully charged. You can unplug me now." ;;
+        Full) icon="⚡" && notify-send "⚡ Hey, I'm fully charged. You can unplug me now." ;;
         *) icon="🦥" ;;
 esac
 
 case $BUTTON in
-        1) notify-send -t 6000 "$icon Battery device status is '$stat'!" ;;
+        1) notify-send "$icon Battery device status is '$stat'!" ;;
         3) st -e $EDITOR $HOME/.local/bin/statusbar/db-battery ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac

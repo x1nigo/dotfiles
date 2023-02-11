@@ -20,7 +20,7 @@ date=$(date +'%a, %b %d') && dateicon="📅"
 time=$(date +'%I:%M %P')
 
 case $BUTTON in
-        1) notify-send -t 6000 "$(cal)" ;;
+        1) notify-send "$(cal)" ;;
         3) st -e $EDITOR $HOME/.local/bin/statusbar/db-date ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
