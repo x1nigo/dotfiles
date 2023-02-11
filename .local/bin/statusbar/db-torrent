@@ -1,0 +1,27 @@
+#! /bin/sh
+
+case $BUTTON in
+        1) notify-send -t 6000 "🌑🌱 Torrent module:" "
+🛑: Paused
+🕰️: Idle
+⤴️: Uploading
+⤵️: Downloading
+✅: Done
+🌱: Seeding
+🌑: No torrents" ;;
+        3) st -e $EDITOR $HOME/.local/bin/statusbar/db-torrent ;;
+        5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
+esac
+
+active=$(transmission-remote -l | grep %)
+[ -z $active ] && printf "🌑🌱" && exit 1
+
+transmission-remote -l | grep % |
+        sed "
+        s/.*Stopped.*/🛑/;
+        s/.*Seeding.*/🌱/;
+        s/.*100%.*/✅/;
+        s/.*Idle.*/🕰️/;
+        s/.*Uploading.*/⤴️/;
+        s/.*%.*/⤵️/"
+                sort -h | uniq -c | awk '{print $2 $1}' | paste -sd ' ' -
