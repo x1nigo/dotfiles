@@ -3,13 +3,13 @@
 # Functions
 unmountit() {
         sudo umount $mountpoint &&
-                notify-send -t 6000 "🍃 Unmounted drive successfully."
+                notify-send "🍃 Unmounted drive successfully."
 }
 
 reencrypt() {
         sudo umount $mountpoint &&
                 sudo cryptsetup close drive &&
-                notify-send -t 6000 "🔒 Successfully re-encrypted and unmounted drive."
+                notify-send "🔒 Successfully re-encrypted and unmounted drive."
 }
 
 # We need to use this to separate the drives properly.

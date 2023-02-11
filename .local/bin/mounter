@@ -3,13 +3,13 @@
 # Functions
 mountit() {
         sudo mount $name $mountpoint &&
-                notify-send -t 6000 "🖥️ Drive successfully mounted."
+                notify-send "🖥️ Drive successfully mounted." "$name is now mounted on $mountpoint."
 }
 
 decrypt() {
         ${TERMINAL:-st} -n "stFLOAT" -g 70x1 -e sudo cryptsetup open $name drive &&
                 sudo mount /dev/mapper/drive $mountpoint &&
-                notify-send -t 6000 "🔓 Successfully decrypted and mounted drive."
+                notify-send "🔓 Successfully decrypted and mounted drive." "/dev/mapper/drive is now mounted on $mountpoint."
 }
 
 # We need to use this to separate the drives properly.

@@ -14,9 +14,9 @@ choices="With-audio No-audio"
 capture=$(for i in $choices; do echo $i; done | dmenu -p "Record screen?")
 
 if [ $capture = "${choices%% *}" ]; then
-	record_screen_with_audio & notify-send -t 6000 "⏺️ Recording screen w/ audio."
+	record_screen_with_audio & notify-send "⏺️ Recording screen w/ audio."
 elif [ $capture = "${choices##* }" ]; then
-	record_screen_no_audio & notify-send -t 6000 "⏺️ Recording screen."
+	record_screen_no_audio & notify-send "⏺️ Recording screen."
 else
         exit 0
 fi

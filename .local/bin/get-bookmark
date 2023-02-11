@@ -2,4 +2,4 @@
 
 bookmark="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks | dmenu | awk '{print $1'})"
 
-[ -z "$bookmark" ] && exit 0 || printf $bookmark | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send -t 6000 '🔖 Bookmark copied to clipboard!'
+[ -z "$bookmark" ] && exit 0 || printf $bookmark | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send '🔖 Bookmark copied to clipboard!'

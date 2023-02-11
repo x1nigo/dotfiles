@@ -3,5 +3,5 @@
 url=$(echo -n '' | dmenu -p "Enter torrent file url to download:")
 [ -z $url ] && exit 1
 
-transmission-remote -a $url && notify-send -t 6000 "✅ Torrent added!" "'$url'" ||
-        notify-send -t 6000 "💀 Unable to add torrent." "Please try again."
+transmission-remote -a $url && notify-send "✅ Torrent added!" "'$url'" ||
+        notify-send "💀 Unable to add torrent." "Please try again."

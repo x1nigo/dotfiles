@@ -37,7 +37,7 @@ selectbg() {
                         echo $type > /tmp/bgtype
                 fi
                 ln -sf ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/$bgselect $bglink
-                xwallpaper --$type "$bglink" && notify-send -t 6000 "🖼️ '$bgselect' set as wallpaper!" && exit
+                xwallpaper --$type "$bglink" && notify-send "🖼️ '$bgselect' set as wallpaper!" && exit
         fi
 }
 

@@ -1,4 +1,4 @@
 #! /bin/sh
 
 emoji="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/emojis | dmenu | awk '{print $1}')"
-[ -z "$emoji" ] && exit 0 || printf $emoji | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send -t 6000 "'$emoji' copied to clipboard!"
+[ -z "$emoji" ] && exit 0 || printf $emoji | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "'$emoji' copied to clipboard!"
