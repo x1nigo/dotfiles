@@ -2,4 +2,5 @@
 
 prog="$1"
 
-[ -z $prog ] && exit 0 || killall $prog; setsid -f $prog
+[ -z $prog ] && exit 0 || killall $prog; setsid -f $prog >/dev/null 2>&1 &&
+        notify-send "♻️ Sucessfully restarted program '$prog'."
