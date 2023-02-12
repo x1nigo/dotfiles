@@ -26,7 +26,7 @@ regular=$(echo $output | grep -v crypt | awk '{print $1}')
 # Just mash everything into one variable for convenience.
 alldrives=$(echo "$encrypted
 $regular")
-drive=$(echo $alldrives | dmenu -l 0 -p 'Unmount which drive?')
+drive=$(echo $alldrives | dmenu -p 'Unmount which drive?')
 [ -z $drive ] && exit 1
 name=$(echo $drive | awk '{print $1}')
 fstype=$(echo $output | grep $drive | awk '{print $3}')
