@@ -2,11 +2,13 @@
 
 # Install the systat package first.
 
-cpu=$(mpstat | awk '/all/ { print int(100-$13) }') && icon="📀"
+cpu=$(mpstat | awk '/all/ { print int(100-$13) }') && icon="💽"
 
 case $BUTTON in
 	1) st -e gotop ;;
-	3) st -e $EDITOR $HOME/.local/bin/statusbar/db-cpu ;;
+        3) notify-send "💽 CPU module:" "
+📚 Instructions:
+Left-click to run gotop, a terminal based graphical activity monitor." ;;
 	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

@@ -1,7 +1,8 @@
 #! /bin/sh
 
 case $BUTTON in
-        1) notify-send "🌑🌱 Torrent module:" "
+        3) notify-send "🌑🌱 Torrent module:" "
+📜 Legend:
 🛑: Paused
 🕰️: Idle
 ⤴️: Uploading
@@ -9,7 +10,6 @@ case $BUTTON in
 ✅: Done
 🌱: Seeding
 🌑: No torrents" ;;
-        3) st -e $EDITOR $HOME/.local/bin/statusbar/db-torrent ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

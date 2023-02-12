@@ -1,7 +1,10 @@
 #! /bin/sh
 
 case $BUTTON in
-	3) st -e $EDITOR $HOME/.local/bin/statusbar/db-nettraffic ;;
+	3) notify-send "📲 Network Traffic module:" "
+📜 Legend:
+🔺: traffic going in
+🔻: traffic going out" ;;
 	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

@@ -11,7 +11,11 @@ elif [ $temp -ge 0 ]; then
 fi
 
 case $BUTTON in
-	3) st -e $EDITOR $HOME/.local/bin/statusbar/db-temperature ;;
+	3) notify-send "🌡️ Temperature module:" "
+📜 Legend:
+🥶: computer is fine
+🔥: system heavy-lifting
+💥: too hot!" ;;
 	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

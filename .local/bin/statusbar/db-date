@@ -16,12 +16,14 @@ case "$(date +'%I')" in
         12) timeicon="🕛" ;;
 esac
 
-date=$(date +'%a, %b %d') && dateicon="📅"
+date=$(date +'%a, %b %d') && dateicon="🗓️"
 time=$(date +'%I:%M %P')
 
 case $BUTTON in
         1) notify-send "$(cal)" ;;
-        3) st -e $EDITOR $HOME/.local/bin/statusbar/db-date ;;
+        3) notify-send "🗓️ Date and time module:" "
+📚 Instructions:
+Left-click to display current month." ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

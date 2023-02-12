@@ -2,7 +2,13 @@
 
 case $BUTTON in
         1) pamixer --default-source -t ;;
-        3) st -e $EDITOR $HOME/.local/bin/statusbar/db-mic ;;
+        3) notify-send "🎤 Microphone module:" "
+📚 Instructions:
+Left-click to toggle mute.
+
+📜 Legend:
+🎙️: mic on
+❌: mic off" ;;
         4) st -e pulsemixer ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac

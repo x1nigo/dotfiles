@@ -9,9 +9,25 @@ fi
 [ $(grep -x 'up' /sys/class/net/e*/operstate) >/dev/null 2>&1 ] && ethicon="🌎" || ethicon=❎
 
 case $BUTTON in
-        1) notify-send "🌐 connected to: '$(nmcli -t -f name connection show --active)'" ;;
-        3) st -e $EDITOR $HOME/.local/bin/statusbar/db-network ;;
-        4) st -e nmtui ;;
+        1) st -e nmtui ;;
+        3) active=$(nmcli -t -f name connection show --active)
+                if [ -z $active ]; then
+                        notify-send "🧭 Network module:" "Unable to connect to the internet.
+
+📜 Legend:
+📶: connected to wifi
+📡: wifi-disconnected
+🌎: connected to ethernet
+❎: not connected to ethernet"
+                else
+                        notify-send "🧭 Network module:" "🌐 connected to: '$(nmcli -t -f name connection show --active)'
+
+📜 Legend:
+📶: connected to wifi
+📡: wifi-disconnected
+🌎: connected to ethernet
+❎: not connected to ethernet"
+                fi ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

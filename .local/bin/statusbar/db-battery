@@ -4,15 +4,26 @@ dir="/sys/class/power_supply/BAT0"
 bat=$(cat $dir/capacity) && stat=$(cat $dir/status)
 
 case $stat in
-        Discharging) icon="🔋" && [ $bat -le 5 ] && notify-send "💀 Pretty please, charge me right now. . . with a little bit of sugar on top." || [ $bat -le 10 ] && [ $bat -gt 5 ] && notify-send "💀 I swear, if you don't charge me soon, I'm going to die❗" ;;
+        Discharging) if [ $bat -gt 10 ]; then
+                        icon="🔋"
+                elif [ $bat -le 10 ] && [ $bat -gt 5 ]; then
+                        icon="❗🔋" && notify-send "$icon Battery level is LOW." "Please charge your device soon."
+                else
+                        icon="💀" && notify-send -u critical "$icon Battery level is DANGEROUSLY LOW." "Charge your device RIGHT THE FUCK NOW!"
+                fi ;;
         Charging) icon="🔌" ;;
         Full) icon="⚡" && notify-send "⚡ Hey, I'm fully charged. You can unplug me now." ;;
-        *) icon="🦥" ;;
+        *) icon="🕰️" ;;
 esac
 
 case $BUTTON in
-        1) notify-send "$icon Battery device status is '$stat'!" ;;
-        3) st -e $EDITOR $HOME/.local/bin/statusbar/db-battery ;;
+        3) notify-send "🔋 Battery module:" "
+📜 Legend:
+🔌: charging
+⚡: fullly-charged
+🕰️: stagnant
+🔋: discharging (normal)
+💀: near-death experience" ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
