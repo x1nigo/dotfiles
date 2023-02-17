@@ -1,9 +1,10 @@
 # See dunst(5) for all configuration options
 
+# Global variables
 [global]
     monitor = 0
     follow = none
-    width = (0,350)
+    width = (0,370)
     height = 1000
     origin = top-right
     offset = 8x32
@@ -17,28 +18,24 @@
     indicate_hidden = yes
     transparency = 28
     separator_height = 2
+    gap_size = 2
     padding = 2
     horizontal_padding = 8
-    frame_color = "#0a0f14"
     separator_color = frame
     sort = yes
-    font = monospace 10
     line_height = 0
     markup = full
-    format = "<b>%s</b>\n%b"
     title = Dunst
     class = Dunst
+    font = monospace 9
     corner_radius = 0
-
-[experimental]
-    background = "#005577"
-    foreground = "#d3ebe9"
-    per_monitor_dpi = false
+    frame_color = "#0a0f14"
+    format = "<b>%s</b>\n%b"
 
 [urgency_low]
     background = "#005577"
     foreground = "#d3ebe9"
-    timeout = 4
+    timeout = 8
 
 [urgency_normal]
     background = "#005577"
@@ -46,7 +43,6 @@
     timeout = 8
 
 [urgency_critical]
-    background = "#005577"
+    background = "#ff000f"
     foreground = "#d3ebe9"
-    frame_color = "#ff0000"
-    timeout = 12
+    timeout = 8
