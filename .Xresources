@@ -1,16 +1,16 @@
 !! Transparency (0-1):
 st.alpha: 0.8
-st.alphaOffset: 0.5
+st.alphaOffset: 0.2
 
 !! Set a default font and font size as below:
-st.font: monospace:pixelsize-12;
+st.font: monospace-9;
 
-! st.termname: st-256color
-! st.borderpx: 2
+st.termname: st-256color
+st.borderpx: 2
 
 !! Set the background, foreground and cursor colors as below:
 
-/* !! gotham: */
+!! gotham:
 *.color0: #1b1f25
 *.color1: #c33027
 *.color2: #26a98b
