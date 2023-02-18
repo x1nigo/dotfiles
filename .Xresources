@@ -27,9 +27,9 @@ st.borderpx: 2
 *.color13: #888ba5
 *.color14: #599caa
 *.color15: #d3ebe9
-*.background: black
-*.foreground: white
-*.cursorcolor: white
+*.background: #1b1f25
+*.foreground: #d3ebe9
+*.cursorColor: #4e5165
 
 !! gruvbox:
 !! *.color0: #1d2021
@@ -50,7 +50,7 @@ st.borderpx: 2
 !! *.color15: #ebdbb2
 !! *.background: #282828
 !! *.foreground: white
-!! *.cursorcolor: white
+!! *.cursorColor: white
 
 !! gruvbox light:
 !! *.color0: #fbf1c7
