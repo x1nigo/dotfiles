@@ -27,6 +27,7 @@ st.borderpx: 2
 *.color13: #888ba5
 *.color14: #599caa
 *.color15: #d3ebe9
+*.background: black
 *.foreground: white
 *.cursorcolor: white
 
