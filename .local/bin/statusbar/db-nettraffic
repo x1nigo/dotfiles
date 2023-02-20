@@ -18,13 +18,13 @@ else
 	rx=0; tx=0 && exit
 fi
 
-if [ $(ls /tmp | grep 'rx') ]; then
+if [ $(ls /tmp | grep '^rx$') ]; then
 	received=$(( $rx - $(cat /tmp/rx) )) && echo $rx > /tmp/rx
 else
 	received="$rx" && echo $rx > /tmp/rx
 fi
 
-if [ $(ls /tmp | grep 'tx') ]; then
+if [ $(ls /tmp | grep '^tx$') ]; then
 	transmitted=$(( tx - $(cat /tmp/tx) )) && echo $tx > /tmp/tx
 else
 	transmitted="$tx" && echo $tx > /tmp/tx
