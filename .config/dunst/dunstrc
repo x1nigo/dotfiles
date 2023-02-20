@@ -27,9 +27,10 @@
     markup = full
     title = Dunst
     class = Dunst
-    font = monospace 9
+    font = Monospace 9
     corner_radius = 0
-    frame_color = "#0a0f14"
+    frame_color = "#b8eeff"
+    frame_width = 1
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
