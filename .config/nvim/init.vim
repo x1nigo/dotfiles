@@ -16,7 +16,7 @@ au VimEnter,VimResume * set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-au VimLeave,VimSuspend * set guicursor=a:ver20-blinkon1
+au VimLeave,VimSuspend * set guicursor=a:n-v-c:block-blinkon250-Cursor
 
 " syntax and plugins:
 execute pathogen#infect()
@@ -26,7 +26,7 @@ colorscheme default
 
 " basics:
 set title
-set bg=dark
+set bg=light
 
 " indentation options:
 set autoindent
@@ -46,6 +46,7 @@ set wrap
 " user interface:
 set wildmenu
 set number relativenumber
+set noshowcmd
 
 " code folding:
 set foldmethod=manual
@@ -69,3 +70,14 @@ set confirm
 
 " Use compiler script for other programs
 "        autocmd BufWritePost *\.h,*\.ms,*\.py,*\.tex !compiler %
+
+" Colors and Theming
+highlight Comment          ctermfg=4    ctermbg=none  cterm=bold
+highlight Constant         ctermfg=1    ctermbg=none  cterm=none
+highlight Special          ctermfg=4    ctermbg=none  cterm=bold
+highlight Identifier       ctermfg=6    ctermbg=none  cterm=none
+highlight PreProc          ctermfg=5    ctermbg=none  cterm=bold
+highlight String           ctermfg=4    ctermbg=none  cterm=none
+highlight Number           ctermfg=1    ctermbg=none  cterm=bold
+highlight Function         ctermfg=1    ctermbg=none  cterm=none
+highlight Visual           ctermfg=3    ctermbg=0     cterm=bold
