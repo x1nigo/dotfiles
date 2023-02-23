@@ -16,7 +16,7 @@
     progress_bar_min_width = 150
     progress_bar_max_width = 300
     indicate_hidden = yes
-    transparency = 28
+    transparency = 12
     separator_height = 2
     gap_size = 2
     padding = 2
@@ -29,21 +29,22 @@
     class = Dunst
     font = Monospace 9
     corner_radius = 0
-    frame_color = "#b8eeff"
+    frame_color = "#0a0f14"
     frame_width = 1
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
     background = "#005577"
-    foreground = "#d3ebe9"
+    foreground = "#ebdbb2"
     timeout = 8
 
 [urgency_normal]
     background = "#005577"
-    foreground = "#d3ebe9"
+    foreground = "#ebdbb2"
     timeout = 8
 
 [urgency_critical]
-    background = "#ff000f"
-    foreground = "#d3ebe9"
+    background = "#0a0f14"
+    foreground = "#ebdbb2"
+    frame_color = "#ff000f"
     timeout = 8
