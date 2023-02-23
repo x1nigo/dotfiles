@@ -28,7 +28,7 @@ st.borderpx: 2
 *.color15: #d3ebe9
 *.background: #1b1f25
 *.foreground: #d3ebe9
-*.cursorColor: #4e5165
+*.cursorColor: #195465
 
 !! gruvbox:
 !! *.color0: #1d2021
@@ -48,8 +48,8 @@ st.borderpx: 2
 !! *.color14: #8ec07c
 !! *.color15: #ebdbb2
 !! *.background: #282828
-!! *.foreground: white
-!! *.cursorColor: white
+!! *.foreground: #ebdbb2
+!! *.cursorColor: #458588
 
 !! gruvbox light:
 !! *.color0: #fbf1c7
@@ -71,3 +71,45 @@ st.borderpx: 2
 !! *.background: #fbf1c7
 !! *.foreground: #282828
 !! *.cursorColor: #282828
+
+!! chameleon
+!! *.color0: #2c2c2c
+!! *.color1: #cc231c
+!! *.color2: #689d69
+!! *.color3: #d79922
+!! *.color4: #366b71
+!! *.color5: #4e5165
+!! *.color6: #458587
+!! *.color7: #c8bb97
+!! *.color8: #777777
+!! *.color9: #cc231c
+!! *.color10: #689d69
+!! *.color11: #d79922
+!! *.color12: #366b71
+!! *.color13: #4e5165
+!! *.color14: #458587
+!! *.color15: #c8bb97
+!! *.background: #2c2c2c
+!! *.foreground: #c8bb97
+!! *.cursorColor: #366b7a
+
+!! flat
+!! *.color0: #2c3e50
+!! *.color1: #c0392b
+!! *.color2: #27ae60
+!! *.color3: #f39c12
+!! *.color4: #2980b9
+!! *.color5: #8e44ad
+!! *.color6: #16a085
+!! *.color7: #bdc3c7
+!! *.color8: #34495e
+!! *.color9: #e74c3c
+!! *.color10: #2ecc71
+!! *.color11: #f1c40f
+!! *.color12: #3498db
+!! *.color13: #9b59b6
+!! *.color14: #2aa198
+!! *.color15: #ecf0f1
+!! *.background: #2c3e50
+!! *.foreground: #bdc3c7
+!! *.cursorColor: #2980b9
