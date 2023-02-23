@@ -1,6 +1,4 @@
-#
-# x1nigo's config for the `Z Shell`.
-#
+# -> x1nigo's config for the `Z Shell`.
 
 # Prompt Variables
 root='%B%F{red}[%m%f %F{magenta}%1~%f%F{red}]#%f%b '
@@ -12,6 +10,7 @@ user='%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%1~%f%F{red}
 # Settings (auto cd into dir & stop ctrl-s from freezing terminal)
 setopt autocd
 stty stop undef
+set -o vi
 
 # Syntax Colors
 alias \
@@ -36,7 +35,8 @@ alias \
 	s="systemctl" \
 	startx="startx $XINITRC" \
 	rc="sudo make clean install" \
-        bk="cd $HOME/dox/books/"
+        bk="cd $HOME/dox/books/" \
+        m="neomutt"
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
