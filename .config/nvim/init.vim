@@ -31,6 +31,9 @@ set bg=light
 " indentation options:
 set autoindent
 
+" clipboard
+set clipboard=unnamedplus
+
 " search options:
 set hlsearch
 set ignorecase
