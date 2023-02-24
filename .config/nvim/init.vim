@@ -47,10 +47,6 @@ set wildmenu
 set number relativenumber
 set noshowcmd
 
-" code folding:
-set foldmethod=manual
-set foldnestmax=5
-
 " miscellaneous
 set confirm
 set conceallevel=2
@@ -70,6 +66,10 @@ set conceallevel=2
 
 " Use compiler script for other programs
 "        autocmd BufWritePost *\.h,*\.ms,*\.py,*\.tex !compiler %
+
+" Automatically save folding
+	autocmd BufWrite,VimLeave *\.md mkview
+	autocmd BufRead *\.md silent loadview
 
 " Colors and Theming
 " 0 -> black
