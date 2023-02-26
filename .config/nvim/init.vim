@@ -91,5 +91,5 @@ highlight Identifier       ctermfg=6    ctermbg=none  cterm=none
 highlight PreProc          ctermfg=5    ctermbg=none  cterm=bold
 highlight String           ctermfg=1    ctermbg=none  cterm=none
 highlight Number           ctermfg=1    ctermbg=none  cterm=bold
-highlight Function         ctermfg=1    ctermbg=none  cterm=none
+highlight Function         ctermfg=6    ctermbg=none  cterm=none
 highlight Visual           ctermfg=3    ctermbg=0     cterm=bold
