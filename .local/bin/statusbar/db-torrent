@@ -1,6 +1,20 @@
 #! /bin/sh
 
+# As of now, this module really only works
+# with only one (1) active torrent.
+# If there are more, the notifications
+# would get skewered.
+
+# Variables
+name="$(transmission-remote -t all -i | grep 'Name:')"
+state="$(transmission-remote -t all -i | grep 'State:')"
+percent="$(transmission-remote -t all -i | grep 'Percent Done:')"
+speed="$(transmission-remote -t all -i | grep 'Download Speed:')"
+
 case $BUTTON in
+	1) notify-send "$name" "$state
+$percent
+$speed" ;;
         3) notify-send "🌑🌱 Torrent module:" "
 📜 Legend:
 🛑: Paused
