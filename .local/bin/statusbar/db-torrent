@@ -19,8 +19,8 @@ $speed" ;;
 📜 Legend:
 🛑: Paused
 🕰️: Idle
-⤴️: Uploading
-⤵️: Downloading
+🔼: Uploading
+♻️: Downloading
 ✅: Done
 🌱: Seeding
 🌑: No torrents" ;;
@@ -36,6 +36,6 @@ transmission-remote -l | grep % |
         s/.*Seeding.*/🌱/;
         s/.*100%.*/✅/;
         s/.*Idle.*/🕰️/;
-        s/.*Uploading.*/⤴️/;
-        s/.*%.*/⤵️/"
+        s/.*Uploading.*/🔼/;
+        s/.*%.*/♻️$percent/"
                 sort -h | uniq -c | awk '{print $2 $1}' | paste -sd ' ' -

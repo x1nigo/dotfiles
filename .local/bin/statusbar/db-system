@@ -1,10 +1,10 @@
 #! /bin/sh
 
-icon="🔐"
+icon="🔒"
 
 case $BUTTON in
         1) systemize ;;
-        3) notify-send "🔐 System module:" "
+        3) notify-send "🔒 System module:" "
 📚 Instructions:
 Left-click to display system settings.
 
