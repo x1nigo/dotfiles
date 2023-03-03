@@ -1,14 +1,21 @@
 !! Transparency (0-1):
-st.alpha: 1.0
+st.alpha: 0.96
 
 !! Set a default font and font size as below:
-st.font: monospace-9;
+st.font: monospace-9
 st.termname: st-256color
 st.borderpx: 2
 
+!! Set colors for dmenu specifically:
+dmenu.font: monospace-10
+dmenu.background: #1b1f25
+dmenu.foreground: #005577
+dmenu.selbackground: #005577
+dmenu.selforeground: #ebdbb2
+
 !! Set the background, foreground and cursor colors as below:
 
-!! gotham:
+gotham:
 *.color0: #1b1f25
 *.color1: #c33027
 *.color2: #26a98b
