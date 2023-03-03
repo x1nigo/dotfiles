@@ -1,5 +1,8 @@
 #! /bin/sh
 
+# This script is mainly used in addition to the lf file manager
+# to quickly determine what program to open with.
+
 file="$1"
 base="${file%.*}"
 ext="${file##*.}"
@@ -9,6 +12,7 @@ case $ext in
         jpeg) sxiv "$file" ;;
         jpg) sxiv "$file" ;;
         gif) sxiv -a "$file" ;;
+        webp) sxiv "$file" ;;
         pdf) zathura "$file" ;;
         epub) zathura "$file" ;;
         mp4) mpv "$file" ;;
