@@ -3,7 +3,7 @@
 # Functions
 mountit() {
         sudo mount $name $mountpoint &&
-                notify-send "🖥️ Drive successfully mounted." "$name is now mounted on $mountpoint."
+                notify-send "💾 Drive successfully mounted." "$name is now mounted on $mountpoint."
 }
 
 decrypt() {
@@ -26,6 +26,7 @@ regular=$(echo $output | grep -v crypto_LUKS | awk '{print $1}')
 # Jam everything into one variable for convenience.
 alldrives=$(echo "$encrypted
 $regular")
+[ -z $alldrives ] && notify-send "💽 No drives found on this device." "Please try again." && exit 1
 drive=$(echo $alldrives | dmenu -p 'Select drive to mount:')
 [ -z $drive ] && exit 1
 name=$(echo $drive | awk '{print $1}')

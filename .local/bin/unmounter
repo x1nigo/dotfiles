@@ -26,6 +26,7 @@ regular=$(echo $output | grep -v crypt | awk '{print $1}')
 # Just mash everything into one variable for convenience.
 alldrives=$(echo "$encrypted
 $regular")
+[ -z $alldrives ] && notify-send "💾 No drives mounted on this device." "Please try again." && exit 1
 drive=$(echo $alldrives | dmenu -p 'Unmount which drive?')
 [ -z $drive ] && exit 1
 name=$(echo $drive | awk '{print $1}')
