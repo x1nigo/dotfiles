@@ -1,6 +1,6 @@
 #! /bin/sh
 
-bookmark="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks | dmenu -l 16 | awk '{print $1'})"
+bookmark="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks | dmenu -l 16 | cut -d' ' -f1)"
 [ -z "$bookmark" ] && exit 1
 
 printf $bookmark | xclip -i -selection clipboard >/dev/null 2>&1 && \
