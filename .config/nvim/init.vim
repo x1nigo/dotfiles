@@ -21,13 +21,15 @@ Plug 'junegunn/goyo.vim'
 Plug 'vim-airline/vim-airline'
 call plug#end()
 
+" Colorscheme
+colorscheme default
+set bg=light
+
 " Syntax
 syntax on
-colorscheme default
 
 " Basics:
 set title
-set bg=light
 
 " Indentation options:
 set autoindent
@@ -59,6 +61,9 @@ set conceallevel=2
 	let mapleader = ","
 	map <leader>g :Goyo <enter>
 	map <leader>s :setlocal spell spelllang=en_us <enter>
+
+" Change back to original colorscheme after leaving Goyo
+	autocmd User GoyoLeave set bg=light
 
 " Automatically read the file type after write
         autocmd BufWritePost * filetype detect
