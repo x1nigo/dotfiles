@@ -1,16 +1,7 @@
 #! /bin/sh
 
-# Functions
-unmountit() {
-        sudo umount $mountpoint &&
-                notify-send "🍃 Unmounted drive successfully." "You may now safely remove your drive."
-}
-
-reencrypt() {
-        sudo umount $mountpoint &&
-                sudo cryptsetup close drive &&
-                notify-send "🔒 Successfully re-encrypted and unmounted drive." "You may now safely remove your drive."
-}
+# This script can only remove usb drives, encrypted and not encrypted.
+# I still need to add more stuff to do the same with phones.
 
 # We need to use this to separate the drives properly.
 IFS=''
@@ -19,9 +10,11 @@ IFS=''
 output=$(lsblk -rpo "name,size,fstype,type,mountpoint" | grep "/mnt")
 
 # Get encrypted drives.
-encrypted=$(echo $output | grep crypt | awk '{print $1}')
+allencrypted=$(echo $output | grep crypt | awk '{print $1}')
+[ -z $allencrypted ] || encrypted=$(echo $allencrypted | sed "s/^/🔓 /")
 # Get regular drives.
-regular=$(echo $output | grep -v crypt | awk '{print $1}')
+allregular=$(echo $output | grep -v crypt | awk '{print $1}')
+[ -z $allregular ] || regular=$(echo $allregular | sed "s/^/💾 /")
 
 # Just mash everything into one variable for convenience.
 alldrives=$(echo "$encrypted
@@ -29,9 +22,22 @@ $regular")
 [ -z $alldrives ] && notify-send "💾 No drives mounted on this device." "Please try again." && exit 1
 drive=$(echo $alldrives | dmenu -p 'Unmount which drive?')
 [ -z $drive ] && exit 1
-name=$(echo $drive | awk '{print $1}')
-fstype=$(echo $output | grep $drive | awk '{print $3}')
-mountpoint=$(echo $output | grep $drive | awk '{print $5}')
-[ -z $mountpoint ] && exit 1
 
-[ "$fstype" = "btrfs" ] && reencrypt || unmountit
+getmount() {
+	mountpoint=$(echo $output | grep $selected | awk '{print $5}')
+	[ -z $mountpoint ] && exit 1
+}
+
+case $drive in
+	💾*)
+		selected=$(echo $drive | cut -d' ' -f2)
+		getmount
+		sudo umount $mountpoint &&
+			notify-send "💾 Unmounted drive successfully." "You may now safely remove your drive." ;;
+	🔓*)
+		selected=$(echo $drive | cut -d' ' -f2)
+		getmount
+		sudo umount $mountpoint &&
+			sudo cryptsetup close decrypted-drive &&
+			notify-send "🔒 Successfully re-encrypted and unmounted drive." "You may now safely remove your drive." ;;
+esac

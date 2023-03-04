@@ -1,16 +1,9 @@
 #! /bin/sh
 
-# Functions
-mountit() {
-        sudo mount $name $mountpoint &&
-                notify-send "💾 Drive successfully mounted." "$name is now mounted on $mountpoint."
-}
-
-decrypt() {
-        ${TERMINAL:-st} -n "stFLOAT" -g 70x1 -e sudo cryptsetup open $name drive &&
-                sudo mount /dev/mapper/drive $mountpoint &&
-                notify-send "🔓 Successfully decrypted and mounted drive." "/dev/mapper/drive is now mounted on $mountpoint."
-}
+# This script is used for mounting mobile phones and usb drives,
+# whether encrypted or not.
+# Make sure that your phone is already connected via usb wire
+# and MTP is enabled on such device.
 
 # We need to use this to separate the drives properly.
 IFS=''
@@ -19,21 +12,40 @@ IFS=''
 output=$(lsblk -rpo "name,size,fstype,type,mountpoint" | grep "part $")
 
 # Get encrypted drives.
-encrypted=$(echo $output | grep crypto_LUKS | awk '{print $1}')
+allencrypted="$(echo $output | grep crypto_LUKS | awk '{print $1}')"
+[ -z $allencrypted ] || encrypted=$(echo $allencrypted | sed "s/^/🔒 /")
 # Get regular drives.
-regular=$(echo $output | grep -v crypto_LUKS | awk '{print $1}')
+allregular="$(echo $output | grep -v crypto_LUKS | awk '{print $1}')"
+[ -z $allregular ] || regular=$(echo $allregular | sed "s/^/💾 /")
+# Get mobile phone connection.
+phones="$(simple-mtpfs -l 2>/dev/null | sed "s/^/📱 /")"
+device=$(echo $phones | cut -d' ' -f2 | sed "s/://")
 
 # Jam everything into one variable for convenience.
 alldrives=$(echo "$encrypted
-$regular")
+$regular
+$phones")
 [ -z $alldrives ] && notify-send "💾 No drives found on this device." "Please try again." && exit 1
 drive=$(echo $alldrives | dmenu -p 'Select drive to mount:')
 [ -z $drive ] && exit 1
-name=$(echo $drive | awk '{print $1}')
-# Get filesystem type.
-fstype=$(echo $output | grep $drive | awk '{print $3}')
-# Mountpoints
-mountpoint="$(find /mnt -maxdepth 2 -type d | dmenu -p 'Select a mountpoint:')"
-[ -z $mountpoint ] && exit 1
 
-[ "$fstype" = "crypto_LUKS" ] && decrypt || mountit
+getmount() {
+	mountpoint="$(find /mnt -maxdepth 2 -type d | dmenu -p 'Select a mountpoint:')"
+	[ -z $mountpoint ] && exit 1
+}
+
+case $drive in
+	💾*)
+		selected=$(echo $drive | cut -d' ' -f2)
+		getmount
+		sudo mount $selected $mountpoint &&
+			notify-send "💾 Drive successfully mounted." "$selected is now mounted on $mountpoint." ;;
+	🔒*)
+		selected=$(echo $drive | cut -d' ' -f2)
+		getmount
+		${TERMINAL:-st} -n "stFLOAT" -g 70x1 -e sudo cryptsetup open $selected decrypted-drive &&
+			sudo mount /dev/mapper/decrypted-drive $mountpoint &&
+			notify-send "🔓 Successfully decrypted and mounted drive." "/dev/mapper/decrypted-drive is now mounted on $mountpoint." ;;
+	📱*)
+		simple-mtpfs --device $device $HOME/mp/
+esac
