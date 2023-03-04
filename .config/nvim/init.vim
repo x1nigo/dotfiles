@@ -32,9 +32,6 @@ set bg=light
 " Indentation options:
 set autoindent
 
-" Check spelling:
-set spell
-
 " Clipboard
 set clipboard=unnamedplus
 
@@ -61,6 +58,7 @@ set conceallevel=2
 " Mappings
 	let mapleader = ","
 	map <leader>g :Goyo <enter>
+	map <leader>s :setlocal spell spelllang=en_us <enter>
 
 " Automatically read the file type after write
         autocmd BufWritePost * filetype detect
@@ -101,4 +99,7 @@ highlight String           ctermfg=1    ctermbg=none  cterm=none
 highlight Number           ctermfg=1    ctermbg=none  cterm=bold
 highlight Function         ctermfg=6    ctermbg=none  cterm=none
 highlight Visual           ctermfg=3    ctermbg=0     cterm=bold
-highlight SpellBad         ctermfg=1    ctermbg=none  cterm=bold,underline
+highlight SpellBad         ctermfg=1    ctermbg=none  cterm=italic,underline
+highlight SpellCap         ctermfg=4    ctermbg=none  cterm=italic,underline
+highlight SpellRare        ctermfg=6    ctermbg=none  cterm=italic,underline
+highlight SpellLocal       ctermfg=2    ctermbg=none  cterm=italic,underline
