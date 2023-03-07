@@ -11,4 +11,5 @@ resolution="$(xrandr | awk '{print $1}' | grep '[0-9]\+x[0-9]\+' | dmenu -p 'Res
 [ -z $resolution ] && exit 1
 
 # Main command
-xrandr --output $option --mode $resolution
+xrandr --output $option --mode $resolution && \
+	notify-send "📺 Wired connection established." "Successfully connected '$option' to external screen."
