@@ -15,10 +15,13 @@ allencrypted=$(echo $output | grep crypt | awk '{print $1}')
 # Get regular drives.
 allregular=$(echo $output | grep -v crypt | awk '{print $1}')
 [ -z $allregular ] || regular=$(echo $allregular | sed "s/^/💾 /")
+phones="$(simple-mtpfs -l 2>/dev/null | sed 's/^/📱 /')"
+mp=$(cat /etc/mtab | grep '^simple-mtpfs' | cut -d' ' -f2)
 
 # Just mash everything into one variable for convenience.
 alldrives=$(echo "$encrypted
-$regular")
+$regular
+$phones")
 [ -z $alldrives ] && notify-send "💾 No drives mounted on this device." "Please try again." && exit 1
 drive=$(echo $alldrives | dmenu -p 'Unmount which drive?')
 [ -z $drive ] && exit 1
@@ -40,4 +43,7 @@ case $drive in
 		sudo umount $mountpoint &&
 			sudo cryptsetup close decrypted-drive &&
 			notify-send "🔒 Successfully re-encrypted and unmounted drive." "You may now safely remove your drive." ;;
+	📱*)
+		fusermount -u $mp && \
+			notify-send "📲 Successfully unmounted mobile phone." "You may now safely remove your phone cable." ;;
 esac
