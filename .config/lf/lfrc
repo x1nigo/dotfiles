@@ -8,8 +8,46 @@ set hidden
 set icons
 
 map e $opener "$f"
+map <enter> $opener "$f"
+map <backspace2> set hidden!
 map D delete
 map R rename
-map <backspace2> set hidden!
-map M $mkdir New_Folder
-map N $touch New_File
+map M mkdir
+map N touch
+
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "Delete File? [y/N] "
+	read ans
+	[ $ans = "y" ] && rm -rf -- $fx
+}}
+
+cmd rename ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "Rename File: "
+	read ans
+	[ -z $ans ] && exit 0
+	mv $fx $ans
+}}
+
+cmd mkdir ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "Directory Name: "
+	read ans
+	[ -z $ans ] && exit 0
+	mkdir $ans
+}}
+
+cmd touch ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "New File: "
+	read ans
+	[ -z $ans ] && exit 0
+	touch $ans
+}}
