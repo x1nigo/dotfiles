@@ -1,12 +1,16 @@
 #! /bin/sh
 
-if grep -x 'up' /sys/class/net/wl*/operstate >/dev/null 2>&1 ; then
-        wlicon="📶" && perc="$(awk '/wl/ { print int($3 * 100 / 70) }' /proc/net/wireless)%"
-else
-        wlicon=📡
-fi
+# Display the following:
+# 📶: wifi running w/ strength
+# 📡: no wifi connection
+# 🌐: connected to ethernet
+# ❎: no ethernet connection
 
-[ $(grep -x 'up' /sys/class/net/e*/operstate) >/dev/null 2>&1 ] && ethicon="🌎" || ethicon=❎
+if grep -xq 'up' /sys/class/net/wl*/operstate 2>/dev/null; then
+	wlicon="$(awk '/wl/ {print "📶", int($3 * 100 / 70) }' /proc/net/wireless)% "
+elif grep -xq 'down' /sys/class/net/wl*/operstate 2>/dev/null; then
+	grep -xq '0x1003' /sys/class/net/wl*/flags && wlicon="📡" || wlicon="❌"
+fi
 
 case $BUTTON in
         1) st -e nmtui ;;
@@ -16,19 +20,21 @@ case $BUTTON in
 
 📜 Legend:
 📶: connected to wifi
-📡: wifi-disconnected
+📡: no wifi connection
 🌎: connected to ethernet
-❎: not connected to ethernet"
+❎: no ethernet connection
+❌: wifi disabled"
                 else
-                        notify-send "🧭 Network module:" "🌐 connected to: '$(nmcli -t -f name connection show --active)'
+                        notify-send "🧭 Network module:" "Connected to: '$(nmcli -t -f name connection show --active)'
 
 📜 Legend:
 📶: connected to wifi
-📡: wifi-disconnected
+📡: no wifi connection
 🌎: connected to ethernet
-❎: not connected to ethernet"
+❎: no ethernet connection
+❌: wifi disabled"
                 fi ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
-printf "%s %s %s\n" "$wlicon" "$perc" "$ethicon"
+printf "%s%s\n" "$wlicon" "$(sed 's/down/❎/;s/up/🌐/' /sys/class/net/e*/operstate 2>/dev/null)"

@@ -31,11 +31,5 @@ active=$(transmission-remote -l | grep %)
 [ -z $active ] && printf "🌑🌱" && exit 1
 
 transmission-remote -l | grep % |
-        sed "
-        s/.*Stopped.*/🛑/;
-        s/.*Seeding.*/🌱/;
-        s/.*100%.*/✅/;
-        s/.*Idle.*/🕰️/;
-        s/.*Uploading.*/🔼/;
-        s/.*%.*/♻️$percent/"
-                sort -h | uniq -c | awk '{print $2 $1}' | paste -sd ' ' -
+        sed "s/.*Stopped.*/🛑/;s/.*Seeding.*/🌱/;s/.*100%.*/✅/;s/.*Idle.*/🕰️/;s/.*Uploading.*/🔼/;s/.*%.*/♻️$percent/"
+	sort -h | uniq -c | awk '{print $2 $1}' | paste -sd ' ' -
