@@ -8,26 +8,19 @@ case $BUTTON in
 	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
-if grep -x up /sys/class/net/wl*/operstate >/dev/null 2>&1 ; then
-	rx=$(cat /sys/class/net/wl*/statistics/rx_bytes)
-	tx=$(cat /sys/class/net/wl*/statistics/tx_bytes)
-elif grep -x up /sys/class/net/e*/operstate >/dev/null 2>&1 ; then
-	rx=$(cat /sys/class/net/e*/statistics/rx_bytes)
-	tx=$(cat /sys/class/net/e*/statistics/tx_bytes)
-else
-	rx=0; tx=0 && exit
-fi
+update() {
+	sum=0
+	for arg; do
+		read -r i < "$arg"
+		sum=$(( sum + i ))
+	done
+	cache=/tmp/${1##*/}
+	[ -f "$cache" ] && read -r old < "$cache" || old=0
+	printf %d\\n "$sum" > "$cache"
+	printf %d\\n $(( sum - old ))
+}
 
-if [ $(ls /tmp | grep '^rx$') ]; then
-	received=$(( $rx - $(cat /tmp/rx) )) && echo $rx > /tmp/rx
-else
-	received="$rx" && echo $rx > /tmp/rx
-fi
+rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
+tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
 
-if [ $(ls /tmp | grep '^tx$') ]; then
-	transmitted=$(( tx - $(cat /tmp/tx) )) && echo $tx > /tmp/tx
-else
-	transmitted="$tx" && echo $tx > /tmp/tx
-fi
-
-printf "%s%6sB/s %s%6sB/s\n" "🔻" "$(numfmt --to=iec-i $received)" "🔺" "$(numfmt --to=iec-i $transmitted)"
+printf "🔻%4sB 🔺%4sB\\n" $(numfmt --to=iec $rx $tx)
