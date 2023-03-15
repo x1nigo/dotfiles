@@ -24,7 +24,7 @@ device=$(echo $phones | cut -d' ' -f2 | sed "s/://")
 # Jam everything into one variable for convenience.
 alldrives=$(echo "$encrypted
 $regular
-$phones")
+$phones" | sed '/^$/d')
 [ -z $alldrives ] && notify-send "💾 No drives found on this device." "Please try again." && exit 1
 drive=$(echo $alldrives | dmenu -p 'Select drive to mount:')
 [ -z $drive ] && exit 1

@@ -21,7 +21,7 @@ mp=$(cat /etc/mtab | grep '^simple-mtpfs' | cut -d' ' -f2)
 # Just mash everything into one variable for convenience.
 alldrives=$(echo "$encrypted
 $regular
-$phones")
+$phones" | sed '/^$/d')
 [ -z $alldrives ] && notify-send "💾 No drives mounted on this device." "Please try again." && exit 1
 drive=$(echo $alldrives | dmenu -p 'Unmount which drive?')
 [ -z $drive ] && exit 1
