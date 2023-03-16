@@ -45,13 +45,13 @@ case $drive in
 		# Number the drive.
 		num=1
 		while true; do
-			[ -f "/dev/mapper/drive-$num" ] || break
+			[ -f "/dev/mapper/usb-$num" ] || break
 			num=$(( $num + 1 ))
 		done
-		${TERMINAL:-st} -n "stFLOAT" -g 70x1 -e sudo cryptsetup open $selected drive-$num && \
+		${TERMINAL:-st} -n "stFLOAT" -g 70x1 -e sudo cryptsetup open $selected usb-$num && \
 		getmount
-		sudo mount /dev/mapper/drive-$num $mountpoint
-			notify-send "🔓 Successfully decrypted and mounted drive." "/dev/mapper/drive-$num is now mounted on $mountpoint." ;;
+		sudo mount /dev/mapper/usb-$num $mountpoint
+			notify-send "🔓 Successfully decrypted and mounted drive." "/dev/mapper/usb-$num is now mounted on $mountpoint." ;;
 	📱*)
 		simple-mtpfs --device $device $HOME/mp && \
 			notify-send "📱 Successfully mounted your mobile phone." "Currently mounted on ~/mp" ;;
