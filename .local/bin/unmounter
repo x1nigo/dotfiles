@@ -39,10 +39,11 @@ case $drive in
 			notify-send "💾 Unmounted drive successfully." "You may now safely remove your drive." ;;
 	🔓*)
 		selected=$(echo $drive | cut -d' ' -f2)
+		base="${selected##.*/}"
 		getmount
 		sudo umount $mountpoint &&
-			sudo cryptsetup close decrypted-drive &&
-			notify-send "🔒 Successfully re-encrypted and unmounted drive." "You may now safely remove your drive." ;;
+			sudo cryptsetup close $base &&
+			notify-send "🔒 Successfully re-encrypted and unmounted $base." "You may now safely remove your drive." ;;
 	📱*)
 		fusermount -u $mp && \
 			notify-send "📲 Successfully unmounted mobile phone." "You may now safely remove your phone cable." ;;
