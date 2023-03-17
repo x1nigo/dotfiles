@@ -7,7 +7,7 @@
 # ❎: no ethernet connection
 
 if grep -xq 'up' /sys/class/net/wl*/operstate 2>/dev/null; then
-	wlicon="$(awk '/wl/ {print "📶", int($3 * 100 / 70) }' /proc/net/wireless)% "
+	wlicon="$(awk '/wl/ {print "📶", int($3 * 100 / 70) }' /proc/net/wireless)%"
 elif grep -xq 'down' /sys/class/net/wl*/operstate 2>/dev/null; then
 	grep -xq '0x1003' /sys/class/net/wl*/flags && wlicon="📡" || wlicon="❌"
 fi
@@ -37,4 +37,4 @@ case $BUTTON in
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
-printf "%s%s\n" "$wlicon" "$(sed 's/down/❎/;s/up/🌐/' /sys/class/net/e*/operstate 2>/dev/null)"
+printf "%s%s\n" "$wlicon " "$(sed 's/down/❎/;s/up/🌐/' /sys/class/net/e*/operstate 2>/dev/null)"
