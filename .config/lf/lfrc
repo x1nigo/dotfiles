@@ -7,19 +7,13 @@ map <tab> shell
 set hidden
 set icons
 
-map e $opener "$f"
-map <enter> $opener "$f"
-map <backspace2> set hidden!
-map D delete
-map R rename
-map M mkdir
-map N touch
-
 cmd delete ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
 	printf "%s\n\t" "$fx"
 	printf "Delete File? [y/N] "
+	IFS='
+	'
 	read ans
 	[ $ans = "y" ] && rm -rf -- $fx
 }}
@@ -31,7 +25,7 @@ cmd rename ${{
 	printf "Rename File: "
 	read ans
 	[ -z $ans ] && exit 0
-	mv $fx $ans
+	mv "$fx" "$ans"
 }}
 
 cmd mkdir ${{
@@ -40,7 +34,7 @@ cmd mkdir ${{
 	printf "Directory Name: "
 	read ans
 	[ -z $ans ] && exit 0
-	mkdir $ans
+	mkdir "$ans"
 }}
 
 cmd touch ${{
@@ -49,5 +43,13 @@ cmd touch ${{
 	printf "New File: "
 	read ans
 	[ -z $ans ] && exit 0
-	touch $ans
+	touch "$ans"
 }}
+
+map e $opener "$f"
+map <enter> $opener "$f"
+map <backspace2> set hidden!
+map D delete
+map R rename
+map M mkdir
+map N touch
