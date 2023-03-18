@@ -2,11 +2,7 @@
 
 case $BUTTON in
         1) pamixer --default-source -t ;;
-        3) notify-send "🎤 Microphone module:" "
-📚 Instructions:
-Left-click to toggle mute.
-
-📜 Legend:
+        3) notify-send "🎤 Microphone module:" "\[Click to toggle mute\]
 🎙️: mic on
 ❌: mic off" ;;
         4) st -e pulsemixer ;;
@@ -14,6 +10,6 @@ Left-click to toggle mute.
 esac
 
 mic=$(pamixer --default-source --get-volume)
-[ "$(pamixer --default-source --get-mute)" = true ] && printf "🎙️❌\n" && exit 0 || icon="🎙️"
+[ "$(pamixer --default-source --get-mute)" = true ] && printf "🎙️❌" && exit 0 || icon="🎙️"
 
 printf "%s%s%%\n" "$icon" "$mic"

@@ -3,10 +3,8 @@
 mem=$(free | awk '/Mem:/ { print int($3 * 100 / $2) }') && icon="💾"
 
 case $BUTTON in
-	1) st -e gotop ;;
-	3) notify-send "💾 Memory module:" "
-📚 Instructions:
-Left-click to run gotop, a terminal based graphical activity monitor." ;;
+	1) st -e top ;;
+	3) notify-send "💾 Memory module:" "\[Click to run \`top\` program\]" ;;
 	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

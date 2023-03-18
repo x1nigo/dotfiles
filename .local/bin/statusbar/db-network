@@ -1,10 +1,6 @@
 #! /bin/sh
 
-# Display the following:
-# 📶: wifi running w/ strength
-# 📡: no wifi connection
-# 🌐: connected to ethernet
-# ❎: no ethernet connection
+# TODO: Ethernet unoperational. Must find a way to make it work.
 
 if grep -xq 'up' /sys/class/net/wl*/operstate 2>/dev/null; then
 	wlicon="$(awk '/wl/ {print "📶", int($3 * 100 / 70) }' /proc/net/wireless)%"
@@ -14,26 +10,12 @@ fi
 
 case $BUTTON in
         1) st -e nmtui ;;
-        3) active=$(nmcli -t -f name connection show --active)
-                if [ -z $active ]; then
-                        notify-send "🧭 Network module:" "Unable to connect to the internet.
-
-📜 Legend:
-📶: connected to wifi
-📡: no wifi connection
-🌎: connected to ethernet
-❎: no ethernet connection
-❌: wifi disabled"
-                else
-                        notify-send "🧭 Network module:" "Connected to: '$(nmcli -t -f name connection show --active)'
-
-📜 Legend:
-📶: connected to wifi
-📡: no wifi connection
-🌎: connected to ethernet
-❎: no ethernet connection
-❌: wifi disabled"
-                fi ;;
+        3) notify-send "🌐 Network module:" "\[Click to connect\]
+📶 connected to wifi
+📡 no wifi connection
+🌐 connected to ethernet
+❎ no ethernet connection
+❌ wifi disabled" ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

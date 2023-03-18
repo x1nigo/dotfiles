@@ -1,9 +1,7 @@
 #! /bin/sh
 
-# As of now, this module really only works
-# with only one (1) active torrent.
-# If there are more, the notifications
-# would get skewered.
+# As of now, this module really only works with only one (1) active torrent.
+# If there are more, the notifications would get skewered.
 
 # Variables
 name="$(transmission-remote -t all -i | grep 'Name:')"
@@ -15,15 +13,13 @@ case $BUTTON in
 	1) notify-send "$name" "$state
 $percent
 $speed" ;;
-        3) notify-send "🌑🌱 Torrent module:" "
-📜 Legend:
-🛑: Paused
-🕰️: Idle
-🔼: Uploading
-♻️: Downloading
-✅: Done
-🌱: Seeding
-🌑: No torrents" ;;
+        3) notify-send "🌑🌱 Torrent module:" "\[Click to see torrent status\]
+🛑 Paused
+🕰️ Idle
+🔼 Uploading
+♻️ Downloading
+✅ Done
+🌱 Seeding" ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

@@ -18,16 +18,12 @@ fi
 
 case $BUTTON in
         1) pamixer -t ;;
-        3) notify-send "🔈 Volume module:" "
-📚 Instructions:
-Left-click to toggle mute.
-
-📜 Legend:
-📢: loudest
-🔊: high
-🔉: medium
-🔈: low
-🔇: muted speaker" ;;
+        3) notify-send "🔈 Volume module:" "\[Click to toggle mute\]
+📢 loudest
+🔊 high
+🔉 medium
+🔈 low
+🔇 muted speaker" ;;
         4) st -e pulsemixer ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac

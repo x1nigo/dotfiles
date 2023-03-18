@@ -16,15 +16,15 @@ stat=$(cat $dir/status)
 
 # Main function that replaces text with appropriate
 # symbols
-printf "%s%s%s\n" "$warn" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/*/🕰️/')" "$(echo $bat | sed 's/$/%/')"
+printf "%s%s%s\n" "$warn" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/*/♻️/')" "$(echo $bat | sed 's/$/%/')"
 
 # Notify when clicked via the right mouse button
 case $BUTTON in
         3) notify-send "🔋 Battery module:" "
-📜 Legend:
-🔌: charging
-⚡: fullly-charged
-🕰️: stagnant
-🔋: discharging (normal)" ;;
+🔌 charging
+⚡ fullly-charged
+♻️ stagnant
+🔋 discharging
+❗ low battery (please charge!)" ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac

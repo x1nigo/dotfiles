@@ -3,17 +3,13 @@
 icon="🔒"
 
 case $BUTTON in
-        1) systemize ;;
-        3) notify-send "🔒 System module:" "
-📚 Instructions:
-Left-click to display system settings.
-
-📜 Legend:
-🖥️: shutdown
-♻️: restart computer
-🚪: log out
-💤: sleep
-🔒: lock" ;;
+        1) sysmenu ;;
+        3) notify-send "🔒 System module:" "\[Click to display system settings\]
+🖥️ shutdown
+♻️ restart computer
+🚪 log out
+💤 sleep
+🔒 lock" ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

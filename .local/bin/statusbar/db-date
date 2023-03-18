@@ -21,9 +21,7 @@ time=$(date +'%I:%M %P')
 
 case $BUTTON in
         1) notify-send "$(cal)" ;;
-        3) notify-send "🗓️ Date and time module:" "
-📚 Instructions:
-Left-click to display current month." ;;
+        3) notify-send "🗓️ Date and Time module:" "\[Click to display current month\]" ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
