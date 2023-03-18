@@ -2,7 +2,7 @@
 
 # Prompt Variables
 root='%B%F{red}[%m%f %F{magenta}%1~%f%F{red}]#%f%b '
-user='%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%1~%f%F{red}]%f%F{cyan}$%f%b '
+user='%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%~%f%F{red}]%f%F{cyan}$%f%b '
 
 # Prompt Function
 [ $(whoami) = "root" ] && PROMPT=$root || PROMPT=$user
