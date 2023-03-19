@@ -36,7 +36,8 @@ alias \
 	startx="startx $XINITRC" \
 	rc="sudo make clean install" \
         bk="cd $HOME/dox/books/" \
-        m="neomutt"
+        m="neomutt" \
+	t="transmission-remote"
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
