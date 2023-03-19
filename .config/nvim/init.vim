@@ -19,6 +19,7 @@ filetype plugin indent on
 call plug#begin()
 Plug 'junegunn/goyo.vim'
 Plug 'vim-airline/vim-airline'
+Plug 'VebbNix/lf-vim'
 call plug#end()
 
 " Colorscheme
