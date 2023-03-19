@@ -6,7 +6,7 @@
 # Variables
 name="$(transmission-remote -t all -i | grep 'Name:')"
 state="$(transmission-remote -t all -i | grep 'State:')"
-percent="$(transmission-remote -t all -i | grep 'Percent Done:')"
+percent="$(transmission-remote -t all -i | grep 'Percent Done:' | sed 's/  Percent Done: //')"
 speed="$(transmission-remote -t all -i | grep 'Download Speed:')"
 
 case $BUTTON in
