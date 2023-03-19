@@ -61,6 +61,7 @@ set conceallevel=2
 	let mapleader = ","
 	map <leader>g :Goyo <enter>
 	map <leader>s :setlocal spell spelllang=en_us <enter>
+	map <leader>c :!compiler "%" <enter>
 
 " Change back to original colorscheme after leaving Goyo
 	autocmd User GoyoLeave set bg=light
@@ -69,17 +70,14 @@ set conceallevel=2
         autocmd BufWritePost * filetype detect
 
 " Recompile suckless software automatically
-        autocmd BufWritePost config.h,config.def.h !sudo make clean install
+"        autocmd BufWritePost config.h,config.def.h !sudo make clean install
 
 " Restart dwmblocks automatically after compilation
-        autocmd BufWritePost blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
+"        autocmd BufWritePost blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
 
 " Recompile LaTeX documents automatically
 "        autocmd BufWritePost *\.tex !pdflatex "%"
-        autocmd BufWritePost *\.tex !xelatex "%"
-
-" Use compiler script for other programs
-"        autocmd BufWritePost *\.h,*\.ms,*\.py,*\.tex !compiler %
+"        autocmd BufWritePost *\.tex !xelatex "%"
 
 " Automatically save folding
 	autocmd BufWrite,VimLeave *\.md mkview
