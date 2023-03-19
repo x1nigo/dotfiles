@@ -8,4 +8,5 @@
 myfont=$(echo -n '' | dmenu -p "Enter new font:")
 [ -z "$myfont" ] && exit 1
 
-sed -i "s/^<\!--current font-->.*$/<\!--current font-->     <family>$myfont<\/family>/" ~/.config/fontconfig/conf.d/60-latin.conf
+sed -i "s/^<\!--current font-->.*$/<\!--current font-->     <family>$myfont<\/family>/" ~/.config/fontconfig/conf.d/60-latin.conf && \
+notify-send "📜 Changed changed!" "\`$myfont\`"

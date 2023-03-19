@@ -10,5 +10,5 @@ case "$ext" in
         h) sudo make clean install ;;
         ms) groff -ms -tbl -T pdf "$file" > "$base".pdf ;;
         py) python "$file" ;;
-        tex) pdflatex "$file" ;;
+        tex) xelatex "$file" ;;
 esac

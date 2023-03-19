@@ -1,18 +1,18 @@
 #! /bin/sh
 
 total=$(cat /sys/class/backlight/intel_backlight/max_brightness)
-cur=$(cat /sys/class/backlight/intel_backlight/brightness)
+current=$(cat /sys/class/backlight/intel_backlight/brightness)
 
 inc() {
 	file="/sys/class/backlight/intel_backlight/brightness"
-	inc=$(( $total / 20 ))
-	echo $(( $cur + $inc )) > $file
+	increment=$(( $total / 20 ))
+	echo $(( $current + $increment )) > $file
 }
 
 dec() {
 	file="/sys/class/backlight/intel_backlight/brightness"
-	inc=$(( $total / 20 ))
-	echo $(( $cur - $inc )) > $file
+	increment=$(( $total / 20 ))
+	echo $(( $current - $increment )) > $file
 }
 
 $1

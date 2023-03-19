@@ -2,18 +2,18 @@
 
 kbd=$(ls /sys/class/leds | grep kbd_backlight)
 total=$(cat /sys/class/leds/$kbd/max_brightness)
-cur=$(cat /sys/class/leds/$kbd/brightness)
+current=$(cat /sys/class/leds/$kbd/brightness)
 
 inc() {
 	file="/sys/class/leds/$kbd/brightness"
-	inc=$(( $total / 20 ))
-	echo $(( $cur + $inc )) > $file
+	increment=$(( $total / 20 ))
+	echo $(( $current + $increment )) > $file
 }
 
 dec() {
 	file="/sys/class/leds/$kbd/brightness"
-	inc=$(( $total / 20 ))
-	echo $(( $cur - $inc )) > $file
+	increment=$(( $total / 20 ))
+	echo $(( $current - $increment )) > $file
 }
 
 $1
