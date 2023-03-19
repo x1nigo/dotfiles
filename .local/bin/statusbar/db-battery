@@ -20,7 +20,8 @@ printf "%s%s%s\n" "$warn" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/�
 
 # Notify when clicked via the right mouse button
 case $BUTTON in
-        3) notify-send "🔋 Battery module:" "🔌 charging
+        3) notify-send "🔋 Battery module:" "\[Displays battery status\]
+🔌 charging
 ⚡ fullly-charged
 ♻️ stagnant
 🔋 discharging
