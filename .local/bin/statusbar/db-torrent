@@ -1,7 +1,8 @@
 #! /bin/sh
 
-# TODO: Find a way to write this script more efficiently.
-# Make sure that you have `stig` installed from the AUR.
+# TODO: Find a way to add torrents as the user clicks upon the download link.
+# NOTE: Make sure the `stig` is installed on your system (AUR).
+# To add a torrent, open your terminal and type transmission-remote -a "<insert link>".
 
 # Check if the daemon is running. If not, then start it.
 if ! pidof transmission-daemon >/dev/null 2>&1; then
