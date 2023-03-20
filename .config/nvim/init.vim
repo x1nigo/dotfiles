@@ -56,13 +56,13 @@ set noshowcmd
 
 " Miscellaneous
 set confirm
-set conceallevel=2
 
 " Mappings
 	let mapleader = ","
 	map <leader>g :Goyo <enter>
 	map <leader>s :setlocal spell spelllang=en_us <enter>
-	map <leader>c :!compiler "%" <enter>
+	map <leader>c :!compiler "%" <enter> <enter>
+	map <leader>d :silent !alchemize "%" <enter>
 
 " Change back to original colorscheme after leaving Goyo
 	autocmd User GoyoLeave set bg=light
