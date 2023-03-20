@@ -1,9 +1,9 @@
 #! /bin/sh
 
-# As of now, this module really only works with only one (1) active torrent.
-# TODO: Create a script that an handle multiple instances of torrents.
-# (quit possible `tremc` or `stig` from the AUR.
+# TODO: Find a way to write this script more efficiently.
+# Make sure that you have `stig` installed from the AUR.
 
+# Check if the daemon is running. If not, then start it.
 if ! pidof transmission-daemon >/dev/null 2>&1; then
 	transmission-daemon && notify-send "🌱 Starting torrent daemon..."
 fi
@@ -20,9 +20,11 @@ case $BUTTON in
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
+# Display default icon if no torrent is active.
 active=$(transmission-remote -l | grep %)
-[ -z $active ] && printf "🌑🌱" && exit 1
+[ -z $active ] && printf "🌑🌱" && exit 0
 
+# Show the proper icon depending on status of the torrent/s.
 transmission-remote -l | grep % |
 	sed " # The letters are for sorting and will not appear.
 	s/.*Stopped.*/A 🛑/;
