@@ -1,25 +1,22 @@
 #! /bin/sh
 
 # As of now, this module really only works with only one (1) active torrent.
-# If there are more, the notifications would get skewered.
+# TODO: Create a script that an handle multiple instances of torrents.
+# (quit possible `tremc` or `stig` from the AUR.
 
-# Variables
-name="$(transmission-remote -t all -i | grep 'Name:')"
-state="$(transmission-remote -t all -i | grep 'State:')"
-percent="$(transmission-remote -t all -i | grep 'Percent Done:' | sed 's/  Percent Done: //')"
-speed="$(transmission-remote -t all -i | grep 'Download Speed:')"
+if ! pidof transmission-daemon >/dev/null 2>&1; then
+	transmission-daemon && notify-send "🌱 Starting torrent daemon..."
+fi
 
 case $BUTTON in
-	1) notify-send "$name" "$state
-$percent
-$speed" ;;
-        3) notify-send "🌑🌱 Torrent module:" "\[Click to see torrent status\]
-🛑 Paused
-🕰️ Idle
-🔼 Uploading
-♻️ Downloading
-✅ Done
-🌱 Seeding" ;;
+	1) setsid -f ${TERMINAL:-st} -e stig ;;
+        3) notify-send "🌑🌱 Torrent module:" "\[Click to open \`stig\` program.\]
+🛑 paused
+🕰️ idle
+⬆️ uploading
+⬇️ downloading
+✅ done
+🌱 seeding" ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
@@ -27,5 +24,11 @@ active=$(transmission-remote -l | grep %)
 [ -z $active ] && printf "🌑🌱" && exit 1
 
 transmission-remote -l | grep % |
-        sed "s/.*Stopped.*/🛑/;s/.*Seeding.*/🌱/;s/.*100%.*/✅/;s/.*Idle.*/🕰️/;s/.*Uploading.*/🔼/;s/.*%.*/♻️$percent/"
-	sort -h | uniq -c | awk '{print $2 $1}' | paste -sd ' ' -
+	sed " # The letters are for sorting and will not appear.
+	s/.*Stopped.*/A 🛑/;
+	s/.*Seeding.*/Z 🌱/;
+	s/.*100%.*/N ✅/;
+	s/.*Idle.*/B 🕰️/;
+	s/.*Uploading.*/L ⬆️/;
+	s/.*%.*/M ⬇️/" |
+		sort -h | uniq -c | awk '{print $3 $1}' | paste -sd ' ' -
