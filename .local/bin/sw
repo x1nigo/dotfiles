@@ -1,51 +1,75 @@
 #! /bin/sh
 
-# Setwallpaper script
-
 bglink="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
 bgdir="${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/"
+file="$2"
+cache=/tmp/bgtype
 
-helppls() {
-        echo "
-setwallpaper            A script by x1nigo to set desktop backgrounds
-                        with xwallpaper.
-Usage:
-        -s              set wallpaper with dmenu
-        -a              add image to backgrounds folder
-        -h              display this help text
-        \`none\`        having no option will simply render the last
-                        configured wallpaper
-"
+readme() { cat << EOF
+sw: set-wallpaper, a minimal script meant to render
+wallpapers
+
+Main use:
+ -n file.jpg	Establish a new background with the user's input
+ -a		Add an image file to backgrounds folder
+ -s		Select a wallpaper from a list of items
+ -r		Use random file with random mode
+ -h		Display the readme message
+
+Backgrounds directory:
+ ~/.local/share/backgrounds
+EOF
 }
 
-addbg() {
-        [ -z $file ] && notify-send "hello" && exit 1
-        cp $file $bgdir
+bgadd() {
+	# Link input to the main `bg` file. If none, then exit script.
+        [ -z $file ] && exit 1; cp $file $bgdir
 }
 
-selectbg() {
-        bgselect="$(ls ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds | dmenu)"
-        if [ -z "$bgselect" ]; then
+bgsel() {
+        bgsel="$(ls $bgdir | dmenu)"
+        if [ -z "$bgsel" ]; then
                 exit 0
         else
-                type="$(echo -e 'center\nmaximize\nstretch\ntile\nzoom' | dmenu)"
-                if [ -z "$type" ]; then
-                        exit 0
-                else
-                        echo $type > /tmp/bgtype
-                fi
-                ln -sf ${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/$bgselect $bglink
-                xwallpaper --$type "$bglink" && notify-send "🖼️ \`$bgselect\` set as wallpaper!" "\`$type\` mode selected." && exit
+                mode="$(echo -e 'center\nmaximize\nstretch\ntile\nzoom' | dmenu)"
+		[ -z "$mode" ] && exit 1
+		echo $mode > "$cache"
+		# Link chosen background to main `bg` file.
+                ln -sf "$bgdir"/"$bgsel" $bglink
+		# Notify on successful wallpaper
+                xwallpaper --$mode "$bglink" && notify-send "🖼️ \`$bgsel\` set as wallpaper!" "\`$mode\` mode selected." && exit 0
         fi
 }
 
-option="$1"
-file="$2"
-bgtype="$(cat /tmp/bgtype)"
-case "$option" in
-        -s) selectbg ;;
-        -h) helppls ;;
-        -a) addbg ;;
-esac
+bgnow() {
+	ln -sf $(pwd)/"$file" $bglink
+	mode="$(printf "center\nmaximize\nstretch\ntile\nzoom" | dmenu)"
+	[ -z "$mode" ] && exit 1
+	echo $mode > "$cache"
+	xwallpaper --$mode "$bglink" && notify-send "🖼️ \`$file\` set as wallpaper!" "\`$mode\` mode selected." && exit 0
+}
 
-xwallpaper --$bgtype "$bglink"
+bgran() {
+	bgsel=$(ls $bgdir | shuf | head -1)
+	ln -sf "$bgdir"/"$bgsel" $bglink
+	mode=$(printf "center\nmaximize\nstretch\ntile\nzoom" | shuf | tail -1)
+	[ -z "$mode" ] && exit 1
+	echo $mode > "$cache"
+	xwallpaper --$mode "$bglink" && notify-send "🖼️ \`$bgsel\` set as wallpaper!" "\`$mode\` mode selected." && exit 0
+}
+
+while getopts "asnrh" o; do
+	case ${o} in
+		a) bgadd ;;
+		s) bgsel ;;
+		n) bgnow ;;
+		r) bgran ;;
+		h) readme ;;
+		*) readme ;;
+	esac
+done
+
+# Read the previously rendered mode.
+[ -f "$cache" ] && read -r mode < "$cache"
+# If no option was given, use the last known background.
+xwallpaper --$mode "$bglink"
