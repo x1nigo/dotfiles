@@ -10,8 +10,8 @@ sw: set-wallpaper, a minimal script meant to render
 wallpapers
 
 Main use:
- -n file.jpg	Establish a new background with the user's input
- -a		Add an image file to backgrounds folder
+ -a file.jpg	Add an image file to backgrounds folder
+ -n file.jpg	Render a new wallpaper with file
  -s		Select a wallpaper from a list of items
  -r		Use random file with random mode
  -h		Display the readme message
