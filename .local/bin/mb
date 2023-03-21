@@ -1,0 +1,113 @@
+#! /bin/sh
+
+file="$2"
+base="${file%.*}"
+ext="opus"
+
+readme() { cat << EOF
+mb: meta-blitz, configure metadata of audio/video files
+for \`mpv\`, \`ncmpcpp\`, or any other media player.
+
+Main actions:
+  -e	Edit a single file manually
+  -b	Bundle all files from one directory and edit them
+  -A	Change artist
+  -t	Change song/track title
+  -a	Change album title
+  -n	Change track number
+  -y	Change publication year
+EOF
+}
+
+unaedit() {
+	printf "%s\n" "$file"
+	printf "%s\n" "Enter the title: "; read -r title
+	printf "%s\n" "Enter the artist: "; read -r artist
+	printf "%s\n" "Enter the album title: "; read -r album
+	printf "%s\n" "Enter the publication year: "; read -r year
+	printf "%s\n" "Enter the track number: "; read -r track
+	printf "Processing metadata...\n"
+	ffmpeg -i "$file" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" "$title.$ext" >/dev/null 2>&1
+	rm -f "$file"
+	printf "Processing metadata complete!\n"
+}
+
+editall() {
+	printf "Enter the album title: "; read -r album
+	IFS='
+	'
+	for i in $(ls); do
+		printf "%s\n" "$i"
+		printf "%s\n" "Enter the title: "; read -r title
+		printf "%s\n" "Enter the artist: "; read -r artist
+		printf "%s\n" "Enter the publication year: "; read -r year
+		printf "%s\n" "Enter the track number: "; read -r track
+		printf "Processing metadata...\n"
+		ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" "$title.$ext" >/dev/null 2>&1
+		rm -f "$i"
+	done
+	printf "Processing metadata complete!\n"
+}
+
+changeartist() {
+	printf "%s\n" "$file"
+	printf "Enter artist: "; read -r artist
+	printf "Enter title: "; read -r title
+	printf "Processing metadata...\n"
+	ffmpeg -i "$file" -metadata artist="$artist" -metadata title="$title" "$title.$ext" >/dev/null 2>&1
+	rm -f "$file"
+	printf "Successfully changed artist name to \`$artist\`!\n"
+}
+
+changetitle() {
+	printf "%s\n" "$file"
+	printf "Enter title: "; read -r title
+	printf "Processing metadata...\n"
+	ffmpeg -i "$file" -metadata title="$title" "$title.$ext" >/dev/null 2>&1
+	rm -f "$file"
+	printf "Successfully changed title to \`$title\`!\n"
+}
+
+changealbum() {
+	printf "%s\n" "$file"
+	printf "Enter album title: "; read -r album
+	printf "Enter title: "; read -r title
+	printf "Processing metadata...\n"
+	ffmpeg -i "$file" -metadata album="$album" "$title.$ext" >/dev/null 2>&1
+	rm -f "$file"
+	printf "Successfully changed album title to \`$album\`!\n"
+}
+
+changetrack() {
+	printf "%s\n" "$file"
+	printf "Enter track number: "; read -r track
+	printf "Enter title: "; read -r title
+	printf "Processing metadata...\n"
+	ffmpeg -i "$file" -metadata track="$track" "$title.$ext" >/dev/null 2>&1
+	rm -f "$file"
+	echo "$title.$ext"
+	printf "Successfully changed track number to \`$track\`!\n"
+}
+
+changeyear() {
+	printf "%s\n" "$file"
+	printf "Enter publication year: "; read -r year
+	printf "Enter title: "; read -r title
+	printf "Processing metadata...\n"
+	ffmpeg -i "$file" -metadata year="$year" "$title.$ext" >/dev/null 2>&1
+	rm -f "$file"
+	printf "Successfully changed publication year to \`$year\`!\n"
+}
+
+while getopts "ebAtany:" o; do
+	case ${o} in
+		e) unaedit ;;
+		b) editall ;;
+		A) changeartist ;;
+		t) changetitle ;;
+		a) changealbum ;;
+		n) changetrack ;;
+		y) changeyear ;;
+		*) readme ;;
+	esac
+done
