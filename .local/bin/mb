@@ -31,17 +31,21 @@ finalize() {
 }
 
 prompt() {
-	printf "%s\n" "Is the above information correct? [y/N] "; read -r ans
+	printf "Is the above information correct? [y/N] "; read -r ans
 	[ ! "$ans" = "y" ] && printf "The user has exited the script.\n" && exit 1
 }
 
+editmsg() {
+	printf "%s\n" "Editing metadata of: \`$file\`"
+}
+
 unaedit() {
-	printf "%s\n" "\`$file\`"
-	printf "%s\n" "Title: "; read -r title
-	printf "%s\n" "Artist: "; read -r artist
-	printf "%s\n" "Album title: "; read -r album
-	printf "%s\n" "Publication year: "; read -r year
-	printf "%s\n" "Track number: "; read -r track
+	editmsg
+	printf "\t%s" "Title: "; read -r title
+	printf "\t%s" "Artist: "; read -r artist
+	printf "\t%s" "Album title: "; read -r album
+	printf "\t%s" "Publication year: "; read -r year
+	printf "\t%s" "Track number: "; read -r track
 	prompt
 	printf "Processing metadata...\n"
 	ffmpeg -i "$file" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1
@@ -52,11 +56,11 @@ editall() {
 	IFS='
 	'
 	for i in $(ls); do
-		printf "%s\n" "\`$i\`"
-		printf "%s\n" "Title: "; read -r title
-		printf "%s\n" "Artist: "; read -r artist
-		printf "%s\n" "Publication year: "; read -r year
-		printf "%s\n" "Track number: "; read -r track
+		printf "%s\n" "Editing metadata of \`$i\`"
+		printf "\t%s" "Title: "; read -r title
+		printf "\t%s" "Artist: "; read -r artist
+		printf "\t%s" "Publication year: "; read -r year
+		printf "\t%s" "Track number: "; read -r track
 		prompt
 		printf "Processing metadata...\n"
 		ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
@@ -66,40 +70,40 @@ editall() {
 }
 
 changeartist() {
-	printf "%s\n" "\`$file\`"
-	printf "Artist: "; read -r artist
+	editmsg
+	printf "\tArtist: "; read -r artist
 	prompt
 	printf "Processing metadata...\n"
 	ffmpeg -i "$file" -metadata artist="$artist" procfile.$ext >/dev/null 2>&1
 }
 
 changetitle() {
-	printf "%s\n" "\`$file\`"
-	printf "Title: "; read -r title
+	editmsg
+	printf "\tTitle: "; read -r title
 	prompt
 	printf "Processing metadata...\n"
 	ffmpeg -i "$file" -metadata title="$title" procfile.$ext >/dev/null 2>&1
 }
 
 changealbum() {
-	printf "%s\n" "\`$file\`"
-	printf "Album title: "; read -r album
+	editmsg
+	printf "\tAlbum title: "; read -r album
 	prompt
 	printf "Processing metadata...\n"
 	ffmpeg -i "$file" -metadata album="$album" procfile.$ext >/dev/null 2>&1
 }
 
 changetrack() {
-	printf "%s\n" "\`$file\`"
-	printf "Track number: "; read -r track
+	editmsg
+	printf "\tTrack number: "; read -r track
 	prompt
 	printf "Processing metadata...\n"
 	ffmpeg -i "$file" -metadata track="$track" procfile.$ext >/dev/null 2>&1
 }
 
 changeyear() {
-	printf "%s\n" "\`$file\`"
-	printf "Publication year: "; read -r year
+	editmsg
+	printf "\tPublication year: "; read -r year
 	prompt
 	printf "Processing metadata...\n"
 	ffmpeg -i "$file" -metadata year="$year" procfile.$ext >/dev/null 2>&1
