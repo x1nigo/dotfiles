@@ -29,13 +29,14 @@ set bg=light
 " Syntax
 syntax on
 
-" Basics:
+" Basics
 set title
 
 " Indentation options:
 set autoindent
 
-" Clipboard
+" Set clipboard so that nvim can also paste output
+" to applications outside of it
 set clipboard=unnamedplus
 
 " Search options:
@@ -57,12 +58,20 @@ set noshowcmd
 " Miscellaneous
 set confirm
 
-" Mappings
+" Set Map leader
 	let mapleader = ","
+
+" Use goyo plugin to focus more while editing
 	map <leader>g :Goyo <enter>
+
+" Have a spell check to your document
 	map <leader>s :setlocal spell spelllang=en_us <enter>
-	map <leader>c :!compiler "%" <enter> <enter>
-	map <leader>d :silent !alchemize "%" <enter>
+
+" Use a script to compile a specific file in a certain way
+	map <leader>c :w! \| :!compiler "%" <enter> <enter>
+
+" Open the output of your file
+	map <leader>a :silent !alchemize "%" <enter>
 
 " Change back to original colorscheme after leaving Goyo
 	autocmd User GoyoLeave set bg=light
@@ -70,40 +79,22 @@ set confirm
 " Automatically read the file type after write
         autocmd BufWritePost * filetype detect
 
-" Recompile suckless software automatically
-"        autocmd BufWritePost config.h,config.def.h !sudo make clean install
-
 " Restart dwmblocks automatically after compilation
-"        autocmd BufWritePost blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
-
-" Recompile LaTeX documents automatically
-"        autocmd BufWritePost *\.tex !pdflatex "%"
-"        autocmd BufWritePost *\.tex !xelatex "%"
-
-" Automatically save folding
-	autocmd BufWrite,VimLeave *\.md mkview
-	autocmd BufRead *\.md silent loadview
+        autocmd BufWritePost ~/.config/dwmblocks/blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
 
 " Colors and Theming
-" 0 -> black
-" 1 -> red  
-" 2 -> green
-" 3 -> yellow
-" 4 -> blue 
-" 5 -> magenta
-" 6 -> cyan 
-" 7 -> white
-highlight Title            ctermfg=5    ctermbg=none  cterm=bold,underline
-highlight Comment          ctermfg=4    ctermbg=none  cterm=bold
-highlight Constant         ctermfg=1    ctermbg=none  cterm=none
-highlight Special          ctermfg=4    ctermbg=none  cterm=bold
-highlight Identifier       ctermfg=6    ctermbg=none  cterm=none
-highlight PreProc          ctermfg=5    ctermbg=none  cterm=bold
-highlight String           ctermfg=1    ctermbg=none  cterm=none
-highlight Number           ctermfg=1    ctermbg=none  cterm=bold
-highlight Function         ctermfg=6    ctermbg=none  cterm=none
-highlight Visual           ctermfg=3    ctermbg=0     cterm=bold
-highlight SpellBad         ctermfg=1    ctermbg=none  cterm=italic,underline
-highlight SpellCap         ctermfg=4    ctermbg=none  cterm=italic,underline
-highlight SpellRare        ctermfg=6    ctermbg=none  cterm=italic,underline
-highlight SpellLocal       ctermfg=2    ctermbg=none  cterm=italic,underline
+" 0:black 1:red  2:green 3:yellow 4:blue 5:magenta 6:cyan 7:white
+hi Title	ctermfg=5	ctermbg=none	cterm=bold,underline
+hi Comment	ctermfg=4	ctermbg=none	cterm=bold
+hi Constant	ctermfg=1	ctermbg=none	cterm=none
+hi Special	ctermfg=4	ctermbg=none	cterm=bold
+hi Identifier	ctermfg=6	ctermbg=none	cterm=none
+hi PreProc	ctermfg=5	ctermbg=none	cterm=bold
+hi String	ctermfg=1	ctermbg=none	cterm=none
+hi Number	ctermfg=1	ctermbg=none	cterm=bold
+hi Function	ctermfg=6	ctermbg=none	cterm=none
+hi Visual	ctermfg=3	ctermbg=0	cterm=bold
+hi SpellBad	ctermfg=1	ctermbg=none	cterm=italic,underline
+hi SpellCap	ctermfg=4	ctermbg=none	cterm=italic,underline
+hi SpellRare	ctermfg=6	ctermbg=none	cterm=italic,underline
+hi SpellLocal	ctermfg=2	ctermbg=none	cterm=italic,underline
