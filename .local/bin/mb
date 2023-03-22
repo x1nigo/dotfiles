@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# NOTE: Make sure you have `ffmpeg` installed on your system.
+
 file="$2"
 base="${file%.*}"
 ext="opus"
