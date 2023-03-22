@@ -9,105 +9,111 @@ mb: meta-blitz, configure metadata of audio/video files
 for \`mpv\`, \`ncmpcpp\`, or any other media player.
 
 Main actions:
-  -e	Edit a single file manually
-  -b	Bundle all files from one directory and edit them
-  -A	Change artist
-  -t	Change song/track title
-  -a	Change album title
-  -n	Change track number
-  -y	Change publication year
+  -s filename	Edit a single file's metadata manually
+  -g		Edit metadata of items in a directory
+  -A filename	Change artist
+  -t filename	Change song/track title
+  -a filename	Change album title
+  -n filename	Change track number
+  -y filename	Change publication year
+
+NOTE: Make sure the file you input is a valid audio file.
 EOF
 }
 
+errormsg() {
+	printf "%s\n" "An error has occurred. Please try again. Make sure the file you're editing is a valid audio file."; exit 1
+}
+
+finalize() {
+	mv -f procfile.$ext "$base.$ext" && \
+		printf "Processing metadata complete!\n"
+}
+
+prompt() {
+	printf "%s\n" "Is the above information correct? [y/N] "; read -r ans
+	[ ! "$ans" = "y" ] && printf "The user has exited the script.\n" && exit 1
+}
+
 unaedit() {
-	printf "%s\n" "$file"
-	printf "%s\n" "Enter the title: "; read -r title
-	printf "%s\n" "Enter the artist: "; read -r artist
-	printf "%s\n" "Enter the album title: "; read -r album
-	printf "%s\n" "Enter the publication year: "; read -r year
-	printf "%s\n" "Enter the track number: "; read -r track
+	printf "%s\n" "\`$file\`"
+	printf "%s\n" "Title: "; read -r title
+	printf "%s\n" "Artist: "; read -r artist
+	printf "%s\n" "Album title: "; read -r album
+	printf "%s\n" "Publication year: "; read -r year
+	printf "%s\n" "Track number: "; read -r track
+	prompt
 	printf "Processing metadata...\n"
-	ffmpeg -i "$file" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" "$title.$ext" >/dev/null 2>&1
-	rm -f "$file"
-	printf "Processing metadata complete!\n"
+	ffmpeg -i "$file" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1
 }
 
 editall() {
-	printf "Enter the album title: "; read -r album
+	printf "Album title: "; read -r album
 	IFS='
 	'
 	for i in $(ls); do
-		printf "%s\n" "$i"
-		printf "%s\n" "Enter the title: "; read -r title
-		printf "%s\n" "Enter the artist: "; read -r artist
-		printf "%s\n" "Enter the publication year: "; read -r year
-		printf "%s\n" "Enter the track number: "; read -r track
+		printf "%s\n" "\`$i\`"
+		printf "%s\n" "Title: "; read -r title
+		printf "%s\n" "Artist: "; read -r artist
+		printf "%s\n" "Publication year: "; read -r year
+		printf "%s\n" "Track number: "; read -r track
+		prompt
 		printf "Processing metadata...\n"
-		ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" "$title.$ext" >/dev/null 2>&1
-		rm -f "$i"
+		ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
+		mv -f procfile.$ext "$base.$ext"
 	done
 	printf "Processing metadata complete!\n"
 }
 
 changeartist() {
-	printf "%s\n" "$file"
-	printf "Enter artist: "; read -r artist
-	printf "Enter title: "; read -r title
+	printf "%s\n" "\`$file\`"
+	printf "Artist: "; read -r artist
+	prompt
 	printf "Processing metadata...\n"
-	ffmpeg -i "$file" -metadata artist="$artist" -metadata title="$title" "$title.$ext" >/dev/null 2>&1
-	rm -f "$file"
-	printf "Successfully changed artist name to \`$artist\`!\n"
+	ffmpeg -i "$file" -metadata artist="$artist" procfile.$ext >/dev/null 2>&1
 }
 
 changetitle() {
-	printf "%s\n" "$file"
-	printf "Enter title: "; read -r title
+	printf "%s\n" "\`$file\`"
+	printf "Title: "; read -r title
+	prompt
 	printf "Processing metadata...\n"
-	ffmpeg -i "$file" -metadata title="$title" "$title.$ext" >/dev/null 2>&1
-	rm -f "$file"
-	printf "Successfully changed title to \`$title\`!\n"
+	ffmpeg -i "$file" -metadata title="$title" procfile.$ext >/dev/null 2>&1
 }
 
 changealbum() {
-	printf "%s\n" "$file"
-	printf "Enter album title: "; read -r album
-	printf "Enter title: "; read -r title
+	printf "%s\n" "\`$file\`"
+	printf "Album title: "; read -r album
+	prompt
 	printf "Processing metadata...\n"
-	ffmpeg -i "$file" -metadata album="$album" "$title.$ext" >/dev/null 2>&1
-	rm -f "$file"
-	printf "Successfully changed album title to \`$album\`!\n"
+	ffmpeg -i "$file" -metadata album="$album" procfile.$ext >/dev/null 2>&1
 }
 
 changetrack() {
-	printf "%s\n" "$file"
-	printf "Enter track number: "; read -r track
-	printf "Enter title: "; read -r title
+	printf "%s\n" "\`$file\`"
+	printf "Track number: "; read -r track
+	prompt
 	printf "Processing metadata...\n"
-	ffmpeg -i "$file" -metadata track="$track" "$title.$ext" >/dev/null 2>&1
-	rm -f "$file"
-	echo "$title.$ext"
-	printf "Successfully changed track number to \`$track\`!\n"
+	ffmpeg -i "$file" -metadata track="$track" procfile.$ext >/dev/null 2>&1
 }
 
 changeyear() {
-	printf "%s\n" "$file"
-	printf "Enter publication year: "; read -r year
-	printf "Enter title: "; read -r title
+	printf "%s\n" "\`$file\`"
+	printf "Publication year: "; read -r year
+	prompt
 	printf "Processing metadata...\n"
-	ffmpeg -i "$file" -metadata year="$year" "$title.$ext" >/dev/null 2>&1
-	rm -f "$file"
-	printf "Successfully changed publication year to \`$year\`!\n"
+	ffmpeg -i "$file" -metadata year="$year" procfile.$ext >/dev/null 2>&1
 }
 
-while getopts "ebAtany:" o; do
+while getopts "s:gA:t:a:n:y:h" o; do
 	case ${o} in
-		e) unaedit ;;
-		b) editall ;;
-		A) changeartist ;;
-		t) changetitle ;;
-		a) changealbum ;;
-		n) changetrack ;;
-		y) changeyear ;;
-		*) readme ;;
+		s) unaedit && finalize || errormsg ;;
+		g) editall && exit 1 ;;
+		A) changeartist && finalize || errormsg ;;
+		t) changetitle && finalize || errormsg ;;
+		a) changealbum && finalize || errormsg ;;
+		n) changetrack && finalize || errormsg ;;
+		y) changeyear && finalize || errormsg ;;
+		*) readme && exit 1 ;;
 	esac
-done
+done; readme
