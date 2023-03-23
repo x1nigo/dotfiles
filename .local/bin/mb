@@ -56,9 +56,9 @@ editall() {
 	'
 	printf "Album title: "; read -r album
 	printf "Publication year: "; read -r year
-	printf "\t%s" "Does this album contain only a single artist? [y/N] "; read -r ans
+	printf "Does this album contain only a single artist? [y/N] "; read -r ans
 	if [ "$ans" = "y" ]; then
-		printf "\t%s" "Artist: "; read -r artist
+		printf "Artist: "; read -r artist
 		for i in $(ls); do
 			printf "%s\n" "Editing metadata of \`$i\`"
 			printf "\t%s" "Title: "; read -r title
