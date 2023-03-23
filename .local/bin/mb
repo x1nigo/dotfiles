@@ -1,16 +1,17 @@
 #! /bin/sh
 
+### VARIABLES ###
 file="$2"
-base="${file%.*}"
 ext="opus"
 
+### README ###
 readme() { cat << EOF
 mb: meta-blitz, configure metadata of audio/video files
 for \`mpv\`, \`ncmpcpp\`, or any other media player.
 
 Main actions:
   -s filename	Edit a single file's metadata manually
-  -g		Edit metadata of items in a directory
+  -g		Edit metadata of items in the current directory
   -A filename	Change artist
   -t filename	Change song/track title
   -a filename	Change album title
@@ -21,6 +22,7 @@ NOTE: Make sure the file you input is a valid audio file.
 EOF
 }
 
+### FUNCTIONS ###
 errormsg() {
 	printf "%s\n" "An error has occurred. Please try again. Make sure the file you're editing is a valid audio file."; exit 1
 }
@@ -30,15 +32,35 @@ finalize() {
 		printf "Processing metadata complete!\n" && exit 1
 }
 
-prompt() {
-	printf "Is the above information correct? [y/N] "; read -r ans
-	[ ! "$ans" = "y" ] && printf "The user has exited the script.\n" && exit 1
+procmsg() {
+	printf "Processing metadata...\n"
 }
 
 editmsg() {
 	printf "%s\n" "Editing metadata of: \`$file\`"
 }
+# Script for a single artist in a given album
+withartist() {
+	printf "%s\n" "Editing metadata of \`$i\`"
+	printf "\t%s" "Title: "; read -r title
+	printf "\t%s" "Track number: "; read -r track
+	procmsg
+	ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
+	mv -f procfile.$ext "$i"
+}
+# Script for multiple artists in a given album
+diffartist() {
+	printf "%s\n" "Editing metadata of \`$i\`"
+	printf "\t%s" "Title: "; read -r title
+	printf "\t%s" "Artist: "; read -r artist
+	printf "\t%s" "Track number: "; read -r track
+	procmsg
+	ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
+	mv -f procfile.$ext "$i"
+}
 
+### MAIN PROCESSES ###
+# Run this for an individual file to edit.
 unaedit() {
 	editmsg
 	printf "\t%s" "Title: "; read -r title
@@ -46,11 +68,12 @@ unaedit() {
 	printf "\t%s" "Album title: "; read -r album
 	printf "\t%s" "Publication year: "; read -r year
 	printf "\t%s" "Track number: "; read -r track
-	prompt
-	printf "Processing metadata...\n"
+	procmsg
 	ffmpeg -i "$file" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1
 }
 
+# Run this in a directory and it should scan for audio/video files
+# only and loop through them.
 editall() {
 	IFS='
 	'
@@ -60,69 +83,64 @@ editall() {
 	if [ "$ans" = "y" ]; then
 		printf "Artist: "; read -r artist
 		for i in $(ls); do
-			printf "%s\n" "Editing metadata of \`$i\`"
-			printf "\t%s" "Title: "; read -r title
-			printf "\t%s" "Track number: "; read -r track
-			prompt
-			printf "Processing metadata...\n"
-			ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
-			mv -f procfile.$ext "$i"
+			case "$(file --mime-type -b "$i")" in
+				video/*) withartist ;;
+				audio/*) withartist ;;
+			esac
 		done
 	else
 		for i in $(ls); do
-			printf "%s\n" "Editing metadata of \`$i\`"
-			printf "\t%s" "Title: "; read -r title
-			printf "\t%s" "Artist: "; read -r artist
-			printf "\t%s" "Track number: "; read -r track
-			prompt
-			printf "Processing metadata...\n"
-			ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
-			mv -f procfile.$ext "$i"
+			case "$(file --mime-type -b "$i")" in
+				video/*) diffartist ;;
+				audio/*) diffartist ;;
+			esac
 		done
 	fi
 	printf "Processing metadata complete!\n"
 }
 
+# Change the name of the artist
 changeartist() {
 	editmsg
 	printf "\tArtist: "; read -r artist
-	prompt
-	printf "Processing metadata...\n"
+	procmsg
 	ffmpeg -i "$file" -metadata artist="$artist" procfile.$ext >/dev/null 2>&1
 }
-
+# Change the song/track title
 changetitle() {
 	editmsg
 	printf "\tTitle: "; read -r title
-	prompt
-	printf "Processing metadata...\n"
+	procmsg
 	ffmpeg -i "$file" -metadata title="$title" procfile.$ext >/dev/null 2>&1
 }
 
+# Change the album title
 changealbum() {
 	editmsg
 	printf "\tAlbum title: "; read -r album
-	prompt
-	printf "Processing metadata...\n"
+	procmsg
 	ffmpeg -i "$file" -metadata album="$album" procfile.$ext >/dev/null 2>&1
 }
 
+# Change the track number
 changetrack() {
 	editmsg
 	printf "\tTrack number: "; read -r track
-	prompt
-	printf "Processing metadata...\n"
+	procmsg
 	ffmpeg -i "$file" -metadata track="$track" procfile.$ext >/dev/null 2>&1
 }
 
+# Change the publication year
 changeyear() {
 	editmsg
 	printf "\tPublication year: "; read -r year
-	prompt
-	printf "Processing metadata...\n"
+	procmsg
 	ffmpeg -i "$file" -metadata year="$year" procfile.$ext >/dev/null 2>&1
 }
 
+### OPTIONS ###
+# The character `:` means that the letter before it requires
+# an argument to be passed.
 while getopts "s:gA:t:a:n:y:h" o; do
 	case ${o} in
 		s) unaedit && finalize || errormsg ;;
