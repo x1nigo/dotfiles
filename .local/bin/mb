@@ -26,8 +26,8 @@ errormsg() {
 }
 
 finalize() {
-	mv -f procfile.$ext "$base.$ext" && \
-		printf "Processing metadata complete!\n"
+	mv -f procfile.$ext "$file" && \
+		printf "Processing metadata complete!\n" && exit 1
 }
 
 prompt() {
@@ -52,20 +52,34 @@ unaedit() {
 }
 
 editall() {
-	printf "Album title: "; read -r album
 	IFS='
 	'
-	for i in $(ls); do
-		printf "%s\n" "Editing metadata of \`$i\`"
-		printf "\t%s" "Title: "; read -r title
+	printf "Album title: "; read -r album
+	printf "Publication year: "; read -r year
+	printf "\t%s" "Does this album contain only a single artist? [y/N] "; read -r ans
+	if [ "$ans" = "y" ]; then
 		printf "\t%s" "Artist: "; read -r artist
-		printf "\t%s" "Publication year: "; read -r year
-		printf "\t%s" "Track number: "; read -r track
-		prompt
-		printf "Processing metadata...\n"
-		ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
-		mv -f procfile.$ext "$base.$ext"
-	done
+		for i in $(ls); do
+			printf "%s\n" "Editing metadata of \`$i\`"
+			printf "\t%s" "Title: "; read -r title
+			printf "\t%s" "Track number: "; read -r track
+			prompt
+			printf "Processing metadata...\n"
+			ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
+			mv -f procfile.$ext "$i"
+		done
+	else
+		for i in $(ls); do
+			printf "%s\n" "Editing metadata of \`$i\`"
+			printf "\t%s" "Title: "; read -r title
+			printf "\t%s" "Artist: "; read -r artist
+			printf "\t%s" "Track number: "; read -r track
+			prompt
+			printf "Processing metadata...\n"
+			ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
+			mv -f procfile.$ext "$i"
+		done
+	fi
 	printf "Processing metadata complete!\n"
 }
 
