@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 case "$(date +'%I')" in
         00) timeicon="🕛" ;;

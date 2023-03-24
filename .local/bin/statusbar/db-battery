@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # This is a rewritten script for the battery module.
 
@@ -11,12 +11,12 @@ stat=$(cat $dir/status)
 # notifications for promptness
 [ $stat = "Discharging" ] && [ $bat -le 10 ] && [ $bat -gt 5 ] && warn="❗" && \
 	notify-send "⚠️ Battery level is low." "Please charge your device soon."
-[ $stat = "Discharging" ] && [ $bat -le 5 ] && warn="‼️" && \
+[ $stat = "Discharging" ] && [ $bat -le 5 ] && warn="❗" && \
 	notify-send -u critical "⚠️ Battery level is dangerously low." "Charge your device ASAP."
 
 # Main function that replaces text with appropriate
 # symbols
-printf "%s%s%s\n" "$warn" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/*/♻️/')" "$(echo $bat | sed 's/$/%/')"
+printf "%s%s%s\n" "$warn" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/Not charging/♻️/')" "$(echo $bat | sed 's/$/%/')"
 
 # Notify when clicked via the right mouse button
 case $BUTTON in

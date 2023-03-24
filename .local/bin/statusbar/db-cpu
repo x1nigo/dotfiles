@@ -1,12 +1,12 @@
-#! /bin/sh
+#!/bin/sh
 
 # Install the systat package first.
 
 cpu=$(mpstat | awk '/all/ { print int(100-$13) }') && icon="💽"
 
 case $BUTTON in
-	1) st -e top ;;
-        3) notify-send "💽 CPU module:" "\[Click to run \`top\` program\]" ;;
+	1) st -e htop ;;
+        3) notify-send "💽 CPU module:" "\[Click to run \`htop\` program\]" ;;
 	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
