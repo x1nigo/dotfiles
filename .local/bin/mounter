@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # This script is used for mounting mobile phones and usb drives,
 # whether encrypted or not.

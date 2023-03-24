@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # This script automatically opens up the output of your file.
 # Has been set up to work with LaTeX and GNU Troff documents.
@@ -13,5 +13,6 @@ ext="${file##*.}"
 case $ext in
 	tex) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
 	ms) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
+	md) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
 	html) setsid -f ${BROWSER:-librewolf} "$file" ;;
 esac

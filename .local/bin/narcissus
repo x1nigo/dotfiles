@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 cam="$(ls /dev/video* | grep 0)"
 [ -z "$cam" ] && exit 0 || mpv $cam

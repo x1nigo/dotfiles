@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # You can use this if the terminal is your choice.
 # echo -n "Enter new font: "

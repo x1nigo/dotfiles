@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 bookmark="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks | dmenu -l 16 | cut -d' ' -f1)"
 [ -z "$bookmark" ] && exit 1

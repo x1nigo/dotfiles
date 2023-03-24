@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 bglink="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
 bgdir="${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/"
@@ -86,7 +86,5 @@ while getopts "a:sc:r:p:h" o; do
 	esac
 done
 
-# Read the previously rendered mode.
 [ -f "$cache" ] && read -r mode < "$cache"
-# If no option was given, use the last known background.
 xwallpaper --$mode "$bglink"

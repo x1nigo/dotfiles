@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # Use xrandr to get options and see which screens are
 # available for use.

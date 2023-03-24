@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # This script can only remove usb drives, encrypted and not encrypted.
 # I still need to add more stuff to do the same with phones.

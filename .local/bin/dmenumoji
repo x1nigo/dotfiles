@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # This is a simple script that requires an external text file
 # filled with emojis. You can locate the current one in the
