@@ -3,7 +3,9 @@
 bglink="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
 bgdir="${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/"
 file="$2"
+base="${file##*/}"
 cache=/tmp/bgtype
+bgloc="$(readlink -f "$2")"
 
 readme() { cat << EOF
 sw: set-wallpaper, a minimal script meant to render
@@ -11,9 +13,10 @@ wallpapers
 
 Main use:
  -a file.jpg	Add an image file to backgrounds folder
- -n file.jpg	Render a new wallpaper with file
- -s		Select a wallpaper from a list of items
- -r		Use random file with random mode
+ -s		Select a wallpaper from the backgrounds folder
+ -c file.jpg	Render wallpaper with file in argument
+ -r /directory	Randomly select a wallpaper from a directory
+ -g /directory	Select wallpaper in a given directory
  -h		Display the readme message
 
 Backgrounds directory:
@@ -21,51 +24,65 @@ Backgrounds directory:
 EOF
 }
 
+bgmode() {
+	printf "%s\n" "center" "maximize" "stretch" "tile" "zoom"
+}
+
 bgadd() {
-	# Link input to the main `bg` file. If none, then exit script.
-        [ -z $file ] && exit 1; cp $file $bgdir
+	case "$(file --mime-type -b "$bgloc")" in
+		image/*) cp "$bgloc" "$bgdir" && notify-send "📋 Added \`$base\`" "Now located in \`$bgdir\`." ;;
+		*) notify-send "🖼️ Error" "Not a valid image file."; exit 1 ;;
+	esac
 }
 
 bgsel() {
-        bgsel="$(ls $bgdir | dmenu)"
-        if [ -z "$bgsel" ]; then
-                exit 0
-        else
-                mode="$(echo -e 'center\nmaximize\nstretch\ntile\nzoom' | dmenu)"
-		[ -z "$mode" ] && exit 1
-		echo $mode > "$cache"
-		# Link chosen background to main `bg` file.
-                ln -sf "$bgdir"/"$bgsel" $bglink
-		# Notify on successful wallpaper
-                xwallpaper --$mode "$bglink" && notify-send "🖼️ \`$bgsel\` set as wallpaper!" "\`$mode\` mode selected." && exit 0
-        fi
+	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 12)"
+	[ -z $realfile ] && exit 1
+	ln -sf "$realfile" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
+	mode=$(bgmode | dmenu)
+	[ -z $mode ] && exit 1 || echo "$mode" > $cache
 }
 
-bgnow() {
-	ln -sf $(pwd)/"$file" $bglink
-	mode="$(printf "center\nmaximize\nstretch\ntile\nzoom" | dmenu)"
-	[ -z "$mode" ] && exit 1
-	echo $mode > "$cache"
-	xwallpaper --$mode "$bglink" && notify-send "🖼️ \`$file\` set as wallpaper!" "\`$mode\` mode selected." && exit 0
+bgcur() {
+	case "$(file --mime-type -b "$bgloc")" in
+		image/*) ln -sf "$bgloc" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$base\`" ;;
+		*) notify-send "🖼️ Error" "Not a valid image file."; exit 1 ;;
+	esac
+	mode=$(bgmode | dmenu)
+	[ -z $mode ] && exit 1 || echo "$mode" > $cache
 }
 
-bgran() {
-	bgsel=$(ls $bgdir | shuf | head -1)
-	ln -sf "$bgdir"/"$bgsel" $bglink
-	mode=$(printf "center\nmaximize\nstretch\ntile\nzoom" | shuf | tail -1)
-	[ -z "$mode" ] && exit 1
-	echo $mode > "$cache"
-	xwallpaper --$mode "$bglink" && notify-send "🖼️ \`$bgsel\` set as wallpaper!" "\`$mode\` mode selected." && exit 0
+bgrand() {
+	case "$(file --mime-type -b "$bgloc")" in
+		inode/directory) ln -sf "$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | shuf -n 1)" "$bglink" && notify-send "❓ Random wallpaper chosen." "from directory: \`$bgloc\`" ;;
+		*) notify-send "🖼️ Error" "Not a valid directory."; exit 1 ;;
+	esac
+	mode=$(bgmode | dmenu)
+	[ -z $mode ] && exit 1 || echo "$mode" > $cache
 }
 
-while getopts "asnrh" o; do
+bgpack() {
+	case "$(file --mime-type -b "$bgloc")" in
+		inode/directory)
+			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 12)"
+			[ -z $realfile ] && exit 1
+			ln -sf "$realfile" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
+			;;
+		*) notify-send "🖼️ Error" "Not a valid directory."; exit 1 ;;
+	esac
+	mode=$(bgmode | dmenu)
+	[ -z $mode ] && exit 1 || echo "$mode" > $cache
+}
+
+while getopts "a:sc:r:p:h" o; do
 	case ${o} in
-		a) bgadd ;;
+		a) bgadd && exit 1 ;;
 		s) bgsel ;;
-		n) bgnow ;;
-		r) bgran ;;
-		h) readme ;;
-		*) readme ;;
+		c) bgcur ;;
+		r) bgrand ;;
+		p) bgpack ;;
+		h) readme && exit 1 ;;
+		*) readme && exit 1 ;;
 	esac
 done
 
