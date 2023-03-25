@@ -1,39 +1,17 @@
-# vim:ft=conf
-
-# These examples require Nerd Fonts or a compatible font to be used.
-# See https://www.nerdfonts.com for more information.
-
-# default values from lf (with matching order)
-# ln      l       # LINK
-# or      l       # ORPHAN
-# tw      t       # STICKY_OTHER_WRITABLE
-# ow      d       # OTHER_WRITABLE
-# st      t       # STICKY
-# di      d       # DIR
-# pi      p       # FIFO
-# so      s       # SOCK
-# bd      b       # BLK
-# cd      c       # CHR
-# su      u       # SETUID
-# sg      g       # SETGID
-# ex      x       # EXEC
-# fi      -       # FILE
-
-# file types (with matching order)
-ln      🔗       # LINK
-or      💀       # ORPHAN
-tw      🔱       # STICKY_OTHER_WRITABLE
-ow      📕       # OTHER_WRITABLE
-st      ⚜️       # STICKY
-di      📁       # DIR
-pi      🗂️       # FIFO
-so      📡       # SOCK
-bd      🗂️       # BLK
-cd      🗄️       # CHR
-su      📻       # SETUID
-sg      📻       # SETGID
-ex      🎯      # EXEC
-fi      📄       # FILE
+ln      🔗
+or      💀
+tw      🔱
+ow      📕
+st      ⚜️
+di      📁
+pi      🗂️
+so      📡
+bd      🗂️
+cd      🗄️
+su      📻
+sg      📻
+ex      🎯
+fi      📄
 
 # file extensions (vim-devicons)
 *.styl          📙
@@ -124,6 +102,7 @@ fi      📄       # FILE
 *.pl            📄
 *.pm            📄
 *.t             📄
+*.txt           📄
 *.rss           📄
 '*.f#'          📜
 *.fsscript      📜
@@ -159,11 +138,7 @@ fi      📄       # FILE
 *.pem           📃
 
 # file names (vim-devicons) (case-insensitive not supported in lf)
-*gruntfile.coffee       ☕
-*gruntfile.js           📜
 *gruntfile.ls           📄
-*gulpfile.coffee        ☕
-*gulpfile.js            📜
 *gulpfile.ls            📄
 *mix.lock               🔒
 *dropbox                📦
@@ -171,7 +146,6 @@ fi      📄       # FILE
 *.gitconfig             📄
 *.gitignore             📄
 *.gitattributes         📄
-*.gitlab-ci.yml         📄
 *.bashrc                📚
 *.zshrc                 📚
 *.zshenv                📚
@@ -188,20 +162,13 @@ fi      📄       # FILE
 *react.jsx              📜
 *procfile               📰
 *dockerfile             📰
-*docker-compose.yml     📰
 *rakefile               📦
 *config.ru              📰
 *gemfile                📦
 *makefile               📦
-*cmakelists.txt         📄
-*robots.txt             🤖
 
 # file names (case-sensitive adaptations)
-*Gruntfile.coffee       ☕
-*Gruntfile.js           📜
 *Gruntfile.ls           📰
-*Gulpfile.coffee        ☕
-*Gulpfile.js            📜
 *Gulpfile.ls            📰
 *Dropbox                📦
 *.DS_Store              🏪
@@ -209,31 +176,11 @@ fi      📄       # FILE
 *React.jsx              📄
 *Procfile               📄
 *Dockerfile             🚢
-*Docker-compose.yml     🚢
 *Rakefile               📦
 *Gemfile                📦
 *Makefile               📦
-*CMakeLists.txt         📄
-
-# file patterns (vim-devicons) (patterns not supported in lf)
-# .*jquery.*\.js$         
-# .*angular.*\.js$        
-# .*backbone.*\.js$       
-# .*require.*\.js$        
-# .*materialize.*\.js$    
-# .*materialize.*\.css$   
-# .*mootools.*\.js$       
-# .*vimrc.*               
-# Vagrantfile$            
 
 # file patterns (file name adaptations)
-*jquery.min.js          📙
-*angular.min.js         📙
-*backbone.min.js        📙
-*require.min.js         📙
-*materialize.min.js     📙
-*materialize.min.css    📘
-*mootools.min.js        📜
 *vimrc                  📚
 Vagrantfile             📄
 
@@ -356,3 +303,4 @@ Vagrantfile             📄
 
 # other formats
 *.pdf   📚
+*.epub  📚
