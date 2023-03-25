@@ -25,14 +25,14 @@ or      💀       # ORPHAN
 tw      🔱       # STICKY_OTHER_WRITABLE
 ow      📕       # OTHER_WRITABLE
 st      ⚜️       # STICKY
-di      📂       # DIR
+di      📁       # DIR
 pi      🗂️       # FIFO
 so      📡       # SOCK
 bd      🗂️       # BLK
 cd      🗄️       # CHR
 su      📻       # SETUID
 sg      📻       # SETGID
-ex      💥       # EXEC
+ex      🎯      # EXEC
 fi      📄       # FILE
 
 # file extensions (vim-devicons)
@@ -97,7 +97,7 @@ fi      📄       # FILE
 *.nix           📄
 *.lua           📄
 *.java          ☕
-*.sh            🤫
+*.sh            🎯
 *.fish          📄
 *.bash          📄
 *.zsh           📄
@@ -176,6 +176,7 @@ fi      📄       # FILE
 *.zshrc                 📚
 *.zshenv                📚
 *.zprofile              📚
+*.xprofile              📚
 *.vimrc                 📚
 *.gvimrc                📚
 *_vimrc                 📚
@@ -193,7 +194,7 @@ fi      📄       # FILE
 *gemfile                📦
 *makefile               📦
 *cmakelists.txt         📄
-*robots.txt             📄
+*robots.txt             🤖
 
 # file names (case-sensitive adaptations)
 *Gruntfile.coffee       ☕
@@ -207,8 +208,8 @@ fi      📄       # FILE
 *LICENSE                🧾
 *React.jsx              📄
 *Procfile               📄
-*Dockerfile             📄
-*Docker-compose.yml     📄
+*Dockerfile             🚢
+*Docker-compose.yml     🚢
 *Rakefile               📦
 *Gemfile                📦
 *Makefile               📦
@@ -289,7 +290,7 @@ Vagrantfile             📄
 *.jpeg  🖼️
 *.mjpg  🖼️
 *.mjpeg 🖼️
-*.gif   🖼️
+*.gif   🌀
 *.bmp   🖼️
 *.pbm   🖼️
 *.pgm   🖼️
@@ -349,9 +350,9 @@ Vagrantfile             📄
 *.ra    🎵
 *.wav   🎵
 *.oga   🎵
-*.opus  🎵
+*.opus  🎶
 *.spx   🎵
 *.xspf  🎵
 
 # other formats
-*.pdf   📕
+*.pdf   📚
