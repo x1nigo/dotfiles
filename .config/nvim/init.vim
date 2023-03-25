@@ -79,6 +79,9 @@ set confirm
 " Automatically read the file type after write
         autocmd BufWritePost * filetype detect
 
+" Remove any trailing whitespaces upon leaving the file 
+	autocmd VimLeave * !sed -i 's/\s\+$//g' "%"
+
 " Restart dwmblocks automatically after compilation
         autocmd BufWritePost ~/.config/dwmblocks/blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
 
