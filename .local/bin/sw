@@ -16,7 +16,7 @@ Main use:
  -s		Select a wallpaper from the backgrounds folder
  -c file.jpg	Render wallpaper with file in argument
  -r /directory	Randomly select a wallpaper from a directory
- -g /directory	Select wallpaper in a given directory
+ -d /directory	Select wallpaper in a given directory
  -h		Display the readme message
 
 Backgrounds directory:
@@ -36,7 +36,7 @@ bgadd() {
 }
 
 bgsel() {
-	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 12)"
+	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 16)"
 	[ -z $realfile ] && exit 1
 	ln -sf "$realfile" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
 	mode=$(bgmode | dmenu)
@@ -61,10 +61,10 @@ bgrand() {
 	[ -z $mode ] && exit 1 || echo "$mode" > $cache
 }
 
-bgpack() {
+bgfold() {
 	case "$(file --mime-type -b "$bgloc")" in
 		inode/directory)
-			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 12)"
+			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 16)"
 			[ -z $realfile ] && exit 1
 			ln -sf "$realfile" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
 			;;
@@ -74,13 +74,13 @@ bgpack() {
 	[ -z $mode ] && exit 1 || echo "$mode" > $cache
 }
 
-while getopts "a:sc:r:p:h" o; do
+while getopts "a:sc:r:d:h" o; do
 	case ${o} in
 		a) bgadd && exit 1 ;;
 		s) bgsel ;;
 		c) bgcur ;;
 		r) bgrand ;;
-		p) bgpack ;;
+		d) bgfold ;;
 		h) readme && exit 1 ;;
 		*) readme && exit 1 ;;
 	esac
