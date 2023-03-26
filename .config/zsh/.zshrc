@@ -1,5 +1,3 @@
-# -> x1nigo's config for the `Z Shell`.
-
 # Prompt Variables
 root='%B%F{red}[%m%f %F{magenta}%1~%f%F{red}]#%f%b '
 user='%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%~%f%F{red}]%f%F{cyan}$%f%b '
@@ -30,6 +28,7 @@ alias \
 	rm="rm -i" \
 	cp="cp -i" \
 	mv="mv -i" \
+	p="pacman" \
 	b="bluetoothctl" \
 	hs="hugo server --noHTTPCache" \
 	s="systemctl" \
