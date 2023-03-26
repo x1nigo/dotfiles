@@ -23,7 +23,7 @@ alias \
 
 # Commands
 alias \
-	merge="xrdb -merge $HOME/.Xresources" \
+	merge="xrdb -merge $HOME/.config/x11/xresources" \
 	lf="lfrun" \
 	rm="rm -i" \
 	cp="cp -i" \
@@ -33,8 +33,6 @@ alias \
 	hs="hugo server --noHTTPCache" \
 	s="systemctl" \
 	startx="startx $XINITRC" \
-	rc="sudo make clean install" \
-        bk="cd $HOME/dox/books/" \
         m="neomutt" \
 	t="transmission-remote"
 
