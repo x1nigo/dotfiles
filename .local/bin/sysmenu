@@ -1,6 +1,6 @@
 #!/bin/sh
 
-menu=$(printf "%s\n" "🖥️ power off" "♻️ re-insert boot" "🚪 log out" "💤 take a nap" "🔒 lock" | dmenu)
+menu=$(printf "%s\n" "🖥️ power off" "♻️ restart dwm" "🔃 reboot" "🚪 leave" "💤 sleep" "🔒 lock" "📺 display off" | dmenu)
 
 wm="dwm"
 if ls -l /sbin/init | grep "systemd"; then
@@ -11,8 +11,11 @@ fi
 
 case $menu in
         🖥️*) $cmd poweroff ;;
-        ♻️*) $cmd reboot ;;
+	♻️*) kill -HUP $(pidof -s dwm) ;;
+        🔃*) $cmd reboot ;;
         🚪*) killall $wm ;;
         💤*) slock $cmd suspend -i && $(notify-send "💡 Computer session recovered from sleep." "Welcome back, $USER. Enjoy your stay.") ;;
         🔒*) slock && $(notify-send "🔓 Computer session unlocked." "Welcome back, $USER. Enjoy your stay.") ;;
+	📺*) xset dpms force off ;;
+	*) exit 1 ;;
 esac
