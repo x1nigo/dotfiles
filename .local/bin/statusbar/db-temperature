@@ -7,12 +7,12 @@ if [ $temp -gt 80 ]; then
 elif [ $temp -gt 60 ]; then
 	icon="🔥"
 elif [ $temp -ge 0 ]; then
-	icon="🥶"
+	icon="😎"
 fi
 
 case $BUTTON in
 	3) notify-send "🌡️ Temperature module:" "\[Displays computer temperature\]
-🥶 computer is fine
+😎 computer is fine
 🔥 system heavy-lifting
 💥 too hot!" ;;
 	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
