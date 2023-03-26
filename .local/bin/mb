@@ -1,28 +1,49 @@
 #!/bin/sh
 
-### VARIABLES ###
-file="$2"
-ext="opus"
-
 ### README ###
 readme() { cat << EOF
 mb: meta-blitz, configure metadata of audio/video files
 for \`mpv\`, \`ncmpcpp\`, or any other media player.
 
+Usage:
+	mb [OPTIONS] file/dir
+
 Main actions:
-  -s filename	Edit a single file's metadata manually
-  -g		Edit metadata of items in the current directory
-  -A filename	Change artist
-  -t filename	Change song/track title
-  -a filename	Change album title
-  -n filename	Change track number
-  -y filename	Change publication year
+	-f: Edit a single file's metadata manually
+	-d: Edit metadata of items in a given directory
+	-A: Change artist
+	-t: Change song/track title
+	-a: Change album title
+	-n: Change track number
+	-y: Change publication year
 
 NOTE: Make sure the file you input is a valid audio file.
 EOF
 }
 
+### VARIABLES ###
+file="$2"
+ext="opus"
+trueloc="$(readlink -f "$2")"
+ftype=$(file --mime-type -b "$trueloc")
+# Display readme message if nothing is passed.
+[ -z "$file" ] && readme && exit 1
+
 ### FUNCTIONS ###
+checkfile() {
+	case "$ftype" in
+		audio/*|video/*) continue ;;
+		*) echo "Not a valid audio or video file." && exit 1 ;;
+	esac
+}
+
+checkdir() {
+	case "$ftype" in
+		inode/directory) continue ;;
+		*) echo "Not a valid directory." && exit 1 ;;
+	esac
+}
+
 errormsg() {
 	printf "%s\n" "An error has occurred. Please try again. Make sure the file you're editing is a valid audio file."; exit 1
 }
@@ -45,7 +66,12 @@ withartist() {
 	printf "\t%s" "Title: "; read -r title
 	printf "\t%s" "Track number: "; read -r track
 	procmsg
-	ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
+	ffmpeg -i "$i" \
+		-metadata artist="$artist" \
+		-metadata title="$title" \
+		-metadata album="$album" \
+		-metadata year="$year" \
+		-metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
 	mv -f procfile.$ext "$i"
 }
 # Script for multiple artists in a given album
@@ -55,7 +81,12 @@ diffartist() {
 	printf "\t%s" "Artist: "; read -r artist
 	printf "\t%s" "Track number: "; read -r track
 	procmsg
-	ffmpeg -i "$i" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
+	ffmpeg -i "$i" \
+		-metadata artist="$artist" \
+		-metadata title="$title" \
+		-metadata album="$album" \
+		-metadata year="$year" \
+		-metadata track="$track" procfile.$ext >/dev/null 2>&1 || errormsg
 	mv -f procfile.$ext "$i"
 }
 
@@ -69,11 +100,16 @@ unaedit() {
 	printf "\t%s" "Publication year: "; read -r year
 	printf "\t%s" "Track number: "; read -r track
 	procmsg
-	ffmpeg -i "$file" -metadata artist="$artist" -metadata title="$title" -metadata album="$album" -metadata year="$year" -metadata track="$track" procfile.$ext >/dev/null 2>&1
+	ffmpeg -i "$file" \
+		-metadata artist="$artist" \
+		-metadata title="$title" \
+		-metadata album="$album" \
+		-metadata year="$year" \
+		-metadata track="$track" procfile.$ext >/dev/null 2>&1
 }
 
-# Run this in a directory and it should scan for audio/video files
-# only and loop through them.
+# Give this function a directory and it will loop through all
+# audio/video files.
 editall() {
 	IFS='
 	'
@@ -84,15 +120,13 @@ editall() {
 		printf "Artist: "; read -r artist
 		for i in $(ls); do
 			case "$(file --mime-type -b "$i")" in
-				video/*) withartist ;;
-				audio/*) withartist ;;
+				audio/*|video/*) withartist ;;
 			esac
 		done
 	else
 		for i in $(ls); do
 			case "$(file --mime-type -b "$i")" in
-				video/*) diffartist ;;
-				audio/*) diffartist ;;
+				audio/*|video/*) diffartist ;;
 			esac
 		done
 	fi
@@ -104,14 +138,16 @@ changeartist() {
 	editmsg
 	printf "\tArtist: "; read -r artist
 	procmsg
-	ffmpeg -i "$file" -metadata artist="$artist" procfile.$ext >/dev/null 2>&1
+	ffmpeg -i "$file" \
+		-metadata artist="$artist" procfile.$ext >/dev/null 2>&1
 }
 # Change the song/track title
 changetitle() {
 	editmsg
 	printf "\tTitle: "; read -r title
 	procmsg
-	ffmpeg -i "$file" -metadata title="$title" procfile.$ext >/dev/null 2>&1
+	ffmpeg -i "$file" \
+		-metadata title="$title" procfile.$ext >/dev/null 2>&1
 }
 
 # Change the album title
@@ -119,7 +155,8 @@ changealbum() {
 	editmsg
 	printf "\tAlbum title: "; read -r album
 	procmsg
-	ffmpeg -i "$file" -metadata album="$album" procfile.$ext >/dev/null 2>&1
+	ffmpeg -i "$file" \
+		-metadata album="$album" procfile.$ext >/dev/null 2>&1
 }
 
 # Change the track number
@@ -127,7 +164,8 @@ changetrack() {
 	editmsg
 	printf "\tTrack number: "; read -r track
 	procmsg
-	ffmpeg -i "$file" -metadata track="$track" procfile.$ext >/dev/null 2>&1
+	ffmpeg -i "$file" \
+		-metadata track="$track" procfile.$ext >/dev/null 2>&1
 }
 
 # Change the publication year
@@ -135,21 +173,22 @@ changeyear() {
 	editmsg
 	printf "\tPublication year: "; read -r year
 	procmsg
-	ffmpeg -i "$file" -metadata year="$year" procfile.$ext >/dev/null 2>&1
+	ffmpeg -i "$file" \
+		-metadata year="$year" procfile.$ext >/dev/null 2>&1
 }
 
 ### OPTIONS ###
 # The character `:` means that the letter before it requires
 # an argument to be passed.
-while getopts "s:gA:t:a:n:y:h" o; do
+while getopts "f:d:A:t:a:n:y:h" o; do
 	case ${o} in
-		s) unaedit && finalize || errormsg ;;
-		g) editall && exit 1 ;;
-		A) changeartist && finalize || errormsg ;;
-		t) changetitle && finalize || errormsg ;;
-		a) changealbum && finalize || errormsg ;;
-		n) changetrack && finalize || errormsg ;;
-		y) changeyear && finalize || errormsg ;;
+		f) checkfile && unaedit && finalize || errormsg ;;
+		d) checkdir && editall && exit 1 ;;
+		A) checkfile && changeartist && finalize || errormsg ;;
+		t) checkfile && changetitle && finalize || errormsg ;;
+		a) checkfile && changealbum && finalize || errormsg ;;
+		n) checkfile && changetrack && finalize || errormsg ;;
+		y) checkfile && changeyear && finalize || errormsg ;;
 		*) readme && exit 1 ;;
 	esac
 done; readme

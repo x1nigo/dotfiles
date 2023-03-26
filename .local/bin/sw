@@ -12,12 +12,12 @@ sw: set-wallpaper, a minimal script meant to render
 wallpapers
 
 Main use:
- -a file.jpg	Add an image file to backgrounds folder
- -s		Select a wallpaper from the backgrounds folder
- -c file.jpg	Render wallpaper with file in argument
- -r /directory	Randomly select a wallpaper from a directory
- -d /directory	Select wallpaper in a given directory
- -h		Display the readme message
+	-a file.jpg	Add an image file to backgrounds folder
+	-s		Select a wallpaper from the backgrounds folder
+	-c file.jpg	Render wallpaper with file in argument
+	-r /directory	Randomly select a wallpaper from a directory
+	-d /directory	Select wallpaper in a given directory
+	-h		Display the readme message
 
 Backgrounds directory:
  ~/.local/share/backgrounds
