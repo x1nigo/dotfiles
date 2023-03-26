@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# This script can only remove usb drives, encrypted and not encrypted.
-# I still need to add more stuff to do the same with phones.
-
 # We need to use this to separate the drives properly.
 IFS=''
 
@@ -45,6 +42,6 @@ case $drive in
 			sudo cryptsetup close $base &&
 			notify-send "🔒 Successfully re-encrypted and unmounted /dev/mapper/$base." "You may now safely remove your drive." ;;
 	📱*)
-		fusermount -u $mp && \
-			notify-send "📲 Successfully unmounted mobile phone." "You may now safely remove your phone cable." ;;
+		sudo fusermount -u $mp && \
+			notify-send "📲 Successfully unmounted android phone from \`$mp\`." "You may now safely remove your phone cable." ;;
 esac
