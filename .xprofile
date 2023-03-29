@@ -1,9 +1,8 @@
 #!/bin/sh
 
 # List of applications to start
-autostart="dunst sw picom dwmblocks"
+autostart="dunst sw picom pipewire pipewire-pulse wireplumber dwmblocks"
 
-for program in $autostart
-do
-        pgrep -x $program >/dev/null || $program &
-done
+for program in $autostart; do
+        pidof -s "$program" || "$program" &
+done >/dev/null 2>&1
