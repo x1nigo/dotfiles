@@ -13,10 +13,10 @@ case $BUTTON in
         3) notify-send "🌐 Network module:" "\[Click to connect\]
 📶 connected to wifi
 📡 no wifi connection
-🌐 connected to ethernet
-❎ no ethernet connection
+🌏 connected to ethernet
+🌐 no ethernet connection
 ❌ wifi disabled" ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
-printf "%s%s\n" "$wlicon " "$(sed 's/down/❎/;s/up/🌐/' /sys/class/net/e*/operstate 2>/dev/null)"
+printf "%s%s\n" "$wlicon " "$(sed 's/down/🌐/;s/up/🌏/' /sys/class/net/e*/operstate 2>/dev/null)"
