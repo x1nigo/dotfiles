@@ -1,7 +1,9 @@
 #!/bin/sh
 
-# List of applications to start
-autostart="dunst sw picom pipewire pipewire-pulse wireplumber dwmblocks"
+xrandr --dpi 96 # You can set this higher for larger monitors.
+sw & # Render the background
+
+autostart="dunst picom pipewire wireplumber dwmblocks"
 
 for program in $autostart; do
         pidof -s "$program" || "$program" &
