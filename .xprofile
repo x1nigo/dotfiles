@@ -1,7 +1,7 @@
 #!/bin/sh
 
-xrandr --dpi 96 # You can set this higher for larger monitors.
-sw & # Render the background
+xrandr --dpi 96
+sw &
 
 autostart="dunst picom pipewire wireplumber dwmblocks"
 
