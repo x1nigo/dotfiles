@@ -9,7 +9,24 @@ case $BUTTON in
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
-mic=$(pamixer --default-source --get-volume)
-[ "$(pamixer --default-source --get-mute)" = true ] && printf "🎙️❌" && exit 0 || icon="🎙️"
+mic=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
 
-printf "%s%s%%\n" "$icon" "$mic"
+[ "$mic" != "${mic%\[MUTED\]}" ] && echo "❌🎙️" && exit
+
+mic="${mic#Volume: }"
+
+split() {
+	# For omitting the . without calling an external program.
+	IFS=$2
+	set -- $1
+	printf '%s' "$@"
+}
+
+mic="$(printf "%.0f" "$(split "$mic" ".")")"
+
+case 1 in
+	$((mic >= 1 )) ) icon="🎙️" ;;
+	* ) echo "❌🎙️" && exit ;;
+esac
+
+echo "$icon$mic%"

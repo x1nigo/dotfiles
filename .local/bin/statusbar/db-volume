@@ -1,31 +1,36 @@
 #!/bin/sh
 
-vol=$(pamixer --get-volume)
+vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
-[ $(pamixer --get-mute) = true ] && icon="🔇"
+[ "$vol" != "${vol%\[MUTED\]}" ] && echo 🔇&& exit
 
-if [ $(pamixer --get-mute) = false ]; then
-        if [ $vol -ge 60 ]; then
-                icon="📢"
-        elif [ $vol -ge 40 ]; then
-                icon="🔊"
-        elif [ $vol -ge 20 ]; then
-                icon="🔉"
-        elif [ $vol -ge 0 ]; then
-                icon="🔈"
-        fi
-fi
+vol="${vol#Volume: }"
+
+split() {
+	# For ommiting the . without calling an external program.
+	IFS=$2
+	set -- $1
+	printf '%s' "$@"
+}
+
+vol="$(printf "%.0f" "$(split "$vol" ".")")"
+
+case 1 in
+	$((vol >= 70)) ) icon="🔊" ;;
+	$((vol >= 30)) ) icon="🔉" ;;
+	$((vol >= 1)) ) icon="🔈" ;;
+	* ) echo 🔇 && exit ;;
+esac
+
+echo "$icon$vol%"
 
 case $BUTTON in
-        1) pamixer -t ;;
+        1) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
         3) notify-send "🔈 Volume module:" "\[Click to toggle mute\]
 📢 loudest
 🔊 high
 🔉 medium
 🔈 low
 🔇 muted speaker" ;;
-        4) st -e pulsemixer ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
-
-printf " %s%s%%\n" "$icon" "$vol"
