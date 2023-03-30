@@ -86,14 +86,15 @@ set confirm
 
 " Colors and Theming
 " 0:black 1:red  2:green 3:yellow 4:blue 5:magenta 6:cyan 7:white
-hi Title	ctermfg=5	ctermbg=none	cterm=bold,underline
+hi Title	ctermfg=5	ctermbg=none	cterm=bold
 hi Comment	ctermfg=4	ctermbg=none	cterm=bold
 hi Constant	ctermfg=1	ctermbg=none	cterm=none
 hi Special	ctermfg=4	ctermbg=none	cterm=bold
 hi Identifier	ctermfg=6	ctermbg=none	cterm=none
 hi PreProc	ctermfg=5	ctermbg=none	cterm=bold
 hi String	ctermfg=1	ctermbg=none	cterm=none
-hi Number	ctermfg=1	ctermbg=none	cterm=bold
+hi Number	ctermfg=1	ctermbg=none	cterm=none
+hi Todo		ctermfg=0	ctermbg=3	cterm=none
 hi Function	ctermfg=6	ctermbg=none	cterm=none
 hi Visual	ctermfg=3	ctermbg=0	cterm=bold
 hi SpellBad	ctermfg=1	ctermbg=none	cterm=italic,underline
