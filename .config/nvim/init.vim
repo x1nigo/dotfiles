@@ -56,6 +56,7 @@ set noshowcmd
 
 " Miscellaneous
 set confirm
+set conceallevel=2
 
 " Set Map leader
 	let mapleader = ","
