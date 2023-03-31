@@ -79,7 +79,7 @@ set conceallevel=2
 " Automatically read the file type after write
         autocmd BufWritePost * filetype detect
 
-" Remove any trailing whitespaces upon leaving the file
+" Remove any trailing whitespaces
 	autocmd BufWritePre * :%s/\s\+$//e
 
 " Restart dwmblocks automatically after compilation
