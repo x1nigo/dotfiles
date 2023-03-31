@@ -1,6 +1,4 @@
 #!/bin/sh
 
-prog="$1"
-
-[ -z $prog ] && exit 0 || killall $prog; setsid -f $prog >/dev/null 2>&1 &&
-        notify-send "♻️ Sucessfully restarted program \`$prog\`."
+pidof -s $1 >/dev/null 2>&1 || setsid -f $1 && \
+	notify-send "✅ Successfully restarted program!" "\`$1\` is now running again."
