@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # Source ~/.xprofile for autostart functions
 [ -f ~/.xprofile ] && . ~/.xprofile
