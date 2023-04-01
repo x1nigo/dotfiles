@@ -48,7 +48,7 @@ case $drive in
 			[ -f "/dev/mapper/usb-$num" ] || break
 			num=$(( $num + 1 ))
 		done
-		${TERMINAL:-st} -n "stFLOAT" -g 70x1 -e sudo cryptsetup open $selected usb-$num && \
+		${TERMINAL:-st} -n "floast" -g 70x1 -e sudo cryptsetup open $selected usb-$num && \
 		getmount
 		sudo mount /dev/mapper/usb-$num $mp
 			notify-send "🔓 Successfully decrypted and mounted drive." "/dev/mapper/usb-$num is now mounted on $mp." ;;
