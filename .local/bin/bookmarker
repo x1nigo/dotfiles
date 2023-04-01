@@ -2,7 +2,7 @@
 
 # Use xclip to put selection to standard output.
 bookmark="$(xclip -o)"
-[ -z $bookmark ] && notify-send "📕 Unable to create a bookmark. Please try again." && exit 1
+[ -z $bookmark ] && notify-send "📕 Unable to create a bookmark." "Please try again." && exit 1
 # This will be our list of bookmarks.
 file="${XDG_DATA_HOME:-$HOME/.local/share}/bookmarks"
 

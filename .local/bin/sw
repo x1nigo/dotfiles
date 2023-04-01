@@ -30,7 +30,7 @@ bgmode() {
 
 bgadd() {
 	case "$(file --mime-type -b "$bgloc")" in
-		image/*) cp "$bgloc" "$bgdir" && notify-send "📋 Added \`$base\`" "Now located in \`$bgdir\`." ;;
+		image/*) cp "$bgloc" "$bgdir" && notify-send "🖼️ Image file added!" "\`$base\` now located in \`$bgdir\`." ;;
 		*) notify-send "🖼️ Error" "Not a valid image file."; exit 1 ;;
 	esac
 }
@@ -45,7 +45,7 @@ bgsel() {
 
 bgcur() {
 	case "$(file --mime-type -b "$bgloc")" in
-		image/*) ln -sf "$bgloc" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$base\`" ;;
+		image/*) ln -sf "$bgloc" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$bgloc\`" ;;
 		*) notify-send "🖼️ Error" "Not a valid image file."; exit 1 ;;
 	esac
 	mode=$(bgmode | dmenu)

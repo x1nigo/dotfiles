@@ -8,8 +8,8 @@ case "$ext" in
         c) gcc "$file" -o "$base" && "$base" ;;
         cpp) g++ "$file" -o "$base" && "$base" ;;
         h) sudo make clean install ;;
-        ms) groff -ms -tbl -T pdf "$file" > "$base".pdf ;;
+        ms|mom) groff -ms -tbl -T pdf "$file" > "$base".pdf ;;
         py) python "$file" ;;
         tex) xelatex "$file" ;;
-	md) lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept -T pdf > "$base".pdf
+	md|markdown) lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept -T pdf > "$base".pdf
 esac

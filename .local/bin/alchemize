@@ -1,10 +1,13 @@
 #!/bin/sh
 
 # This script automatically opens up the output of your file.
-# Has been set up to work with LaTeX and GNU Troff documents.
-# Used as a shortcut with vim/nvim.
+# This is compatible with the following file types:
+# 	tex
+# 	groff/troff
+# 	markdown
+# 	html
 
-# TODO: Create more compatibility with other files.
+# TODO: Create compatibility with other files.
 
 file="$1"
 base="${file%.*}"
@@ -12,7 +15,7 @@ ext="${file##*.}"
 
 case $ext in
 	tex) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
-	ms) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
-	md) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
+	ms|mom) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
+	md|markdown) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
 	html) setsid -f ${BROWSER:-librewolf} "$file" ;;
 esac
