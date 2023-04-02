@@ -15,17 +15,19 @@ cmd delete ${{
 	IFS='
 	'
 	read ans
-	[ $ans = "y" ] && rm -rf -- $fx
+	[ $ans = "y" ] && rm -rf -- $fx &&
+	notify-send "📦 File(s) deleted." "They may still be retreived."
 }}
 
 cmd rename ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
-	printf "%s\n\t" "$fx"
+	printf "%s\n\t" "$f"
 	printf "Rename File: "
 	read ans
 	[ -z $ans ] && exit 0
-	mv "$fx" "$ans"
+	mv "$f" "$ans" &&
+	notify-send "📚 File(s) renamed." "Please check your file(s)."
 }}
 
 cmd mkdir ${{
@@ -46,6 +48,30 @@ cmd touch ${{
 	touch "$ans"
 }}
 
+cmd unzip ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$f"
+	printf "Unzip file? [y/N] "
+	read ans
+	[ -z $ans ] && exit 0
+	[ $ans = "y" ] && unzip -- "$f" &&
+	notify-send "🎁 File(s) extracted." "Please check your file(s)."
+}}
+
+cmd shred ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "Shred File? [y/N] "
+	IFS='
+	'
+	read ans
+	[ -z $ans ] && exit 0
+	[ $ans = "y" ] && shred -u $fx &&
+	notify-send "📦 File(s) shreded." "They can no longer be recovered."
+}}
+
 map e $opener "$f"
 map <enter> $opener "$f"
 map <backspace2> set hidden!
@@ -53,3 +79,5 @@ map D delete
 map R rename
 map M mkdir
 map N touch
+map U unzip
+map S shred
