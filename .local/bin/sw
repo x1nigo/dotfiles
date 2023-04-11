@@ -14,7 +14,7 @@ wallpapers
 Main use:
 	-a file.jpg	Add an image file to backgrounds folder
 	-s		Select a wallpaper from the backgrounds folder
-	-c file.jpg	Render wallpaper with file in argument
+	-f file.jpg	Render wallpaper with file in argument
 	-r /directory	Randomly select a wallpaper from a directory
 	-d /directory	Select wallpaper in a given directory
 	-h		Display the readme message
@@ -43,7 +43,7 @@ bgsel() {
 	[ -z $mode ] && exit 1 || echo "$mode" > $cache
 }
 
-bgcur() {
+bgfile() {
 	case "$(file --mime-type -b "$bgloc")" in
 		image/*) ln -sf "$bgloc" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$bgloc\`" ;;
 		*) notify-send "🖼️ Error" "Not a valid image file."; exit 1 ;;
@@ -74,11 +74,11 @@ bgfold() {
 	[ -z $mode ] && exit 1 || echo "$mode" > $cache
 }
 
-while getopts "a:sc:r:d:h" o; do
+while getopts "a:sf:r:d:h" o; do
 	case ${o} in
 		a) bgadd && exit 1 ;;
 		s) bgsel ;;
-		c) bgcur ;;
+		f) bgfile ;;
 		r) bgrand ;;
 		d) bgfold ;;
 		h) readme && exit 1 ;;
