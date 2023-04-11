@@ -5,7 +5,7 @@ case $BUTTON in
         3) notify-send "🎤 Microphone module:" "\[Click to toggle mute\]
 🎙️: mic on
 ❌: mic off" ;;
-        4) st -e pulsemixer ;;
+        4) setsid -f ${TERMINAL:-st} -e pulsemixer ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 

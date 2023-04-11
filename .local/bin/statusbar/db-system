@@ -13,4 +13,4 @@ case $BUTTON in
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
-printf "%s\n" "$icon "
+printf "%s\n" "$icon"
