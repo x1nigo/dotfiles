@@ -4,11 +4,6 @@
 # NOTE: Make sure the `stig` is installed on your system (AUR).
 # To add a torrent, open your terminal and type transmission-remote -a "<insert link>".
 
-# Check if the daemon is running. If not, then start it.
-if ! pidof transmission-daemon >/dev/null 2>&1; then
-	transmission-daemon && notify-send "🌱 Starting torrent daemon..."
-fi
-
 case $BUTTON in
 	1) setsid -f ${TERMINAL:-st} -e stig ;;
         3) notify-send "🌑🌱 Torrent module:" "\[Click to open \`stig\` program.\]
