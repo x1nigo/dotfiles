@@ -3,7 +3,7 @@
 xrandr --dpi 96
 sw &
 
-autostart="dunst picom dwmblocks pipewire transmission-daemon"
+autostart="dunst unclutter picom dwmblocks pipewire transmission-daemon"
 
 for program in $autostart; do
         pidof -s "$program" || "$program" &
