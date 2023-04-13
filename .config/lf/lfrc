@@ -16,7 +16,7 @@ cmd delete ${{
 	'
 	read ans
 	[ $ans = "y" ] && rm -rf -- $fx &&
-	notify-send "📦 File(s) deleted." "They may still be recovered."
+	notify-send "📦 File(s) deleted." "They may still be recovered." && clear
 }}
 
 cmd rename ${{
@@ -27,7 +27,7 @@ cmd rename ${{
 	read ans
 	[ -z $ans ] && exit 0
 	mv "$f" "$ans" &&
-	notify-send "📚 File(s) renamed." "\`$fx\` is now \`$ans\`."
+	notify-send "📚 File(s) renamed." "\`$fx\` is now \`$ans\`." && clear
 }}
 
 cmd mkdir ${{
@@ -37,7 +37,7 @@ cmd mkdir ${{
 	read ans
 	[ -z $ans ] && exit 0
 	mkdir "$ans" &&
-	notify-send "📂 Directory created." "\`$(readlink -f $ans)\`"
+	notify-send "📂 Directory created." "\`$(readlink -f "$ans")\`" && clear
 }}
 
 cmd touch ${{
@@ -47,7 +47,7 @@ cmd touch ${{
 	read ans
 	[ -z $ans ] && exit 0
 	touch "$ans" &&
-	notify-send "✍️ File(s) created." "\`$(readlink -f $ans)\`"
+	notify-send "✍️ File(s) created." "\`$(readlink -f "$ans")\`" && clear
 }}
 
 cmd unzip ${{
@@ -58,7 +58,7 @@ cmd unzip ${{
 	read ans
 	[ -z $ans ] && exit 0
 	[ $ans = "y" ] && unzip -- "$f" &&
-	notify-send "🎁 File(s) extracted." "Please check and see if there are errors present."
+	notify-send "🎁 File(s) extracted." "Please check and see if there are errors present." && clear
 }}
 
 cmd shred ${{
@@ -71,7 +71,7 @@ cmd shred ${{
 	read ans
 	[ -z $ans ] && exit 0
 	[ $ans = "y" ] && shred -u $fx &&
-	notify-send "✂️ File(s) shreded." "They can no longer be recovered."
+	notify-send "✂️ File(s) shreded." "They can no longer be recovered." && clear
 }}
 
 map e $opener "$f"
