@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-st.alpha: 0.85
+st.alpha: 0.95
 
 !! Set a default font and font size as below:
 st.font: monospace-10
@@ -78,7 +78,7 @@ gruvbox:
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #195465
 
-!! chameleon
+!! chameleon:
 !! *.color0: #2c2c2c
 !! *.color1: #cc231c
 !! *.color2: #689d69
@@ -99,7 +99,7 @@ gruvbox:
 !! *.foreground: #c8bb97
 !! *.cursorColor: #366b7a
 
-!! flat
+!! flat:
 !! *.color0: #2c3e50
 !! *.color1: #c0392b
 !! *.color2: #27ae60
@@ -120,7 +120,7 @@ gruvbox:
 !! *.foreground: #bdc3c7
 !! *.cursorColor: #2980b9
 
-!! bash
+!! bash:
 !! *.color0: #393b44
 !! *.color1: #c94f6d
 !! *.color2: #81b29a
