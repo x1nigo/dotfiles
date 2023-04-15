@@ -4,7 +4,7 @@
 IFS=''
 
 # Simple output of the lsblk command.
-output=$(lsblk -rpo "name,size,fstype,type,mountpoint" | grep "/mnt")
+output=$(lsblk -rpo "name,size,fstype,type,mountpoint" | grep -E "/mnt|/media|/mount")
 
 # Get encrypted drives.
 allencrypted=$(echo $output | grep crypt | awk '{print $1}')
