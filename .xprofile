@@ -8,3 +8,5 @@ autostart="mpd dunst unclutter picom dwmblocks pipewire transmission-daemon"
 for program in $autostart; do
         pidof -s "$program" || "$program" &
 done >/dev/null 2>&1
+
+xrdb -merge ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
