@@ -8,6 +8,8 @@ These are my personal dotfiles, which include scripts to my other repositories.
 - `sxiv` - image viewer
 - `zathura` - pdf viewer
 - `mpv` - video/audio player
+- `ncmpcpp` - music player daemon
+- `newsboat` - an feed reader for text terminals
 
 If you don't want to use `neovim` and just want the regular `vim`, you can
 just copy init.vim from `.config/nvim` and replace it with either
