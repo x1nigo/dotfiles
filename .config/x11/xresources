@@ -14,16 +14,16 @@ dmenu.selbackground: #f4a460
 dmenu.selforeground: #0a0f14
 
 !! Set colors for dwm:
-dwm.borderpx: 3
-dwm.gappih: 20
-dwm.gappiv: 10
-dwm.gappoh: 10
-dwm.gappov: 30
+dwm.borderpx: 2
+dwm.gappih: 16
+dwm.gappiv: 16
+dwm.gappoh: 16
+dwm.gappov: 16
 dwm.normbgcolor: #0a0f14
 dwm.normbordercolor: #444444
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #0a0f14
-dwm.selbordercolor: #780000
+dwm.selbordercolor: #f4a460
 dwm.selbgcolor: #f4a460
 
 !! Set the background, foreground and cursor colors as below:
