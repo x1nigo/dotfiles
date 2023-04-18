@@ -68,7 +68,7 @@ set conceallevel=2
 	map <leader>s :setlocal spell spelllang=en_us <enter>
 
 " Use a script to compile a specific file in a certain way
-	map <leader>c :w! \| :!compiler "%" <enter>
+	map <leader>c :w! \| :silent !compiler "%" <enter>
 
 " Open the output of your file
 	map <leader>a :silent !alchemize "%" <enter>
@@ -86,7 +86,7 @@ set conceallevel=2
         autocmd BufWritePost ~/.config/dwmblocks/blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
 
 " Auto-merge xresources file after save/exit
-	autocmd BufWritePost ~/.config/x11/xresources !xrdb -merge ~/.config/x11/xresources
+	autocmd BufWritePost ~/.config/x11/xresources :silent !xrdb -merge ~/.config/x11/xresources
 
 " Colors and Theming
 " 0:black 1:red  2:green 3:yellow 4:blue 5:magenta 6:cyan 7:white
