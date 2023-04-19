@@ -8,7 +8,7 @@ st.borderpx: 2
 
 !! Set colors for dmenu:
 dmenu.font: monospace-10
-dmenu.background: #1b1f25
+dmenu.background: #282828
 dmenu.foreground: #ebdbb2
 dmenu.selbackground: #005577
 dmenu.selforeground: #ebdbb2
@@ -23,34 +23,31 @@ dwm.normbgcolor: #0a0f14
 dwm.normbordercolor: #444444
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #ebdbb2
-dwm.selbordercolor: #800000
-dwm.selbgcolor: #121228
-dwm.titlefgcolor: #ebdbb2
-dwm.titlebgcolor: #121228
-dwm.titlebordercolor: #0a0f14
+dwm.selbordercolor: #005577
+dwm.selbgcolor: #005577
 
 !! Set the background, foreground and cursor colors as below:
 
-dune:
-*.color0: #1b1f25
-*.color1: #d2691e
-*.color2: #cd853f
-*.color3: #f4a460
-*.color4: #d2b48c
-*.color5: #deb887
-*.color6: #f5deb3
-*.color7: #fff8dc
-*.color8: #282828
-*.color9: #a52a2a
-*.color10: #cd853f
-*.color11: #f4a460
-*.color12: #d2b48c
-*.color13: #deb887
-*.color14: #f5deb3
-*.color15: #fff8dc
-*.background: #1b1f25
-*.foreground: #ebdbb2
-*.cursorColor: #ffdead
+!! dune:
+!! *.color0: #1b1f25
+!! *.color1: #d2691e
+!! *.color2: #cd853f
+!! *.color3: #f4a460
+!! *.color4: #d2b48c
+!! *.color5: #deb887
+!! *.color6: #f5deb3
+!! *.color7: #fff8dc
+!! *.color8: #282828
+!! *.color9: #a52a2a
+!! *.color10: #cd853f
+!! *.color11: #f4a460
+!! *.color12: #d2b48c
+!! *.color13: #deb887
+!! *.color14: #f5deb3
+!! *.color15: #fff8dc
+!! *.background: #1b1f25
+!! *.foreground: #ebdbb2
+!! *.cursorColor: #ffdead
 
 !! gotham:
 !! *.color0: #1b1f25
@@ -73,23 +70,23 @@ dune:
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #195465
 
-!! gruvbox:
-!! *.color0: #282828
-!! *.color1: #cc241d
-!! *.color2: #98971a
-!! *.color3: #d79921
-!! *.color4: #458588
-!! *.color5: #b16286
-!! *.color6: #689d6a
-!! *.color7: #a89984
-!! *.color8: #928374
-!! *.color9: #fb4934
-!! *.color10: #b8bb26
-!! *.color11: #fabd2f
-!! *.color12: #83a598
-!! *.color13: #d3869b
-!! *.color14: #8ec07c
-!! *.color15: #ebdbb2
-!! *.background: #282828
-!! *.foreground: #ebdbb2
-!! *.cursorColor: #458588
+gruvbox:
+*.color0: #282828
+*.color1: #cc241d
+*.color2: #98971a
+*.color3: #d79921
+*.color4: #458588
+*.color5: #b16286
+*.color6: #689d6a
+*.color7: #a89984
+*.color8: #928374
+*.color9: #fb4934
+*.color10: #b8bb26
+*.color11: #fabd2f
+*.color12: #83a598
+*.color13: #d3869b
+*.color14: #8ec07c
+*.color15: #ebdbb2
+*.background: #282828
+*.foreground: #ebdbb2
+*.cursorColor: #458588
