@@ -81,8 +81,7 @@ while getopts "a:sf:r:d:h" o; do
 		f) bgfile ;;
 		r) bgrand ;;
 		d) bgfold ;;
-		h) readme && exit 1 ;;
-		*) readme && exit 1 ;;
+		h|*) readme && exit 1 ;;
 	esac
 done
 
