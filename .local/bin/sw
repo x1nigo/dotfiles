@@ -74,20 +74,23 @@ bgfold() {
 	[ -z $mode ] && exit 1 || echo "$mode" > $cache
 }
 
-while getopts "a:sf:r:d:h" o; do
+pywal() {
+	if command -v wal >/dev/null 2>&1; then
+		wal -n -i "$(readlink -f $bglink)"
+	fi
+}
+
+while getopts "a:sf:r:d:ph" o; do
 	case ${o} in
 		a) bgadd && exit 1 ;;
 		s) bgsel ;;
 		f) bgfile ;;
 		r) bgrand ;;
 		d) bgfold ;;
+		p) pywal ;;
 		h|*) readme && exit 1 ;;
 	esac
 done
-
-if command -v wal >/dev/null 2>&1; then
-	wal -n -i "$(readlink -f $bglink)"
-fi
 
 [ -f "$cache" ] && read -r mode < "$cache"
 xwallpaper --$mode "$bglink"
