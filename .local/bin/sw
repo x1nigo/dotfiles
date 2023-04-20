@@ -85,5 +85,9 @@ while getopts "a:sf:r:d:h" o; do
 	esac
 done
 
+if command -v wal >/dev/null 2>&1; then
+	wal -i "$(readlink -f $bglink)"
+fi
+
 [ -f "$cache" ] && read -r mode < "$cache"
 xwallpaper --$mode "$bglink"
