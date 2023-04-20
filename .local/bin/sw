@@ -86,7 +86,7 @@ while getopts "a:sf:r:d:h" o; do
 done
 
 if command -v wal >/dev/null 2>&1; then
-	wal -i "$(readlink -f $bglink)"
+	wal -n -i "$(readlink -f $bglink)"
 fi
 
 [ -f "$cache" ] && read -r mode < "$cache"
