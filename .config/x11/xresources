@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-st.alpha: 1.0
+st.alpha: 0.95
 
 !! Set a default font and font size as below:
 st.font: monospace-9
@@ -28,26 +28,26 @@ dwm.selbgcolor: #121228
 
 !! Set the background, foreground and cursor colors as below:
 
-dune:
-*.color0: #1b1f25
-*.color1: #d2691e
-*.color2: #cd853f
-*.color3: #f4a460
-*.color4: #d2b48c
-*.color5: #deb887
-*.color6: #f5deb3
-*.color7: #fff8dc
-*.color8: #282828
-*.color9: #a52a2a
-*.color10: #cd853f
-*.color11: #f4a460
-*.color12: #d2b48c
-*.color13: #deb887
-*.color14: #f5deb3
-*.color15: #fff8dc
-*.background: #1b1f25
-*.foreground: #ebdbb2
-*.cursorColor: #ffdead
+!! gruvbox:
+!! *.color0: #1d2021
+!! *.color1: #cc241d
+!! *.color2: #98971a
+!! *.color3: #d79921
+!! *.color4: #458588
+!! *.color5: #b16286
+!! *.color6: #689d6a
+!! *.color7: #a89984
+!! *.color8: #928374
+!! *.color9: #fb4934
+!! *.color10: #b8bb26
+!! *.color11: #fabd2f
+!! *.color12: #83a598
+!! *.color13: #d3869b
+!! *.color14: #8ec07c
+!! *.color15: #ebdbb2
+!! *.background: #282828
+!! *.foreground: #ebdbb2
+!! *.cursorColor: #83a598
 
 !! gotham:
 !! *.color0: #1b1f25
@@ -70,23 +70,23 @@ dune:
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #195465
 
-!! gruvbox:
-!! *.color0: #282828
-!! *.color1: #cc241d
-!! *.color2: #98971a
-!! *.color3: #d79921
-!! *.color4: #458588
-!! *.color5: #b16286
-!! *.color6: #689d6a
-!! *.color7: #a89984
-!! *.color8: #928374
-!! *.color9: #fb4934
-!! *.color10: #b8bb26
-!! *.color11: #fabd2f
-!! *.color12: #83a598
-!! *.color13: #d3869b
-!! *.color14: #8ec07c
-!! *.color15: #ebdbb2
-!! *.background: #282828
-!! *.foreground: #ebdbb2
-!! *.cursorColor: #458588
+dune:
+*.color0: #051415
+*.color1: #da6e11
+*.color2: #936c58
+*.color3: #f4921f
+*.color4: #cb9a66
+*.color5: #5d7b93
+*.color6: #c2ada1
+*.color7: #e8e2e2
+*.color8: #051415
+*.color9: #da6e11
+*.color10: #936c58
+*.color11: #f4921f
+*.color12: #cb9a66
+*.color13: #5d7b93
+*.color14: #c2ada1
+*.color15: #e8e2e2
+*.background: #051415
+*.foreground: #e8e2e2
+*.cursorColor: #e8e2e2
