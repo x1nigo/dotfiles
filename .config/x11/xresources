@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-st.alpha: 1.0
+st.alpha: 0.95
 
 !! Set a default font and font size as below:
 st.font: monospace-9
@@ -47,46 +47,46 @@ dwm.selbgcolor: #121228
 !! *.color15: #ebdbb2
 !! *.background: #282828
 !! *.foreground: #ebdbb2
-!! *.cursorColor: #83a598
+!! *.cursorColor: #458588
 
-!! gotham:
-!! *.color0: #1b1f25
-!! *.color1: #c33027
-!! *.color2: #26a98b
-!! *.color3: #edb54b
-!! *.color4: #195465
-!! *.color5: #4e5165
-!! *.color6: #33859d
-!! *.color7: #98d1ce
-!! *.color8: #10151b
-!! *.color9: #d26939
-!! *.color10: #081f2d
-!! *.color11: #245361
-!! *.color12: #093748
-!! *.color13: #888ba5
-!! *.color14: #599caa
-!! *.color15: #d3ebe9
-!! *.background: #1b1f25
-!! *.foreground: #ebdbb2
-!! *.cursorColor: #195465
+gotham:
+*.color0: #1b1f25
+*.color1: #c33027
+*.color2: #26a98b
+*.color3: #edb54b
+*.color4: #195465
+*.color5: #4e5165
+*.color6: #33859d
+*.color7: #98d1ce
+*.color8: #10151b
+*.color9: #d26939
+*.color10: #081f2d
+*.color11: #245361
+*.color12: #093748
+*.color13: #888ba5
+*.color14: #599caa
+*.color15: #d3ebe9
+*.background: #1b1f25
+*.foreground: #ebdbb2
+*.cursorColor: #195465
 
-dune:
-*.color0: #051415
-*.color1: #da6e11
-*.color2: #936c58
-*.color3: #f4921f
-*.color4: #cb9a66
-*.color5: #5d7b93
-*.color6: #c2ada1
-*.color7: #e8e2e2
-*.color8: #051415
-*.color9: #da6e11
-*.color10: #936c58
-*.color11: #f4921f
-*.color12: #cb9a66
-*.color13: #5d7b93
-*.color14: #c2ada1
-*.color15: #e8e2e2
-*.background: #051415
-*.foreground: #e8e2e2
-*.cursorColor: #e8e2e2
+!! dune:
+!! *.color0: #051415
+!! *.color1: #da6e11
+!! *.color2: #936c58
+!! *.color3: #f4921f
+!! *.color4: #cb9a66
+!! *.color5: #5d7b93
+!! *.color6: #c2ada1
+!! *.color7: #e8e2e2
+!! *.color8: #051415
+!! *.color9: #da6e11
+!! *.color10: #936c58
+!! *.color11: #f4921f
+!! *.color12: #cb9a66
+!! *.color13: #5d7b93
+!! *.color14: #c2ada1
+!! *.color15: #e8e2e2
+!! *.background: #282828
+!! *.foreground: #e8e2e2
+!! *.cursorColor: #e8e2e2
