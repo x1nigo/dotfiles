@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 # This script is mainly used in addition to the lf file manager
 # to quickly determine what program to open with.

@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 kbd=$(ls /sys/class/leds | grep kbd_backlight)
 total=$(cat /sys/class/leds/$kbd/max_brightness)

@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 # Use xclip to put selection to standard output.
 bookmark="$(xclip -o)"

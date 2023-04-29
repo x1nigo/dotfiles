@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 filename=$(echo -n '' | dmenu -p "Enter filename (e.g. file.jpg):")
 [ -z $filename ] && exit 1

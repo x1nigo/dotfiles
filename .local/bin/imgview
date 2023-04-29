@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 file="$(find $HOME/ | grep -Ei '\.png$|\.jpeg$|\.jpg$|\.gif$|\.webp$' | dmenu -l 16)"
 [ -z "$file" ] && exit 1

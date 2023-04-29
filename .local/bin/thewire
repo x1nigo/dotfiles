@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 # This works for HDMI cables only. I haven't tested it out
 # with other types of connectors (yet).

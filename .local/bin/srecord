@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 getscreen=$(xrandr --current | awk '/Screen 0:/ { print $8$9$10 }' | sed 's/\,//')
 

@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 file="$(find $HOME -type f | fzf --height=28 --layout=reverse)"
 backtrack="$(pwd)"

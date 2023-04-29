@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 if grep -x up /sys/class/net/wl*/operstate >/dev/null 2>&1; then
 	rx=$(cat /sys/class/net/wl*/statistics/rx_bytes)

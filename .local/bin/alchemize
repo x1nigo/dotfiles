@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 # This script automatically opens up the output of your file.
 # This is compatible with the following file types:

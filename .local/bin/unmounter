@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 # We need to use this to separate the drives properly.
 IFS=''
