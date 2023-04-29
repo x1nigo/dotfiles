@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-st.alpha: 0.95
+st.alpha: 1.0
 
 !! Set a default font and font size as below:
 st.font: monospace-9
@@ -15,9 +15,9 @@ dmenu.selforeground: #0a0f14
 
 !! Set colors for dwm:
 dwm.borderpx: 3
-dwm.gappih: 20
+dwm.gappoh: 20
+dwm.gappih: 10
 dwm.gappiv: 10
-dwm.gappoh: 10
 dwm.gappov: 30
 dwm.normbgcolor: #0a0f14
 dwm.normbordercolor: #444444
@@ -47,7 +47,7 @@ dwm.selbgcolor: #121228
 !! *.color15: #ebdbb2
 !! *.background: #282828
 !! *.foreground: #ebdbb2
-!! *.cursorColor: #458588
+!! *.cursorColor: #ebdbb2
 
 !! gotham:
 !! *.color0: #1b1f25
@@ -76,7 +76,7 @@ dune:
 *.color2: #936c58
 *.color3: #f4921f
 *.color4: #cb9a66
-*.color5: #5d7b93
+*.color5: #d2b48c
 *.color6: #c2ada1
 *.color7: #e8e2e2
 *.color8: #051415
@@ -84,7 +84,7 @@ dune:
 *.color10: #936c58
 *.color11: #f4921f
 *.color12: #cb9a66
-*.color13: #5d7b93
+*.color13: #d2b48c
 *.color14: #c2ada1
 *.color15: #e8e2e2
 *.background: #051415
