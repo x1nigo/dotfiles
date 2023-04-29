@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 # Install the systat package first.
 

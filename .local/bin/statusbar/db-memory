@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 mem=$(free | awk '/Mem:/ { print int($3 * 100 / $2) }') && icon="💾"
 

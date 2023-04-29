@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 # TODO: Find a way to add torrents as the user clicks upon the download link.
 # NOTE: Make sure the `stig` is installed on your system (AUR).

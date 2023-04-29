@@ -1,4 +1,4 @@
-#!/bin/sh
+#! /bin/sh
 
 case $BUTTON in
 	3) notify-send "📲 Network Traffic module:" "\[Displays bandwidth\]
