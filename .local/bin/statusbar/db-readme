@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 case $BUTTON in
 	1) setsid -f ${TERMINAL:-st} -e zathura ${XDG_DATA_HOME:-$HOME/.local/share}/cios.pdf ;;

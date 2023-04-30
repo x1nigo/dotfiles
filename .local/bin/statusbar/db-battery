@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # This is a rewritten script for the battery module.
 
