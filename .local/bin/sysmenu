@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 menu=$(printf "%s\n" "🖥️ power off" "♻️ restart dwm" "🔃 reboot" "🚪 leave" "💤 sleep" "🔒 lock" "📺 display off" | dmenu)
 

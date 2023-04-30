@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 font="$(fc-list | grep "\.ttf\|\.otf" | sed 's/.*: //g;s/:.*$//g' | sort -h | uniq | dmenu)"
 [ -z "$font" ] && exit 1

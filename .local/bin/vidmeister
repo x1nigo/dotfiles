@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 # If you need to add more video file types, you can edit the line to
 # include such items. Just separate them with the "|" delimiter.

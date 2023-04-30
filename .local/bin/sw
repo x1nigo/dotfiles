@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 
 bglink="${XDG_DATA_HOME:-$HOME/.local/share}/bg"
 bgdir="${XDG_DATA_HOME:-$HOME/.local/share}/backgrounds/"
