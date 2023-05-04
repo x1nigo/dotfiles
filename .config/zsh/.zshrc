@@ -12,7 +12,7 @@ set -o vi
 
 # Syntax Colors
 alias \
-	ls="ls --color=auto" \
+	ls="ls --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	egrep="egrep --color=auto" \
 	fgrep="fgrep --color=auto" \
@@ -25,16 +25,18 @@ alias \
 alias \
 	merge="xrdb -merge $HOME/.config/x11/xresources" \
 	lf="lfrun" \
-	rm="rm -i" \
-	cp="cp -i" \
-	mv="mv -i" \
+	rm="rm -Iv" \
+	cp="cp -iv" \
+	mv="mv -iv" \
 	p="pacman" \
 	b="bluetoothctl" \
 	hs="hugo server --noHTTPCache" \
 	s="systemctl" \
 	startx="startx $XINITRC" \
         m="neomutt" \
-	t="transmission-remote"
+	t="transmission-remote" \
+	bc="bc -ql" \
+	rsync="rsync -rtvzP"
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
