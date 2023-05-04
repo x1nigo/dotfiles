@@ -8,7 +8,7 @@ st.borderpx: 2
 
 !! Set colors for dmenu:
 dmenu.font: monospace-10
-dmenu.background: #051415
+dmenu.background: #121212
 dmenu.foreground: #ebdbb2
 dmenu.selbackground: #d2b48c
 dmenu.selforeground: #0a0f14
@@ -45,8 +45,8 @@ dune:
 *.color13: #008080
 *.color14: #c2ada1
 *.color15: #e8e2e2
-*.background: #051415
-*.foreground: #e8e2e2
+*.background: #121212
+*.foreground: #ebdbb2
 *.cursorColor: #e8e2e2
 
 !! gruvbox:
