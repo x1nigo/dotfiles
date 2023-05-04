@@ -10,7 +10,7 @@ st.borderpx: 2
 dmenu.font: monospace-10
 dmenu.background: #051415
 dmenu.foreground: #ebdbb2
-dmenu.selbackground: #008080
+dmenu.selbackground: #d2b48c
 dmenu.selforeground: #0a0f14
 
 !! Set colors for dwm:
