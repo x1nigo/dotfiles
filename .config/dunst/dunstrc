@@ -29,22 +29,22 @@
     class = Dunst
     font = Monospace 9
     corner_radius = 0
-    frame_color = "#f4a460"
+    frame_color = "#0a0f14"
     frame_width = 2
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
-    background = "#0a0f14"
-    foreground = "#ebdbb2"
+    background = "#005577"
+    foreground = "#e8e2e2"
     timeout = 8
 
 [urgency_normal]
-    background = "#0a0f14"
-    foreground = "#ebdbb2"
+    background = "#005577"
+    foreground = "#e8e2e2"
     timeout = 8
 
 [urgency_critical]
     background = "#0a0f14"
-    foreground = "#ebdbb2"
-    frame_color = "#ff000f"
+    foreground = "#e8e2e2"
+    frame_color = "#880000"
     timeout = 8
