@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-st.alpha: 1.0
+st.alpha: 0.8
 
 !! Set a default font and font size as below:
 st.font: monospace-9
@@ -8,8 +8,8 @@ st.borderpx: 2
 
 !! Set colors for dmenu:
 dmenu.font: monospace-10
-dmenu.background: #121212
-dmenu.foreground: #ebdbb2
+dmenu.background: #181818
+dmenu.foreground: #e8e2e2
 dmenu.selbackground: #d2b48c
 dmenu.selforeground: #0a0f14
 
@@ -21,7 +21,7 @@ dwm.gappoh: 10
 dwm.gappov: 30
 dwm.normbgcolor: #0a0f14
 dwm.normbordercolor: #1b1f25
-dwm.normfgcolor: #ebdbb2
+dwm.normfgcolor: #e8e2e2
 dwm.selfgcolor: #0a0f14
 dwm.selbordercolor: #800000
 dwm.selbgcolor: #008080
@@ -45,8 +45,8 @@ dune:
 *.color13: #008080
 *.color14: #c2ada1
 *.color15: #e8e2e2
-*.background: #121212
-*.foreground: #ebdbb2
+*.background: #181818
+*.foreground: #e8e2e2
 *.cursorColor: #e8e2e2
 
 !! gruvbox:
