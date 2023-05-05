@@ -10,7 +10,13 @@ setopt autocd
 stty stop undef
 set -o vi
 
-# Syntax Colors
+# Verbose mode for some commands
+alias \
+	rm="rm -Iv" \
+	cp="cp -iv" \
+	mv="mv -iv"
+
+# Colorize your commands
 alias \
 	ls="ls --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
@@ -21,14 +27,12 @@ alias \
 	diff="diff --color=auto" \
 	bat="bat --color=always --style=full"
 
-# Commands
+# Commands that are too long
 alias \
 	merge="xrdb -merge $HOME/.config/x11/xresources" \
 	lf="lfrun" \
-	rm="rm -Iv" \
-	cp="cp -iv" \
-	mv="mv -iv" \
 	p="pacman" \
+	sp="sudo pacman" \
 	b="bluetoothctl" \
 	hs="hugo server --noHTTPCache" \
 	s="systemctl" \
@@ -36,7 +40,10 @@ alias \
         m="neomutt" \
 	t="transmission-remote" \
 	bc="bc -ql" \
-	rsync="rsync -rtvzP"
+	rsync="rsync -rtvzP" \
+	yt="yt-dlp" \
+	yta="yt-dlp -x -f bestaudio/best" \
+	z="zathura"
 
 # Syntax Highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
