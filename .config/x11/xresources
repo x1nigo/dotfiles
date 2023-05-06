@@ -8,7 +8,7 @@ st.borderpx: 2
 
 !! Set colors for dmenu:
 dmenu.font: monospace-10
-dmenu.background: #212121
+dmenu.background: #0a0f14
 dmenu.foreground: #e8e2e2
 dmenu.selbackground: #d2b48c
 dmenu.selforeground: #0a0f14
@@ -20,11 +20,11 @@ dwm.gappiv: 10
 dwm.gappoh: 10
 dwm.gappov: 30
 dwm.normbgcolor: #0a0f14
-dwm.normbordercolor: #282828
+dwm.normbordercolor: #444444
 dwm.normfgcolor: #e8e2e2
-dwm.selfgcolor: #0a0f14
+dwm.selfgcolor: #e8e2e2
 dwm.selbordercolor: #800000
-dwm.selbgcolor: #008080
+dwm.selbgcolor: #121228
 
 !! Set the background, foreground and cursor colors as below:
 
@@ -45,7 +45,7 @@ dune:
 *.color13: #008080
 *.color14: #c2ada1
 *.color15: #e8e2e2
-*.background: #212121
+*.background: #0a0f14
 *.foreground: #e8e2e2
 *.cursorColor: #e8e2e2
 
@@ -87,6 +87,6 @@ dune:
 !! *.color13: #888ba5
 !! *.color14: #599caa
 !! *.color15: #d3ebe9
-!! *.background: #1b1f25
+!! *.background: #212121
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #195465
