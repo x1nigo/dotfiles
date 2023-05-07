@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-st.alpha: 0.9
+st.alpha: 1.0
 
 !! Set a default font and font size as below:
 st.font: monospace-9
@@ -20,7 +20,7 @@ dwm.gappiv: 10
 dwm.gappoh: 10
 dwm.gappov: 30
 dwm.normbgcolor: #0a0f14
-dwm.normbordercolor: #444444
+dwm.normbordercolor: #282828
 dwm.normfgcolor: #e8e2e2
 dwm.selfgcolor: #e8e2e2
 dwm.selbordercolor: #800000
@@ -90,3 +90,24 @@ dune:
 !! *.background: #212121
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #195465
+
+!! dracula:
+!! *.color0: #44475a
+!! *.color1: #ff5555
+!! *.color2: #50fa7b
+!! *.color3: #ffb86c
+!! *.color4: #8be9fd
+!! *.color5: #bd93f9
+!! *.color6: #ff79c6
+!! *.color7: #94a3a5
+!! *.color8: #000000
+!! *.color9: #ff5555
+!! *.color10: #50fa7b
+!! *.color11: #ffb86c
+!! *.color12: #8be9fd
+!! *.color13: #bd93f9
+!! *.color14: #ff79c6
+!! *.color15: #ffffff
+!! *.background: #1b1f25
+!! *.foreground: #ffffff
+!! *.cursorColor: #ffffff
