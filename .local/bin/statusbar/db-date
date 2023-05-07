@@ -16,7 +16,7 @@ case "$(date +'%I')" in
         12) timeicon="🕛" ;;
 esac
 
-date=$(date +'%a, %b %d') && dateicon="🗓️"
+date=$(date +'%a, %Y %b %d') && dateicon="🗓️"
 time=$(date +'%I:%M %P')
 
 case $BUTTON in
