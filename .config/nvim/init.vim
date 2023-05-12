@@ -73,9 +73,11 @@ set conceallevel=2
 " Open the output of your file
 	map <leader>a :silent !alchemize "%" <enter>
 
-" Save current state / load saved state
-	map <leader>m :mkview <enter>
+" Load saved state
 	map <leader>l :loadview <enter>
+
+" Save current state
+	autocmd BufWritePost *.md,*.markdown :mkview
 
 " Change back to original colorscheme after leaving Goyo
 	autocmd User GoyoLeave set bg=light
@@ -94,17 +96,18 @@ set conceallevel=2
 
 " Colors and Theming
 " 0:black 1:red  2:green 3:yellow 4:blue 5:magenta 6:cyan 7:white
-hi Title	ctermfg=5	ctermbg=none	cterm=bold
-hi Comment	ctermfg=4	ctermbg=none	cterm=bold
-hi Constant	ctermfg=1	ctermbg=none	cterm=none
-hi Special	ctermfg=4	ctermbg=none	cterm=bold
-hi Identifier	ctermfg=6	ctermbg=none	cterm=none
-hi PreProc	ctermfg=5	ctermbg=none	cterm=bold
-hi String	ctermfg=1	ctermbg=none	cterm=none
-hi Number	ctermfg=1	ctermbg=none	cterm=none
-hi Function	ctermfg=6	ctermbg=none	cterm=none
-hi Visual	ctermfg=3	ctermbg=0	cterm=bold
-hi SpellBad	ctermfg=1	ctermbg=none	cterm=italic,underline
-hi SpellCap	ctermfg=4	ctermbg=none	cterm=italic,underline
-hi SpellRare	ctermfg=6	ctermbg=none	cterm=italic,underline
-hi SpellLocal	ctermfg=2	ctermbg=none	cterm=italic,underline
+hi Title		ctermfg=5	ctermbg=none	cterm=bold
+hi Comment		ctermfg=4	ctermbg=none	cterm=bold
+hi Constant		ctermfg=1	ctermbg=none	cterm=none
+hi Special		ctermfg=4	ctermbg=none	cterm=bold
+hi Identifier		ctermfg=6	ctermbg=none	cterm=none
+hi PreProc		ctermfg=5	ctermbg=none	cterm=bold
+hi String		ctermfg=1	ctermbg=none	cterm=none
+hi Number		ctermfg=1	ctermbg=none	cterm=none
+hi Function		ctermfg=6	ctermbg=none	cterm=none
+hi Visual		ctermfg=3	ctermbg=0	cterm=bold
+hi SpellBad		ctermfg=1	ctermbg=none	cterm=italic,underline
+hi SpellCap		ctermfg=4	ctermbg=none	cterm=italic,underline
+hi SpellRare		ctermfg=6	ctermbg=none	cterm=italic,underline
+hi SpellLocal		ctermfg=2	ctermbg=none	cterm=italic,underline
+hi markdownCodeBlock 	ctermfg=5	ctermbg=none	cterm=none
