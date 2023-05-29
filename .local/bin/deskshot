@@ -1,6 +1,0 @@
-#!/bin/sh
-
-filename=$(echo -n '' | dmenu -p "Enter filename (e.g. file.jpg):")
-[ -z $filename ] && exit 1
-
-scrot $filename -q 100 && notify-send "📸 Screen captured and labeled as \`$filename\`."
