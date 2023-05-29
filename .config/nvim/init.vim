@@ -11,7 +11,7 @@ au VimEnter,VimResume * set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
   \,sm:block-blinkwait175-blinkoff150-blinkon175
 
-au VimLeave,VimSuspend * set guicursor=a:n-v-c:block-blinkon250-Cursor
+au VimLeave,VimSuspend * set guicursor=a:ver20
 
 " Plugins
 filetype plugin indent on
