@@ -97,11 +97,11 @@ set conceallevel=2
 " Colors and Theming
 " 0:black 1:red  2:green 3:yellow 4:blue 5:magenta 6:cyan 7:white
 hi Title		ctermfg=5	ctermbg=none	cterm=bold
-hi Comment		ctermfg=4	ctermbg=none	cterm=bold
+hi Comment		ctermfg=4	ctermbg=none	cterm=none
 hi Constant		ctermfg=1	ctermbg=none	cterm=none
-hi Special		ctermfg=4	ctermbg=none	cterm=bold
+hi Special		ctermfg=4	ctermbg=none	cterm=none
 hi Identifier		ctermfg=6	ctermbg=none	cterm=none
-hi PreProc		ctermfg=5	ctermbg=none	cterm=bold
+hi PreProc		ctermfg=5	ctermbg=none	cterm=none
 hi String		ctermfg=1	ctermbg=none	cterm=none
 hi Number		ctermfg=1	ctermbg=none	cterm=none
 hi Function		ctermfg=6	ctermbg=none	cterm=none
