@@ -1,6 +1,3 @@
-# See dunst(5) for all configuration options
-
-# Global variables
 [global]
     monitor = 0
     follow = none
@@ -16,7 +13,7 @@
     progress_bar_min_width = 150
     progress_bar_max_width = 300
     indicate_hidden = yes
-    transparency = 0
+    transparency = 25
     separator_height = 2
     gap_size = 2
     padding = 2
@@ -27,7 +24,7 @@
     markup = full
     title = Dunst
     class = Dunst
-    font = Monospace 9
+    font = Monospace 12
     corner_radius = 0
     frame_color = "#0a0f14"
     frame_width = 2
