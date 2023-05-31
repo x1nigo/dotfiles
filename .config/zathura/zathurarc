@@ -1,3 +1,14 @@
 set selection-clipboard clipboard
 set recolor-lightcolor \#0a0f14
 set default-bg \#000
+set page-padding 1
+set highlight-color blue
+set highlight-fg black
+map r rotate
+map R reload
+map c recolor
+map p print
+map a adjust_window best-fit
+map s adjust_window width
+map g goto top
+map G goto bottom
