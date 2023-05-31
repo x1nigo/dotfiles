@@ -16,8 +16,8 @@ case "$(date +'%I')" in
         12) timeicon="🕛" ;;
 esac
 
-date=$(date +'%a, %Y %b %d') && dateicon="🗓️"
-time=$(date +'%I:%M %P')
+date=$(date +'%Y %b %d (%a)')
+time=$(date +'%I:%M%p')
 
 case $BUTTON in
         1) notify-send "$(cal)" ;;
@@ -25,4 +25,4 @@ case $BUTTON in
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
-printf "%s%s  %s%s\n" "$dateicon" "$date" "$timeicon" "$time"
+printf "%s %s%s\n" "$date" "$timeicon" "$time"

@@ -18,7 +18,7 @@ esac
 
 # Display default icon if no torrent is active.
 active="$(transmission-remote -l | grep %)"
-[ -z "$active" ] && printf "🌑🌱" && exit 0
+[ -z "$active" ] && exit 0
 
 # Show the proper icon depending on status of the torrent/s.
 transmission-remote -l | grep % |

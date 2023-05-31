@@ -26,7 +26,7 @@ mic="$(printf "%.0f" "$(split "$mic" ".")")"
 
 case 1 in
 	$((mic >= 1 )) ) icon="🎙️" ;;
-	* ) echo "❌🎙️" && exit ;;
+	* ) exit 0 ;;
 esac
 
 echo "$icon$mic%"

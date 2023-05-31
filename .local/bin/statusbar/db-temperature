@@ -7,7 +7,7 @@ if [ $temp -gt 80 ]; then
 elif [ $temp -gt 60 ]; then
 	icon="🔥"
 elif [ $temp -ge 0 ]; then
-	icon="😎"
+	icon="🥶"
 fi
 
 case $BUTTON in

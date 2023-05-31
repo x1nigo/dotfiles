@@ -3,12 +3,12 @@
 dir="/sys/class/backlight/intel_backlight"
 bl=$(cat $dir/brightness) && total=$(cat $dir/max_brightness) && perc=$(( $bl * 100 / $total ))
 
-[ $perc -ge 50 ] && icon="☀" || icon="☔"
+[ $perc -ge 50 ] && icon="🌅" || icon="🌄"
 
 case $BUTTON in
         3) notify-send "🔦 Brightness module:" "\[Displays monitor brightness\]
-☀️ brightness is 50% or higher
-☔ less than 50%" ;;
+🌅 brightness is 50% or higher
+🌄 less than 50%" ;;
 	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
 
