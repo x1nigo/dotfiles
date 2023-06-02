@@ -1,5 +1,5 @@
 !! Transparency (0-1):
-st.alpha: 0.9
+st.alpha: 0.8
 
 !! Set a default font and font size as below:
 st.font: monospace-9
@@ -8,10 +8,10 @@ st.borderpx: 2
 
 !! Set colors for dmenu:
 dmenu.font: monospace-10
-dmenu.background: #0a0f14
-dmenu.foreground: #ebdbb2
-dmenu.selbackground: #005577
-dmenu.selforeground: #ebdbb2
+dmenu.background: #202020
+dmenu.foreground: #458588
+dmenu.selbackground: #458588
+dmenu.selforeground: #0a0f14
 
 !! Set colors for dwm:
 dwm.borderpx: 3
@@ -45,30 +45,30 @@ dwm.selbgcolor: #121228
 !! *.color13: #d3869b
 !! *.color14: #8ec07c
 !! *.color15: #ebdbb2
-!! *.background: #181818
-!! *.foreground: #ebdbb2
-!! *.cursorColor: #ebdbb2
+!! *.background: #282828
+!! *.foreground: white
+!! *.cursorColor: white
 
 dune:
-*.color0: #051415
+*.color0: #0a0f14
 *.color1: #d02828
 *.color2: #936c58
 *.color3: #f4921f
 *.color4: #cb9a66
-*.color5: #008080
+*.color5: #458588
 *.color6: #c2ada1
-*.color7: #e8e2e2
-*.color8: #051415
-*.color9: #d02828
-*.color10: #936c58
-*.color11: #f4921f
-*.color12: #cb9a66
-*.color13: #008080
-*.color14: #c2ada1
+*.color7: #cec9c9
+*.color8: #272b2f
+*.color9: #bc3e3e
+*.color10: #8e7162
+*.color11: #d78d37
+*.color12: #b8936c
+*.color13: #548486
+*.color14: #b1a299
 *.color15: #e8e2e2
-*.background: #0a0f14
+*.background: #202020
 *.foreground: #ebdbb2
-*.cursorColor: #ebdbb2
+*.cursorColor: #c2ada1
 
 !! gotham:
 !! *.color0: #1b1f25
@@ -87,7 +87,7 @@ dune:
 !! *.color13: #888ba5
 !! *.color14: #599caa
 !! *.color15: #d3ebe9
-!! *.background: #212121
+!! *.background: #282828
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #195465
 
