@@ -1,5 +1,5 @@
-.TITLE "\s+(10A Guide to CIOS!\s0"
-.AUTHOR	"Christian Brodeth"
+.TITLE "\s+(10A Basic Guide to CIOS!\s0"
+.AUTHOR	"Chris Inigo"
 .DOCTYPE DEFAULT
 .COPYSTYLE FINAL
 .PRINTSTYLE TYPESET
@@ -8,7 +8,9 @@
 .START
 .HEADING 1 "Welcome!"
 .PP
-In this typewritten document, you will find various information concerning the system that you are using, its goals, and a list of key-bindings to help get you started!
+In this typewritten document, you will find various information concerning the system that you are using, its goals, and a list of key-bindings to help get you started! Also, if this page is too bright for you, try pressing \f(CWControl+r\fP and see what happens.
+
+To navigate around the file, use the \f(CWj and k\fP keys to go up and down \(en hold down \f(CWShift\fP to do so faster. Alternativenly, you can just press \f(CWSpace\fP to quickly go through pages.
 .HEADING 2 "Principles"
 .LIST
 .SHIFT_LIST 10p
@@ -74,12 +76,15 @@ Spawns a terminal-based calculator
 Print screen (click and drag; or just click a window)
 .ITEM
 \f(CWMod+x\fP \(en
-Select a wallpaper from \f(CW~/.local/share/backgrounds\fP, otherwise, you can use the \f(CWsw\fP command
+Select a wallpaper from \f(CW~/.local/share/backgrounds\fP, otherwise, you can use the \f(CWsw\fP command (see `\f(CWsw -h\fP')
 .LIST END
 .HEADING 3 "System"
 I've also made alternative keys for brightness, since such keys can be absent from other types of keyboards.
 .LIST
 .SHIFT_LIST 10p
+.ITEM
+\f(CWMod+R\fP \(en
+Restart the window manager (Dwm)
 .ITEM
 \f(CWMod+[\fP \(en
 Decrease screen brightness
@@ -94,7 +99,7 @@ Read this document
 Change default font (through font-wizard)
 .ITEM
 \f(CWMod+F4\fP \(en
-Connect to HDMI cable
+Connect to HDMI cable for another screen
 .ITEM
 \f(CWMod+F9\fP \(en
 Mount USB drives and/or Android phones
@@ -126,6 +131,22 @@ Next layout
 .LIST END
 .PP
 Other layouts included but are not bound to anything yet are: fibonnaci, dwindle, deck, bstack, bstackhoriz, grid, nrowgrid, horizgrid, gaplessgrid, centeredmaster, and centeredfloatingmaster.
+.HEADING 3 "Window Management"
+.LIST
+.SHIFT_LIST 10p
+.ITEM
+\f(CWMod+(j,k)\fP \(en
+Focus on the previous/next window in the stack
+.ITEM
+\f(CWMod+(J,K)\fP \(en
+Move the focused window up/down the stack
+.ITEM
+\f(CWMod+Leftmouse (click & drag)\fP \(en
+Move a window in floating mode
+.ITEM
+\f(CWMod+Rightmouse (click & drag)\fP \(en
+Resize a window
+.LIST END
 .HEADING 3 "Programs"
 .LIST
 .SHIFT_LIST 10p
@@ -185,6 +206,7 @@ Lower microphone level
 Mute microphone
 .LIST END
 The audio might not work the first time you connect through HDMI or to an external screen. This needs manual intervention through the terminal with the \f(CWwpctl\fP command. I still need to find a way to automate the process.
+.HEADING 3 "Connections"
 .HEADING 2 "Important Links"
 .LIST
 .SHIFT_LIST 10p
