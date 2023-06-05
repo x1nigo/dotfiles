@@ -76,7 +76,13 @@ Spawns a terminal-based calculator
 Print screen (click and drag; or just click a window)
 .ITEM
 \f(CWMod+x\fP \(en
-Select a wallpaper from \f(CW~/.local/share/backgrounds\fP, otherwise, you can use the \f(CWsw\fP command (see `\f(CWsw -h\fP')
+Select a wallpaper from \f(CW~/.local/share/backgrounds\fP, otherwise, you can use the \f(CWsetwp\fP command (see `\f(CWsetwp -h\fP')
+.ITEM
+\f(CWMod+a\fP \(en
+Add a master window
+.ITEM
+\f(CWMod+s\fP \(en
+Subtract a master window
 .LIST END
 .HEADING 3 "System"
 I've also made alternative keys for brightness, since such keys can be absent from other types of keyboards.
@@ -137,12 +143,6 @@ Previous layout
 .ITEM
 \f(CWMod+.\fP \(en
 Next layout
-.ITEM
-\f(CWMod+g\fP \(en
-Toggle gaps/no-gaps
-.ITEM
-\f(CWMod+G\fP \(en
-Revert to original gaps settings
 .LIST END
 .PP
 Other layouts included but are not bound to anything yet are: fibonnaci, dwindle, deck, bstack, bstackhoriz, grid, nrowgrid, horizgrid, gaplessgrid, centeredmaster, and centeredfloatingmaster.
@@ -161,6 +161,18 @@ Move a window in floating mode
 .ITEM
 \f(CWMod+Rightmouse (click & drag)\fP \(en
 Resize a window
+.ITEM
+\f(CWMod+g\fP \(en
+Toggle gaps/no-gaps
+.ITEM
+\f(CWMod+G\fP \(en
+Revert to original gaps settings
+.ITEM
+\f(CWMod+Control+j\fP \(en
+Decrease gaps
+.ITEM
+\f(CWMod+Control+k\fP \(en
+Increase gaps
 .LIST END
 .HEADING 3 "Programs"
 .LIST
