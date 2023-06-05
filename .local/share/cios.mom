@@ -107,6 +107,9 @@ Connect to HDMI cable for another screen
 \f(CWMod+F5\fP \(en
 Connect to the internet via \f(CWnmtui\fP
 .ITEM
+\f(CWMod+F6\fP \(en
+Record your screen and/or webcam
+.ITEM
 \f(CWMod+F9\fP \(en
 Mount USB drives and/or Android phones
 .ITEM
@@ -209,6 +212,17 @@ Raise speaker volume
 Mute speaker volume
 .LIST END
 The audio might not work the first time you connect through HDMI or to an external screen. This needs manual intervention through the terminal with the \f(CWwpctl\fP command. For the microphone volume, you can navigate through the \f(CWpulsemixer\fP command.
+.HEADING 3 "Bookmarks"
+To view your list of bookmarks, see \f(CW~/.local/share/bookmarks\fP.
+.LIST
+.SHIFT_LIST 10p
+.ITEM
+\f(CWMod+Insert\fP \(en
+Select a bookmark to output
+.ITEM
+\f(CWMod+B\fP \(en
+Add selection to your bookmarks file
+.LIST END
 .HEADING 3 "Bluetooth"
 To connect your devices via bluetooth, open up a terminal and type \f(CWbluetoothctl\fP (or you can just type `b' for short). This should give you a unique prompt where you can type \f(CWpower on\fP and \f(CWscan on\fP successively to look for devices.
 
