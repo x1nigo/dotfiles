@@ -1,22 +1,66 @@
 #!/bin/sh
 
-getscreen=$(xrandr --current | awk '/Screen 0:/ { print $8$9$10 }' | sed 's/\,//')
+# TODO:
+# 	Record with audio
+# 	Record without audio
+# 	Record webcam
+# 	Prompt to cancel current recording
 
-record_screen_no_audio() {
-	ffmpeg -f x11grab -video_size $getscreen -framerate 25 -i $DISPLAY -c:v ffvhuff recording.mkv
+audio() {
+	ffmpeg -f x11grab \
+	-video_size $(xrandr | grep eDP-1 | awk '{print $4}' | sed 's/+.*//g') \
+	-framerate 25 \
+	-i $DISPLAY \
+	-c:v ffvhuff "$(date +'screen-%y-%m-%d-%s').mkv"
 }
 
-record_screen_with_audio() {
-	ffmpeg -f x11grab -video_size $getscreen -framerate 25 -i $DISPLAY -f alsa -i default -c:v libx264 -preset ultrafast -c:a aac recording.mp4
+noaudio() {
+	ffmpeg -f x11grab \
+	-video_size $(xrandr | grep eDP-1 | awk '{print $4}' | sed 's/+.*//g') \
+	-framerate 25 \
+	-i $DISPLAY \
+	-f alsa \
+	-i default \
+	-c:v libx264 \
+	-preset ultrafast \
+	-c:a aac "$(date +'screen-%y-%m-%d-%s').mp4"
 }
 
-choices="With-audio No-audio"
-capture=$(for i in $choices; do echo $i; done | dmenu -p "Record screen?")
+webcam() {
+	ffmpeg -f v4l2 \
+	-video_size 640x480 \
+	-i /dev/video0 \
+	-c:v libx264 \
+	-preset ultrafast "$(date +'webcam-%y-%m-%d-%s').mp4"
+}
 
-if [ $capture = "${choices%% *}" ]; then
-	record_screen_with_audio & notify-send "⏺️ Recording screen w/ audio."
-elif [ $capture = "${choices##* }" ]; then
-	record_screen_no_audio & notify-send "⏺️ Recording screen."
-else
-        exit 0
-fi
+stoprec() {
+	killall ffmpeg && notify-send "🛑 Recording process terminated."
+}
+
+notif() {
+	notify-send "⏺️ Recording started!" "Capturing your device $1 now..."
+}
+
+while getopts "anws" o; do
+	case ${o} in
+		a) audio & notif screen ;;
+		n) noaudio & notif screen ;;
+		w) webcam & notif webcam ;;
+		s) stoprec ;;
+	esac
+done
+
+pgrep -a ffmpeg && \
+	delprompt=$(printf "%s\n" "Yes" "No" | dmenu -p "Current recording detected. Delete its instance?" -l 5)
+
+case $delprompt in
+	Yes) stoprec ;;
+esac
+
+rectype=$(printf "%s\n" "screen with audio" "screen with no audio" "webcam only" | dmenu -p "What do you want to record?" -l 5)
+case $rectype in
+	"screen with audio") audio & notif screen ;;
+	"screen with no audio") noaudio & notif screen ;;
+	"webcam only") webcam & notif webcam ;;
+esac
