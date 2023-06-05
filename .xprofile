@@ -2,7 +2,7 @@
 
 # This is used to adjust for the dots per inch.
 xrandr --dpi 96
-sw &
+setwp &
 
 autostart="mpd dunst unclutter picom dwmblocks pipewire transmission-daemon"
 
