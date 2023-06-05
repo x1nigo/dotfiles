@@ -8,7 +8,7 @@ cache=/tmp/bgtype
 bgloc="$(readlink -f "$2")"
 
 readme() { cat << EOF
-sw: set-wallpaper, a minimal script meant to render
+setwp: set-wallpaper, a minimal script meant to render
 wallpapers
 
 Main use:
