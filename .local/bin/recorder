@@ -11,7 +11,7 @@ audio() {
 	-video_size $(xrandr | grep eDP-1 | awk '{print $4}' | sed 's/+.*//g') \
 	-framerate 25 \
 	-i $DISPLAY \
-	-c:v ffvhuff "$(date +'screen-%y-%m-%d-%s').mkv"
+	-c:v ffvhuff "$HOME/$(date +'screen-%y-%m-%d-%s').mkv"
 }
 
 noaudio() {
@@ -23,7 +23,7 @@ noaudio() {
 	-i default \
 	-c:v libx264 \
 	-preset ultrafast \
-	-c:a aac "$(date +'screen-%y-%m-%d-%s').mp4"
+	-c:a aac "$HOME/$(date +'screen-%y-%m-%d-%s').mp4"
 }
 
 webcam() {
@@ -31,7 +31,7 @@ webcam() {
 	-video_size 640x480 \
 	-i /dev/video0 \
 	-c:v libx264 \
-	-preset ultrafast "$(date +'webcam-%y-%m-%d-%s').mp4"
+	-preset ultrafast "$HOME/$(date +'webcam-%y-%m-%d-%s').mp4"
 }
 
 stoprec() {
