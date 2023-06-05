@@ -60,7 +60,7 @@ Opens up the terminal (in this case, it is \f(CWst\fP)
 \f(CWMod+Shift+Enter\fP \(en
 Opens up the terminal (in floating window version)
 .ITEM
-\f(CWMod+escape\fP \(en
+\f(CWMod+Backspace\fP \(en
 Display the system menu (shutdown, logout, etc.)
 .ITEM
 \f(CWMod+d\fP \(en
@@ -98,8 +98,14 @@ Read this document
 \f(CWMod+F2\fP \(en
 Change default font (through font-wizard)
 .ITEM
+\f(CWMod+F3\fP \(en
+Open \f(CWpulsemixer\fP, where you can manage your audio
+.ITEM
 \f(CWMod+F4\fP \(en
 Connect to HDMI cable for another screen
+.ITEM
+\f(CWMod+F5\fP \(en
+Connect to the internet via \f(CWnmtui\fP
 .ITEM
 \f(CWMod+F9\fP \(en
 Mount USB drives and/or Android phones
@@ -128,6 +134,12 @@ Previous layout
 .ITEM
 \f(CWMod+.\fP \(en
 Next layout
+.ITEM
+\f(CWMod+g\fP \(en
+Toggle gaps/no-gaps
+.ITEM
+\f(CWMod+G\fP \(en
+Revert to original gaps settings
 .LIST END
 .PP
 Other layouts included but are not bound to anything yet are: fibonnaci, dwindle, deck, bstack, bstackhoriz, grid, nrowgrid, horizgrid, gaplessgrid, centeredmaster, and centeredfloatingmaster.
@@ -187,26 +199,20 @@ Aside from the basic volume controls inherent in every computer keyboard, I've a
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+Minus\fP \(en
-Raise volume
+\f(CWMod+-\fP \(en
+Lower speaker volume
 .ITEM
-\f(CWMod+Shift+Minus\fP \(en
-Lower volume
+\f(CWMod++\fP \(en
+Raise speaker volume
 .ITEM
-\f(CWMod+Equals\fP \(en
-Mute volume
-.ITEM
-\f(CWMod+Backspace\fP \(en
-Raise microphone level
-.ITEM
-\f(CWMod+Shift+Backspace\fP \(en
-Lower microphone level
-.ITEM
-\f(CWMod+Shift+Equals\fP \(en
-Mute microphone
+\f(CWMod+=\fP \(en
+Mute speaker volume
 .LIST END
-The audio might not work the first time you connect through HDMI or to an external screen. This needs manual intervention through the terminal with the \f(CWwpctl\fP command. I still need to find a way to automate the process.
-.HEADING 3 "Connections"
+The audio might not work the first time you connect through HDMI or to an external screen. This needs manual intervention through the terminal with the \f(CWwpctl\fP command. For the microphone volume, you can navigate through the \f(CWpulsemixer\fP command.
+.HEADING 3 "Bluetooth"
+To connect your devices via bluetooth, open up a terminal and type \f(CWbluetoothctl\fP (or you can just type `b' for short). This should give you a unique prompt where you can type \f(CWpower on\fP and \f(CWscan on\fP successively to look for devices.
+
+Once you've found your device, copy its identifier (e.g. A1:B2:C3:D4:E5) and type \f(CWconnect [identifier]\fP.
 .HEADING 2 "Important Links"
 .LIST
 .SHIFT_LIST 10p
