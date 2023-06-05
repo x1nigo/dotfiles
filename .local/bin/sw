@@ -92,5 +92,5 @@ while getopts "a:sf:r:d:ph" o; do
 	esac
 done
 
-[ -f "$cache" ] && read -r mode < "$cache"
+[ -f "$cache" ] && read -r mode < "$cache" || mode="zoom"
 xwallpaper --$mode "$bglink"
