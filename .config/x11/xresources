@@ -8,7 +8,7 @@ st.borderpx: 2
 
 !! Set colors for dmenu:
 dmenu.font: monospace-10
-dmenu.background: #202020
+dmenu.background: #212121
 dmenu.foreground: #458588
 dmenu.selbackground: #458588
 dmenu.selforeground: #0a0f14
@@ -66,7 +66,7 @@ dune:
 *.color13: #548486
 *.color14: #b1a299
 *.color15: #e8e2e2
-*.background: #202020
+*.background: #212121
 *.foreground: #ebdbb2
 *.cursorColor: #c2ada1
 
