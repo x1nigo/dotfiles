@@ -1,5 +1,5 @@
-.TITLE "\s+(10A Basic Guide to CIOS!\s0"
-.AUTHOR	"Chris Inigo"
+.TITLE "\*S+[10]A Basic Guide to CIOS!\*S[0]"
+.AUTHOR	"\*S+[4]Chris Inigo\*S[0]"
 .DOCTYPE DEFAULT
 .COPYSTYLE FINAL
 .PRINTSTYLE TYPESET
@@ -47,9 +47,14 @@ You'll quickly notice that when you boot up into your computer, there are no fol
 
 This is part of \fBDwm\fP, but the organization of modules on the right side is governed by \fBDwmblocks\fP\(enusing data gathered from \f(CW~/.local/bin/statusbar\fP.
 .HEADING 2 "Key-bindings"
-The \f(CWSuper\fP or \f(CWMod\fP keys both refer to the "Windows key", or its equivalent in MacOS computers. As for \f(CWReturn\fP, it's just the \f(CWEnter\fP key.
+The \f(CWSuper\fP or \f(CWMod\fP keys both refer to the "Windows Key", or its equivalent in MacOS computers. As for \f(CWReturn\fP, it's just the \f(CWEnter\fP key.
 
 Also, take note of your machine's functionality on \f(CWfunction keys\fP. If some key-bindings don't work as you expect them to, you might want to turn on your \f(CWFnLock\fP or press the \f(CWfunction key\fP before you press a corresponding number.
+.HEADING 3 "My Caps Lock key isn't working?"
+I've decided to disable the \f(CWCaps Lock\fP key and have instead remapped it to serve as a backup \f(CWSuper/Mod\fP key. It would be better to have it accomplish a more useful function considering that nobody really uses it (as far as I know).
+
+Plus, it's located in a more comfortable place than the "Windows Key".
+It doesn't work well with the \f(CWfunction key\fP however.
 
 .LIST
 .SHIFT_LIST 10p
