@@ -10,7 +10,7 @@
 .PP
 In this typewritten document, you will find various information concerning the system that you are using, its goals, and a list of key-bindings to help get you started! Also, if this page is too bright for you, try pressing \f(CWControl+r\fP and see what happens.
 
-To navigate around the file, use the \f(CWj and k\fP keys to go up and down \(en hold down \f(CWShift\fP to do so faster. Alternativenly, you can just press \f(CWSpace\fP to quickly go through pages.
+To navigate around the file, use the \f(CWj and k\fP keys to go up and down \(en hold down \f(CWShift\fP to do so faster. Alternatively, you can just press \f(CWSpace\fP to quickly go through pages. Use \f(CWg and G\fP to navigate to the top or bottom of the document.
 .HEADING 2 "Principles"
 .LIST
 .SHIFT_LIST 10p
@@ -51,7 +51,7 @@ The \f(CWSuper\fP or \f(CWMod\fP keys both refer to the "Windows Key", or its eq
 
 Also, take note of your machine's functionality on \f(CWfunction keys\fP. If some key-bindings don't work as you expect them to, you might want to turn on your \f(CWFnLock\fP or press the \f(CWfunction key\fP before you press a corresponding number.
 .HEADING 3 "My Caps Lock key isn't working?"
-I've decided to disable the \f(CWCaps Lock\fP key and have instead remapped it to serve as a backup \f(CWSuper/Mod\fP key. It would be better to have it accomplish a more useful function considering that nobody really uses it (as far as I know).
+I've decided to disable the \f(CWCaps Lock\fP key and have instead remapped it to serve as a backup \f(CWSuper/Mod\fP key. If pressed only once, it acts as an \f(CWEscape\fP key. It would be better to have it accomplish more useful functions considering that nobody really uses it (as far as I know).
 
 Plus, it's located in a more comfortable place than the "Windows Key".
 It doesn't work well with the \f(CWfunction key\fP however.
