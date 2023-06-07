@@ -1,0 +1,56 @@
+#!/bin/sh
+
+twoscreen() {
+	mirror=$(printf "yes\\nno" | dmenu -p "Mirror displays?")
+	if [ "$mirror" = "yes" ]; then
+		external=$(echo "$screens" | dmenu -p "Optimize resolution for:")
+		internal=$(echo "$screens" | grep -v "$external")
+
+		res_external=$(xrandr -q | sed -n "/^$external/,/\+/p" | \
+			tail -n 1 | awk '{print $1}')
+		res_internal=$(xrandr -q | sed -n "/^$internal/,/\+/p" | \
+			tail -n 1 | awk '{print $1}')
+
+		res_ext_x=$(echo "$res_external" | sed 's/x.*//')
+		res_ext_y=$(echo "$res_external" | sed 's/.*x//')
+		res_int_x=$(echo "$res_internal" | sed 's/x.*//')
+		res_int_y=$(echo "$res_internal" | sed 's/.*x//')
+
+		scale_x=$(echo "$res_ext_x / $res_int_x" | bc -l)
+		scale_y=$(echo "$res_ext_y / $res_int_y" | bc -l)
+
+		xrandr --output "$external" --auto --scale 1.0x1.0 \
+			--output "$internal" --auto --same-as "$external" \
+			--scale "$scale_x"x"$scale_y"
+	else
+		primary=$(echo "$screens" | dmenu -p "Select primary display:")
+		secondary=$(echo "$screens" | grep -v "$primary")
+		direction=$(printf "left\\nright" | dmenu -p "What side of $primary should $secondary be on?")
+		xrandr --output "$primary" --auto --scale 1.0x1.0 --output "$secondary" --"$direction"-of "$primary" --auto --scale 1.0x1.0
+	fi
+}
+
+onescreen() {
+	xrandr --output "$1" --auto --scale 1.0x1.0 $(echo "$allscreens" | grep -v "\b$1" | awk '{print "--output", $1, "--off"}' | paste -sd ' ' -)
+}
+
+cleanup() {
+	setwp    # Render the wallpaper in case of bg inconsistencies.
+	{ killall dunst; setsid -f dunst; } >/dev/null 2>&1    # Restart dunst for proper location on screen.
+}
+
+allscreens=$(xrandr -q | grep "connected")
+screens=$(echo "$allscreens" | awk '/ connected/ {print $1}')
+
+[ "$(echo "$screens" | wc -l)" -lt 2 ] &&
+	{ onescreen "$screens"; cleanup; notify-send "💻 Only one screen detected." "Using it in its optimal settings..."; exit ;}
+
+chosen=$(printf "%s\\nTwo-monitors\\nManual selection" "$screens" | dmenu -p "Select a display arrangement:")
+
+case $chosen in
+	"Two-monitors") twoscreen ;;
+	"Manual selection") arandr ;;
+	*) onescreen "$chosen" ;;
+esac
+
+cleanup
