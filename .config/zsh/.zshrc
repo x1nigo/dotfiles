@@ -10,7 +10,7 @@ setopt autocd
 stty stop undef
 set -o vi
 
-sf () {
+ff () {
 	file="$(find $HOME -type f | fzf --height=30 --layout=reverse)"
 	backtrack="$(pwd)"
 	dir="${file%/*}"
