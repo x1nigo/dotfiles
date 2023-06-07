@@ -11,7 +11,7 @@ stty stop undef
 set -o vi
 
 sf () {
-	file="$(find $HOME -type f | fzf --layout=reverse)"
+	file="$(find $HOME -type f | fzf --height=30 --layout=reverse)"
 	backtrack="$(pwd)"
 	dir="${file%/*}"
 
