@@ -1,22 +1,8 @@
 #!/bin/sh
 
-# TODO:
-# 	Record with audio
-# 	Record without audio
-# 	Record webcam
-# 	Prompt to cancel current recording
-
 audio() {
 	ffmpeg -f x11grab \
-	-video_size $(xrandr | grep eDP-1 | awk '{print $4}' | sed 's/+.*//g') \
-	-framerate 25 \
-	-i $DISPLAY \
-	-c:v ffvhuff "$HOME/$(date +'screen-%y-%m-%d-%s').mkv"
-}
-
-noaudio() {
-	ffmpeg -f x11grab \
-	-video_size $(xrandr | grep eDP-1 | awk '{print $4}' | sed 's/+.*//g') \
+	-video_size $(xrandr | grep "^Screen 0" | awk '{print $8"x"$10}' | sed 's/,//g') \
 	-framerate 25 \
 	-i $DISPLAY \
 	-f alsa \
@@ -24,6 +10,14 @@ noaudio() {
 	-c:v libx264 \
 	-preset ultrafast \
 	-c:a aac "$HOME/$(date +'screen-%y-%m-%d-%s').mp4"
+}
+
+noaudio() {
+	ffmpeg -f x11grab \
+	-video_size $(xrandr | grep "^Screen 0" | awk '{print $8"x"$10}' | sed 's/,//g') \
+	-framerate 25 \
+	-i $DISPLAY \
+	-c:v ffvhuff "$HOME/$(date +'screen-%y-%m-%d-%s').mkv"
 }
 
 webcam() {
@@ -52,13 +46,13 @@ while getopts "anws" o; do
 done
 
 pgrep -a ffmpeg && \
-	delprompt=$(printf "%s\n" "Yes" "No" | dmenu -p "Current recording detected. Delete its instance?" -l 5)
+	delprompt=$(printf "yes\\nno" | dmenu -p "Recording still active. End it?")
 
 case $delprompt in
-	Yes) stoprec ;;
+	yes) stoprec && exit ;;
 esac
 
-rectype=$(printf "%s\n" "screen with audio" "screen with no audio" "webcam only" | dmenu -p "What do you want to record?" -l 5)
+rectype=$(printf "%s\n" "screen with audio" "screen with no audio" "webcam only" | dmenu -p "What do you want to record?")
 case $rectype in
 	"screen with audio") audio & notif screen ;;
 	"screen with no audio") noaudio & notif screen ;;
