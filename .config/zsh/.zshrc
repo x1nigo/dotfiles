@@ -10,6 +10,14 @@ setopt autocd
 stty stop undef
 set -o vi
 
+sf () {
+	file="$(find $HOME -type f | fzf --layout=reverse)"
+	backtrack="$(pwd)"
+	dir="${file%/*}"
+
+	[ -f "$file" ] && cd "$dir" && $EDITOR "$file" && cd "$backtrack"
+	;}
+
 # Verbose mode for some commands
 alias \
 	rm="rm -Iv" \
@@ -46,5 +54,4 @@ alias \
 	z="zathura"
 
 # Syntax Highlighting
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh 2>/dev/null
+source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
