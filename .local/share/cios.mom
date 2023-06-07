@@ -77,6 +77,9 @@ Closes a focused window
 \f(CWMod+'\fP \(en
 Spawns a terminal-based calculator
 .ITEM
+\f(CWMod+p\fP \(en
+Search and open up any .pdf file under your \f(CWHome\fP directory
+.ITEM
 \f(CWPrintScreen\fP \(en
 Print screen (click and drag; or just click a window)
 .ITEM
@@ -137,11 +140,20 @@ Spawns the webcam
 \f(CWMod+t\fP \(en
 Master and Stack layout
 .ITEM
+\f(CWMod+T\fP \(en
+Bstack layout
+.ITEM
 \f(CWMod+f\fP \(en
 Monocle layout
 .ITEM
 \f(CWMod+F\fP \(en
 Enter and exit Fullscreen mode
+.ITEM
+\f(CWMod+y\fP \(en
+Gapless Grid layout
+.ITEM
+\f(CWMod+Y\fP \(en
+Centered Master layout
 .ITEM
 \f(CWMod+,\fP \(en
 Previous layout
