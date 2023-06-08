@@ -1,5 +1,6 @@
 # User prompt
-PS1="%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%~%f%F{red}]%f%F{white}$%f%b "
+autoload colors && colors
+PS1="%B%F{red}[%f%(!.%F{red}%m%f.%F{yellow}%n%f)%(!..%F{green}@%f%F{blue}%m%f) %(!.%F{cyan}%1~%f.%F{magenta}%~%f)%F{red}]%f%(!.%F{red}#%f.%F{white}$%f)%b "
 
 # Settings (auto cd into dir & stop ctrl-s from freezing terminal)
 setopt autocd
