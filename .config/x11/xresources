@@ -2,7 +2,7 @@
 st.alpha: 0.9
 
 !! Set a default font and font size as below:
-st.font: monospace-9
+st.font: monospace-10
 st.termname: st-256color
 st.borderpx: 2
 
@@ -24,7 +24,7 @@ dwm.normbordercolor: #444444
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #ebdbb2
 dwm.selbordercolor: #800000
-dwm.selbgcolor: #121228
+dwm.selbgcolor: #1b1f25
 
 !! Set the background, foreground and cursor colors as below:
 
@@ -66,7 +66,7 @@ gruvbox:
 !! *.color13: #548486
 !! *.color14: #b1a299
 !! *.color15: #e8e2e2
-!! *.background: #212121
+!! *.background: #0a0f14
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #c2ada1
 
