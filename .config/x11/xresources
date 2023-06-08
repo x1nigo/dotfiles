@@ -8,7 +8,7 @@ st.borderpx: 2
 
 !! Set colors for dmenu:
 dmenu.font: monospace-10
-dmenu.background: #282828
+dmenu.background: #1d2021
 dmenu.foreground: #ebdbb2
 dmenu.selbackground: #005577
 dmenu.selforeground: #ebdbb2
@@ -45,7 +45,7 @@ gruvbox:
 *.color13: #d3869b
 *.color14: #8ec07c
 *.color15: #ebdbb2
-*.background: #282828
+*.background: #1d2021
 *.foreground: #ebdbb2
 *.cursorColor: white
 
