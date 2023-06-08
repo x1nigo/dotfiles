@@ -12,8 +12,11 @@ done >/dev/null 2>&1
 
 # Decrease key repeat delay to 300ms and increase key repeat rate to 50ms per second.
 xset r rate 300 50
-# Capslock key can now be used as a super key as well.
+
+# Configure the caps lock key to function differently.
 setxkbmap -option caps:super,altwin:menu_win
+killall xcape 2>/dev/null; xcape -e 'Super_L=Escape'
+xset -q | grep -q "Caps Lock:\s*on" && xdotool key Caps_Lock
 
 # Merge xresources
 xrdb -merge ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
