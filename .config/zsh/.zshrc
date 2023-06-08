@@ -1,17 +1,19 @@
-# Prompt Variables
-root='%B%F{red}[%m%f %F{cyan}%1~%f%F{red}]#%f%b '
-user='%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%~%f%F{red}]%f%F{white}$%f%b '
-
-# Prompt Function
-[ $(whoami) = "root" ] && PROMPT=$root || PROMPT=$user
+# User prompt
+PS1="%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%~%f%F{red}]%f%F{white}$%f%b "
 
 # Settings (auto cd into dir & stop ctrl-s from freezing terminal)
 setopt autocd
 stty stop undef
 set -o vi
 
+# Basic auto/tab complete
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+compinit
+
+# Find files under `Home` directory
 ff () {
-	file="$(find $HOME -type f | fzf --height=30 --layout=reverse)"
+	file="$(find $HOME -type f | fzf --height=20% --layout=reverse --prompt='EDIT FILE: ')"
 	backtrack="$(pwd)"
 	dir="${file%/*}"
 
@@ -23,6 +25,12 @@ alias \
 	rm="rm -Iv" \
 	cp="cp -iv" \
 	mv="mv -iv"
+
+# Directory shortcuts
+alias \
+	sr="cd $HOME/.local/src && ls" \
+	db="cd $HOME/.local/bin/statusbar && ls" \
+	sc="cd $HOME/.local/bin && ls"
 
 # Colorize your commands
 alias \
