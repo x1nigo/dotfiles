@@ -2,7 +2,7 @@
 st.alpha: 0.9
 
 !! Set a default font and font size as below:
-st.font: monospace-10
+st.font: monospace-9
 st.termname: st-256color
 st.borderpx: 2
 
@@ -24,7 +24,7 @@ dwm.normbordercolor: #444444
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #ebdbb2
 dwm.selbordercolor: #800000
-dwm.selbgcolor: #1b1f25
+dwm.selbgcolor: #10151b
 
 !! Set the background, foreground and cursor colors as below:
 
@@ -70,7 +70,7 @@ gruvbox:
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #c2ada1
 
-!! gotham:
+!! stoic:
 !! *.color0: #1b1f25
 !! *.color1: #c33027
 !! *.color2: #26a98b
@@ -87,7 +87,7 @@ gruvbox:
 !! *.color13: #888ba5
 !! *.color14: #599caa
 !! *.color15: #d3ebe9
-!! *.background: #282828
+!! *.background: #0a0f14
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #195465
 
@@ -129,27 +129,6 @@ gruvbox:
 !! *.color13: #9b59b6
 !! *.color14: #2aa198
 !! *.color15: #ecf0f1
-!! *.background: #0a0f14
-!! *.foreground: #ffffff
-!! *.cursorColor: #ffffff
-
-!! ibm3270:
-!! *.color0: #222222
-!! *.color1: #F01818
-!! *.color2: #24D830
-!! *.color3: #F0D824
-!! *.color4: #7890F0
-!! *.color5: #F078D8
-!! *.color6: #54E4E4
-!! *.color7: #A5A5A5
-!! *.color8: #888888
-!! *.color9: #EF8383
-!! *.color10: #7ED684
-!! *.color11: #EFE28B
-!! *.color12: #B3BFEF
-!! *.color13: #EFB3E3
-!! *.color14: #9CE2E2
-!! *.color15: #FFFFFF
 !! *.background: #0a0f14
 !! *.foreground: #ffffff
 !! *.cursorColor: #ffffff
