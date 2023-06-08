@@ -1,4 +1,0 @@
-#!/bin/sh
-
-maim --hidecursor --quality=10 --select $HOME/$(date +%y-%m-%d-%s).png \
-	&& notify-send "📸 Just took a screenshot!" "Please check your \`Home\` directory."
