@@ -38,27 +38,31 @@ bgadd() {
 bgsel() {
 	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 16)"
 	[ -z $realfile ] && exit 1
-	ln -sf "$realfile" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
+	ln -sf "$realfile" "$bglink"
 	mode=$(bgmode | dmenu)
-	[ -z $mode ] && exit 1 || echo "$mode" > $cache
+	[ -z $mode ] && exit 1 || echo "$mode" > $cache && \
+		notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
 }
 
 bgfile() {
 	case "$(file --mime-type -b "$bgloc")" in
-		image/*) ln -sf "$bgloc" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$bgloc\`" ;;
+		image/*) ln -sf "$bgloc" "$bglink" ;;
 		*) notify-send "🖼️ Error" "Not a valid image file."; exit 1 ;;
 	esac
 	mode=$(bgmode | dmenu)
-	[ -z $mode ] && exit 1 || echo "$mode" > $cache
+	[ -z $mode ] && exit 1 || echo "$mode" > $cache && \
+		notify-send "🖼️ Changing wallpaper..." "\`$bgloc\`"
 }
+
 
 bgrand() {
 	case "$(file --mime-type -b "$bgloc")" in
-		inode/directory) ln -sf "$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | shuf -n 1)" "$bglink" && notify-send "❓ Random wallpaper chosen." "from directory: \`$bgloc\`" ;;
+		inode/directory) ln -sf "$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | shuf -n 1)" "$bglink" ;;
 		*) notify-send "🖼️ Error" "Not a valid directory."; exit 1 ;;
 	esac
 	mode=$(bgmode | dmenu)
-	[ -z $mode ] && exit 1 || echo "$mode" > $cache
+	[ -z $mode ] && exit 1 || echo "$mode" > $cache && \
+		notify-send "❓ Random wallpaper chosen." "from directory: \`$bgloc\`"
 }
 
 bgfold() {
@@ -66,12 +70,13 @@ bgfold() {
 		inode/directory)
 			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 16)"
 			[ -z $realfile ] && exit 1
-			ln -sf "$realfile" "$bglink" && notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
+			ln -sf "$realfile" "$bglink"
 			;;
 		*) notify-send "🖼️ Error" "Not a valid directory."; exit 1 ;;
 	esac
 	mode=$(bgmode | dmenu)
-	[ -z $mode ] && exit 1 || echo "$mode" > $cache
+	[ -z $mode ] && exit 1 || echo "$mode" > $cache && \
+		notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
 }
 
 pywal() {

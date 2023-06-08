@@ -1,6 +1,6 @@
 #!/bin/sh
 
-menu=$(printf "%s\n" "🖥️ power off" "♻️ restart dwm" "🔃 reboot" "🚪 leave" "💤 sleep" "🔒 lock" "📺 display off" | dmenu)
+menu=$(printf "%s\n" "🖥️ power off" "♻️ restart dwm" "🔃 reboot" "🚪 leave" "💤 sleep" "🔒 lock" "📺 display off" | dmenu -p "System:")
 
 wm="dwm"
 if ls -l /sbin/init | grep "systemd"; then
