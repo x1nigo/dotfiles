@@ -85,6 +85,10 @@ set conceallevel=2
 " Automatically read the file type after write
         autocmd BufWritePost * filetype detect
 
+" Read these particular files correctly:
+	autocmd BufRead,BufNewFile *.tex set filetype=tex
+	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
+
 " Remove any trailing whitespaces
 	autocmd BufWritePre * :%s/\s\+$//e
 
