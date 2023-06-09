@@ -11,7 +11,7 @@ esac
 
 mic=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
 
-[ "$mic" != "${mic%\[MUTED\]}" ] && echo "❌🎙️" && exit
+[ "$mic" != "${mic%\[MUTED\]}" ] && exit 0
 
 mic="${mic#Volume: }"
 

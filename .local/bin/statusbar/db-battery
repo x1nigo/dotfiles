@@ -7,22 +7,20 @@ dir="/sys/class/power_supply/BAT0"
 bat=$(cat $dir/capacity)
 stat=$(cat $dir/status)
 
-# Provide a warning symbol for low power and proper
-# notifications for promptness
+# Provide a warning symbol for low power and proper notifications for promptness
 [ $stat = "Discharging" ] && [ $bat -le 10 ] && [ $bat -gt 5 ] && warn="❗" && \
 	notify-send "⚠️ Battery level is low." "Please charge your device soon."
 [ $stat = "Discharging" ] && [ $bat -le 5 ] && warn="❗" && \
 	notify-send -u critical "⚠️ Battery level is dangerously low." "Charge your device ASAP."
 
-# Main function that replaces text with appropriate
-# symbols
-printf "%s%s%s\n" "$warn" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/Not charging/♻️/')" "$(echo $bat | sed 's/$/%/')"
+# Main function that replaces text with appropriate symbols
+printf "%s%s%s\n" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/Not charging/♻️/')" "$warn" "$(echo $bat | sed 's/$/%/')"
 
 # Notify when clicked via the right mouse button
 case $BUTTON in
         3) notify-send "🔋 Battery module:" "\[Displays battery status\]
 🔌 charging
-⚡ fullly-charged
+⚡ fully-charged
 ♻️ stagnant
 🔋 discharging
 ❗ low battery (please charge!)" ;;
