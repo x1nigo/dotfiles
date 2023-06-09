@@ -1,13 +1,13 @@
 [global]
     monitor = 0
-    follow = none
+    follow = keyboard
     width = 370
     height = 1000
     origin = top-right
     offset = 0x21
     indicate_hidden = yes
     transparency = 0
-    padding = 2
+    horizontal_padding = 2
     sort = yes
     line_height = 0
     markup = full
@@ -21,12 +21,12 @@
 [urgency_low]
     background = "#10151b"
     foreground = "#ebdbb2"
-    timeout = 8
+    timeout = 3
 
 [urgency_normal]
     background = "#10151b"
     foreground = "#ebdbb2"
-    timeout = 8
+    timeout = 5
 
 [urgency_critical]
     background = "#10151b"
