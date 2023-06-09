@@ -10,7 +10,7 @@ else
 fi
 
 case $menu in
-        🖥️*) $cmd poweroff ;;
+        💻*) $cmd poweroff ;;
 	♻️*) kill -HUP $(pidof -s dwm) ;;
         🔃*) $cmd reboot ;;
         🚪*) killall $wm ;;
