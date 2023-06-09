@@ -25,7 +25,7 @@ EOF
 }
 
 bgmode() {
-	printf "%s\n" "center" "maximize" "stretch" "tile" "zoom"
+	mode=$(printf "%s\n" "center" "maximize" "stretch" "tile" "zoom" | dmenu -l 10 -p "Select a Mode:")
 }
 
 bgadd() {
@@ -36,10 +36,10 @@ bgadd() {
 }
 
 bgsel() {
-	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 16)"
+	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -p "Select Image:")"
 	[ -z $realfile ] && exit 1
 	ln -sf "$realfile" "$bglink"
-	mode=$(bgmode | dmenu)
+	bgmode
 	[ -z $mode ] && exit 1 || echo "$mode" > $cache && \
 		notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
 }
@@ -49,7 +49,7 @@ bgfile() {
 		image/*) ln -sf "$bgloc" "$bglink" ;;
 		*) notify-send "🖼️ Error" "Not a valid image file."; exit 1 ;;
 	esac
-	mode=$(bgmode | dmenu)
+	bgmode
 	[ -z $mode ] && exit 1 || echo "$mode" > $cache && \
 		notify-send "🖼️ Changing wallpaper..." "\`$bgloc\`"
 }
@@ -60,7 +60,7 @@ bgrand() {
 		inode/directory) ln -sf "$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | shuf -n 1)" "$bglink" ;;
 		*) notify-send "🖼️ Error" "Not a valid directory."; exit 1 ;;
 	esac
-	mode=$(bgmode | dmenu)
+	bgmode
 	[ -z $mode ] && exit 1 || echo "$mode" > $cache && \
 		notify-send "❓ Random wallpaper chosen." "from directory: \`$bgloc\`"
 }
@@ -68,13 +68,13 @@ bgrand() {
 bgfold() {
 	case "$(file --mime-type -b "$bgloc")" in
 		inode/directory)
-			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 16)"
+			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -p "Select Image:")"
 			[ -z $realfile ] && exit 1
 			ln -sf "$realfile" "$bglink"
 			;;
 		*) notify-send "🖼️ Error" "Not a valid directory."; exit 1 ;;
 	esac
-	mode=$(bgmode | dmenu)
+	bgmode
 	[ -z $mode ] && exit 1 || echo "$mode" > $cache && \
 		notify-send "🖼️ Changing wallpaper..." "\`$realfile\`"
 }
