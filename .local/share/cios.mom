@@ -97,9 +97,6 @@ I've also made alternative keys for brightness, since such keys can be absent fr
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+R\fP \(en
-Restart the window manager (Dwm)
-.ITEM
 \f(CWMod+[\fP \(en
 Decrease screen brightness
 .ITEM
@@ -132,6 +129,9 @@ Unmount USB drives and/or Android phones
 .ITEM
 \f(CWMod+F11\fP \(en
 Spawns the webcam
+.ITEM
+\f(CWMod+F12\fP \(en
+Renew the window manager (Dwm)
 .LIST END
 .HEADING 3 "Window Layouts"
 .LIST
@@ -162,7 +162,7 @@ Previous layout
 Next layout
 .LIST END
 .PP
-Other layouts included but are not bound to anything yet are: fibonnaci, dwindle, deck, bstack, bstackhoriz, grid, nrowgrid, horizgrid, gaplessgrid, centeredmaster, and centeredfloatingmaster.
+Other layouts included but are not bound to anything yet are: fibonnaci, dwindle, deck, bstackhoriz, grid, nrowgrid, horizgrid, and centeredfloatingmaster.
 .HEADING 3 "Window Management"
 .LIST
 .SHIFT_LIST 10p
