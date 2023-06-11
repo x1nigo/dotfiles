@@ -36,7 +36,7 @@ bgadd() {
 }
 
 bgsel() {
-	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -p "Select Image:")"
+	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -p "Set as wallpaper:")"
 	[ -z $realfile ] && exit 1
 	ln -sf "$realfile" "$bglink"
 	bgmode
@@ -68,7 +68,7 @@ bgrand() {
 bgfold() {
 	case "$(file --mime-type -b "$bgloc")" in
 		inode/directory)
-			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -p "Select Image:")"
+			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -p "Set as wallpaper:")"
 			[ -z $realfile ] && exit 1
 			ln -sf "$realfile" "$bglink"
 			;;
