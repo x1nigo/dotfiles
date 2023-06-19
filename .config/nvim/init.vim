@@ -67,7 +67,7 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 " Restart dwmblocks automatically after compilation
         autocmd BufWritePost ~/.config/dwmblocks/blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
 " Run xrdb whenever Xdefaults or Xresources are updated.
-	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb !xrdb %
+	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
 " Colors and Theming
 " 0:black 1:red  2:green 3:yellow 4:blue 5:magenta 6:cyan 7:white
