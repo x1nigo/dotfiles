@@ -13,9 +13,6 @@ stat=$(cat $dir/status)
 [ $stat = "Discharging" ] && [ $bat -le 5 ] && warn="❗" && \
 	notify-send -u critical "⚠️ Battery level is dangerously low." "Charge your device ASAP."
 
-# Main function that replaces text with appropriate symbols
-printf "%s%s%s\n" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/Not charging/♻️/')" "$warn" "$(echo $bat | sed 's/$/%/')"
-
 # Notify when clicked via the right mouse button
 case $BUTTON in
         3) notify-send "🔋 Battery module:" "\[Displays battery status\]
@@ -26,3 +23,6 @@ case $BUTTON in
 ❗ low battery (please charge!)" ;;
         5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
 esac
+
+# Main function that replaces text with appropriate symbols
+printf "%s%s%s\n" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/Not charging/♻️/')" "$warn" "$(echo $bat | sed 's/$/%/')"
