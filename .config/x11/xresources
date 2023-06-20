@@ -8,7 +8,7 @@ st.borderpx: 2
 
 /* Set colors for dmenu: */
 dmenu.font: monospace-10
-dmenu.background: #1d2021
+dmenu.background: #282828
 dmenu.foreground: #ebdbb2
 dmenu.selbackground: #005577
 dmenu.selforeground: #ebdbb2
@@ -24,7 +24,7 @@ dwm.normbordercolor: #444444
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #ebdbb2
 dwm.selbordercolor: #800000
-dwm.selbgcolor: #10151b
+dwm.selbgcolor: #005577
 
 /* Set the background, foreground and cursor colors as below: */
 
