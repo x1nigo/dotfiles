@@ -64,8 +64,10 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
 " Remove any trailing whitespaces
 	autocmd BufWritePre * :%s/\s\+$//e
+" Recompile suckless programs when saving (Uncomment if you don't need this.)
+	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h !sudo make clean install
 " Restart dwmblocks automatically after compilation
-        autocmd BufWritePost ~/.config/dwmblocks/blocks.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
+        autocmd BufWritePost ~/.local/src/dwmblocks/config.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
