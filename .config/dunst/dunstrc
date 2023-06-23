@@ -6,30 +6,28 @@
     origin = top-right
     offset = 0x21
     indicate_hidden = yes
-    transparency = 0
+    transparency = 25
     horizontal_padding = 2
     sort = yes
     line_height = 0
     markup = full
     title = Dunst
     class = Dunst
-    frame_width = 1
-    frame_color = "#ebdbb2"
-    font = Monospace 11
+    font = Monospace 12
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
-    background = "#10151b"
+    background = "#1d2021"
     foreground = "#ebdbb2"
     timeout = 3
 
 [urgency_normal]
-    background = "#10151b"
+    background = "#458588"
     foreground = "#ebdbb2"
     timeout = 5
 
 [urgency_critical]
-    background = "#10151b"
+    background = "#1d2021"
     foreground = "#ebdbb2"
     frame_color = "#800000"
     timeout = 8
