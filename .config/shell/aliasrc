@@ -11,11 +11,16 @@ for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
 	alias $command="sudo $command"
 done; unset command
 
-# Verbose mode for particualr commands.
+# Verbose mode for particular commands.
 alias \
 	rm="rm -Iv" \
 	cp="cp -iv" \
 	mv="mv -iv"
+
+# For opening/closing encrypted drives.
+alias \
+	co="sudo cryptsetup open /dev/$1 $2" \
+	cl="sudo cryptsetup close $1"
 
 # Colorize your commands.
 alias \
@@ -37,7 +42,7 @@ alias \
 	b="bluetoothctl" \
 	hs="hugo server --noHTTPCache" \
 	s="systemctl" \
-  m="neomutt" \
+        m="neomutt" \
 	t="transmission-remote" \
 	bc="bc -ql" \
 	rsync="rsync -rtvzP" \
