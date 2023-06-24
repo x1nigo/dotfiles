@@ -53,6 +53,8 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	map <leader>c :w! \| !compiler "%" <enter>
 " Open the output of your file
 	map <leader>a :silent !alchemize "%" <enter>
+" Disables automatic commenting on newline:
+	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Change back to original colorscheme after leaving Goyo
 	autocmd User GoyoLeave set bg=light
