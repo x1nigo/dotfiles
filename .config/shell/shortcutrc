@@ -1,0 +1,12 @@
+#!/bin/sh
+alias sr="cd $HOME/.local/src && ls -A" \
+D="cd $HOME/dls && ls -A" \
+d="cd $HOME/dox && ls -A" \
+dt="cd $HOME/.local/share && ls -A" \
+sc="cd $HOME/.local/bin && ls -A" \
+db="cd $HOME/.local/bin/statusbar && ls -A" \
+cfx="$EDITOR $HOME/.config/x11/xresources" \
+cfa="$EDITOR $HOME/.config/shell/aliasrc" \
+cfs="$EDITOR $HOME/.config/shell/shortcutrc" \
+cfd="$EDITOR $HOME/.config/dunst/dunstrc" \
+cfz="$EDITOR $HOME/.config/zsh/.zshrc" \
