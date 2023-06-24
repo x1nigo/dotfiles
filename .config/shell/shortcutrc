@@ -1,5 +1,6 @@
 #!/bin/sh
 alias sr="cd $HOME/.local/src && ls -A" \
+h="cd $HOME" \
 D="cd $HOME/dls && ls -A" \
 d="cd $HOME/dox && ls -A" \
 dt="cd $HOME/.local/share && ls -A" \
