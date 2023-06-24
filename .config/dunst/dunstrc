@@ -13,7 +13,7 @@
     markup = full
     title = Dunst
     class = Dunst
-    font = Monospace 12
+    font = Monospace 11
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
