@@ -19,7 +19,7 @@ alias \
 
 # For opening/closing encrypted drives.
 alias \
-	co="sudo cryptsetup open /dev/$1 $2" \
+	co="sudo cryptsetup open $1 $2" \
 	cl="sudo cryptsetup close $1"
 
 # Colorize your commands.
