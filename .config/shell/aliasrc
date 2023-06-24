@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim"
+
+# Use $XINITRC variable if file exists.
+[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
+
+# These commands need not require sudo before them.
+for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
+	alias $command="sudo $command"
+done; unset command
+
+# Verbose mode for particualr commands.
+alias \
+	rm="rm -Iv" \
+	cp="cp -iv" \
+	mv="mv -iv"
+
+# Colorize your commands.
+alias \
+	ls="ls --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	egrep="egrep --color=auto" \
+	fgrep="fgrep --color=auto" \
+	ip="ip --color=auto" \
+	pacman="pacman --color always" \
+	diff="diff --color=auto" \
+	bat="bat --color=always --style=full"
+
+# Too lazy to type these.
+alias \
+	merge="xrdb -merge $HOME/.config/x11/xresources" \
+	lf="lfrun" \
+	p="pacman" \
+	sp="sudo pacman" \
+	b="bluetoothctl" \
+	hs="hugo server --noHTTPCache" \
+	s="systemctl" \
+  m="neomutt" \
+	t="transmission-remote" \
+	bc="bc -ql" \
+	rsync="rsync -rtvzP" \
+	yt="yt-dlp" \
+	yta="yt-dlp -x -f bestaudio/best" \
+	z="zathura"
