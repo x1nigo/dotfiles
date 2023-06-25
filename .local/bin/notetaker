@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Useful for quick notes on the spot.
+${TERMINAL:-st} -e $EDITOR ~/note-$(date +'%Y-%m-%d-%s')
