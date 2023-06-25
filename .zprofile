@@ -20,7 +20,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 
 # Other(s):
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch-config"
-export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc"
+export GTK2_RC_FILES="${XDG_CONFIG_HOME:-$HOME/.config}/gtk-2.0/gtkrc-2.0"
 export SCREENRC="${XDG_CONFIG_HOME:-$HOME/.config}/screen/screenrc"
 export LESSHISTFILE="-"
 export GNUPGHOME="${XDG_CONFIG_HOME:-$HOME/.config}/gnupg"
