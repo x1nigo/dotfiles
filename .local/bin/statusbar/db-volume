@@ -2,14 +2,14 @@
 
 case $BUTTON in
         1) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
-        3) notify-send "🔈 Volume module:" "\[Click to toggle mute\]
-📣 loudest
-🔊 high
-🔉 medium
-🔈 low
-🔇 muted speaker" ;;
+        3) notify-send "📢 Volume module" "Click to toggle speaker mute.
+- 📣 insane
+- 🔊 high
+- 🔉 medium
+- 🔈 low
+- 🔇 muted" ;;
 	4) setsid -f ${TERMINAL:-st} -e pulsemixer ;;
-        5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
+        5) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)

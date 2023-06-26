@@ -3,9 +3,9 @@
 mem=$(free | awk '/Mem:/ { print int($3 * 100 / $2) }') && icon="💾"
 
 case $BUTTON in
-	1) st -e htop ;;
-	3) notify-send "💾 Memory module:" "\[Click to run \`htop\` program\]" ;;
-	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
+	1) $TERMINAL -e htop ;;
+	3) notify-send "💾 Memory module" "Click to run \`htop\` program and see system processes." ;;
+	5) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 printf "%s%s%%\n" "$icon" "$mem"

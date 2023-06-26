@@ -5,12 +5,12 @@
 
 case $BUTTON in
 	1) setsid -f ${TERMINAL:-st} -e neomutt ;;
-	3) notify-send "📬 Mail module" "\[Shows unread mail\]
+	3) notify-send "📬 Mail module" "Shows unread mail.
 - Shows 🔃 if syncing mail
 - Left click opens neomutt
 - Shift+Right click syncs mail" ;;
 	4) setsid -f mw -Y ;;
-	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
+	5) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 # Indicate the number of unread mail.

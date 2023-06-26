@@ -15,13 +15,13 @@ stat=$(cat $dir/status)
 
 # Notify when clicked via the right mouse button
 case $BUTTON in
-        3) notify-send "🔋 Battery module:" "\[Displays battery status\]
-🔌 charging
-⚡ fully-charged
-♻️ stagnant
-🔋 discharging
-❗ low battery (please charge!)" ;;
-        5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
+        3) notify-send "⚡ Battery module" "Displays battery status.
+- 🔌 charging
+- ⚡ fully-charged
+- ♻️ stagnant
+- 🔋 discharging
+- ❗ low battery (please charge!)" ;;
+        5) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 # Main function that replaces text with appropriate symbols

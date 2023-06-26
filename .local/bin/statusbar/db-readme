@@ -2,8 +2,8 @@
 
 case $BUTTON in
 	1) groff -mom ${XDG_DATA_HOME:-$HOME/.local/share}/cios.mom -Tpdf | zathura - ;;
-	3) notify-send "❓ Readme module:" "\[Click to open the readme file.\]" ;;
-	5) st -e $EDITOR ${XDG_CONFIG_HOME:-$HOME/.config}/dwmblocks/blocks.h ;;
+	3) notify-send "❓ Readme module" "Click to open the readme file." ;;
+	5) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 printf "%s\n" "❓"
