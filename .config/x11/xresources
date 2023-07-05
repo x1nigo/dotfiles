@@ -1,5 +1,5 @@
 /* Transparency (0-1): */
-st.alpha: 0.9
+st.alpha: 0.8
 
 /* Set a default font and font size as below: */
 st.font: monospace-9
@@ -8,7 +8,7 @@ st.borderpx: 2
 
 /* Set colors for dmenu: */
 dmenu.font: monospace-10
-dmenu.background: #1d2021
+dmenu.background: #282828
 dmenu.foreground: #ebdbb2
 dmenu.selbackground: #005577
 dmenu.selforeground: #ebdbb2
@@ -19,12 +19,12 @@ dwm.gappih: 20
 dwm.gappiv: 10
 dwm.gappoh: 10
 dwm.gappov: 30
-dwm.normbgcolor: #0a0f14
-dwm.normbordercolor: #1d2021
+dwm.normbgcolor: #222222
+dwm.normbordercolor: #444444
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #ebdbb2
-dwm.selbordercolor: #800000
-dwm.selbgcolor: #1d2021
+dwm.selbordercolor: #005577
+dwm.selbgcolor: #005577
 
 /* Set the background, foreground and cursor colors as below: */
 
@@ -45,7 +45,7 @@ gruvbox:
 *.color13: #d3869b
 *.color14: #8ec07c
 *.color15: #ebdbb2
-*.background: #1d2021
+*.background: #282828
 *.foreground: #ebdbb2
 *.cursorColor: white
 
