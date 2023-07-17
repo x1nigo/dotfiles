@@ -4,7 +4,7 @@
     width = 370
     height = 1000
     origin = top-right
-    offset = 0x21
+    offset = 0x18
     indicate_hidden = yes
     transparency = 0
     sort = yes
@@ -12,8 +12,8 @@
     markup = full
     title = Dunst
     class = Dunst
-    frame_width = 0
-    font = Monospace 12
+    frame_width = 1
+    font = Monospace 10
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
