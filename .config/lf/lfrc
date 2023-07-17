@@ -1,5 +1,5 @@
 set cleaner ~/.config/lf/cleaner
-set previewer ~/.config/lf/preview
+set previewer ~/.config/lf/scope
 
 set shell sh
 map <tab> shell
