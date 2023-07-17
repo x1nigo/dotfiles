@@ -17,3 +17,4 @@ cfp="$EDITOR $HOME/.config/picom.conf" \
 cfn="$EDITOR $HOME/.config/newsboat/config" \
 cfnu="$EDITOR $HOME/.config/newsboat/urls" \
 cfv="$EDITOR $HOME/.config/nvim/init.vim" \
+cfb="$EDITOR $HOME/.local/share/bookmarks" \
