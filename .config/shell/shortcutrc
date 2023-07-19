@@ -1,6 +1,6 @@
 #!/bin/sh
 alias sr="cd $HOME/.local/src && ls -A" \
-h="cd $HOME" \
+h="cd $HOME && ls -A" \
 D="cd $HOME/dls && ls -A" \
 d="cd $HOME/dox && ls -A" \
 px="cd $HOME/pix && ls -A" \
