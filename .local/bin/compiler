@@ -11,6 +11,6 @@ case "$ext" in
         ms) groff -ms -tbl -T pdf "$file" > "$base".pdf ;;
 	mom) groff -mom "$file" -Tpdf > "$base".pdf ;;
         py) python "$file" ;;
-        tex) xelatex "$file" ;;
+        tex) pdflatex "$file" ;;
 	md|markdown) lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept -T pdf > "$base".pdf
 esac
