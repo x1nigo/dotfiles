@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Useful for quick notes on the spot.
-${TERMINAL:-st} -n termfloat -f "monospace:size=12" -g "98x38" -e $EDITOR ~/note-$(date +'%Y-%m-%d-%s')
+${TERMINAL:-st} -n termfloat -g "98x48" -e $EDITOR ~/note-$(date +'%Y-%m-%d-%s')
