@@ -15,6 +15,7 @@ case $ext in
         webp) sxiv "$file" ;;
         pdf) zathura "$file" ;;
         epub) zathura "$file" ;;
+	azw3) zathura "$file" ;;
         mp4) mpv "$file" ;;
         m4a) mpv "$file" ;;
         mkv) mpv "$file" ;;
