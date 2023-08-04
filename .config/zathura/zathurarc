@@ -1,6 +1,6 @@
 set selection-clipboard clipboard
 set recolor-lightcolor \#0a0f14
-set default-bg \#000
+set default-bg \#0a0f14
 set page-padding 1
 set highlight-color blue
 set highlight-fg black
