@@ -1,9 +1,10 @@
 #!/bin/sh
 alias sr="cd $HOME/.local/src && ls -A" \
 h="cd $HOME && ls -A" \
-D="cd $HOME/dls && ls -A" \
-d="cd $HOME/dox && ls -A" \
-px="cd $HOME/pix && ls -A" \
+D="cd $HOME/Downloads && ls -A" \
+d="cd $HOME/Documents && ls -A" \
+v="cd $HOME/Videos && ls -A" \
+px="cd $HOME/Pictures && ls -A" \
 dt="cd $HOME/.local/share && ls -A" \
 sc="cd $HOME/.local/bin && ls -A" \
 db="cd $HOME/.local/bin/statusbar && ls -A" \
