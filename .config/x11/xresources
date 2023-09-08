@@ -1,5 +1,5 @@
 /* Transparency (0-1): */
-st.alpha: 0.9
+st.alpha: 0.95
 
 /* Set a default font and font size as below: */
 st.font: monospace-10
@@ -15,15 +15,15 @@ dmenu.selforeground: #ebdbb2
 
 /* Set colors for dwm: */
 dwm.borderpx: 3
-dwm.gappih: 12
-dwm.gappiv: 16
-dwm.gappoh: 20
+dwm.gappih: 10
+dwm.gappiv: 10
+dwm.gappoh: 12
 dwm.gappov: 30
 dwm.normbgcolor: #0a0f14
 dwm.normbordercolor: #222222
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #ebdbb2
-dwm.selbordercolor: #500000
+dwm.selbordercolor: #700000
 dwm.selbgcolor: #121218
 
 /* Set the background, foreground and cursor colors as below: */
@@ -49,8 +49,8 @@ gruvbox:
 *.foreground: #ebdbb2
 *.cursorColor: white
 
-!! dune:
-!! *.color0: #0a0f14
+!! evening redness:
+!! *.color0: #1d2021
 !! *.color1: #d02828
 !! *.color2: #936c58
 !! *.color3: #f4921f
@@ -66,69 +66,6 @@ gruvbox:
 !! *.color13: #548486
 !! *.color14: #b1a299
 !! *.color15: #e8e2e2
-!! *.background: #0a0f14
+!! *.background: #1d2021
 !! *.foreground: #ebdbb2
 !! *.cursorColor: #c2ada1
-
-!! stoic:
-!! *.color0: #1b1f25
-!! *.color1: #c33027
-!! *.color2: #26a98b
-!! *.color3: #edb54b
-!! *.color4: #195465
-!! *.color5: #4e5165
-!! *.color6: #33859d
-!! *.color7: #98d1ce
-!! *.color8: #10151b
-!! *.color9: #d26939
-!! *.color10: #081f2d
-!! *.color11: #245361
-!! *.color12: #093748
-!! *.color13: #888ba5
-!! *.color14: #599caa
-!! *.color15: #d3ebe9
-!! *.background: #0a0f14
-!! *.foreground: #ebdbb2
-!! *.cursorColor: #195465
-
-!! dracula:
-!! *.color0: #44475a
-!! *.color1: #ff5555
-!! *.color2: #50fa7b
-!! *.color3: #ffb86c
-!! *.color4: #8be9fd
-!! *.color5: #bd93f9
-!! *.color6: #ff79c6
-!! *.color7: #94a3a5
-!! *.color8: #000000
-!! *.color9: #ff5555
-!! *.color10: #50fa7b
-!! *.color11: #ffb86c
-!! *.color12: #8be9fd
-!! *.color13: #bd93f9
-!! *.color14: #ff79c6
-!! *.color15: #ffffff
-!! *.background: #1b1f25
-!! *.foreground: #ffffff
-!! *.cursorColor: #ffffff
-
-!! flat:
-!! *.color0: #243342
-!! *.color1: #c54133
-!! *.color2: #27ae60
-!! *.color3: #edb20a
-!! *.color4: #2479d0
-!! *.color5: #7d3ea0
-!! *.color6: #1d8579
-!! *.color7: #c9cccd
-!! *.color8: #34495e
-!! *.color9: #e74c3c
-!! *.color10: #2ecc71
-!! *.color11: #f1c40f
-!! *.color12: #3498db
-!! *.color13: #9b59b6
-!! *.color14: #2aa198
-!! *.color15: #ecf0f1
-!! *.background: #0a0f14
-!! *.foreground: #ffffff
-!! *.cursorColor: #ffffff
