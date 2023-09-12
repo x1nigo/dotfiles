@@ -1,12 +1,11 @@
 #!/bin/sh
 
 # TODO: Find a way to add torrents as the user clicks upon the download link.
-# NOTE: Make sure the `stig` is installed on your system (AUR).
 # To add a torrent, open your terminal and type transmission-remote -a "<insert link>".
 
 case $BUTTON in
-	1) setsid -f ${TERMINAL:-st} -e stig ;;
-        3) notify-send "🌑🌱 Torrent module" "Click to open \`stig\` program.
+	1) setsid -f ${TERMINAL:-st} -e tremc ;;
+        3) notify-send "🌑🌱 Torrent module" "Click to see all your torrents.
 - 🛑 paused
 - 🕰️ idle
 - ⬆️ uploading

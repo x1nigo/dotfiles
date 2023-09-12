@@ -9,9 +9,9 @@ stat=$(cat $dir/status)
 
 # Provide a warning symbol for low power and proper notifications for promptness
 [ $stat = "Discharging" ] && [ $bat -le 10 ] && [ $bat -gt 5 ] && warn="❗" && \
-	notify-send "⚠️ Battery level is low." "Please charge your device soon."
+	notify-send "🪫 Battery level is low." "Please charge your device soon."
 [ $stat = "Discharging" ] && [ $bat -le 5 ] && warn="❗" && \
-	notify-send -u critical "⚠️ Battery level is dangerously low." "Charge your device ASAP."
+	notify-send -u critical "🪫 Battery level is dangerously low." "Charge your device ASAP."
 
 # Notify when clicked via the right mouse button
 case $BUTTON in
