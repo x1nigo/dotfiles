@@ -17,7 +17,7 @@ dmenu.selforeground: #ebdbb2
 dwm.borderpx: 3
 dwm.gappih: 10
 dwm.gappiv: 10
-dwm.gappoh: 12
+dwm.gappoh: 10
 dwm.gappov: 30
 dwm.normbgcolor: #0a0f14
 dwm.normbordercolor: #222222
@@ -29,7 +29,7 @@ dwm.selbgcolor: #121218
 /* Set the background, foreground and cursor colors as below: */
 
 gruvbox:
-*.color0: #1d2021
+*.color0: #282828
 *.color1: #cc241d
 *.color2: #98971a
 *.color3: #d79921
@@ -47,25 +47,4 @@ gruvbox:
 *.color15: #ebdbb2
 *.background: #1d2021
 *.foreground: #ebdbb2
-*.cursorColor: white
-
-!! evening redness:
-!! *.color0: #1d2021
-!! *.color1: #d02828
-!! *.color2: #936c58
-!! *.color3: #f4921f
-!! *.color4: #cb9a66
-!! *.color5: #458588
-!! *.color6: #c2ada1
-!! *.color7: #cec9c9
-!! *.color8: #272b2f
-!! *.color9: #bc3e3e
-!! *.color10: #8e7162
-!! *.color11: #d78d37
-!! *.color12: #b8936c
-!! *.color13: #548486
-!! *.color14: #b1a299
-!! *.color15: #e8e2e2
-!! *.background: #1d2021
-!! *.foreground: #ebdbb2
-!! *.cursorColor: #c2ada1
+*.cursorColor: #458588
