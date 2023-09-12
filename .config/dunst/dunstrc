@@ -6,13 +6,14 @@
     origin = top-right
     offset = 0x18
     indicate_hidden = yes
-    transparency = 0
+    transparency = 20
     sort = yes
     line_height = 0
     markup = full
     title = Dunst
     class = Dunst
-    frame_width = 1
+    frame_width = 2
+    frame_color = "#005577"
     font = Monospace 10
     format = "<b>%s</b>\n%b"
 
