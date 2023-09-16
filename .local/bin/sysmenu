@@ -1,8 +1,8 @@
-#!/bin/sh
+#! /bin/sh
 
 menu=$(printf "%s\n" "🔒 lock screen" "💻 power off" "🔃 reboot" "♻️ renew wm" "🚪 leave" "💤 sleep" "📺 display off" | dmenu)
-
 wm="dwm"
+
 if ls -l /sbin/init | grep "systemd"; then
 	cmd="systemctl"
 else
@@ -10,12 +10,12 @@ else
 fi
 
 case $menu in
-        💻*) $cmd poweroff ;;
-	♻️*) kill -HUP $(pidof -s dwm) ;;
-        🔃*) $cmd reboot ;;
-        🚪*) killall $wm ;;
-        💤*) slock $cmd suspend -i && $(notify-send "💡 Computer session recovered from sleep." "Welcome back, $USER. Enjoy your stay.") ;;
         🔒*) slock && $(notify-send "🔓 Computer session unlocked." "Welcome back, $USER. Enjoy your stay.") ;;
+        💻*) $cmd poweroff ;;
+        🔃*) $cmd reboot ;;
+	♻️*) kill -HUP $(pidof -s $wm) ;;
+	🚪*) kill $(pidof -x $wm) ;;
+        💤*) slock $cmd suspend -i && $(notify-send "💡 Computer session recovered from sleep." "Welcome back, $USER. Enjoy your stay.") ;;
 	📺*) xset dpms force off ;;
-	*) exit 1 ;;
+	*) exit ;;
 esac
