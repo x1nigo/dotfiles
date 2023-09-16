@@ -1,5 +1,5 @@
 /* Transparency (0-1): */
-st.alpha: 0.95
+st.alpha: 0.8
 
 /* Set a default font and font size as below: */
 *.font: monospace-10
@@ -9,7 +9,7 @@ st.termname: st-256color
 st.borderpx: 2
 
 /* Set colors for dmenu: */
-dmenu.background: #1d2021
+dmenu.background: #0a0f14
 dmenu.foreground: #ebdbb2
 dmenu.selbackground: #005577
 dmenu.selforeground: #ebdbb2
@@ -30,7 +30,7 @@ dwm.selbgcolor: #121218
 /* Set the background, foreground and cursor colors as below: */
 
 
-*.background: #1d2021
+*.background: #0a0f14
 *.foreground: #ebdbb2
 *.cursorColor: #458588
 
