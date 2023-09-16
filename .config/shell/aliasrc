@@ -39,6 +39,10 @@ alias \
 	lf="lfrun" \
 	p="pacman" \
 	sp="sudo pacman" \
+	xi="xbps-install" \
+	sxi="sudo xbps-install" \
+	sxr="sudo xbps-remove" \
+	xq="xbps-query -Rs" \
 	b="bluetoothctl" \
 	hs="hugo server --noHTTPCache" \
 	s="systemctl" \
