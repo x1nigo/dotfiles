@@ -15,7 +15,7 @@ dmenu.selbackground: #005577
 dmenu.selforeground: #ebdbb2
 
 /* Set colors for dwm: */
-dwm.borderpx: 3
+dwm.borderpx: 0
 dwm.gappih: 10
 dwm.gappiv: 10
 dwm.gappoh: 10
