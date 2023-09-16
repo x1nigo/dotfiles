@@ -1,4 +1,5 @@
 " Install the junegunn/vim plugin to manage plugins
+
 if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
 	echo "Downloading junegunn/vim-plug to manage plugins..."
 	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
@@ -26,6 +27,7 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	colorscheme default
 	set bg=light
 	syntax on
+	set cursorline
 
 " Some basics
 	set title
@@ -69,7 +71,7 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
 	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h !sudo make clean install
 " Restart dwmblocks automatically after compilation
-        autocmd BufWritePost ~/.local/src/dwmblocks/config.h !sudo make clean install && {killall -q dwmblocks; setsid -f dwmblocks}
+        autocmd BufWritePost ~/.local/src/dwmblocks/config.h !sudo make clean install && {kill $(pidof -x dwmblocks); setsid -f dwmblocks}
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
@@ -78,6 +80,9 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 hi Title		ctermfg=5	ctermbg=none	cterm=bold
 hi Comment		ctermfg=4	ctermbg=none	cterm=none
 hi Constant		ctermfg=1	ctermbg=none	cterm=none
+hi CursorLineNr		ctermfg=none	ctermbg=8	cterm=none
+hi CursorLine		ctermfg=none	ctermbg=8	cterm=none
+hi LineNr		ctermfg=0	ctermbg=none	cterm=none
 hi Special		ctermfg=4	ctermbg=none	cterm=none
 hi Identifier		ctermfg=6	ctermbg=none	cterm=none
 hi PreProc		ctermfg=5	ctermbg=none	cterm=none
