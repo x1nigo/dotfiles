@@ -2,12 +2,13 @@
 st.alpha: 0.95
 
 /* Set a default font and font size as below: */
-st.font: monospace-10
+*.font: monospace-10
+xterm*faceName: Monospace
+xterm*faceSize: 10
 st.termname: st-256color
 st.borderpx: 2
 
 /* Set colors for dmenu: */
-dmenu.font: monospace-10
 dmenu.background: #1d2021
 dmenu.foreground: #ebdbb2
 dmenu.selbackground: #005577
@@ -28,6 +29,11 @@ dwm.selbgcolor: #121218
 
 /* Set the background, foreground and cursor colors as below: */
 
+
+*.background: #1d2021
+*.foreground: #ebdbb2
+*.cursorColor: #458588
+
 gruvbox:
 *.color0: #282828
 *.color1: #cc241d
@@ -45,6 +51,3 @@ gruvbox:
 *.color13: #d3869b
 *.color14: #8ec07c
 *.color15: #ebdbb2
-*.background: #1d2021
-*.foreground: #ebdbb2
-*.cursorColor: #458588
