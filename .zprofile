@@ -6,7 +6,7 @@ export PATH="${PATH}:$(find $HOME/.local/bin -type d -printf ':%h/%f')"
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="librewolf"
+export BROWSER="firefox"
 export VISUAL="nvim"
 export MANPAGER="less -R --use-color -Dd+g -Du+b"
 
@@ -29,6 +29,7 @@ export MBSYNCRC="${XDG_CONFIG_HOME:-$HOME/.config}/mbsync/config"
 export PASSWORD_STORE_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/password-store"
 export XAUTHORITY="${XDG_CONFIG_HOME:-$HOME/.config}/x11/Xauthority"
 export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc"
+export PIPEWIRE_RUNTIME_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/pipewire"
 
 # Start the graphical user environment:
 startx $XINITRC
