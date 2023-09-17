@@ -4,7 +4,7 @@
 xrandr --dpi 96
 setbg &
 
-autostart="mpd dunst unclutter picom dwmblocks pipewire transmission-daemon"
+autostart="mpd dunst picom dwmblocks pipewire transmission-daemon"
 
 for program in $autostart; do
         pidof -s "$program" || "$program" &
