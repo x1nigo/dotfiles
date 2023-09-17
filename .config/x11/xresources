@@ -19,12 +19,14 @@ dwm.borderpx: 2
 dwm.gappih: 10
 dwm.gappiv: 10
 dwm.gappoh: 10
-dwm.gappov: 30
+dwm.gappov: 10
+dwm.horizpadbar: 10
+dwm.vertpadbar: 2
 dwm.normbgcolor: #0a0f14
 dwm.normbordercolor: #222222
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #0a0f14
-dwm.selbordercolor: #700000
+dwm.selbordercolor: #008080
 dwm.selbgcolor: #008080
 
 /* Set the background, foreground and cursor colors as below: */
