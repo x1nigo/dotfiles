@@ -72,7 +72,9 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h !sudo make clean install
 " Restart dwmblocks automatically after compilation
         autocmd BufWritePost ~/.local/src/dwmblocks/config.h !sudo make clean install && {kill $(pidof -x dwmblocks); setsid -f dwmblocks}
-" Run xrdb whenever Xdefaults or Xresources are updated.
+" Restart dunst after its config file is updated
+	autocmd BufWritePost ~/.config/dunst/dunstrc !{kill $(pidof -x dunst); setsid -f dunst}
+" Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
 " Colors and Theming
