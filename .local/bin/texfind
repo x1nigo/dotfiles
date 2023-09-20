@@ -2,7 +2,7 @@
 
 # This script should be able to find every single .pdf or .epub file under your home directory.
 
-file="$(find $HOME/ | grep -Ei '\.pdf$|\.epub$' | dmenu -l 28)"
+file="$(find $HOME/ | grep -Ei '\.pdf$|\.epub$' | dmenu -l 28 -p 'Find pdf:')"
 [ -z "$file" ] && exit 1
 
 st -e zathura "$file"
