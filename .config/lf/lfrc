@@ -38,10 +38,10 @@ cmd mkdir ${{
 	notify-send "📂 Directory created." "\`$(readlink -f "$ans")\`" && clear
 }}
 
-cmd setwp ${{
+cmd setbg ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
-	setwp -f "$f" && clear
+	setbg -f "$f" && clear
 }}
 
 cmd touch ${{
@@ -87,4 +87,4 @@ map M mkdir
 map N touch
 map U unzip
 map S shred
-map W setwp
+map W setbg
