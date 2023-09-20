@@ -16,9 +16,9 @@ dmenu.selforeground: #ff8700
 
 /* Set colors for dwm: */
 dwm.borderpx: 3
-dwm.gappih: 10
+dwm.gappih: 20
 dwm.gappiv: 10
-dwm.gappoh: 12
+dwm.gappoh: 10
 dwm.gappov: 30
 dwm.horizpadbar: 2
 dwm.vertpadbar: 2
