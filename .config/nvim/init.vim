@@ -19,6 +19,7 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	call plug#begin()
 	Plug 'junegunn/goyo.vim'
 	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
 	Plug 'VebbNix/lf-vim'
 	Plug 'ap/vim-css-color'
 	call plug#end()
@@ -28,6 +29,7 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	set bg=light
 	syntax on
 	set cursorline
+	let g:airline_theme='base16_gruvbox_dark_hard'
 
 " Some basics
 	set title
