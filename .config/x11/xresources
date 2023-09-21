@@ -36,11 +36,11 @@ dwm.selbgcolor: #1d2021
 *.foreground: #ebdbb2
 *.cursorColor: #008080
 
-gruvbox:
+gruvbox-2.0:
 *.color0: #282828
 *.color1: #cc241d
 *.color2: #98971a
-*.color3: #d79921
+*.color3: #ff8700
 *.color4: #458588
 *.color5: #b16286
 *.color6: #689d6a
