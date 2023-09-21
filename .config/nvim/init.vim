@@ -84,8 +84,8 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 hi Title		ctermfg=5	ctermbg=none	cterm=bold
 hi Comment		ctermfg=4	ctermbg=none	cterm=none
 hi Constant		ctermfg=1	ctermbg=none	cterm=none
-hi CursorLineNr		ctermfg=none	ctermbg=8	cterm=none
-hi CursorLine		ctermfg=none	ctermbg=8	cterm=none
+hi CursorLineNr		ctermfg=3	ctermbg=8	cterm=none
+hi CursorLine		ctermfg=none	ctermbg=0	cterm=none
 hi LineNr		ctermfg=0	ctermbg=none	cterm=none
 hi Special		ctermfg=4	ctermbg=none	cterm=none
 hi Identifier		ctermfg=6	ctermbg=none	cterm=none
@@ -93,7 +93,7 @@ hi PreProc		ctermfg=5	ctermbg=none	cterm=none
 hi String		ctermfg=1	ctermbg=none	cterm=none
 hi Number		ctermfg=1	ctermbg=none	cterm=none
 hi Function		ctermfg=6	ctermbg=none	cterm=none
-hi Visual		ctermfg=3	ctermbg=0	cterm=bold
+hi Visual		ctermfg=3	ctermbg=0	cterm=none
 hi SpellBad		ctermfg=1	ctermbg=none	cterm=italic,underline
 hi SpellCap		ctermfg=4	ctermbg=none	cterm=italic,underline
 hi SpellRare		ctermfg=6	ctermbg=none	cterm=italic,underline
