@@ -22,7 +22,7 @@ dwm.gappoh: 10
 dwm.gappov: 30
 dwm.horizpadbar: 2
 dwm.vertpadbar: 2
-dwm.normbgcolor: #0a0f14
+dwm.normbgcolor: #1d2021
 dwm.normbordercolor: #222222
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #ebdbb2
