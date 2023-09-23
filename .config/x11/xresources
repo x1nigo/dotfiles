@@ -27,14 +27,14 @@ dwm.normbordercolor: #222222
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #ebdbb2
 dwm.selbordercolor: #002a2c
-dwm.selbgcolor: #002b2c
+dwm.selbgcolor: #002a2c
 
 /* Set the background, foreground and cursor colors as below: */
 
 
 *.background: #1d2021
 *.foreground: #ebdbb2
-*.cursorColor: #008b8b
+*.cursorColor: #008080
 
 gruvbox-2.0:
 *.color0: #282828
