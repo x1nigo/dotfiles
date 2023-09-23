@@ -11,7 +11,7 @@ st.borderpx: 2
 /* Set colors for dmenu: */
 dmenu.background: #1d2021
 dmenu.foreground: #ebdbb2
-dmenu.selbackground: #005577
+dmenu.selbackground: #002a2c
 dmenu.selforeground: #ebdbb2
 
 /* Set colors for dwm: */
@@ -26,15 +26,15 @@ dwm.normbgcolor: #1d2021
 dwm.normbordercolor: #222222
 dwm.normfgcolor: #ebdbb2
 dwm.selfgcolor: #ebdbb2
-dwm.selbordercolor: #700000
-dwm.selbgcolor: #005577
+dwm.selbordercolor: #002a2c
+dwm.selbgcolor: #002b2c
 
 /* Set the background, foreground and cursor colors as below: */
 
 
 *.background: #1d2021
 *.foreground: #ebdbb2
-*.cursorColor: #008080
+*.cursorColor: #008b8b
 
 gruvbox-2.0:
 *.color0: #282828
