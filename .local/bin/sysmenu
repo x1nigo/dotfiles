@@ -1,13 +1,12 @@
 #! /bin/sh
 
-menu=$(printf "%s\n" "🔒 lock screen" "💻 power off" "🔃 reboot" "♻️ renew wm" "🚪 leave" "💤 sleep" "📺 display off" | dmenu -l 10 -p 'System action:')
+menu=$(printf "%s\n" "🔒 lock screen" "💻 power off" "🔃 reboot" "♻️ renew wm" "🚪 leave" "💤 sleep" "📺 display off" | dmenu -p 'System action:')
 wm="dwm"
 
-if ls -l /sbin/init | grep "systemd"; then
-	cmd="systemctl"
-else
-	cmd="loginctl"
-fi
+case "$(readlink -f /sbin/init)" in
+	*systemd*) cmd="systemctl" ;;
+	*) cmd="loginctl" ;;
+esac
 
 case $menu in
         🔒*) slock && $(notify-send "🔓 Computer session unlocked." "Welcome back, $USER. Enjoy your stay.") ;;

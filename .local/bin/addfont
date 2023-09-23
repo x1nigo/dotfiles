@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# This script is meant to be run without parameters.
+# The current directory will be used.
+
+truetype=$(ls $(pwd) | grep -i "\.ttf")
+opentype=$(ls $(pwd) | grep -i "\.otf")
+ttfdirectory="/usr/share/fonts/TTF"
+otfdirectory="/usr/share/fonts/OTF"
+
+error() {
+	printf "%s\n" "$1" >&2
+	exit 1
+}
+
+[ -z $truetype ] && [ -z $opentype ] && error "No fonts found in current directory."
+
+# Add fonts for the TrueType directory
+addtruetype() {
+	! [ -d "$ttfdirectory" ] && mkdir -p "$ttfdirectory"
+	for font1 in $truetype; do
+		sudo cp -v "$font1" "$ttfdirectory"
+	done
+}
+
+# Add fonts for the OpenType directory
+addopentype() {
+	! [ -d "$otfdirectory" ] && mkdir -p "$otfdirectory"
+	for font2 in $opentype; do
+		sudo cp -v "$font2" "$otfdirectory"
+	done
+}
+
+! [ -z $truetype ] && addtruetype
+! [ -z $opentype ] && addopentype
+
+echo "Added fonts to your system!"
