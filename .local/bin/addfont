@@ -1,7 +1,8 @@
 #!/bin/sh
 
-# This script is meant to be run without parameters.
-# The current directory will be used.
+# Things to note:
+# 	- This script is meant to be run without parameters.
+# 	- The current directory will be used.
 
 truetype=$(ls $(pwd) | grep -i "\.ttf")
 opentype=$(ls $(pwd) | grep -i "\.otf")
@@ -13,10 +14,17 @@ error() {
 	exit 1
 }
 
-[ -z $truetype ] && [ -z $opentype ] && error "No fonts found in current directory."
+success() {
+	printf "%s\n" "$1" >&2
+}
+
+[ -z "$truetype" ] && [ -z "$opentype" ] && error "No fonts found in current directory."
 
 # Add fonts for the TrueType directory
 addtruetype() {
+	# This method of IFS is POSIX compliant.
+	IFS='
+	'
 	! [ -d "$ttfdirectory" ] && mkdir -p "$ttfdirectory"
 	for font1 in $truetype; do
 		sudo cp -v "$font1" "$ttfdirectory"
@@ -25,13 +33,13 @@ addtruetype() {
 
 # Add fonts for the OpenType directory
 addopentype() {
+	IFS='
+	'
 	! [ -d "$otfdirectory" ] && mkdir -p "$otfdirectory"
 	for font2 in $opentype; do
 		sudo cp -v "$font2" "$otfdirectory"
 	done
 }
 
-! [ -z $truetype ] && addtruetype
-! [ -z $opentype ] && addopentype
-
-echo "Added fonts to your system!"
+! [ -z "$truetype" ] && addtruetype && success "Added TTF font/s to your system!"
+! [ -z "$opentype" ] && addopentype && success "Added OTF font/s to your system!"
