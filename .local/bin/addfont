@@ -14,10 +14,6 @@ error() {
 	exit 1
 }
 
-success() {
-	printf "%s\n" "$1" >&2
-}
-
 [ -z "$truetype" ] && [ -z "$opentype" ] && error "No fonts found in current directory."
 
 # Add fonts for the TrueType directory
@@ -41,5 +37,5 @@ addopentype() {
 	done
 }
 
-! [ -z "$truetype" ] && addtruetype && success "Added TTF font/s to your system!"
-! [ -z "$opentype" ] && addopentype && success "Added OTF font/s to your system!"
+! [ -z "$truetype" ] && addtruetype && printf "%s\n" "Added TTF font/s to your system!"
+! [ -z "$opentype" ] && addopentype && printf "%s\n" "Added OTF font/s to your system!"
