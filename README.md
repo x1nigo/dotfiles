@@ -10,6 +10,7 @@ These are my personal dotfiles, which include scripts to my other repositories.
 - `mpv` - video/audio player
 - `ncmpcpp` - music player daemon
 - `newsboat` - feed reader for text terminals
+- `pipewire` - volume/mic audio program
 
 If you don't want to use `neovim` and just want the regular `vim`, you can
 just copy init.vim from `.config/nvim` and replace it with either
