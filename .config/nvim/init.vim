@@ -29,7 +29,7 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	set bg=light
 	syntax on
 	set cursorline
-	let g:airline_theme='base16_gruvbox_dark_hard'
+	let g:airline_theme='raven'
 
 " Some basics
 	set title
@@ -43,9 +43,8 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	set encoding=utf-8
 	set linebreak
 	set wrap
-	set number relativenumber
 	set noshowcmd
-	set conceallevel=2
+	set number relativenumber
 
 " Set Map leader
 	let mapleader = ","
@@ -85,7 +84,7 @@ hi Title		ctermfg=5	ctermbg=none	cterm=bold
 hi Comment		ctermfg=4	ctermbg=none	cterm=none
 hi Constant		ctermfg=1	ctermbg=none	cterm=none
 hi CursorLineNr		ctermfg=3	ctermbg=8	cterm=none
-hi CursorLine		ctermfg=none	ctermbg=0	cterm=none
+hi CursorLine		ctermfg=none	ctermbg=none	cterm=none
 hi LineNr		ctermfg=0	ctermbg=none	cterm=none
 hi Special		ctermfg=4	ctermbg=none	cterm=none
 hi Identifier		ctermfg=6	ctermbg=none	cterm=none
