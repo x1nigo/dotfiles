@@ -11,7 +11,7 @@ esac
 
 mic=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
 
-[ "$mic" != "${mic%\[MUTED\]}" ] && exit 0
+[ "$mic" != "${mic%\[MUTED\]}" ] && exit
 
 mic="${mic#Volume: }"
 
@@ -26,7 +26,7 @@ mic="$(printf "%.0f" "$(split "$mic" ".")")"
 
 case 1 in
 	$((mic >= 1 )) ) icon="🎙️" ;;
-	* ) exit 0 ;;
+	* ) echo "🤫" && exit ;;
 esac
 
 echo "$icon$mic%"
