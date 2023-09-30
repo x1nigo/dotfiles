@@ -1,4 +1,4 @@
-.TITLE "\*S+[10]A Basic Guide to CIOS!\*S[0]"
+.TITLE "\*S+[10]A List of Keybindings\*S[0]"
 .AUTHOR	"\*S+[4]Chris Inigo\*S[0]"
 .DOCTYPE DEFAULT
 .COPYSTYLE FINAL
@@ -6,266 +6,218 @@
 .PAPER LETTER
 .FAMILY T
 .START
-.HEADING 1 "Welcome!"
+.HEADING 1 "A Heads Up"
 .PP
-In this typewritten document, you will find various information concerning the system that you are using, its goals, and a list of key-bindings to help get you started! Also, if this page is too bright for you, try pressing \f(CWControl+r\fP and see what happens.
+This document uses vim-like keybindings. To scroll up or down, use the j and k keys. Press shift alongside them to scroll by page. Hit ctrl-r to use dark mode.
 
-To navigate around the file, use the \f(CWj and k\fP keys to go up and down \(en hold down \f(CWShift\fP to do so faster. Alternatively, you can just press \f(CWSpace\fP to quickly go through pages. Use \f(CWg and G\fP to navigate to the top or bottom of the document.
-.HEADING 2 "Principles"
-.LIST
-.SHIFT_LIST 10p
-.ITEM
-\fBMinimalism\fP \(en
-Spend as little resources as necessary by implementing programs that are light-weight or those that already come in the base system.
-.ITEM
-\fBExtensibility\fP \(en
-Instead of having big and bloated programs doing multiple things at once, instead, it's better to have small programs all doing different things in connection with each other.
-.ITEM
-\fBSpeed\fP \(en
-Due to the previous two (2) principles, it allows this system to work on lower requirements and thus, speeds up everything else.
-.LIST END
-.HEADING 2 "Main Programs"
-Here are the main programs that \fBCIOS\fP will be using:
-.LIST
-.SHIFT_LIST 10p
-.ITEM
-\fBDwm\fP \(en
-This is the window manager as well as the main driver for key-bindings.
-.ITEM
-\fBSt\fP \(en
-Terminal emulator
-.ITEM
-\fBDmenu\fP \(en
-Program launcher
-.ITEM
-\fBDwmblocks\fP \(en
-The Status Bar
-.LIST OFF
-.HEADING 2 "The Status Bar"
-.PP
-You'll quickly notice that when you boot up into your computer, there are no folders displayed in the Desktop, but merely a bar on top that has a bunch of information on it.
+The Mod key refers to the "Windows Key", or its equivalent in MacOS.
 
-This is part of \fBDwm\fP, but the organization of modules on the right side is governed by \fBDwmblocks\fP\(enusing data gathered from \f(CW~/.local/bin/statusbar\fP.
-.HEADING 2 "Key-bindings"
-The \f(CWSuper\fP or \f(CWMod\fP keys both refer to the "Windows Key", or its equivalent in MacOS computers. As for \f(CWReturn\fP, it's just the \f(CWEnter\fP key.
-
-Also, take note of your machine's functionality on \f(CWfunction keys\fP. If some key-bindings don't work as you expect them to, you might want to turn on your \f(CWFnLock\fP or press the \f(CWfunction key\fP before you press a corresponding number.
+Also, take note of your machine's functionality on function keys. If some key-bindings don't work as you expect them to, you might want to turn on your FnLock or press the function key before you press a corresponding number.
 .HEADING 3 "My Caps Lock key isn't working?"
-I've decided to disable the \f(CWCaps Lock\fP key and have instead remapped it to serve as a backup \f(CWSuper/Mod\fP key. If pressed only once, it acts as an \f(CWEscape\fP key. It would be better to have it accomplish more useful functions considering that nobody really uses it (as far as I know).
-
-Plus, it's located in a more comfortable place than the "Windows Key".
-It doesn't work well with the \f(CWfunction key\fP however.
+I've decided to disable the Caps Lock key and have instead remapped it to serve as a backup Super/Mod key. If pressed only once, it acts as an Escape key. It would be better to have it accomplish more useful functions considering that nobody really uses it (as far as I know).
 
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+Enter\fP \(en
-Opens up the terminal (in this case, it is \f(CWst\fP)
+Mod+Enter \(en
+Opens up the terminal (in this case, it is st)
 .ITEM
-\f(CWMod+Shift+Enter\fP \(en
+Mod+Shift+Enter \(en
 Opens up the terminal (in floating window version)
 .ITEM
-\f(CWMod+Backspace\fP \(en
+Mod+Backspace \(en
 Display the system menu (shutdown, logout, etc.)
 .ITEM
-\f(CWMod+d\fP \(en
+Mod+d \(en
 Spawn dmenu
 .ITEM
-\f(CWMod+q\fP \(en
+Mod+q \(en
 Closes a focused window
 .ITEM
-\f(CWMod+'\fP \(en
+Mod+' \(en
 Spawns a terminal-based calculator
 .ITEM
-\f(CWMod+p\fP \(en
-Search and open up any .pdf file under your \f(CWHome\fP directory
+Mod+p \(en
+Search and open up any .pdf file under your Home directory
 .ITEM
-\f(CWPrintScreen\fP \(en
+PrintScreen \(en
 Print screen (click and drag; or just click a window)
 .ITEM
-\f(CWMod+x\fP \(en
-Select a wallpaper from \f(CW~/.local/share/backgrounds\fP, otherwise, you can use the \f(CWsetwp\fP command (see `\f(CWsetwp -h\fP')
+Mod+x \(en
+Select a wallpaper from ~/.local/share/backgrounds, otherwise, you can use the setbg command (see `setbg -h')
 .ITEM
-\f(CWMod+a\fP \(en
+Mod+a \(en
 Add a master window
 .ITEM
-\f(CWMod+s\fP \(en
+Mod+s \(en
 Subtract a master window
 .LIST END
 .HEADING 3 "System"
 I've also made alternative keys for brightness, since such keys can be absent from other types of keyboards.
+
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+[\fP \(en
+Mod+[ \(en
 Decrease screen brightness
 .ITEM
-\f(CWMod+]\fP \(en
+Mod+] \(en
 Increase screen brightness
 .ITEM
-\f(CWMod+F1\fP \(en
+Mod+F1 \(en
 Read this document
 .ITEM
-\f(CWMod+F2\fP \(en
+Mod+F2 \(en
 Change default font (through font-wizard)
 .ITEM
-\f(CWMod+F3\fP \(en
-Open \f(CWpulsemixer\fP, where you can manage your audio
+Mod+F3 \(en
+Open pulsemixer, where you can manage your audio
 .ITEM
-\f(CWMod+F4\fP \(en
+Mod+F4 \(en
 Connect to HDMI cable for another screen
 .ITEM
-\f(CWMod+F5\fP \(en
-Connect to the internet via \f(CWnmtui\fP
+Mod+F5 \(en
+Connect to the internet via nmtui
 .ITEM
-\f(CWMod+F6\fP \(en
+Mod+F6 \(en
 Record your screen and/or webcam
 .ITEM
-\f(CWMod+F9\fP \(en
+Mod+F9 \(en
 Mount USB drives and/or Android phones
 .ITEM
-\f(CWMod+F10\fP \(en
+Mod+F10 \(en
 Unmount USB drives and/or Android phones
 .ITEM
-\f(CWMod+F11\fP \(en
+Mod+F11 \(en
 Spawns the webcam
 .ITEM
-\f(CWMod+F12\fP \(en
+Mod+F12 \(en
 Renew the window manager (Dwm)
 .LIST END
 .HEADING 3 "Window Layouts"
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+t\fP \(en
+Mod+t \(en
 Master and Stack layout
 .ITEM
-\f(CWMod+T\fP \(en
+Mod+T \(en
 Bstack layout
 .ITEM
-\f(CWMod+f\fP \(en
+Mod+f \(en
 Monocle layout
 .ITEM
-\f(CWMod+F\fP \(en
+Mod+F \(en
 Enter and exit Fullscreen mode
 .ITEM
-\f(CWMod+y\fP \(en
+Mod+y \(en
 Gapless Grid layout
 .ITEM
-\f(CWMod+Y\fP \(en
+Mod+Y \(en
 Centered Master layout
 .ITEM
-\f(CWMod+,\fP \(en
+Mod+, \(en
 Previous layout
 .ITEM
-\f(CWMod+.\fP \(en
+Mod+. \(en
 Next layout
 .LIST END
+
 .PP
 Other layouts included but are not bound to anything yet are: fibonnaci, dwindle, deck, bstackhoriz, grid, nrowgrid, horizgrid, and centeredfloatingmaster.
 .HEADING 3 "Window Management"
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+(j,k)\fP \(en
+Mod+(j,k) \(en
 Focus on the previous/next window in the stack
 .ITEM
-\f(CWMod+(J,K)\fP \(en
+Mod+(J,K) \(en
 Move the focused window up/down the stack
 .ITEM
-\f(CWMod+Leftmouse (click & drag)\fP \(en
+Mod+Leftmouse (click & drag) \(en
 Move a window in floating mode
 .ITEM
-\f(CWMod+Rightmouse (click & drag)\fP \(en
+Mod+Rightmouse (click & drag) \(en
 Resize a window
 .ITEM
-\f(CWMod+g\fP \(en
+Mod+g \(en
 Toggle gaps/no-gaps
 .ITEM
-\f(CWMod+G\fP \(en
+Mod+G \(en
 Revert to original gaps settings
 .ITEM
-\f(CWMod+Control+j\fP \(en
+Mod+Control+j \(en
 Decrease gaps
 .ITEM
-\f(CWMod+Control+k\fP \(en
+Mod+Control+k \(en
 Increase gaps
 .LIST END
 .HEADING 3 "Programs"
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+w\fP \(en
+Mod+w \(en
 Browser (LibreWolf by default; fork of Firefox)
 .ITEM
-\f(CWMod+e\fP \(en
+Mod+e \(en
 Email client (neomutt)
 .ITEM
-\f(CWMod+r\fP \(en
+Mod+r \(en
 File manager (lf)
 .ITEM
-\f(CWMod+n\fP \(en
+Mod+n \(en
 RSS reader (newsboat)
 .ITEM
-\f(CWMod+m\fP \(en
+Mod+m \(en
 Music player (ncmpcpp)
 .LIST END
 .HEADING 3 "Tags/Workspaces"
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+(Number)\fP \(en
+Mod+(Number) \(en
 Go to that tag
 .ITEM
-\f(CWMod+Shift+(Number)\fP \(en
+Mod+Shift+(Number) \(en
 Send focused window to that tag
 .ITEM
-\f(CWMod+Tab\fP \(en
+Mod+Tab \(en
 Go to previous tag
 .ITEM
-\f(CWMod+0\fP \(en
+Mod+0 \(en
 Display all tags
 .LIST END
 .HEADING 3 "Audio"
 Aside from the basic volume controls inherent in every computer keyboard, I've also set up alternative keys for them as well. This is because some wireless keyboards don't have them and this is meant to be a great equalizer.
+
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+-\fP \(en
+Mod+- \(en
 Lower speaker volume
 .ITEM
-\f(CWMod++\fP \(en
+Mod++ \(en
 Raise speaker volume
 .ITEM
-\f(CWMod+=\fP \(en
+Mod+= \(en
 Mute speaker volume
 .LIST END
-The audio might not work the first time you connect through HDMI or to an external screen. This needs manual intervention through the terminal with the \f(CWwpctl\fP command. For the microphone volume, you can navigate through the \f(CWpulsemixer\fP command.
+
+The audio might not work the first time you connect through HDMI or to an external screen. This needs manual intervention through the terminal with the wpctl command. For the microphone volume, you can navigate through the pulsemixer command.
 .HEADING 3 "Bookmarks"
-To view your list of bookmarks, see \f(CW~/.local/share/bookmarks\fP.
+To view your list of bookmarks, see ~/.local/share/bookmarks.
+
 .LIST
 .SHIFT_LIST 10p
 .ITEM
-\f(CWMod+Insert\fP \(en
+Mod+Insert \(en
 Select a bookmark to output
 .ITEM
-\f(CWMod+B\fP \(en
+Mod+B \(en
 Add selection to your bookmarks file
 .LIST END
 .HEADING 3 "Bluetooth"
-To connect your devices via bluetooth, open up a terminal and type \f(CWbluetoothctl\fP (or you can just type `b' for short). This should give you a unique prompt where you can type \f(CWpower on\fP and \f(CWscan on\fP successively to look for devices.
+To connect your devices via bluetooth, open up a terminal and type bluetoothctl (or you can just type `b' for short). This should give you a unique prompt where you can type power on and scan on successively to look for devices.
 
-Once you've found your device, copy its identifier (e.g. A1:B2:C3:D4:E5) and type \f(CWconnect [identifier]\fP.
-.HEADING 2 "Important Links"
-.LIST
-.SHIFT_LIST 10p
-.ITEM
-.PDF_WWW_LINK "x1nigo.xyz" "x1nigo.xyz"
-\(en My personal website
-.ITEM
-.PDF_WWW_LINK "https://github.com/x1nigo" "https://github.com/x1nigo"
-\(en My GitHub page where you can browse my custom repositories
-.ITEM
-.PDF_WWW_LINK "https://artixlinux.org/" "https://artixlinux.org/"
-\(en Main page for Artix Linux
-.LIST END
+Once you've found your device, copy its identifier (e.g. A1:B2:C3:D4:E5) and type connect [identifier].
