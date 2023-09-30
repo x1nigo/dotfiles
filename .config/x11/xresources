@@ -16,10 +16,13 @@ dmenu.selforeground: #ebdbb2
 
 /* Set colors for dwm: */
 dwm.borderpx: 3
-dwm.gappih: 20
-dwm.gappiv: 10
-dwm.gappoh: 10
-dwm.gappov: 30
+dwm.gappih: 7
+dwm.gappiv: 7
+dwm.gappoh: 7
+dwm.gappov: 7
+dwm.user_bh: 26
+dwm.vertpad: 7
+dwm.sidepad: 7
 dwm.normbgcolor: #1d2021
 dwm.normbordercolor: #222222
 dwm.normfgcolor: #ebdbb2
