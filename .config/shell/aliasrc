@@ -37,6 +37,7 @@ alias \
 alias \
 	merge="xrdb -merge $HOME/.config/x11/xresources" \
 	lf="lfrun" \
+	df="df -h" \
 	p="pacman" \
 	sp="sudo pacman" \
 	xi="xbps-install" \
