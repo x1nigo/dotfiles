@@ -17,7 +17,7 @@ just copy init.vim from `.config/nvim` and replace it with either
 `~/.vimrc` or `~/.vim/vimrc`.
 
 ## Gtk theme used:
-- `Gruvbox-Dark-B` - From [here](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme).
+- `Gruvbox-Dark-BL` - From [here](https://github.com/Fausto-Korpsvart/Gruvbox-GTK-Theme).
 
 ## NOTE
 My dotfiles are meant to work together with my other repositories, namely the
