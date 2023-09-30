@@ -10,12 +10,4 @@ elif [ $temp -ge 0 ]; then
 	icon="🥶"
 fi
 
-case $BUTTON in
-	3) notify-send "🌡️ Temperature module" "Displays computer temperature.
-- 🥶 computer is fine
-- 🔥 system heavy-lifting
-- 💥 too hot!" ;;
-	5) $TERMINAL -e $EDITOR "$0" ;;
-esac
-
 printf "%s%s°C\n" "$icon" "$temp"

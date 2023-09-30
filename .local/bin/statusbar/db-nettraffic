@@ -1,12 +1,5 @@
 #!/bin/sh
 
-case $BUTTON in
-	3) notify-send "🌐 Network Traffic module" "Displays bandwidth per second.
-- 🔻 Received bytes
-- 🔺 Transmitted bytes ";;
-	5) $TERMINAL -e $EDITOR "$0" ;;
-esac
-
 update() {
 	sum=0
 	for arg; do

@@ -4,10 +4,4 @@
 
 cpu=$(mpstat | awk '/all/ { print int(100-$13) }') && icon="💽"
 
-case $BUTTON in
-	1) st -e htop ;;
-        3) notify-send "📀 CPU module" "Click to run \`htop\` program and see system processes." ;;
-	5) $TERMINAL -e $EDITOR "$0" ;;
-esac
-
 printf "%s%s%%\n" "$icon" "$cpu"

@@ -7,17 +7,6 @@ dir="/sys/class/power_supply/BAT0"
 bat=$(cat $dir/capacity)
 stat=$(cat $dir/status)
 
-# Notify when clicked via the right mouse button
-case $BUTTON in
-        3) notify-send "⚡ Battery module" "Displays battery status.
-- 🔌 charging
-- ⚡ fully-charged
-- 🦥 stagnant
-- 🔋 discharging
-- 🪫 low battery (please charge!)" ;;
-        5) $TERMINAL -e $EDITOR "$0" ;;
-esac
-
 # Provide a warning symbol for low power and proper notifications for promptness
 [ $stat = "Discharging" ] && [ $bat -le 10 ] && [ $bat -gt 5 ] \
 	&& notify-send "🪫 Battery level is low." "Please charge your device soon." \

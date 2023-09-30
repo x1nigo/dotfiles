@@ -19,10 +19,4 @@ esac
 date=$(date +'%Y %b %d (%a)')
 time=$(date +'%I:%M%p')
 
-case $BUTTON in
-        1) notify-send "$(cal)" ;;
-        3) notify-send "📅 Date and Time module" "Click to display current month." ;;
-        5) $TERMINAL -e $EDITOR "$0" ;;
-esac
-
 printf "%s %s%s\n" "$date" "$timeicon" "$time"

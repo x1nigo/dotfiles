@@ -3,18 +3,6 @@
 # TODO: Find a way to add torrents as the user clicks upon the download link.
 # To add a torrent, open your terminal and type transmission-remote -a "<insert link>".
 
-case $BUTTON in
-	1) setsid -f ${TERMINAL:-st} -e tremc ;;
-        3) notify-send "🌑🌱 Torrent module" "Click to see all your torrents.
-- 🛑 paused
-- 🕰️ idle
-- ⬆️ uploading
-- ⬇️ downloading
-- ✅ done
-- 🌱 seeding" ;;
-        5) $TERMINAL -e $EDITOR "$0" ;;
-esac
-
 # Display default icon if no torrent is active.
 active="$(transmission-remote -l | grep %)"
 [ -z "$active" ] && exit 0

@@ -1,14 +1,5 @@
 #!/bin/sh
 
-case $BUTTON in
-        1) wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle ;;
-        3) notify-send "🎤 Microphone module" "Click to toggle mute.
-- 🎙️ mic on
-- 🤫 mic off (shh...)" ;;
-        4) setsid -f ${TERMINAL:-st} -e pulsemixer ;;
-        5) $TERMINAL -e $EDITOR "$0" ;;
-esac
-
 mic=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
 
 [ "$mic" != "${mic%\[MUTED\]}" ] && echo "🤫" && exit

@@ -5,11 +5,4 @@ bl=$(cat $dir/brightness) && total=$(cat $dir/max_brightness) && perc=$(( $bl * 
 
 [ $perc -ge 50 ] && icon="🌅" || icon="🌃"
 
-case $BUTTON in
-        3) notify-send "💡 Brightness module" "Displays monitor brightness.
-- 🌅 brightness is 50% or higher
-- 🌃 less than 50%" ;;
-	5) $TERMINAL -e $EDITOR "$0" ;;
-esac
-
 printf "%s%s%%\n" "$icon" "$perc"

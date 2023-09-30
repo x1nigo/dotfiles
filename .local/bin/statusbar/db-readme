@@ -1,10 +1,3 @@
 #!/bin/sh
 
-case $BUTTON in
-	1) groff -mom ${XDG_DATA_HOME:-$HOME/.local/share}/cios.mom -Tpdf | zathura - ;;
-	3) notify-send "📜❓ Readme module" "Click to open the README file.
-- In here, you'll find most information that you need to use this system efficiently." ;;
-	5) $TERMINAL -e $EDITOR "$0" ;;
-esac
-
 printf "%s\n" "📜❓"
