@@ -1,6 +1,12 @@
 #!/bin/sh
 
-# Source ~/.xprofile for autostart functions
-[ -f ~/.xprofile ] && . ~/.xprofile
+# xinitrc runs automatically when you run startx. Of couse, I've set this up
+# so that it automatically runs upon login.
 
-exec dwm
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/xll/xprofile" ]; then
+	. "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
+else
+	. "$HOME/.xprofile"
+fi
+
+ssh-agent dwm
