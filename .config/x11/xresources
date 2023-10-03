@@ -4,7 +4,7 @@
 
 ! St
 
-st.alpha: 0.90
+st.alpha: 0.8
 st.borderpx: 2
 
 ! Dmenu
