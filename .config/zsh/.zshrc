@@ -19,7 +19,7 @@ _comp_options+=(globdots)    # To include hidden files.
 
 # Find files under `Home` directory.
 ff () {
-	file="$(find $HOME -type f | fzf --height=20% --layout=reverse --prompt='EDIT FILE: ')"
+	file="$(find $HOME -type f | fzf --height=40% --layout=reverse --prompt='EDIT FILE: ')"
 	backtrack="$(pwd)"
 	dir="${file%/*}"
 
