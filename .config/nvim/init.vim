@@ -14,37 +14,34 @@ au VimEnter,VimResume * set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor
 
 au VimLeave,VimSuspend * set guicursor=a:ver20
 
-" Plugins
-	filetype plugin indent on
-	call plug#begin()
-	Plug 'junegunn/goyo.vim'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'VebbNix/lf-vim'
-	Plug 'ap/vim-css-color'
-	call plug#end()
+filetype plugin on
+call plug#begin()
+Plug 'junegunn/goyo.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'VebbNix/lf-vim'
+Plug 'ap/vim-css-color'
+Plug 'vimwiki/vimwiki'
+call plug#end()
 
-" Colorscheme
-	colorscheme default
-	set bg=light
-	syntax on
-	set cursorline
-	let g:airline_theme='raven'
+colorscheme default
+set bg=light
+syntax on
+let g:airline_theme='base16_gruvbox_dark_hard'
 
-" Some basics
-	set title
-	set autoindent
-	set clipboard=unnamedplus
-	set wildmode=longest,list,full
-	set nohlsearch
-	set ignorecase
-	set incsearch
-	set smartcase
-	set encoding=utf-8
-	set linebreak
-	set wrap
-	set noshowcmd
-	set number relativenumber
+set title
+set autoindent
+set clipboard=unnamedplus
+set wildmode=longest,list,full
+set nohlsearch
+set ignorecase
+set incsearch
+set smartcase
+set encoding=utf-8
+set linebreak
+set wrap
+set noshowcmd
+set number relativenumber
 
 " Set Map leader
 	let mapleader = ","
@@ -69,6 +66,7 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	autocmd BufRead,BufNewFile Xresources,Xdefaults,xresources,xdefaults set filetype=xdefaults
 " Remove any trailing whitespaces
 	autocmd BufWritePre * :%s/\s\+$//e
+
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
 	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h !sudo make clean install
 " Restart dwmblocks automatically after compilation
@@ -77,24 +75,3 @@ au VimLeave,VimSuspend * set guicursor=a:ver20
 	autocmd BufWritePost ~/.config/dunst/dunstrc !{kill $(pidof -x dunst); setsid -f dunst}
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
-
-" Colors and Theming
-" 0:black 1:red  2:green 3:yellow 4:blue 5:magenta 6:cyan 7:white
-hi Title		ctermfg=5	ctermbg=none	cterm=bold
-hi Comment		ctermfg=4	ctermbg=none	cterm=none
-hi Constant		ctermfg=1	ctermbg=none	cterm=none
-hi CursorLineNr		ctermfg=3	ctermbg=8	cterm=none
-hi CursorLine		ctermfg=none	ctermbg=none	cterm=none
-hi LineNr		ctermfg=0	ctermbg=none	cterm=none
-hi Special		ctermfg=4	ctermbg=none	cterm=none
-hi Identifier		ctermfg=6	ctermbg=none	cterm=none
-hi PreProc		ctermfg=5	ctermbg=none	cterm=none
-hi String		ctermfg=1	ctermbg=none	cterm=none
-hi Number		ctermfg=1	ctermbg=none	cterm=none
-hi Function		ctermfg=6	ctermbg=none	cterm=none
-hi Visual		ctermfg=3	ctermbg=0	cterm=none
-hi SpellBad		ctermfg=1	ctermbg=none	cterm=italic,underline
-hi SpellCap		ctermfg=4	ctermbg=none	cterm=italic,underline
-hi SpellRare		ctermfg=6	ctermbg=none	cterm=italic,underline
-hi SpellLocal		ctermfg=2	ctermbg=none	cterm=italic,underline
-hi markdownCodeBlock 	ctermfg=5	ctermbg=none	cterm=none
