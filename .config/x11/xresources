@@ -17,10 +17,10 @@ dmenu.selforeground: #ff8700
 ! Dwm
 
 dwm.borderpx: 3
-dwm.gappih: 10
+dwm.gappih: 20
 dwm.gappiv: 10
 dwm.gappoh: 10
-dwm.gappov: 10
+dwm.gappov: 30
 dwm.normbgcolor: #1d2021
 dwm.normbordercolor: #222222
 dwm.normfgcolor: #ebdbb2
