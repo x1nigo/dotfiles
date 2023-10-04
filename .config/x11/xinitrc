@@ -3,7 +3,7 @@
 # xinitrc runs automatically when you run startx. Of couse, I've set this up
 # so that it automatically runs upon login.
 
-if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/xll/xprofile" ]; then
+if [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile" ]; then
 	. "${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
 else
 	. "$HOME/.xprofile"
