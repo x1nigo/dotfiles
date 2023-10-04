@@ -2,6 +2,10 @@
 
 # TODO: Ethernet unoperational. Must find a way to make it work.
 
+case $BUTTON in
+	1) ${TERMINAL:-st} -e nmtui ;;
+esac
+
 if grep -xq 'up' /sys/class/net/wl*/operstate 2>/dev/null; then
 	wlicon="$(awk '/wl/ {print "🛜", int($3 * 100 / 70) }' /proc/net/wireless)%"
 elif grep -xq 'down' /sys/class/net/wl*/operstate 2>/dev/null; then

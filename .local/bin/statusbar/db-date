@@ -16,6 +16,10 @@ case "$(date +'%I')" in
         12) timeicon="🕛" ;;
 esac
 
+case $BUTTON in
+	1) notify-send "This is the calendar for this month:" "$(cal)" ;;
+esac
+
 date=$(date +'%Y %b %d (%a)')
 time=$(date +'%I:%M%p')
 

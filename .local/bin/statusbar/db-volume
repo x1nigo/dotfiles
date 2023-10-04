@@ -2,7 +2,7 @@
 
 vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
-[ "$vol" != "${vol%\[MUTED\]}" ] && echo 🔇 && exit
+[ "$vol" != "${vol%\[MUTED\]}" ] && exit
 
 vol="${vol#Volume: }"
 
@@ -16,11 +16,11 @@ split() {
 vol="$(printf "%.0f" "$(split "$vol" ".")")"
 
 case 1 in
-	$((vol >= 100)) ) icon="📣" ;;
+	$((vol >= 100)) ) icon="📢" ;;
 	$((vol >= 70)) ) icon="🔊" ;;
 	$((vol >= 30)) ) icon="🔉" ;;
 	$((vol >= 1)) ) icon="🔈" ;;
-	* ) echo 🔇 && exit ;;
+	* ) exit ;;
 esac
 
 echo "$icon$vol%"

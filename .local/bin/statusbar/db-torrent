@@ -5,7 +5,11 @@
 
 # Display default icon if no torrent is active.
 active="$(transmission-remote -l | grep %)"
-[ -z "$active" ] && exit 0
+[ -z "$active" ] && exit
+
+case $BUTTON in
+	1) ${TERMINAL:-st} -e stig ;;
+esac
 
 # Show the proper icon depending on status of the torrent/s.
 transmission-remote -l | grep % |

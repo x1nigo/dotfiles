@@ -1,8 +1,9 @@
 #!/bin/sh
 
-dir="/sys/class/backlight/intel_backlight"
-bl=$(cat $dir/brightness) && total=$(cat $dir/max_brightness) && perc=$(( $bl * 100 / $total ))
+TOT="$(cat /sys/class/backlight/*/max_brightness)"
+CUR="$(cat /sys/class/backlight/*/brightness)"
+BRI=$(( $CUR * 100 / $TOT ))
 
-[ $perc -ge 50 ] && icon="🌅" || icon="🌃"
+[ "$BRI" -gt "50" ] && icon=🌅 || icon=☔
 
-printf "%s%s%%\n" "$icon" "$perc"
+printf "%s%s%%" "$icon" "$BRI"
