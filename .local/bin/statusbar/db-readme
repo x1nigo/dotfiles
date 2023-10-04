@@ -1,3 +1,7 @@
 #!/bin/sh
 
-printf "%s\n" "📜❓"
+case $BUTTON in
+	1) groff -mom ~/.local/share/keybindings.mom -Tpdf | zathura - ;;
+esac
+
+printf "%s" "📜❓"

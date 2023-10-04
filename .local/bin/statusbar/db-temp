@@ -1,13 +1,13 @@
 #!/bin/sh
 
-temp=$(awk '{ print $0 / 1000 }' /sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input)
+tmp=$(awk '{ print $0 / 1000 }' /sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input)
 
-if [ $temp -gt 80 ]; then
+if [ $tmp -gt 80 ]; then
 	icon="💥"
-elif [ $temp -gt 60 ]; then
+elif [ $tmp -gt 60 ]; then
 	icon="🔥"
-elif [ $temp -ge 0 ]; then
+elif [ $tmp -ge 0 ]; then
 	icon="🥶"
 fi
 
-printf "%s%s°C\n" "$icon" "$temp"
+printf "%s%s°C" "$icon" "$tmp"

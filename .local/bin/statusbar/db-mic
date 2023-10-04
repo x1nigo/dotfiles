@@ -20,4 +20,4 @@ case 1 in
 	* ) exit ;;
 esac
 
-echo "$icon$mic%"
+printf "%s%s%%" "$icon" "$mic"
