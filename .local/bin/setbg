@@ -8,7 +8,7 @@ cache=/tmp/bgtype
 bgloc="$(readlink -f "$2")"
 
 readme() { cat << EOF
-setwp: set-wallpaper, a minimal script meant to render
+setbg: set-background, a minimal script meant to render
 wallpapers
 
 Main use:
@@ -26,7 +26,7 @@ EOF
 }
 
 bgmode() {
-	mode=$(printf "%s\n" "center" "maximize" "stretch" "tile" "zoom" | dmenu -l 10 -p "Select a Mode:")
+	mode=$(printf "%s\n" "center" "maximize" "stretch" "tile" "zoom" | dmenu -l 10 -p "Mode:" -z 500)
 }
 
 bgadd() {
@@ -37,7 +37,7 @@ bgadd() {
 }
 
 bgsel() {
-	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -p "Set as wallpaper:")"
+	realfile="$(find "$bgdir" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -z 800 -p "BG:")"
 	[ -z $realfile ] && exit 1
 	ln -sf "$realfile" "$bglink"
 	bgmode
@@ -69,7 +69,7 @@ bgrand() {
 bgfold() {
 	case "$(file --mime-type -b "$bgloc")" in
 		inode/directory)
-			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -p "Set as wallpaper:")"
+			realfile="$(find "$bgloc" -iregex ".*.\(jpg\|jpeg\|png\|gif\)" -type f | dmenu -l 20 -z 800 -p "BG:")"
 			[ -z $realfile ] && exit 1
 			ln -sf "$realfile" "$bglink"
 			;;

@@ -4,6 +4,7 @@
 # whether encrypted or not.
 # Make sure that your phone is already connected via usb wire
 # and MTP is enabled on such device.
+# TODO: Try to prevent this script from detecting the system drive.
 
 # We need to use this to separate the drives properly.
 IFS=''
@@ -30,7 +31,7 @@ drive=$(echo $alldrives | dmenu -p 'Select drive to mount:')
 [ -z $drive ] && exit 1
 
 getmount() {
-	mp="$(find /mnt /media /mount -maxdepth 2 -type d | dmenu -p 'Select a mountpoint:')"
+	mp="$(find /mnt /media -maxdepth 2 -type d | dmenu -p 'Select a mountpoint:')"
 	[ -z $mp ] && exit 1
 }
 

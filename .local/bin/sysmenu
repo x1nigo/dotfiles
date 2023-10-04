@@ -1,6 +1,6 @@
 #! /bin/sh
 
-menu=$(printf "%s\n" "🔒 lock screen" "💻 power off" "🔃 reboot" "♻️ renew wm" "🚪 leave" "💤 sleep" "📺 display off" | dmenu -p 'System action:' -l 8 -c -bw 3)
+menu=$(printf "%s\n" "🔒 lock screen" "💻 power off" "🔃 reboot" "♻️ renew wm" "🚪 leave" "💤 sleep" "📺 display off" | dmenu -p 'SYS:' -l 8 -z 800)
 wm="dwm"
 
 case "$(readlink -f /sbin/init)" in

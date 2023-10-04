@@ -29,7 +29,7 @@ webcam() {
 }
 
 stoprec() {
-	killall ffmpeg && notify-send "🛑 Recording process terminated."
+	kill $(pidof -x ffmpeg) && notify-send "🛑 Recording process terminated."
 }
 
 notif() {
@@ -52,7 +52,7 @@ case $delprompt in
 	yes) stoprec && exit ;;
 esac
 
-rectype=$(printf "%s\n" "screen with audio" "screen with no audio" "webcam only" | dmenu -p "What do you want to record?")
+rectype=$(printf "%s\n" "screen with audio" "screen with no audio" "webcam only" | dmenu -p "REC:")
 case $rectype in
 	"screen with audio") audio & notif screen ;;
 	"screen with no audio") noaudio & notif screen ;;
