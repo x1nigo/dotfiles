@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Install the systat package first.
-
-cpu=$(mpstat | awk '/all/ { print int(100-$13) }') && icon="💽"
-
-printf "%s%s%%\n" "$icon" "$cpu"
