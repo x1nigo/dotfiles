@@ -11,8 +11,9 @@ st.borderpx: 2
 
 dmenu.background: #1d2021
 dmenu.foreground: #ebdbb2
-dmenu.selbackground: #1d2021
-dmenu.selforeground: #ff8700
+dmenu.selbackground: #008080
+dmenu.selforeground: #0a0f14
+dmenu.adjbackground: #161818
 
 ! Dwm
 
