@@ -12,6 +12,7 @@ case $BUTTON in
 - 🪫 Low Battery
 - 🔋 Normal
 - 🔌 Charging
+- ⚡ Full Capacity
 - 🕰️ Not Charging" ;;
 	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
 esac
