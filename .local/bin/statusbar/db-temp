@@ -7,7 +7,15 @@ if [ $tmp -gt 80 ]; then
 elif [ $tmp -gt 60 ]; then
 	icon="🔥"
 elif [ $tmp -ge 0 ]; then
-	icon="🥶"
+	icon="🧊"
 fi
+
+case $BUTTON in
+	3) notify-send "🧊 Temperature Module:" "Displays device temperature in Celsius.
+- 💥 > 80 degrees
+- 🔥 > 60 degrees
+- 🧊 >  0 degrees" ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
+esac
 
 printf "%s%s°C" "$icon" "$tmp"

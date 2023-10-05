@@ -9,6 +9,14 @@ active="$(transmission-remote -l | grep %)"
 
 case $BUTTON in
 	1) ${TERMINAL:-st} -e stig ;;
+	3) notify-send "🌱 Torrent Module:" "Left-click to display your current torrents (stig).
+- 🌱 Seeding
+- 🛑 Stopped
+- ✅ Done
+- 🕰️ Idle
+- ⬆️ Uploading
+- ⬇️ Downloading" ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
 esac
 
 # Show the proper icon depending on status of the torrent/s.

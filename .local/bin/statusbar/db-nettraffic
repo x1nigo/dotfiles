@@ -12,6 +12,11 @@ update() {
 	printf %d\\n $(( sum - old ))
 }
 
+case $BUTTON in
+	3) notify-send "🌐 Nettraffick Module:" "Displays recieved and transmitted bytes per second." ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
+esac
+
 rx=$(update /sys/class/net/[ew]*/statistics/rx_bytes)
 tx=$(update /sys/class/net/[ew]*/statistics/tx_bytes)
 

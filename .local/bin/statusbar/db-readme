@@ -2,6 +2,8 @@
 
 case $BUTTON in
 	1) groff -mom ~/.local/share/keybindings.mom -Tpdf | zathura - ;;
+	3) notify-send "📜❓ README Module:" "Left-click to find your way around the system." ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
 esac
 
 printf "%s" "📜❓"

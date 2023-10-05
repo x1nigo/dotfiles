@@ -4,6 +4,13 @@
 
 case $BUTTON in
 	1) ${TERMINAL:-st} -e nmtui ;;
+	3) notify-send "🛜 Network Module:" "Left-click to connect to the internet (nmtui).
+- 🛜 Connected to Wi-Fi
+- 📡 Not connected to Wi-Fi
+- ❌ Wi-Fi down
+- ❎ Not connected to Ethernet
+- 🌐 Connected to Ethernet" ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
 esac
 
 if grep -xq 'up' /sys/class/net/wl*/operstate 2>/dev/null; then

@@ -5,7 +5,11 @@
 
 case $BUTTON in
 	1) ${TERMINAL:-st} -e neomutt ;;
+	3) notify-send "📬 Mail Module:" "Left-click to open mail (neomutt).
+- 📬 You have mail
+- 🔃 Syncing mail" ;;
 	4) ${TERMINAL:-st} -e mailsync ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
 esac
 
 # Indicate the number of unread mail.

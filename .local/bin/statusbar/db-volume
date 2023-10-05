@@ -2,7 +2,17 @@
 
 vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
-[ "$vol" != "${vol%\[MUTED\]}" ] && exit
+case $BUTTON in
+	1) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
+	3) notify-send "📢 Volume Module:" "Left-click to toggle volume mute.
+- 📢 >= 100%
+- 🔊 >= 70%
+- 🔉 >= 30%
+- 🔈 >= 1%" ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
+esac
+
+[ "$vol" != "${vol%\[MUTED\]}" ] && echo "🔇" && exit
 
 vol="${vol#Volume: }"
 
@@ -20,7 +30,7 @@ case 1 in
 	$((vol >= 70)) ) icon="🔊" ;;
 	$((vol >= 30)) ) icon="🔉" ;;
 	$((vol >= 1)) ) icon="🔈" ;;
-	* ) exit ;;
+	* ) icon=🔇 && exit ;;
 esac
 
 printf "%s%s%%" "$icon" "$vol"

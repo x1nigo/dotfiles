@@ -18,6 +18,8 @@ esac
 
 case $BUTTON in
 	1) notify-send "This is the calendar for this month:" "$(cal)" ;;
+	3) notify-send "📅 Date and Time Module:" "Displays the calendar of the month." ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
 esac
 
 date=$(date +'%Y %b %d (%a)')
