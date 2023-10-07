@@ -1,0 +1,3 @@
+#!/bin/sh
+
+groff -mom ~/.local/share/keybindings.mom -Tpdf | zathura -

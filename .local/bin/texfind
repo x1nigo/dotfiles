@@ -5,4 +5,4 @@
 file="$(find $HOME/ -type f | grep -Ei '\.pdf$|\.epub$' | dmenu -l 28 -p 'PDF:')"
 [ -z "$file" ] && exit 1
 
-${TERMINAL:-st} -e zathura "$file"
+zathura "$file"

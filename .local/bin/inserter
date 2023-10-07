@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xdotool type $(cat ~/.local/share/bookmarks | dmenu -l 28 -p 'INSERT:' | cut -d' ' -f1)

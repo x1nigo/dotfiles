@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Allow your window manager to swallow.
+
+window_id=$(xdo id)
+xdo hide "$window_id" && "$@" && xdo show "$window_id"
