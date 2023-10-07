@@ -7,23 +7,23 @@ base="${file%.*}"
 ext="${file##*.}"
 
 case $ext in
-        png) sxiv "$file" ;;
-        jpeg) sxiv "$file" ;;
-        jpg) sxiv "$file" ;;
-        gif) sxiv -a "$file" ;;
-        webp) sxiv "$file" ;;
-        pdf) zathura "$file" ;;
-        epub) zathura "$file" ;;
-	azw3) zathura "$file" ;;
-        mp4) mpv "$file" ;;
-        m4a) mpv "$file" ;;
-        mkv) mpv "$file" ;;
-        opus) mpv "$file" ;;
-        webm) mpv "$file" ;;
-        docx) libreoffice "$file" ;;
-        doc) libreoffice "$file" ;;
-        xlsx) libreoffice "$file" ;;
-        pptx) libreoffice "$file" ;;
-        ppt) libreoffice "$file" ;;
+        png) setsid -f sxiv "$file" ;;
+        jpeg) setsid -f sxiv "$file" ;;
+        jpg) setsid -f sxiv "$file" ;;
+        gif) setsid -f sxiv -a "$file" ;;
+        webp) setsid -f sxiv "$file" ;;
+        pdf) setsid -f zathura "$file" ;;
+        epub) setsid -f zathura "$file" ;;
+	azw3) setsid -f zathura "$file" ;;
+        mp4) setsid -f mpv "$file" ;;
+        m4a) setsid -f mpv "$file" ;;
+        mkv) setsid -f mpv "$file" ;;
+        opus) setsid -f mpv "$file" ;;
+        webm) setsid -f mpv "$file" ;;
+        docx) setsid -f libreoffice "$file" ;;
+        doc) setsid -f libreoffice "$file" ;;
+        xlsx) setsid -f libreoffice "$file" ;;
+        pptx) setsid -f libreoffice "$file" ;;
+        ppt) setsid -f libreoffice "$file" ;;
         *) $EDITOR "$file" ;;
 esac
