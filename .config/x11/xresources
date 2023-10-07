@@ -4,16 +4,16 @@
 
 ! St
 
-st.alpha: 0.8
+st.alpha: 0.95
 st.borderpx: 2
 
 ! Dmenu
 
-dmenu.background: #1d2021
-dmenu.foreground: #ebdbb2
-dmenu.selbackground: #008080
+dmenu.background: #161818
+dmenu.foreground: #eeeeee
+dmenu.selbackground: #a9b1f6
 dmenu.selforeground: #0a0f14
-dmenu.adjbackground: #161818
+dmenu.adjbackground: #121218
 
 ! Dwm
 
@@ -31,9 +31,9 @@ dwm.selbgcolor: #1d2021
 
 ! St background, foreground, and cursor:
 
-*.background: #1d2021
-*.foreground: #ebdbb2
-*.cursorColor: #008080
+*.background: #161818
+*.foreground: #eeeeee
+*.cursorColor: #eeeeee
 
 ! Colorscheme:
 
