@@ -16,17 +16,17 @@
     format = "<b>%s</b>\n%b"
 
 [urgency_low]
-    background = "#1d2021"
-    foreground = "#ebdbb2"
+    background = "#121218"
+    foreground = "#eeeeee"
     timeout = 3
 
 [urgency_normal]
-    background = "#1d2021"
-    foreground = "#ebdbb2"
+    background = "#121218"
+    foreground = "#eeeeee"
     timeout = 5
 
 [urgency_critical]
-    background = "#1d2021"
-    foreground = "#ebdbb2"
+    background = "#121218"
+    foreground = "#eeeeee"
     frame_color = "#500000"
     timeout = 8
