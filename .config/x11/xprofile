@@ -4,7 +4,10 @@
 xrandr --dpi 96
 setbg &
 
-autostart="mpd dunst picom dwmblocks pipewire transmission-daemon"
+# Only start dwmblocks with dwm.
+pidof -s "dwm" || dwmblocks &
+
+autostart="mpd dunst picom pipewire transmission-daemon"
 
 for program in $autostart; do
         pidof -s "$program" || "$program" &
