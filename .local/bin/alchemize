@@ -14,8 +14,8 @@ base="${file%.*}"
 ext="${file##*.}"
 
 case $ext in
-	tex) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
-	ms|mom) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
-	md|markdown) setsid -f ${TERMINAL:-st} -e zathura "$base.pdf" ;;
+	tex) setsid -f zathura "$base.pdf" ;;
+	ms|mom) setsid -f zathura "$base.pdf" ;;
+	md|markdown) setsid -f zathura "$base.pdf" ;;
 	html) setsid -f ${BROWSER:-librewolf} "$file" ;;
 esac

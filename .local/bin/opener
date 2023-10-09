@@ -6,24 +6,26 @@ file="$1"
 base="${file%.*}"
 ext="${file##*.}"
 
+! pidof -s dwm >/dev/null && command="swallow" || unset command
+
 case $ext in
-        png) setsid -f sxiv "$file" ;;
-        jpeg) setsid -f sxiv "$file" ;;
-        jpg) setsid -f sxiv "$file" ;;
-        gif) setsid -f sxiv -a "$file" ;;
-        webp) setsid -f sxiv "$file" ;;
-        pdf) setsid -f zathura "$file" ;;
-        epub) setsid -f zathura "$file" ;;
-	azw3) setsid -f zathura "$file" ;;
-        mp4) setsid -f mpv "$file" ;;
-        m4a) setsid -f mpv "$file" ;;
-        mkv) setsid -f mpv "$file" ;;
-        opus) setsid -f mpv "$file" ;;
-        webm) setsid -f mpv "$file" ;;
-        docx) setsid -f libreoffice "$file" ;;
-        doc) setsid -f libreoffice "$file" ;;
-        xlsx) setsid -f libreoffice "$file" ;;
-        pptx) setsid -f libreoffice "$file" ;;
-        ppt) setsid -f libreoffice "$file" ;;
+        png) $command sxiv "$file" ;;
+        jpeg) $command sxiv "$file" ;;
+        jpg) $command sxiv "$file" ;;
+        gif) $command sxiv -a "$file" ;;
+        webp) $command sxiv "$file" ;;
+        pdf) $command zathura "$file" ;;
+        epub) $command zathura "$file" ;;
+	azw3) $command zathura "$file" ;;
+        mp4) $command mpv "$file" ;;
+        m4a) $command mpv "$file" ;;
+        mkv) $command mpv "$file" ;;
+        opus) $command mpv "$file" ;;
+        webm) $command mpv "$file" ;;
+        docx) $command libreoffice "$file" ;;
+        doc) $command libreoffice "$file" ;;
+        xlsx) $command libreoffice "$file" ;;
+        pptx) $command libreoffice "$file" ;;
+        ppt) $command libreoffice "$file" ;;
         *) $EDITOR "$file" ;;
 esac
