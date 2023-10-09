@@ -5,7 +5,7 @@ xrandr --dpi 96
 setbg &
 
 # Only start dwmblocks with dwm.
-pidof -s "dwm" || dwmblocks &
+pidof -s "dwm" && dwmblocks &
 
 autostart="mpd dunst picom pipewire transmission-daemon"
 

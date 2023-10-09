@@ -1,6 +1,6 @@
 ! Fonts
 
-*.font: monospace-10
+*.font: monospace-9
 
 ! St
 
@@ -11,7 +11,7 @@ st.borderpx: 2
 
 dmenu.background: #1d2021
 dmenu.foreground: #eeeeee
-dmenu.selbackground: #a9b1d6
+dmenu.selbackground: #989af7
 dmenu.selforeground: #0a0f14
 dmenu.adjbackground: #181818
 
@@ -31,7 +31,7 @@ dwm.selbgcolor: #1d2021
 
 ! St background, foreground, and cursor:
 
-*.background: #161818
+*.background: #1d2021
 *.foreground: #eeeeee
 *.cursorColor: #eeeeee
 
@@ -55,8 +55,8 @@ dwm.selbgcolor: #1d2021
 ! *.color14: #8ec07c
 ! *.color15: #ebdbb2
 
-neutron:
-*.color0: #23252B
+x:
+*.color0: #1d2021
 *.color1: #B54036
 *.color2: #5AB977
 *.color3: #DEB566
@@ -64,7 +64,7 @@ neutron:
 *.color5: #A4799D
 *.color6: #3F94A8
 *.color7: #E6E8EF
-*.color8: #23252B
+*.color8: #181818
 *.color9: #B54036
 *.color10: #5AB977
 *.color11: #DEB566
@@ -72,3 +72,57 @@ neutron:
 *.color13: #A4799D
 *.color14: #3F94A8
 *.color15: #EBEDF2
+
+! tokyonight:
+! *.color0: #1d2021
+! *.color1: #F7768E
+! *.color2: #9ECE6A
+! *.color3: #E0AF68
+! *.color4: #7AA2F7
+! *.color5: #BB9AF7
+! *.color6: #7DCFFF
+! *.color7: #C0CAF5
+! *.color8: #181818
+! *.color9: #F7768E
+! *.color10: #9ECE6A
+! *.color11: #E0AF68
+! *.color12: #7AA2F7
+! *.color13: #BB9AF7
+! *.color14: #7DCFFF
+! *.color15: #C0CAF5
+
+! catppuccin:
+! *.color0: #45475A
+! *.color1: #F38BA8
+! *.color2: #A6E3A1
+! *.color3: #F9E2AF
+! *.color4: #89B4FA
+! *.color5: #F5C2E7
+! *.color6: #94E2D5
+! *.color7: #BAC2DE
+! *.color8: #585B70
+! *.color9: #F38BA8
+! *.color10: #A6E3A1
+! *.color11: #F9E2AF
+! *.color12: #89B4FA
+! *.color13: #F5C2E7
+! *.color14: #94E2D5
+! *.color15: #A6ADC8
+
+! nord:
+! *.color0: #3B4252
+! *.color1: #BF616A
+! *.color2: #A3BE8C
+! *.color3: #EBCB8B
+! *.color4: #81A1C1
+! *.color5: #B48EAD
+! *.color6: #88C0D0
+! *.color7: #E5E9F0
+! *.color8: #4C566A
+! *.color9: #BF616A
+! *.color10: #A3BE8C
+! *.color11: #EBCB8B
+! *.color12: #81A1C1
+! *.color13: #B48EAD
+! *.color14: #8FBCBB
+! *.color15: #ECEFF4

@@ -9,4 +9,8 @@ else
 	. "$HOME/.xprofile"
 fi
 
-ssh-agent dwm
+# Suckless's window manager
+# ssh-agent dwm
+
+# A window manager written in python.
+qtile start
