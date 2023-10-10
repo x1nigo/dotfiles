@@ -1,6 +1,6 @@
 ! Fonts
 
-*.font: monospace-9
+*.font: monospace-10
 
 ! St
 
@@ -21,18 +21,18 @@ dwm.gappih: 20
 dwm.gappiv: 10
 dwm.gappoh: 10
 dwm.gappov: 30
-dwm.normbgcolor: #1d2021
+dwm.normbgcolor: #121218
 dwm.normbordercolor: #222222
-dwm.normfgcolor: #ebdbb2
-dwm.selfgcolor: #ebdbb2
+dwm.normfgcolor: #eeeeee
+dwm.selfgcolor: #eeeeee
 dwm.selbordercolor: #500000
-dwm.selbgcolor: #1d2021
+dwm.selbgcolor: #121218
 
 ! St background, foreground, and cursor:
 
 *.background: #121218
 *.foreground: #eeeeee
-*.cursorColor: #008080
+*.cursorColor: #008f8f
 
 ! Colorscheme:
 
