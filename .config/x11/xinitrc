@@ -10,7 +10,7 @@ else
 fi
 
 # Suckless's window manager
-# ssh-agent dwm
+ssh-agent dwm
 
 # A window manager written in python.
-qtile start
+# qtile start

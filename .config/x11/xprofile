@@ -4,14 +4,14 @@
 xrandr --dpi 96
 setbg &
 
-# Only start dwmblocks with dwm.
-pidof -s "dwm" && dwmblocks &
-
 autostart="mpd dunst picom pipewire transmission-daemon"
 
 for program in $autostart; do
         pidof -s "$program" || "$program" &
 done >/dev/null 2>&1
+
+# Only start dwmblocks with dwm.
+pidof -s "dwm" && dwmblocks &
 
 # Decrease key repeat delay to 300ms and increase key repeat rate to 50ms per second.
 xset r rate 300 50
