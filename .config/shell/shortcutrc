@@ -22,3 +22,4 @@ cfn="$EDITOR $HOME/.config/newsboat/config" \
 cfnu="$EDITOR $HOME/.config/newsboat/urls" \
 cfv="$EDITOR $HOME/.config/nvim/init.vim" \
 cfb="$EDITOR $HOME/.local/share/bookmarks" \
+cfq="$EDITOR $HOME/.config/qtile/config.py" \

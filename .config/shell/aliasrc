@@ -11,6 +11,13 @@ for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
 	alias $command="sudo $command"
 done; unset command
 
+# Check if eza is installed. If so, then use it instead of ls.
+if command -v eza >/dev/null 2>&1 ; then
+	cmd="eza"
+else
+	cmd="ls"
+fi
+
 # Verbose mode for particular commands.
 alias \
 	rm="rm -Iv" \
@@ -24,7 +31,7 @@ alias \
 
 # Colorize your commands.
 alias \
-	ls="ls --color=auto --group-directories-first" \
+	ls="$cmd --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	egrep="egrep --color=auto" \
 	fgrep="fgrep --color=auto" \
