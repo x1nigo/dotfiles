@@ -1,6 +1,6 @@
 ! Fonts
 
-*.font: monospace-10
+*.font: monospace-9
 
 ! St
 
@@ -9,11 +9,10 @@ st.borderpx: 2
 
 ! Dmenu
 
-dmenu.background: #1d2021
-dmenu.foreground: #ebdbb2
-dmenu.selbackground: #d4be98
+dmenu.background: #121218
+dmenu.foreground: #eeeeee
+dmenu.selbackground: #a9b1d6
 dmenu.selforeground: #0a0f14
-dmenu.adjbackground: #1d2021
 
 ! Dwm
 
@@ -31,29 +30,29 @@ dwm.selbgcolor: #1d2021
 
 ! St background, foreground, and cursor:
 
-*.background: #1d2021
-*.foreground: #ebdbb2
+*.background: #121218
+*.foreground: #eeeeee
 *.cursorColor: #008080
 
 ! Colorscheme:
 
-gruvbox-2.0:
-*.color0: #282828
-*.color1: #cc241d
-*.color2: #98971a
-*.color3: #ff8700
-*.color4: #458588
-*.color5: #b16286
-*.color6: #689d6a
-*.color7: #a89984
-*.color8: #1d2021
-*.color9: #fb4934
-*.color10: #b8bb26
-*.color11: #fabd2f
-*.color12: #83a598
-*.color13: #d3869b
-*.color14: #8ec07c
-*.color15: #ebdbb2
+! gruvbox-2.0:
+! *.color0: #282828
+! *.color1: #cc241d
+! *.color2: #98971a
+! *.color3: #ff8700
+! *.color4: #458588
+! *.color5: #b16286
+! *.color6: #689d6a
+! *.color7: #a89984
+! *.color8: #1d2021
+! *.color9: #fb4934
+! *.color10: #b8bb26
+! *.color11: #fabd2f
+! *.color12: #83a598
+! *.color13: #d3869b
+! *.color14: #8ec07c
+! *.color15: #ebdbb2
 
 ! x:
 ! *.color0: #1d2021
@@ -109,20 +108,20 @@ gruvbox-2.0:
 ! *.color14: #94E2D5
 ! *.color15: #A6ADC8
 
-! nord:
-! *.color0: #3B4252
-! *.color1: #BF616A
-! *.color2: #A3BE8C
-! *.color3: #EBCB8B
-! *.color4: #81A1C1
-! *.color5: #B48EAD
-! *.color6: #88C0D0
-! *.color7: #E5E9F0
-! *.color8: #4C566A
-! *.color9: #BF616A
-! *.color10: #A3BE8C
-! *.color11: #EBCB8B
-! *.color12: #81A1C1
-! *.color13: #B48EAD
-! *.color14: #8FBCBB
-! *.color15: #ECEFF4
+nord:
+*.color0: #3B4252
+*.color1: #BF616A
+*.color2: #A3BE8C
+*.color3: #EBCB8B
+*.color4: #81A1C1
+*.color5: #B48EAD
+*.color6: #88C0D0
+*.color7: #E5E9F0
+*.color8: #4C566A
+*.color9: #BF616A
+*.color10: #A3BE8C
+*.color11: #EBCB8B
+*.color12: #81A1C1
+*.color13: #B48EAD
+*.color14: #8FBCBB
+*.color15: #ECEFF4
