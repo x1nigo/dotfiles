@@ -1,7 +1,7 @@
 # User prompt
 autoload -U colors && colors
-PS1="%B%{$fg[red]%}[%{$fg[cyan]%}%n%{$fg[green]%} at %{$fg[yellow]%}%M %{$fg[blue]%}in %~%{$fg[red]%}]%{$reset_color%}
-\$%b "
+PROMPT="%F{yellow}%n%f %F{green}at%f %F{blue}%m%f %F{cyan}in%f %F{red}[%f%F{magenta}%~%f%F{red}]%f
+\$ "
 
 # Settings (auto cd into dir & stop ctrl-s from freezing terminal)
 setopt autocd
