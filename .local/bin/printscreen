@@ -2,18 +2,18 @@
 
 selected() {
 	maim --quality=10 -u -s $HOME/selected-$(date +%y-%m-%d-%s).png \
-		&& notify-send "Took a \`selected\` screenshot!"
+		&& notify-send "Took a \`selected\` screenshot!" "You may find it in your ~ directory."
 }
 
 activewin() {
 	maim --quality=10 -u -i $(xdotool getactivewindow) $HOME/active-$(date +%y-%m-%d-%s).png \
-		&& notify-send "Took an \`active window\` screenshot!"
+		&& notify-send "Took an \`active window\` screenshot!" "You may find it in your ~ directory."
 }
 
-chosen=$(printf "desktop screenshot\\nselect a region\\nactive window" | dmenu -p "Select an option for screenshot:")
+chosen=$(printf "desktop\\nclick+drag\\nwindow" | dmenu -p "SCRNSHT:")
 
 case "$chosen" in
-	"desktop screenshot") maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png; exit ;;
-	"select a region") selected ;;
-	"active window") activewin ;;
+	"desktop") maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png; exit ;;
+	"click+drag") selected ;;
+	"window") activewin ;;
 esac
