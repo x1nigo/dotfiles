@@ -17,16 +17,16 @@ dmenu.selforeground: #0a0f14
 ! Dwm
 
 dwm.borderpx: 3
-dwm.gappih: 20
-dwm.gappiv: 10
-dwm.gappoh: 10
-dwm.gappov: 30
+dwm.gappih: 8
+dwm.gappiv: 8
+dwm.gappoh: 8
+dwm.gappov: 8
 dwm.normbgcolor: #1d2021
 dwm.normbordercolor: #222222
 dwm.normfgcolor: #eeeeee
-dwm.selfgcolor: #0a0f14
+dwm.selfgcolor: #eeeeee
 dwm.selbordercolor: #500000
-dwm.selbgcolor: #ff5555
+dwm.selbgcolor: #1d2021
 
 ! St background, foreground, and cursor:
 
