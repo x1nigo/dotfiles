@@ -76,3 +76,5 @@ set number relativenumber
 	autocmd BufWritePost ~/.config/dunst/dunstrc !{kill $(pidof -x dunst); setsid -f dunst}
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
+
+highlight Visual ctermfg=3 ctermbg=0 cterm=none
