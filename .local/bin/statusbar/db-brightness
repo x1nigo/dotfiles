@@ -1,8 +1,6 @@
 #!/bin/sh
 
-TOT="$(cat /sys/class/backlight/*/max_brightness)"
-CUR="$(cat /sys/class/backlight/*/brightness)"
-BRI=$(( $CUR * 100 / $TOT ))
+BRI=$(xbacklight -get | sed 's/\..*//g')
 
 case $BUTTON in
 	3) notify-send "💡 Brightness Module:" "Displays level of brightness in percentages.
