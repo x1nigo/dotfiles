@@ -4,11 +4,14 @@
 xrandr --dpi 96
 setbg &
 
-autostart="mpd dwmblocks dunst picom pipewire transmission-daemon"
+autostart="mpd dwmblocks dunst pipewire transmission-daemon"
 
 for program in $autostart; do
         pidof -s "$program" || "$program" &
 done >/dev/null 2>&1
+
+# Picom version
+pidof -s picom || picom --experimental-backend &
 
 # Decrease key repeat delay to 300ms and increase key repeat rate to 50ms per second.
 xset r rate 300 50
