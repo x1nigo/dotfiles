@@ -25,7 +25,7 @@ dwm.normbgcolor: #18181b
 dwm.normbordercolor: #222222
 dwm.normfgcolor: #eeeeee
 dwm.selfgcolor: #eeeeee
-dwm.selbordercolor: #c0caf5
+dwm.selbordercolor: #eeeeee
 dwm.selbgcolor: #18181b
 
 ! St background, foreground, and cursor:
