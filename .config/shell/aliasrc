@@ -47,9 +47,8 @@ alias \
 	df="df -h" \
 	p="pacman" \
 	sp="sudo pacman" \
-	xi="xbps-install" \
-	sxi="sudo xbps-install" \
-	sxr="sudo xbps-remove" \
+	xi="sudo xbps-install" \
+	xr="sudo xbps-remove" \
 	xq="xbps-query -Rs" \
 	b="bluetoothctl" \
 	hs="hugo server --noHTTPCache" \
