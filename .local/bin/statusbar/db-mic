@@ -4,7 +4,7 @@ mic=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
 
 case $BUTTON in
 	1) wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle ;;
-	3) notify-send "🎤 Microphone Module:" "Left-click to toggle microphone mute." ;;
+	3) notify-send "🗣️ Microphone Module:" "Left-click to toggle microphone mute." ;;
 	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
 esac
 
@@ -22,7 +22,7 @@ split() {
 mic="$(printf "%.0f" "$(split "$mic" ".")")"
 
 case 1 in
-	$((mic >= 1 )) ) icon="🎙️" ;;
+	$((mic >= 1 )) ) icon="🗣️" ;;
 	* ) exit ;;
 esac
 
