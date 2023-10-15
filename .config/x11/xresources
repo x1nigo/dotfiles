@@ -9,65 +9,65 @@ st.borderpx: 2
 
 ! Dmenu
 
-dmenu.background: #18181b
+dmenu.background: #1d2021
 dmenu.foreground: #eeeeee
-dmenu.selbackground: #c0caf5
-dmenu.selforeground: #0a0f14
+dmenu.selbackground: #005577
+dmenu.selforeground: #eeeeee
 
 ! Dwm
 
 dwm.borderpx: 3
-dwm.gappih: 7
-dwm.gappiv: 7
-dwm.gappoh: 7
-dwm.gappov: 7
-dwm.normbgcolor: #18181b
+dwm.gappih: 20
+dwm.gappiv: 10
+dwm.gappoh: 10
+dwm.gappov: 30
+dwm.normbgcolor: #1d2021
 dwm.normbordercolor: #222222
 dwm.normfgcolor: #eeeeee
 dwm.selfgcolor: #eeeeee
-dwm.selbordercolor: #eeeeee
-dwm.selbgcolor: #18181b
+dwm.selbordercolor: #500000
+dwm.selbgcolor: #1d2021
 
 ! St background, foreground, and cursor:
 
-*.background: #18181b
+*.background: #1d2021
 *.foreground: #eeeeee
 *.cursorColor: #ff5555
 
 ! Colorscheme:
 
-! gruvbox-2.0:
-! *.color0: #18181b
-! *.color1: #cc241d
-! *.color2: #98971a
-! *.color3: #ff8700
-! *.color4: #458588
-! *.color5: #b16286
-! *.color6: #689d6a
-! *.color7: #a89984
-! *.color8: #18181b
-! *.color9: #fb4934
-! *.color10: #b8bb26
-! *.color11: #fabd2f
-! *.color12: #83a598
-! *.color13: #d3869b
-! *.color14: #8ec07c
-! *.color15: #ebdbb2
-
-sihaya:
-*.color0: #1d2028
-*.color1: #ff5555
-*.color2: #A3ce8C
-*.color3: #ffc18B
-*.color4: #75afda
-*.color5: #c0caf5
-*.color6: #85d2d2
-*.color7: #E5E9F0
+gruvbox-2.0:
+*.color0: #18181b
+*.color1: #cc241d
+*.color2: #98971a
+*.color3: #ff8700
+*.color4: #458588
+*.color5: #b16286
+*.color6: #689d6a
+*.color7: #a89984
 *.color8: #18181b
-*.color9: #ff5555
-*.color10: #A3cE8C
-*.color11: #ffc18B
-*.color12: #75afda
-*.color13: #c0caf5
-*.color14: #85d2d2
-*.color15: #ECEFF4
+*.color9: #fb4934
+*.color10: #b8bb26
+*.color11: #fabd2f
+*.color12: #83a598
+*.color13: #d3869b
+*.color14: #8ec07c
+*.color15: #ebdbb2
+
+! sihaya:
+! *.color0: #1d2028
+! *.color1: #ff5555
+! *.color2: #A3ce8C
+! *.color3: #ffc18B
+! *.color4: #75afda
+! *.color5: #c0caf5
+! *.color6: #85d2d2
+! *.color7: #E5E9F0
+! *.color8: #18181b
+! *.color9: #ff5555
+! *.color10: #A3cE8C
+! *.color11: #ffc18B
+! *.color12: #75afda
+! *.color13: #c0caf5
+! *.color14: #85d2d2
+! *.color15: #ECEFF4
