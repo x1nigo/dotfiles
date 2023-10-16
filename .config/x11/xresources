@@ -32,7 +32,7 @@ dwm.selbgcolor: #1d2021
 
 *.background: #1d2021
 *.foreground: #eeeeee
-*.cursorColor: #ab9df2
+*.cursorColor: #ff5555
 
 ! Colorscheme:
 
