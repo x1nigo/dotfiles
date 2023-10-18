@@ -1,73 +1,19 @@
-! Fonts
-
-*.font: monospace-10
-
-! St
-
-st.alpha: 1.0
-st.borderpx: 2
-
-! Dmenu
-
-dmenu.background: #1d2021
-dmenu.foreground: #eeeeee
-dmenu.selbackground: #ab9df2
-dmenu.selforeground: #0a0f14
-
-! Dwm
-
-dwm.borderpx: 2
-dwm.gappih: 20
-dwm.gappiv: 10
-dwm.gappoh: 10
-dwm.gappov: 30
-dwm.normbgcolor: #1d2021
-dwm.normbordercolor: #222222
-dwm.normfgcolor: #eeeeee
-dwm.selfgcolor: #eeeeee
-dwm.selbordercolor: #ab9df2
-dwm.selbgcolor: #1d2021
-
-! St background, foreground, and cursor:
-
+Doom-One:
+*.color0: #1c1f24
+*.color1: #ff6c6b
+*.color2: #98be65
+*.color3: #da8548
+*.color4: #51afef
+*.color5: #c678dd
+*.color6: #5699af
+*.color7: #202328
+*.color8: #5b6268
+*.color9: #da8548
+*.color10: #4db5bd
+*.color11: #ecbe7b
+*.color12: #3071db
+*.color13: #a9a1e1
+*.color14: #46d9ff
+*.color15: #dfdfdf
 *.background: #1d2021
-*.foreground: #eeeeee
-*.cursorColor: #ff5555
-
-! Colorscheme:
-
-! gruvbox-2.0:
-! *.color0: #18181b
-! *.color1: #cc241d
-! *.color2: #98971a
-! *.color3: #ff8700
-! *.color4: #458588
-! *.color5: #b16286
-! *.color6: #689d6a
-! *.color7: #a89984
-! *.color8: #18181b
-! *.color9: #fb4934
-! *.color10: #b8bb26
-! *.color11: #fabd2f
-! *.color12: #83a598
-! *.color13: #d3869b
-! *.color14: #8ec07c
-! *.color15: #ebdbb2
-
-dracula:
-*.color0: #44475A
-*.color1: #FF5555
-*.color2: #50FA7B
-*.color3: #FFB86C
-*.color4: #8BE9FD
-*.color5: #BD93F9
-*.color6: #FF79C6
-*.color7: #f8f8f2
-*.color8: #000000
-*.color9: #FF5555
-*.color10: #50FA7B
-*.color11: #FFB86C
-*.color12: #8BE9FD
-*.color13: #BD93F9
-*.color14: #FF79C6
-*.color15: #FFFFFF
+*.foreground: #d7d7d7
