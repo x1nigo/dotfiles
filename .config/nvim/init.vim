@@ -28,7 +28,7 @@ colorscheme default
 set nocompatible
 set bg=light
 syntax on
-let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_theme='ravenpower'
 
 set title
 set autoindent
@@ -69,7 +69,7 @@ set number relativenumber
 	autocmd BufWritePre * :%s/\s\+$//e
 
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
-	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h !sudo make clean install
+	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/surf/config.h !sudo make clean install
 " Restart dwmblocks automatically after compilation
         autocmd BufWritePost ~/.local/src/dwmblocks/config.h !sudo make clean install && {kill $(pidof -x dwmblocks); setsid -f dwmblocks}
 " Restart dunst after its config file is updated
@@ -78,3 +78,4 @@ set number relativenumber
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
 highlight Visual ctermfg=3 ctermbg=0 cterm=none
+highlight LineNr ctermfg=8 ctermbg=none cterm=none
