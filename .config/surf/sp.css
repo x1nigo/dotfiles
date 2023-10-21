@@ -1,3 +1,7 @@
+html {
+	background-color: #1d2028;
+}
+
 header h1 {
 	text-align: center;
 	padding-bottom: 1em;
@@ -17,7 +21,7 @@ body {
 }
 
 img {
-	max-width: 500px;
+	max-width: 250px;
 	display: block;
 	text-align: center;
 	margin-left: auto;
