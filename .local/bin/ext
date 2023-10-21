@@ -1,0 +1,15 @@
+#!/bin/sh
+
+file="$1"
+
+if [ -z "$1" ]; then
+	echo "No file parsed."
+else
+	case "$file" in
+		*.zip) unzip "$file" ;;
+		*.tar.gz|*.tar.xz|*.tgz|*.txz|*.tar)
+			tar -xvf "$file" ;;
+		*.gz) gunzip "$file" ;;
+		*.xz) unxz "$file" ;;
+	esac
+fi
