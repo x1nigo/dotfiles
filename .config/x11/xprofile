@@ -4,16 +4,11 @@
 xrandr --dpi 96
 setbg &
 
-autostart="mpd dwmblocks dunst pipewire transmission-daemon"
+autostart="mpd picom dwmblocks dunst pipewire transmission-daemon"
 
 for program in $autostart; do
         pidof -s "$program" || "$program" &
 done >/dev/null 2>&1
-
-picom --animations \
-	--animation-for-open-window zoom \
-	--animation-window-mass .5 \
-	--animation-stiffness 350 &
 
 # Decrease key repeat delay to 300ms and increase key repeat rate to 50ms per second.
 xset r rate 300 50
