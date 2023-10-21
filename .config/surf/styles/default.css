@@ -1,27 +1,3 @@
-html {
-	background-color: #1d2021 !important;
-	color: #d7d7d7 !important;
-}
-
-body {
-	background-color: #1d2021 !important;
-	color: #d7d7d7 !important;
-}
-
-#header {
-	background-color: #1d2021 !important;
-	clear: both;
-	color: #d7d7d7 !important;
-}
-
-a {
+a, strong, b, i {
 	color: #a9a1e1 !important;
-}
-
-#header a {
-	color: #a9a1e1 !important;
-}
-
-#menu a {
-	color: #1c1f24 !important;
 }
