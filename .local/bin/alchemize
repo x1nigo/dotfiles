@@ -7,15 +7,15 @@
 # 	markdown
 # 	html
 
-# TODO: Create compatibility with other files.
-
 file="$1"
 base="${file%.*}"
 ext="${file##*.}"
 
+# Instead of using `setsid`, I place an ampersand symbol at the end
+# of the command for compatibility with OpenBSD.
 case $ext in
-	tex) setsid -f zathura "$base.pdf" ;;
-	ms|mom) setsid -f zathura "$base.pdf" ;;
-	md|markdown) setsid -f zathura "$base.pdf" ;;
-	html) setsid -f ${BROWSER:-librewolf} "$file" ;;
+	tex) zathura "$base.pdf" & ;;
+	ms|mom) zathura "$base.pdf" & ;;
+	md|markdown) zathura "$base.pdf" & ;;
+	html) ${BROWSER:-librewolf} "$file" ;;
 esac
