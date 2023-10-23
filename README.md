@@ -12,13 +12,6 @@ These are my personal dotfiles, which include scripts to my other repositories.
 - `newsboat` - feed reader for text terminals
 - `pipewire` - volume/mic audio program
 
-If you don't want to use `neovim` and just want the regular `vim`, you can
-just copy init.vim from `.config/nvim` and replace it with either
-`~/.vimrc` or `~/.vim/vimrc`.
-
-## Gtk theme used:
-- `Tokyonight-Dark-BL` - From [here](https://github.com/Fausto-Korpsvart/Tokyo-Night-GTK-Theme).
-
 ## NOTE
 My dotfiles are meant to work together with my other repositories, namely the
 suckless software ones:
