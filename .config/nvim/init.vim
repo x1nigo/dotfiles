@@ -71,4 +71,3 @@ set number relativenumber
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
 highlight Visual ctermfg=3 ctermbg=0 cterm=none
-highlight LineNr ctermfg=8 ctermbg=none cterm=none
