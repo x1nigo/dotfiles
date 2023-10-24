@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# This has only been tested in Qtile.
-
-case "$TERMINAL" in
-	st) st -t termfloat -g 128x38 ;;
-	alacritty) alacritty --hold -t 'termfloat' ;;
-esac
