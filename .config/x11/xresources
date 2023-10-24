@@ -3,7 +3,7 @@ st.alpha: .8
 
 *.background: #1d2021
 *.foreground: #d7d7d7
-*.cursorColor: #2800af
+*.cursorColor: #008080
 
 Chameleon:
 *.color0: #2c2c2c
