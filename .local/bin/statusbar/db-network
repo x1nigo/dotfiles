@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# TODO: Ethernet unoperational. Must find a way to make it work.
-
 case $BUTTON in
 	1) ${TERMINAL:-st} -e nmtui ;;
 	3) notify-send "🛜 Network Module:" "Left-click to connect to the internet (nmtui).
