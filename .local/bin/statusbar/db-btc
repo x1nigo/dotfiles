@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Note that this needs `coinmon` to be installed.
+# Run `npm install -g coinmon`; use sudo if you need to.
+
+rawbtc="$(coinmon -f btc | awk '/BTC/ { printf("%.2f\n", $6) }')"
+btc="$(numfmt --grouping "$rawbtc")"
+
+printf "%s\$%s\n" "💰" "$btc"
