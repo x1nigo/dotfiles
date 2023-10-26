@@ -2,7 +2,7 @@
 
 # Parse through a list of videos and view such media without a browser.
 
-vidsfile="${XDG_DATA_HOME:-$HOME/.local/share}/01-videos"
+vidsfile="${XDG_DATA_HOME:-$HOME/.local/share}/02-videos"
 
 vidslist="$(cat "$vidsfile" | dmenu -l 20)"
 chosen="$(echo "$vidslist" | cut -d' ' -f1)"
