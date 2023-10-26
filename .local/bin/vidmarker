@@ -4,7 +4,7 @@
 vidmark="$(xclip -o)"
 [ -z $vidmark ] && notify-send "🎥 Unable to create a video bookmark." "Please try again." && exit 1
 # This will be our list of urls.
-file="${XDG_DATA_HOME:-$HOME/.local/share}/01-videos"
+file="${XDG_DATA_HOME:-$HOME/.local/share}/02-videos"
 
 # Do not add if video url already exists in the file.
 if grep -q "^$vidmark" "$file"; then
