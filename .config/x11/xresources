@@ -1,24 +1,78 @@
 *.font: monospace-10
-st.alpha: .95
+st.alpha: 1.0
 
 *.background: #1d2021
 *.foreground: #d7d7d7
-*.cursorColor: #aaddff
+*.cursorColor: #9fdbf0
 
-Chameleon:
-*.color0: #2c2c2c
-*.color1: #cc231c
-*.color2: #689d69
-*.color3: #d79922
-*.color4: #366b71
-*.color5: #4e5165
-*.color6: #458587
-*.color7: #c8bb97
-*.color8: #777777
-*.color9: #cc231c
-*.color10: #689d69
-*.color11: #d79922
-*.color12: #366b71
-*.color13: #4e5165
-*.color14: #458587
-*.color15: #c8bb97
+VoidOS:
+*.color0: #282A2E
+*.color1: #A54242
+*.color2: #A1B56C
+*.color3: #DE935F
+*.color4: #225555
+*.color5: #85678F
+*.color6: #5E8D87
+*.color7: #777777
+*.color8: #373B41
+*.color9: #C63535
+*.color10: #608360
+*.color11: #FA805A
+*.color12: #449DA1
+*.color13: #BA8BAF
+*.color14: #86C1B9
+*.color15: #C5C8C6
+
+! Chameleon:
+! *.color0: #2c2c2c
+! *.color1: #cc231c
+! *.color2: #689d69
+! *.color3: #d79922
+! *.color4: #366b71
+! *.color5: #4e5165
+! *.color6: #458587
+! *.color7: #c8bb97
+! *.color8: #777777
+! *.color9: #cc231c
+! *.color10: #689d69
+! *.color11: #d79922
+! *.color12: #366b71
+! *.color13: #4e5165
+! *.color14: #458587
+! *.color15: #c8bb97
+
+! Gruvbox-2.0:
+! *.color0: #282828
+! *.color1: #fb4934
+! *.color2: #b8bb26
+! *.color3: #fabd2f
+! *.color4: #83a598
+! *.color5: #d3869b
+! *.color6: #8ec07c
+! *.color7: #ebdbb2
+! *.color8: #282828
+! *.color9: #fb4934
+! *.color10: #b8bb26
+! *.color11: #fabd2f
+! *.color12: #83a598
+! *.color13: #d3869b
+! *.color14: #8ec07c
+! *.color15: #ebdbb2
+
+! Material:
+! *.color0: #073641
+! *.color1: #EB606B
+! *.color2: #C3E88D
+! *.color3: #F7EB95
+! *.color4: #80CBC3
+! *.color5: #FF2490
+! *.color6: #AEDDFF
+! *.color7: #FFFFFF
+! *.color8: #002B36
+! *.color9: #EB606B
+! *.color10: #C3E88D
+! *.color11: #F7EB95
+! *.color12: #7DC6BF
+! *.color13: #6C71C3
+! *.color14: #34434D
+! *.color15: #FFFFFF
