@@ -7,7 +7,8 @@
 # TODO: Try to prevent this script from detecting the system drive.
 
 # We need to use this to separate the drives properly.
-IFS=''
+IFS='
+'
 
 # Simple output of the lsblk command.
 output=$(lsblk -rpo "name,size,fstype,type,mountpoint" | grep "part $")
