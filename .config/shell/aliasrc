@@ -11,12 +11,8 @@ for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
 	alias $command="sudo $command"
 done; unset command
 
-# Check if eza is installed. If so, then use it instead of ls.
-if command -v eza >/dev/null 2>&1 ; then
-	cmd="eza"
-else
-	cmd="ls"
-fi
+# Check if eza/exa are installed. If so, then use it instead of ls.
+[ $(command -v eza) ] && cmd="eza" || cmd="ls"
 
 # Verbose mode for particular commands.
 alias \
@@ -45,16 +41,13 @@ alias \
 	merge="xrdb -merge $HOME/.config/x11/xresources" \
 	lf="lfrun" \
 	df="df -h" \
-	p="pacman" \
-	sp="sudo pacman" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove" \
 	xq="xbps-query -Rs" \
 	b="bluetoothctl" \
 	hs="hugo server --noHTTPCache" \
-	s="systemctl" \
         m="neomutt" \
-	t="transmission-remote" \
+	tmr="transmission-remote" \
 	bc="bc -ql" \
 	rsync="rsync -rtvzP" \
 	yt="yt-dlp" \
