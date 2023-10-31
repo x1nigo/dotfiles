@@ -13,7 +13,7 @@
     class = Dunst
     background = "#1d2021"
     frame_color = "#757585"
-    frame_width = 1
+    frame_width = 2
     font = Monospace 10
     format = "<b>%s</b>\n%b"
     timeout = 5
