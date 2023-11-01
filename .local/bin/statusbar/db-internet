@@ -1,0 +1,15 @@
+#!/bin/sh
+
+case $BUTTON in
+	1) ${TERMINAL:-st} -e nmtui ;;
+	3) notify-send "🌐 Internet Module:" "Left-click to connect to the internet (nmtui)." ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
+esac
+
+if grep -xq 'up' /sys/class/net/[ew]*/operstate 2>/dev/null; then
+	icon="🌐"
+else
+	exit 1
+fi
+
+printf "%s\n" "$icon"
