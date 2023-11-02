@@ -12,14 +12,13 @@
     title = Dunst
     class = Dunst
     background = "#1d2021"
-    frame_color = "#757585"
-    frame_width = 2
+    frame_color = "#500817"
     font = Monospace 10
     format = "<b>%s</b>\n%b"
     timeout = 5
 
 [urgency_critical]
-    background = "#500000"
+    background = "#500817"
     foreground = "#d7d7d7"
     frame_color = "#1d2021"
     timeout = 5
