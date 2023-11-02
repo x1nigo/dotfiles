@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 
 sel() {
 	chosen=$(find $HOME/.local/share/backgrounds -type f | dmenu -l 10)
