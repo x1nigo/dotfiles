@@ -30,7 +30,7 @@
 #	left intact.
 
 # Exports
-export EDITOR="nvim"
+export EDITOR="vim"
 export BROWSER="firefox"
 export TERM="st"
 
@@ -38,7 +38,9 @@ export TERM="st"
 . /etc/ksh.kshrc
 
 # Prompt with colors. Has same rules as bash.
-PS1="\e[1;33m\u\e[1;32m on \e[1;34m\h \e[1;35m\w\e[0m\\n$ "
+[ $(whoami) = "root" ] && \
+	PS1="\[\e[1;31m\]\u on \h \w \\n\[\e[0m\]-\[\e[1;31m\]#\[\e[0m\] " ||
+	PS1="\[\e[1;31m\]\u \[\e[0m\]on \[\e[1;33m\]\h \[\e[1;35m\]\w \\n\[\e[1;31m\]-\[\e[0m\]$ "
 
 # Redraws the prompt string without hiding the first line.
 bind -m '^L'=clear'^J'
@@ -51,16 +53,32 @@ ff () {
 	[ -f "$file" ] && cd "$dir" && $EDITOR "$file" && cd "$backtrack"
 }
 
+# Use neovim for vim if present.
+# [ -x "$(command -v nvim)" ] && alias vim="nvim"
+
 # Shortcuts to directories.
 alias \
-	d="cd $HOME/Documents" \
-	D="cd $HOME/Downloads" \
-	px="cd $HOME/Pictures" \
-	v="cd $HOME/Videos" \
-	sr="cd $HOME/.local/src" \
-	sc="cd $HOME/.local/bin" \
-	dt="cd $HOME/.local/share"
+	d="cd $HOME/Documents && ls -A" \
+	D="cd $HOME/Downloads && ls -A" \
+	px="cd $HOME/Pictures && ls -A" \
+	v="cd $HOME/Videos && ls -A" \
+	sr="cd $HOME/.local/src && ls -A" \
+	sc="cd $HOME/.local/bin && ls -A" \
+	dt="cd $HOME/.local/share && ls -A"
 
 # Shortcuts to config files.
 alias \
 	cfk="$EDITOR $HOME/.config/ksh/kshrc" \
+	cfp="$EDITOR $HOME/.config/picom.conf" \
+	cfv="$EDITOR $HOME/.config/nvim/init.vim" \
+	cfb="$EDITOR $HOME/.local/share/01-bookmarks" \
+
+# Shortcuts to commands.
+alias \
+	df="df -h" \
+	pa="doas pkg_add" \
+	pd="doas pkg_delete" \
+	pi="pkg_info" \
+	yt="yt-dlp" \
+	yta="yt-dlp -x -f bestaudio/best" \
+	z="zathura"
