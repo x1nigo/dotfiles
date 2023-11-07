@@ -1,6 +1,6 @@
 # User prompt
 autoload -U colors && colors
-PROMPT="%B%F{red}%n%f%b %F{none}on%f %B%F{yellow}%m%f %F{magenta}%~%f
+PROMPT="%B%F{red}%n%f%b %F{none}on%f %B%F{yellow}%m%f %F{magenta}%d%f
 %F{red}-%f$%b "
 
 # Settings (auto cd into dir & stop ctrl-s from freezing terminal)
