@@ -5,6 +5,7 @@ These are my personal dotfiles, which include scripts to my other repositories.
 - `nvim` - text editor
 - `zsh` - shell
 - `lf` - file manager
+- `fff` - backup file manager
 - `sxiv` - image viewer
 - `zathura` - pdf viewer
 - `mpv` - video/audio player
