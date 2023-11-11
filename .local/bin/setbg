@@ -2,7 +2,7 @@
 
 sel() {
 	chosen=$(find $HOME/.local/share/backgrounds -type f | dmenu -l 10)
-	xwallpaper --zoom "$chosen" && ln -sf "$chosen" $HOME/.local/share/bg
+	xwallpaper --zoom "$chosen" && cp "$chosen" $HOME/.local/share/bg
 	exit # Exit right after setting wallpaper from folder.
 }
 
@@ -13,5 +13,5 @@ while getopts "d" o; do
 done
 
 # If given a file, then use that as wallpaper.
-! [ -z "$1" ] && xwallpaper --zoom "$1" && exit
+! [ -z "$1" ] && xwallpaper --zoom "$1" && cp "$1" $HOME/.local/share/bg && exit
 xwallpaper --zoom $HOME/.local/share/bg # If no arguments, then just set the previous wallpaper.
