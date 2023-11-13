@@ -1,0 +1,10 @@
+#!/bin/sh
+
+type="intel_backlight"
+
+dir="/sys/class/backlight/$type"
+raw=$(cat $dir/brightness)
+max=$(cat $dir/max_brightness)
+brightness=$(( raw * 100 / $max ))
+
+echo $brightness

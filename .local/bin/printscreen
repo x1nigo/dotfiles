@@ -13,7 +13,7 @@ activewin() {
 chosen=$(printf "Desktop\\nClick+Drag\\nActive Window" | dmenu)
 
 case "$chosen" in
-	"Desktop") maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
+	"Desktop") sleep 2 && maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
 		&& notify-send "🖥️ Took a \`desktop\` screenshot!" "You may find it in your ~ directory" ; exit ;;
 	"Click+Drag") selected ;;
 	"Active Window") activewin ;;
