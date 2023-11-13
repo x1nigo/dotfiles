@@ -1,6 +1,5 @@
 # User prompt
 autoload -U colors && colors
-#PROMPT="%B%F{red}[%F{yellow}%n%f%b%F{green}@%f%B%F{blue}%m%f %F{magenta}%~%f%F{red}]%f\$ "
 PROMPT="%B%F{red}%n%f%b %F{none}on%f %B%F{yellow}%m%f %F{magenta}%d%f
 %F{red}-%f$%b "
 
