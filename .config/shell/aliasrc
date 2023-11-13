@@ -39,7 +39,7 @@ alias \
 # Too lazy to type these.
 alias \
 	merge="xrdb -merge $HOME/.config/x11/xresources" \
-	lf="lfrun" \
+	lf="lfuz" \
 	df="df -h" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove" \
