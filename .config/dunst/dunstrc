@@ -5,20 +5,20 @@
     height = 1000
     origin = top-right
     indicate_hidden = yes
-    transparency = 0
+    transparency = 12
     sort = yes
     line_height = 0
     markup = full
     title = Dunst
     class = Dunst
-    background = "#1d2021"
-    frame_color = "#500817"
     font = Monospace 10
     format = "<b>%s</b>\n%b"
+    background = "#0a0f14"
+    foreground = "#d7d7d7"
+    frame_color= "#5b0000"
     timeout = 5
 
 [urgency_critical]
-    background = "#500817"
+    background = "#580000"
     foreground = "#d7d7d7"
-    frame_color = "#1d2021"
     timeout = 5
