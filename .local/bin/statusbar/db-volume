@@ -33,4 +33,4 @@ case 1 in
 	* ) exit ;;
 esac
 
-printf "%s%s%%" "$icon" "$vol"
+printf "%s%s%%\\n" "$icon" "$vol"

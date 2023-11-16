@@ -18,4 +18,4 @@ unread="$(find "${XDG_DATA_HOME:-$HOME/.local/share}"/mail/*/[Ii][Nn][Bb][Oo][Xx
 pidof mbsync >/dev/null 2>&1 && icon="🔃"
 
 # Display the proper icon and corresponding mail depending on status.
-[ $unread = 0 ] && exit 0 || printf "%s" "📬$unread$icon"
+[ $unread = 0 ] && exit 0 || printf "%s\\n" "📬$unread$icon"

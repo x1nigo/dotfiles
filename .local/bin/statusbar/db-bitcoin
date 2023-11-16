@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Note that this needs `coinmon` to be installed.
+# Run `npm install -g coinmon`; use sudo if you need to.
+
+case $BUTTON in
+	3) notify-send "💰 Bitcoin Module:" "Displays the current price of Bitcoin in dollars.
+
+\"Fix the money, fix the world.\"" ;;
+	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
+esac
+
+rawbtc="$(coinmon -f btc | awk '/BTC/ { printf("%.2f\n", $6) }')"
+btc="$(numfmt --grouping "$rawbtc")"
+
+printf "%s\$%s\\n" "💰" "$btc"

@@ -26,4 +26,4 @@ case 1 in
 	* ) exit ;;
 esac
 
-printf "%s%s%%" "$icon" "$mic"
+printf "%s%s%%\\n" "$icon" "$mic"

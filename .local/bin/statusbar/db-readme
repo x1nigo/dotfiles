@@ -6,4 +6,4 @@ case $BUTTON in
 	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
 esac
 
-printf "%s" "❓"
+printf "%s\\n" "❓"

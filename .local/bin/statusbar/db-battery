@@ -25,4 +25,4 @@ esac
 	notify-send -u critical "🪫 Battery level is dangerously low." "Charge your device ASAP." \
 	&& printf "%s%s\n" "$warn" "🪫$bat%" && exit
 
-printf "%s%s%s\n" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/Not charging/🕰️/')" "$warn" "$(echo $bat | sed 's/$/%/')"
+printf "%s%s%s\\n" "$(echo $stat | sed 's/Discharging/🔋/;s/Charging/🔌/;s/Full/⚡/;s/Not charging/🕰️/')" "$warn" "$(echo $bat | sed 's/$/%/')"

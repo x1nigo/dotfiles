@@ -9,6 +9,6 @@ case $BUTTON in
 	6) ${TERMINAL:-st} -e "$EDITOR" "$0" ;;
 esac
 
-[ "$BRI" -gt "50" ] && icon=🌅 || icon=☔
+[ "$BRI" -ge "50" ] && icon=🌅 || icon=☔
 
-printf "%s%s%%" "$icon" "$BRI"
+printf "%s%s%%\\n" "$icon" "$BRI"

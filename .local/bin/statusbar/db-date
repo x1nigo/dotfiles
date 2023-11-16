@@ -25,4 +25,4 @@ esac
 date=$(date +'%Y %b %d (%a)')
 time=$(date +'%I:%M%p')
 
-printf "%s %s%s\n" "$date" "$timeicon" "$time"
+printf "%s %s%s\\n" "$date" "$timeicon" "$time"
