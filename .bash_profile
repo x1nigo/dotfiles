@@ -10,7 +10,7 @@ export PATH="${PATH}$(find $HOME/.local/bin -type d -printf ':%h/%f')"
 # Default programs:
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="librewolf"
+export BROWSER="chromium"
 export VISUAL="nvim"
 export MANPAGER="less -R --use-color -Dd+g -Du+b"
 
