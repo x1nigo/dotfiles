@@ -64,9 +64,9 @@ set number relativenumber
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
 	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/surf/config.h !sudo make install
 " Restart dwmblocks automatically after compilation
-        autocmd BufWritePost ~/.local/src/dwmblocks/config.h !sudo make install && {kill $(pidof -x dwmblocks); setsid -f dwmblocks}
+        autocmd BufWritePost ~/.local/src/dwmblocks/config.h !sudo make install && kill $(pgrep -x dwmblocks); setsid -f dwmblocks
 " Restart dunst after its config file is updated
-	autocmd BufWritePost ~/.config/dunst/dunstrc !{kill $(pidof -x dunst); setsid -f dunst}
+"	autocmd BufWritePost ~/.config/dunst/dunstrc !{kill $(pidof -s dunst); setsid -f dunst}
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
