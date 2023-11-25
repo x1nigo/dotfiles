@@ -8,6 +8,11 @@
 # Autocd into any directory.
 shopt -s autocd
 
+# Use vi-mode.
+set -o vi
+bind -m vi-command '\C-l: clear-screen'
+bind -m vi-insert '\C-l: clear-screen'
+
 # Colors for your prompt.
 BLACK='\[\e[1;30m\]'
 RED='\[\e[1;31m\]'
