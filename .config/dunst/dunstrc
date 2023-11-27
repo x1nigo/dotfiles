@@ -5,7 +5,7 @@
     height = 1000
     origin = top-right
     indicate_hidden = yes
-    transparency = 12
+    transparency = 0
     sort = yes
     line_height = 0
     markup = full
@@ -13,12 +13,12 @@
     class = Dunst
     font = Monospace 8
     format = "<b>%s</b>\n%b"
-    background = "#1b1e1f"
+    background = "#181a1b"
     foreground = "#d7d7d7"
-    frame_color= "#5b0000"
+    frame_color= "#8b0000"
     timeout = 5
 
 [urgency_critical]
-    background = "#5b0000"
+    background = "#8b0000"
     foreground = "#d7d7d7"
     timeout = 5
