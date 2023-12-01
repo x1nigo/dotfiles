@@ -11,11 +11,11 @@
     markup = full
     title = Dunst
     class = Dunst
-    font = Monospace 8
+    font = Monospace 10
     format = "<b>%s</b>\n%b"
-    background = "#181a1b"
+    background = "#0f2837"
     foreground = "#d7d7d7"
-    frame_color= "#8b0000"
+    frame_color= "#282828"
     timeout = 5
 
 [urgency_critical]
