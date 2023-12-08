@@ -15,11 +15,11 @@
     format = "<b>%s</b>\n%b"
     background = "#121618"
     foreground = "#d7d7d7"
-    frame_color = "#5b0000"
+    frame_color = "#0f2837"
     frame_width = 2
     timeout = 5
 
 [urgency_critical]
-    background = "#5b0000"
+    background = "#5b2828"
     foreground = "#d7d7d7"
     timeout = 5
