@@ -10,7 +10,4 @@ else
 fi
 
 # Suckless's window manager
-# ssh-agent dwm
-
-# i3
-exec i3
+exec dwm
