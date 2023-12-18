@@ -26,7 +26,7 @@ WHITE='\[\e[1;37m\]'
 RESET='\[\e[0m\]'
 
 # Your prompt.
-PS1="${RED}\u${RESET}@${YELLOW}\h ${PURPLE}\${PWD}\\n${RED}-${RESET}\$ "
+PS1="${RED}[${YELLOW}\u${GREEN}@${BLUE}\h ${PURPLE}\w${RED}]${WHITE}\\$ ${RESET}"
 
 # Load aliases and shortcuts.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
