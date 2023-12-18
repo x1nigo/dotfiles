@@ -3,6 +3,7 @@
     follow = keyboard
     width = 370
     height = 1000
+    offset = 0x21
     origin = top-right
     indicate_hidden = yes
     transparency = 0
@@ -15,7 +16,6 @@
     format = "<b>%s</b>\n%b"
     background = "#121618"
     foreground = "#d7d7d7"
-    frame_color = "#0f2837"
     frame_width = 2
     timeout = 5
 
