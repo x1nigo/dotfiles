@@ -66,7 +66,7 @@ set number relativenumber
 " Restart dwmblocks automatically after compilation
         autocmd BufWritePost ~/.local/src/dwmblocks/config.h !sudo make install && kill $(pgrep -x dwmblocks); setsid -f dwmblocks
 " Restart dunst after its config file is updated
-"	autocmd BufWritePost ~/.config/dunst/dunstrc !{kill $(pidof -s dunst); setsid -f dunst}
+	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pidof -s dunst); setsid -f dunst
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost Xresources,Xdefaults,xresources,xdefaults !xrdb %
 
