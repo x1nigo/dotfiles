@@ -41,7 +41,7 @@ alias \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove" \
 	xq="xbps-query -Rs" \
-	b="bluetoothctl" \
+	bctl="bluetoothctl" \
 	sctl="systemctl" \
 	hs="hugo server --noHTTPCache" \
         m="neomutt" \
