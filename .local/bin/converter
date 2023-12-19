@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Delimiter to separate files.
-IFS='
-'
-# Convert every file into the $USER's ownership.
-for file in $(find); do
-	sudo chown $USER:wheel "$file"
-done
