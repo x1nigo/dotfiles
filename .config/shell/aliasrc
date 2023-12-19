@@ -11,9 +11,6 @@ for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
 	alias $command="sudo $command"
 done; unset command
 
-# Check if eza/exa are installed. If so, then use it instead of ls.
-[ $(command -v eza) ] && cmd="eza" || cmd="ls"
-
 # Verbose mode for particular commands.
 alias \
 	rm="rm -Iv" \
@@ -27,7 +24,7 @@ alias \
 
 # Colorize your commands.
 alias \
-	ls="$cmd --color=auto --group-directories-first" \
+	ls="ls --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	egrep="egrep --color=auto" \
 	fgrep="fgrep --color=auto" \
@@ -39,12 +36,13 @@ alias \
 # Too lazy to type these.
 alias \
 	merge="xrdb -merge $HOME/.config/x11/xresources" \
-	lf="lfuz" \
+	lf="lfx" \
 	df="df -h" \
 	xi="sudo xbps-install" \
 	xr="sudo xbps-remove" \
 	xq="xbps-query -Rs" \
 	b="bluetoothctl" \
+	sctl="systemctl" \
 	hs="hugo server --noHTTPCache" \
         m="neomutt" \
 	tmr="transmission-remote" \
