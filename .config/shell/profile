@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # Add `~/.local/bin` to $PATH
 export PATH="${PATH}$(find $HOME/.local/bin -type d -printf ':%h/%f')"
