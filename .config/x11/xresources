@@ -1,11 +1,11 @@
 *.font: monospace-10
-st.alpha: 0.95
+st.alpha: 1.0
 
 *.background: #121618
 *.foreground: #d7d7d7
 *.cursorColor: #3071db
 
-OpenBASED:
+OBSD:
 *.color0: #282A2E
 *.color1: #A54242
 *.color2: #A1B56C
