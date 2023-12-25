@@ -23,4 +23,3 @@ cfnu="$EDITOR $HOME/.config/newsboat/urls" \
 cfv="$EDITOR $HOME/.config/nvim/init.vim" \
 cfe="$EDITOR $HOME/.local/share/00-emojis" \
 cfb="$EDITOR $HOME/.local/share/01-bookmarks" \
-cfV="$EDITOR $HOME/.local/share/02-videos" \
