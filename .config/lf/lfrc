@@ -41,7 +41,7 @@ cmd mkdir ${{
 cmd setbg ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
-	setbg -f "$f" && clear
+	setbg "$f" && clear
 }}
 
 cmd touch ${{
