@@ -14,11 +14,14 @@
     class = Dunst
     font = Monospace 10
     format = "<b>%s</b>\n%b"
-    background = "#1d2021"
+    background = "#121618"
     foreground = "#d7d7d7"
+    frame_color = "#7a1812"
+    frame_width = 2
     timeout = 5
 
 [urgency_critical]
-    background = "#5b0000"
+    background = "#7a1812"
     foreground = "#d7d7d7"
+    frame_color = "#000000"
     timeout = 5
