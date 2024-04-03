@@ -1,45 +1,27 @@
 *.font: monospace-10
-st.alpha: 1.0
+st.alpha: .85
 
 *.background: #121618
 *.foreground: #d7d7d7
 *.cursorColor: #008
 
-Dune:
-*.color0: #1f2225
-*.color1: #7a1812
-*.color2: #6b6d72
-*.color3: #aaacb1
-*.color4: #bfbfbf
-*.color5: #dbdbdb
-*.color6: #525357
-*.color7: #d7d7d7
-*.color8: #1f2225
-*.color9: #852828
-*.color10: #6b6d72
-*.color11: #aaacb1
-*.color12: #bfbfbf
-*.color13: #dbdbdb
-*.color14: #525357
-*.color15: #d7d7d7
-
-! OBSD:
-! *.color0: #282A2E
-! *.color1: #A54242
-! *.color2: #A1B56C
-! *.color3: #DE935F
-! *.color4: #225555
-! *.color5: #85678F
-! *.color6: #5E8D87
-! *.color7: #777777
-! *.color8: #373B41
-! *.color9: #C63535
-! *.color10: #608360
-! *.color11: #FA805A
-! *.color12: #449DA1
-! *.color13: #BA8BAF
-! *.color14: #86C1B9
-! *.color15: #C5C8C6
+OBSD:
+*.color0: #282A2E
+*.color1: #A54242
+*.color2: #A1B56C
+*.color3: #DE935F
+*.color4: #225555
+*.color5: #85678F
+*.color6: #5E8D87
+*.color7: #777777
+*.color8: #373B41
+*.color9: #C63535
+*.color10: #608360
+*.color11: #FA805A
+*.color12: #449DA1
+*.color13: #BA8BAF
+*.color14: #86C1B9
+*.color15: #C5C8C6
 
 ! Gruvbox:
 ! *.color0: #282828
