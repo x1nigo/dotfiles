@@ -1,46 +1,16 @@
-#	$OpenBSD: ksh.kshrc,v 1.32 2018/05/16 14:01:41 mpf Exp $
-#
-# NAME:
-#	ksh.kshrc - global initialization for ksh
-#
-# DESCRIPTION:
-#	Each invocation of /bin/ksh processes the file pointed
-#	to by $ENV (usually $HOME/.kshrc).
-#	This file is intended as a global .kshrc file for the
-#	Korn shell.  A user's $HOME/.kshrc file simply requires
-#	the line:
-#		. /etc/ksh.kshrc
-#	at or near the start to pick up the defaults in this
-#	file which can then be overridden as desired.
-#
-# SEE ALSO:
-#	$HOME/.kshrc
-#
-
-# RCSid:
-#	$From: ksh.kshrc,v 1.4 1992/12/05 13:14:48 sjg Exp $
-#
-#	@(#)Copyright (c) 1991 Simon J. Gerraty
-#
-#	This file is provided in the hope that it will
-#	be of use.  There is absolutely NO WARRANTY.
-#	Permission to copy, redistribute or otherwise
-#	use this file is hereby granted provided that
-#	the above copyright notice and this notice are
-#	left intact.
+### Custom kshrc file. ###
 
 # Exports
 export EDITOR="nvim"
-export BROWSER="firefox"
+export BROWSER="chrome"
 export TERM="st"
 export HISTFILE="$HOME/.config/ksh/ksh_history"
-export HISTSIZE=1000
+export HISTSIZE=5000
 
 # Source the ksh.kshrc file.
 . /etc/ksh.kshrc
 
 # Use vi-mode and bind the clear-screen command.
-set -o vi
 bind -m vi-command '\C-l: clear-screen' >/dev/null 2>&1
 bind -m vi-insert '\C-l: clear-screen' >/dev/null 2>&1
 
@@ -57,7 +27,7 @@ WHITE='\[\e[1;37m\]'
 RESET='\[\e[0m\]'
 
 # Your prompt.
-PS1="${RED}\u${RESET}@${YELLOW}\h ${PURPLE}\${PWD}\\n${RED}-${RESET}\$ "
+PS1="${RED}[${YELLOW}\u${GREEN}@${BLUE}\h ${PURPLE}\w${RED}]${WHITE}\$${RESET} "
 
 # Find files under `Home` directory.
 ff () {
@@ -98,7 +68,8 @@ alias \
 	v="cd $HOME/Videos && ls -A" \
 	sr="cd $HOME/.local/src && ls -A" \
 	sc="cd $HOME/.local/bin && ls -A" \
-	dt="cd $HOME/.local/share && ls -A"
+	dt="cd $HOME/.local/share && ls -A" \
+	bkg="cd $HOME/.local/share/backgrounds && ls -A"
 
 # Shortcuts to config files.
 alias \
@@ -106,11 +77,13 @@ alias \
 	cfp="$EDITOR $HOME/.config/picom.conf" \
 	cfv="$EDITOR $HOME/.config/nvim/init.vim" \
 	cfb="$EDITOR $HOME/.local/share/01-bookmarks" \
+	cfZ="$EDITOR $HOME/.config/zathura/zathurarc" \
 	cfx="$EDITOR $HOME/.config/x11/xresources" \
 
 # Shortcuts to commands.
 alias \
 	df="df -h" \
+	du="du -h" \
 	pa="doas pkg_add" \
 	pd="doas pkg_delete" \
 	pi="pkg_info" \
