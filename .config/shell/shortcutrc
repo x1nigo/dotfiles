@@ -17,6 +17,7 @@ cfs="$EDITOR $HOME/.config/shell/shortcutrc" \
 cfd="$EDITOR $HOME/.config/dunst/dunstrc" \
 cfz="$EDITOR $HOME/.config/zsh/.zshrc" \
 cfZ="$EDITOR $HOME/.config/zathura/zathurarc" \
+cfk="$EDITOR $HOME/.config/ksh/kshrc" \
 cfp="$EDITOR $HOME/.config/picom.conf" \
 cfn="$EDITOR $HOME/.config/newsboat/config" \
 cfnu="$EDITOR $HOME/.config/newsboat/urls" \
