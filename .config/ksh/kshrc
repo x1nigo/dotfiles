@@ -1,16 +1,10 @@
 ### Custom kshrc file. ###
 
-# Exports
-export EDITOR="nvim"
-export BROWSER="chrome"
-export TERM="st"
-export HISTFILE="$HOME/.config/ksh/ksh_history"
-export HISTSIZE=5000
-
 # Source the ksh.kshrc file.
 . /etc/ksh.kshrc
 
 # Use vi-mode and bind the clear-screen command.
+set -o vi
 bind -m vi-command '\C-l: clear-screen' >/dev/null 2>&1
 bind -m vi-insert '\C-l: clear-screen' >/dev/null 2>&1
 
@@ -26,8 +20,12 @@ WHITE='\[\e[1;37m\]'
 # To reset the colors.
 RESET='\[\e[0m\]'
 
-# Your prompt.
-PS1="${RED}[${YELLOW}\u${GREEN}@${BLUE}\h ${PURPLE}\w${RED}]${WHITE}\$${RESET} "
+# Who are you? [Prompt]
+[ $(whoami) = "root" ] && PS1="${RED}[\h ${CYAN}\w${RED}]#${RESET} " || PS1="${RED}[${YELLOW}\u${GREEN}@${BLUE}\h ${PURPLE}\w${RED}]${RESET}\$ "
+
+# Load aliases and shortcuts.
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
 
 # Find files under `Home` directory.
 ff () {
@@ -56,37 +54,3 @@ extract () {
 		echo "'$1' is not a valid file."
 	fi
 }
-
-# Use neovim for vim if present.
-[ -x "$(command -v nvim)" ] && alias vim="nvim"
-
-# Shortcuts to directories.
-alias \
-	d="cd $HOME/Documents && ls -A" \
-	D="cd $HOME/Downloads && ls -A" \
-	px="cd $HOME/Pictures && ls -A" \
-	v="cd $HOME/Videos && ls -A" \
-	sr="cd $HOME/.local/src && ls -A" \
-	sc="cd $HOME/.local/bin && ls -A" \
-	dt="cd $HOME/.local/share && ls -A" \
-	bkg="cd $HOME/.local/share/backgrounds && ls -A"
-
-# Shortcuts to config files.
-alias \
-	cfk="$EDITOR $HOME/.config/ksh/kshrc" \
-	cfp="$EDITOR $HOME/.config/picom.conf" \
-	cfv="$EDITOR $HOME/.config/nvim/init.vim" \
-	cfb="$EDITOR $HOME/.local/share/01-bookmarks" \
-	cfZ="$EDITOR $HOME/.config/zathura/zathurarc" \
-	cfx="$EDITOR $HOME/.config/x11/xresources" \
-
-# Shortcuts to commands.
-alias \
-	df="df -h" \
-	du="du -h" \
-	pa="doas pkg_add" \
-	pd="doas pkg_delete" \
-	pi="pkg_info" \
-	yt="yt-dlp" \
-	yta="yt-dlp -x -f bestaudio/best" \
-	z="zathura"
