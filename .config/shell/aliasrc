@@ -7,7 +7,7 @@
 [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
 
 # These commands need not require sudo before them.
-for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
+for command in mount umount su reboot halt ; do
 	alias $command="sudo $command"
 done; unset command
 
@@ -17,32 +17,12 @@ alias \
 	cp="cp -iv" \
 	mv="mv -iv"
 
-# For opening/closing encrypted drives.
-alias \
-	co="sudo cryptsetup open $1 $2" \
-	cl="sudo cryptsetup close $1"
-
-# Colorize your commands.
-alias \
-	ls="ls --color=auto --group-directories-first" \
-	grep="grep --color=auto" \
-	egrep="egrep --color=auto" \
-	fgrep="fgrep --color=auto" \
-	ip="ip --color=auto" \
-	pacman="pacman --color always" \
-	diff="diff --color=auto" \
-	bat="bat --color=always --style=full"
-
 # Too lazy to type these.
 alias \
 	merge="xrdb -merge $HOME/.config/x11/xresources" \
-	lf="lfx" \
+	f="fff" \
 	df="df -h" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove" \
-	xq="xbps-query -Rs" \
-	bctl="bluetoothctl" \
-	sctl="systemctl" \
+	du="du -h" \
 	hs="hugo server --noHTTPCache" \
         m="neomutt" \
 	tmr="transmission-remote" \
