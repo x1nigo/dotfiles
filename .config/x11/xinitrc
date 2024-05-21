@@ -10,4 +10,6 @@ else
 fi
 
 # Suckless's window manager
-exec dwm
+while true :; do
+	ssh-agent dwm
+done
