@@ -124,6 +124,7 @@ fi      00      # FILE
 *.svgz  01;33
 *.mng   01;33
 *.pcx   01;33
+*.pdf   01;33
 
 # video formats
 *.mov   01;35
