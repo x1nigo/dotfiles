@@ -1,7 +1,7 @@
 #!/bin/sh
 
-font="$(fc-list | grep "\.ttf\|\.otf\|\.ttc" | sed 's/.*: //g;s/:.*$//g;s/,.*$//g' | sort -h | uniq | dmenu -l 20)"
+font="$(fc-list | grep -e "\.ttf\|\.otf\|\.ttc" | sed 's/.*: //g;s/:.*$//g;s/,.*$//g' | sort -h | uniq | dmenu -i -l 20 -p "Select font:")"
 [ -z "$font" ] && exit 1
 
 sed -i "s/<!--main--><family>.*$/<!--main--><family>$font<\/family>/" "${XDG_CONFIG_HOME:-$HOME/.config}"/fontconfig/fonts.conf && \
-	notify-send "🎨 Changing font now..." "Successfully switched to \`$font\`. Restart your wm to effect changes."
+	notify-send "Changing font now..." "Successfully switched to \`$font\`. Restart your wm to effect changes."
