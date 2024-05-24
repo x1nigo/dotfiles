@@ -35,7 +35,7 @@ onescreen() {
 }
 
 cleanup() {
-	setbg    # Render the wallpaper in case of bg inconsistencies.
+	setwp    # Render the wallpaper in case of bg inconsistencies.
 	{ killall dunst; setsid -f dunst; } >/dev/null 2>&1    # Restart dunst for proper location on screen.
 }
 
