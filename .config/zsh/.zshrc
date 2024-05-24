@@ -1,6 +1,6 @@
 # User prompt
 autoload -U colors && colors
-PROMPT="%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%~%f%F{red}]%f\$%b "
+PROMPT="%B%F{red}%n%f: [%~]%b "
 
 # Settings (auto cd into dir & stop ctrl-s from freezing terminal)
 setopt autocd
