@@ -43,7 +43,7 @@ allscreens=$(xrandr -q | grep "connected")
 screens=$(echo "$allscreens" | awk '/ connected/ {print $1}')
 
 [ "$(echo "$screens" | wc -l)" -lt 2 ] &&
-	{ onescreen "$screens"; cleanup; notify-send "💻 Only one screen detected." "Using it in its optimal settings..."; exit ;}
+	{ onescreen "$screens"; cleanup; notify-send "Only one screen detected." "Using it in its optimal settings..."; exit ;}
 
 chosen=$(printf "%s\\nTwo-monitors\\nManual selection" "$screens" | dmenu -p "Select a display arrangement:")
 
