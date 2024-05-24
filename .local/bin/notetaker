@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Useful for quick notes on the spot.
-${TERMINAL:-st} -n termfloat -g "108x38" -e $EDITOR ~/note-$(date +'%Y-%m-%d-%s')
