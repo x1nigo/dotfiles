@@ -24,13 +24,14 @@ CYAN='\[\e[1;36m\]'
 WHITE='\[\e[1;37m\]'
 # To reset the colors.
 RESET='\[\e[0m\]'
+BOLD_RESET='\[\e[1m\]'
 
 # Your prompt.
-PS1="${RED}[${WHITE}\u@\h ${BLACK}\w${RED}]${RESET} "
+PS1="${RED}\u${RESET}${BOLD_RESET}: [\w]${RESET} "
 
 # Load aliases and shortcuts.
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
 
 # Find files under `Home` directory.
 ff () {
