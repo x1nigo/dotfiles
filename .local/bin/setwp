@@ -17,7 +17,8 @@ sel() {
 }
 
 oust() {
-	xwallpaper --clear && exit
+	xwallpaper --clear && \\
+	notify-send "Wallpaper cleared!" "Select a new wallpaper [or] execute xsetroot -solid [color]." && exit
 }
 
 while getopts "dx" o; do
