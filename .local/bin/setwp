@@ -13,6 +13,7 @@ render() {
 # Select wallpaper from backgrounds folder
 sel() {
 	chosen=$(find $bgdir -type f | dmenu -l 10 -p "Set wallpaper:")
+	[ -z "$chosen" ] && exit
 	cp "$chosen" $bgmain && \\
 	notify-send "New wallpaper!" "\`$chosen\`"
 }
