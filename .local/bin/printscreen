@@ -2,19 +2,19 @@
 
 selected() {
 	maim --quality=10 -u -s $HOME/selected-$(date +%y-%m-%d-%s).png \
-		&& notify-send "📸 Took a \`selected\` screenshot!" "You may find it in your ~ directory."
+		&& notify-send "Took a \`selected\` screenshot!" "You may find it in your ~ directory."
 }
 
 activewin() {
 	maim --quality=10 -u -i $(xdotool getactivewindow) $HOME/active-$(date +%y-%m-%d-%s).png \
-		&& notify-send "📸 Took an \`active window\` screenshot!" "You may find it in your ~ directory."
+		&& notify-send "Took an \`active window\` screenshot!" "You may find it in your ~ directory."
 }
 
-chosen=$(printf "Desktop\\nClick+Drag\\nActive Window" | dmenu)
+chosen=$(printf "%s\n" "[~] Desktop" "[*] Click+Drag" "[!] Active Window" | dmenu -p "Screenshot:")
 
 case "$chosen" in
-	"Desktop") sleep 2 && maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
-		&& notify-send "🖥️ Took a \`desktop\` screenshot!" "You may find it in your ~ directory" ; exit ;;
-	"Click+Drag") selected ;;
-	"Active Window") activewin ;;
+	"[~]"*) sleep 2 && maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
+		&& notify-send "Took a \`desktop\` screenshot!" "You may find it in your ~ directory" ; exit ;;
+	"[*]"*) selected ;;
+	"[!]"*) activewin ;;
 esac
