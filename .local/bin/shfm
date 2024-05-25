@@ -1,0 +1,176 @@
+#!/usr/bin/env bash
+
+# shfm - the shell file manager.
+# Created by Chris Iñigo <https://github.com/x1nigo/> on May 26, 2024.
+
+# Usage:
+# 	Letters/symbols are used to navigate.
+# 	Numbers are used to interact with files directly [based on their order].
+
+# Variables
+hidden="ls -A"
+visible="ls"
+
+error() {
+	printf "%s\\n" "Command not recognized." && \
+		read -r enter
+}
+
+# Get the current directory.
+current_dir() {
+	printf "%s\\n\\n" "$(pwd)"
+	# Set the window name.
+	printf '\e]2;shfm: %s\e'\\ "$PWD"
+}
+
+# List files in directory.
+list_dir() {
+	for i in "$($visible | cat -n)"; do
+		printf "%s\\n" "$i"
+	done
+}
+
+list_hidden() {
+	for i in "$($hidden | cat -n)"; do
+		printf "%s\\n" "$i"
+	done
+}
+
+# Determine the filetype of certain documents and take
+# the appropriate action.
+detect() {
+	trueloc="$(readlink -f "$item")"
+	file_type=$(file --mime-type -b "$trueloc")
+	case "$file_type" in
+		inode/directory) cd "$trueloc" ;;
+		audio/*|video/*) mpv "$trueloc" ;;
+		image/*) nsxiv "$trueloc" ;;
+		*/pdf) zathura "$trueloc" ;;
+		*) $EDITOR "$trueloc" ;;
+	esac
+}
+
+boundary() {
+	[[ "$cmd" -gt "$visible_total" ]] && \
+		error
+}
+
+# This is really where the keybindings are.
+main_args() {
+	case "$cmd" in
+		q) exit ;;
+		h) cd ;;
+		b) cd .. ;;
+		d) assassinate ;;
+		n) create_file ;;
+		m) create_directory ;;
+		.) secondary ;;
+		..) main ;;
+	esac
+}
+
+delete_args() {
+	case "$cmd" in
+		q) main ;;
+		n) create_file ;;
+		m) create_directory ;;
+		h) cd ;;
+		b) cd .. ;;
+	esac
+}
+
+create_file_args() {
+	case "$cmd" in
+		q) main ;;
+		d) assassinate ;;
+		m) create_directory ;;
+		h) cd ;;
+		b) cd .. ;;
+
+	esac
+}
+create_directory_args() {
+	case "$cmd" in
+		q) main ;;
+		d) assassinate ;;
+		n) create_file ;;
+		h) cd ;;
+		b) cd .. ;;
+
+	esac
+}
+
+# The main function of this program.
+main() {
+	while true; do
+		visible_total=$($visible | wc -l)
+		clear
+		current_dir
+		list_dir
+		printf "\\n%s" "Navigate: "
+		read -r cmd
+		main_args
+		[[ "$cmd" =~ ^[0-9]+$ || "$cmd" =~ ^[-][0-9]+$ ]]
+		[[ "$cmd" -gt $visible_total ]] && error && continue || item=$($visible| sed -n "$cmd p") && detect
+	done
+}
+
+secondary() {
+	while true; do
+		hidden_total=$($hidden | wc -l)
+		clear
+		current_dir
+		list_hidden
+		printf "\\n%s" "Navigate: "
+		read -r cmd
+		main_args
+		[[ "$cmd" =~ ^[0-9]+$ || "$cmd" =~ ^[-][0-9]+$ ]]
+		[[ "$cmd" -gt $hidden_total ]] && error && continue || item=$($hidden | sed -n "$cmd p") && detect
+	done
+}
+
+create_file() {
+	while true; do
+		visible_total=$($visible | wc -l)
+		clear
+		current_dir
+		list_dir
+		printf "\\n%s" "[Create] File: "
+		read -r cmd
+		create_file_args
+		[ -z "$cmd" ] && continue
+		touch "$cmd"
+	done
+}
+
+create_directory() {
+	while true; do
+		visible_total=$($visible | wc -l)
+		clear
+		current_dir
+		list_dir
+		printf "\\n%s" "[Create] Directory: "
+		read -r cmd
+		create_directory_args
+		[ -z "$cmd" ] && continue
+		mkdir -p "$cmd"
+	done
+}
+
+assassinate() {
+	while true; do
+		visible_total=$($visible | wc -l)
+		clear
+		current_dir
+		list_dir
+		printf "\\n%s" "[Caution!] Assassinate: "
+		read -r cmd
+		delete_args
+		[[ "$cmd" =~ ^[0-9]+$ || "$cmd" =~ ^[-][0-9]+$ ]]
+		[[ "$cmd" -gt $visible_total ]] && error && continue || item=$($visible| sed -n "$cmd p") && \
+			trueloc="$(readlink -f "$item")" && rm -rf "$trueloc"
+	done
+}
+
+# Call upon the program.
+main
