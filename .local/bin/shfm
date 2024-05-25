@@ -50,11 +50,6 @@ detect() {
 	esac
 }
 
-boundary() {
-	[[ "$cmd" -gt "$visible_total" ]] && \
-		error
-}
-
 # This is really where the keybindings are.
 main_args() {
 	case "$cmd" in
