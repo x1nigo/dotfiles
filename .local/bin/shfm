@@ -41,7 +41,7 @@ Keys:
 	number	interact/select
 	f 	Create new file
 	m 	Create new directory
-	d  	elete file
+	d  	Delete file
 	. 	Show hidden files
 	, 	Veil hidden files
 	? 	Read this file
