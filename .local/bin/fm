@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+
+# fm: file manager [as simple as that].
+# Created by Chris Iñigo <https://github.com/x1nigo/>
+
+# Variables
+sel=1
+hidden=0
+
+# Colors
+black='\e[1;30m'
+red='\e[1;31m'
+green='\e[1;32m'
+yellow='\e[1;33m'
+blue='\e[1;34m'
+purple='\e[1;35m'
+cyan='\e[1;36m'
+white='\e[1;37m'
+reset='\e[0m'
+bold='\e[1m'
+
+current_dir() {
+	printf "${black}%s${reset}\\n\\n" "$(pwd)"
+	# Set the window name.
+	printf '\e]2;fm: %s\e'\\ "$PWD"
+}
+
+colors() {
+	case $file_type in
+		inode/directory) color=${blue} ;;
+		audio/*|video/*) color=${purple} ;;
+		image/*) color=${purple} ;;
+		*/pdf) color=${yellow} ;;
+		*) color=${reset} ;;
+	esac
+	control='\e[1;40;37m'
+}
+
+list_dir() {
+	order=1
+	if [[ "$hidden" == 0 ]]; then
+		shopt -u dotglob
+		total=$(ls | wc -l)
+		for i in *; do
+			trueloc=$(readlink -f "$i")
+			file_type=$(file --mime-type -b "$trueloc")
+			colors
+			[[ "$order" == "$sel" ]] && \
+				color=${black} && \
+				printf "${control}%s${reset}\\n" "$i" && current="$i" ||
+				printf "${color}%s${reset}\\n" "$i"
+			order=$(( $order + 1 ))
+		done
+	# This is for displaying hidden files.
+	elif [[ "$hidden" == 1 ]]; then
+		shopt -s dotglob
+		total=$(ls -A | wc -l)
+		for i in *; do
+			trueloc=$(readlink -f "$i")
+			file_type=$(file --mime-type -b "$trueloc")
+			colors
+			[[ "$order" == "$sel" ]] && \
+				color=${black} && \
+				printf "${control}%s${reset}\\n" "$i" && current="$i" ||
+				printf "${color}%s${reset}\\n" "$i"
+			order=$(( $order + 1 ))
+		done
+	fi
+	printf "\\n%s" ""
+}
+
+action() {
+	trueloc=$(readlink -f "$current")
+	file_type=$(file --mime-type -b "$trueloc")
+	case $file_type in
+		inode/directory) cd "$current" ;;
+		audio/*|video/*) mpv "$current" ;;
+		image/*) nsxiv "$current" ;;
+		*/pdf) zathura "$current" ;;
+		*) $EDITOR "$current" ;;
+	esac
+}
+
+assassinate() {
+	clear
+	printf "${bold}%s\\n\\t%s${reset}" "$current" "Assassinate? [y/N]: "
+	read -r ans
+	[[ "$ans" == "y" ]] && rm -rf "$current"
+}
+
+create_file() {
+	clear
+	printf "${bold}%s${reset}" "Create File: "
+	read -r ans
+	[[ -z "$ans" ]] && continue
+	touch "$ans"
+}
+
+create_dir() {
+	clear
+	printf "${bold}%s${reset}" "Create Directory: "
+	read -r ans
+	[[ -z "$ans" ]] && continue
+	mkdir -p "$ans"
+}
+
+args() {
+	case "$cmd" in
+		j) [[ "$sel" -lt "$total" ]] && sel=$(( $sel + 1 )) ;;
+		k) [[ "$sel" -gt 1 ]] && sel=$(( $sel - 1 )) ;;
+		q) clear && exit ;;
+		[el]) action && sel=1 ;;
+		h) cd ../ && sel=1 ;;
+		H) cd && sel=1 ;;
+		d) assassinate ;;
+		n) create_file ;;
+		m) create_dir ;;
+		g) sel=1 ;;
+		G) sel="$total" ;;
+		.) [[ "$hidden" == 0 ]] && hidden=1 || hidden=0 ;;
+	esac
+}
+
+main() {
+	while true; do
+		clear
+		current_dir
+		list_dir
+		read -n 1 -r cmd
+		[ -z "$cmd" ] && continue
+		args
+	done
+}
+
+main
