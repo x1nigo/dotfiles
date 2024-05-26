@@ -4,7 +4,7 @@ These are my personal dotfiles, which include scripts to my other repositories.
 ## Some programs that I use in my dotfiles:
 - `nvim` - text editor
 - `bash` - shell
-- `shfm` - file manager
+- `fm` - file manager
 - `sxiv` - image viewer
 - `zathura` - pdf viewer
 - `mpv` - video/audio player
