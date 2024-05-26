@@ -7,18 +7,53 @@
 # 	Letters/symbols are used to navigate.
 # 	Numbers are used to interact with files directly [based on their order].
 
+# TODO: Create functionality for copying/moving files.
+
 # Variables
 hidden="ls -A"
 visible="ls"
 
+# Colors
+BLACK='\e[1;30m'
+RED='\e[1;31m'
+GREEN='\e[1;32m'
+YELLOW='\e[1;33m'
+BLUE='\e[1;34m'
+PURPLE='\e[1;35m'
+CYAN='\e[1;36m'
+WHITE='\e[1;37m'
+# To reset the colors.
+RESET='\e[0m'
+BOLD='\e[1m'
+
 error() {
-	printf "%s\\n" "Command not recognized." && \
+	printf "${RED}%s${RESET}\\n" "Command not recognized." && \
 		read -r enter
+}
+
+guide(){
+clear
+cat << EOF
+shfm: The shell file manager [written in bash].
+
+Keys:
+	q 	quit
+	number	interact/select
+	f 	Create new file
+	m 	Create new directory
+	d  	elete file
+	. 	Show hidden files
+	, 	Veil hidden files
+	? 	Read this file
+
+Enter anything to return.
+EOF
+read -r enter
 }
 
 # Get the current directory.
 current_dir() {
-	printf "%s\\n\\n" "$(pwd)"
+	printf "${BLACK}%s${RESET}\\n\\n" "$(pwd)"
 	# Set the window name.
 	printf '\e]2;shfm: %s\e'\\ "$PWD"
 }
@@ -53,44 +88,52 @@ detect() {
 # This is really where the keybindings are.
 main_args() {
 	case "$cmd" in
-		q) exit ;;
+		[Qq]) clear && exit ;;
 		h) cd ;;
 		b) cd .. ;;
 		d) assassinate ;;
-		n) create_file ;;
+		f) create_file ;;
 		m) create_directory ;;
 		.) secondary ;;
-		..) main ;;
+		,) main ;;
+		[?]) guide ;;
+		*[[:digit:]]*) ;;
+		*) error ;;
 	esac
 }
 
 delete_args() {
 	case "$cmd" in
-		q) main ;;
-		n) create_file ;;
+		[Qq]) main ;;
+		f) create_file ;;
 		m) create_directory ;;
 		h) cd ;;
 		b) cd .. ;;
+		[?]) guide ;;
+		*[[:digit:]]*) ;;
+		*) error ;;
 	esac
 }
 
 create_file_args() {
 	case "$cmd" in
-		q) main ;;
+		[Qq]) main ;;
 		d) assassinate ;;
 		m) create_directory ;;
 		h) cd ;;
 		b) cd .. ;;
+		[?]) guide ;;
 
 	esac
 }
 create_directory_args() {
 	case "$cmd" in
-		q) main ;;
+		[Qq]) main ;;
 		d) assassinate ;;
-		n) create_file ;;
+		f) create_file ;;
 		h) cd ;;
 		b) cd .. ;;
+		[?]) guide ;;
 
 	esac
 }
@@ -102,11 +145,12 @@ main() {
 		clear
 		current_dir
 		list_dir
-		printf "\\n%s" "Navigate: "
+		printf "\\n${BOLD}%s${RESET}" "Navigate: "
 		read -r cmd
+		[ -z "$cmd" ] && continue
 		main_args
-		[[ "$cmd" =~ ^[0-9]+$ || "$cmd" =~ ^[-][0-9]+$ ]]
-		[[ "$cmd" -gt $visible_total ]] && error && continue || item=$($visible| sed -n "$cmd p") && detect
+		[[ "$cmd" =~ ^[0-9]+$ || "$cmd" =~ ^[-][0-9]+$ ]] && \
+			[[ "$cmd" -gt $visible_total || "$cmd" -le 0 ]] && error && continue || item=$($visible| sed -n "$cmd p") && detect
 	done
 }
 
@@ -116,11 +160,12 @@ secondary() {
 		clear
 		current_dir
 		list_hidden
-		printf "\\n%s" "Navigate: "
+		printf "\\n${BOLD}%s${RESET}" "[Hidden] Navigate: "
 		read -r cmd
+		[ -z "$cmd" ] && continue
 		main_args
-		[[ "$cmd" =~ ^[0-9]+$ || "$cmd" =~ ^[-][0-9]+$ ]]
-		[[ "$cmd" -gt $hidden_total ]] && error && continue || item=$($hidden | sed -n "$cmd p") && detect
+		[[ "$cmd" =~ ^[0-9]+$ || "$cmd" =~ ^[-][0-9]+$ ]] && \
+			[[ "$cmd" -gt $hidden_total || "$cmd" -le 0 ]] && error && continue || item=$($hidden | sed -n "$cmd p") && detect
 	done
 }
 
@@ -130,10 +175,10 @@ create_file() {
 		clear
 		current_dir
 		list_dir
-		printf "\\n%s" "[Create] File: "
+		printf "\\n${CYAN}%s${RESET}" "[Create] File: "
 		read -r cmd
-		create_file_args
 		[ -z "$cmd" ] && continue
+		create_file_args
 		touch "$cmd"
 	done
 }
@@ -144,10 +189,10 @@ create_directory() {
 		clear
 		current_dir
 		list_dir
-		printf "\\n%s" "[Create] Directory: "
+		printf "\\n${YELLOW}%s${RESET}" "[Create] Directory: "
 		read -r cmd
-		create_directory_args
 		[ -z "$cmd" ] && continue
+		create_directory_args
 		mkdir -p "$cmd"
 	done
 }
@@ -158,11 +203,12 @@ assassinate() {
 		clear
 		current_dir
 		list_dir
-		printf "\\n%s" "[Caution!] Assassinate: "
+		printf "\\n${RED}%s${RESET}" "[Caution!] Assassinate: "
 		read -r cmd
+		[ -z "$cmd" ] && continue
 		delete_args
-		[[ "$cmd" =~ ^[0-9]+$ || "$cmd" =~ ^[-][0-9]+$ ]]
-		[[ "$cmd" -gt $visible_total ]] && error && continue || item=$($visible| sed -n "$cmd p") && \
+		[[ "$cmd" =~ ^[0-9]+$ || "$cmd" =~ ^[-][0-9]+$ ]] && \
+			[[ "$cmd" -gt $visible_total || "$cmd" -le 0 ]] && error && continue || item=$($visible| sed -n "$cmd p") && \
 			trueloc="$(readlink -f "$item")" && rm -rf "$trueloc"
 	done
 }
