@@ -20,7 +20,7 @@ reset='\e[0m'
 bold='\e[1m'
 
 current_dir() {
-	printf "${black}%s${reset}\\n\\n" "$(pwd)"
+	printf "${black}[%d/%d] %s${reset}\\n\\n" "$sel" "$total" "$(pwd)"
 	# Set the window name.
 	printf '\e]2;fm: %s\e'\\ "$PWD"
 }
@@ -33,7 +33,7 @@ colors() {
 		*/pdf) color=${yellow} ;;
 		*) color=${reset} ;;
 	esac
-	control='\e[1;40;37m'
+	cursor='\e[1;40;37m'
 }
 
 list_dir() {
@@ -47,7 +47,7 @@ list_dir() {
 			colors
 			[[ "$order" == "$sel" ]] && \
 				color=${black} && \
-				printf "${control}%s${reset}\\n" "$i" && current="$i" ||
+				printf "${cursor}%s${reset}\\n" "$i" && current="$i" ||
 				printf "${color}%s${reset}\\n" "$i"
 			order=$(( $order + 1 ))
 		done
@@ -61,7 +61,7 @@ list_dir() {
 			colors
 			[[ "$order" == "$sel" ]] && \
 				color=${black} && \
-				printf "${control}%s${reset}\\n" "$i" && current="$i" ||
+				printf "${cursor}%s${reset}\\n" "$i" && current="$i" ||
 				printf "${color}%s${reset}\\n" "$i"
 			order=$(( $order + 1 ))
 		done
@@ -84,14 +84,22 @@ action() {
 assassinate() {
 	clear
 	printf "${bold}%s\\n\\t%s${reset}" "$current" "Assassinate? [y/N]: "
-	read -r ans
+	read ans
 	[[ "$ans" == "y" ]] && rm -rf "$current"
+}
+
+rename() {
+	clear
+	printf "${bold}%s\\n\\t%s${reset}" "$current" "Rename: "
+	read ans
+	[[ -z "$ans" ]] && continue
+	mv "$current" "$ans"
 }
 
 create_file() {
 	clear
 	printf "${bold}%s${reset}" "Create File: "
-	read -r ans
+	read ans
 	[[ -z "$ans" ]] && continue
 	touch "$ans"
 }
@@ -99,9 +107,13 @@ create_file() {
 create_dir() {
 	clear
 	printf "${bold}%s${reset}" "Create Directory: "
-	read -r ans
+	read ans
 	[[ -z "$ans" ]] && continue
 	mkdir -p "$ans"
+}
+
+avoid() {
+	[[ "$current" != "*" ]]
 }
 
 args() {
@@ -109,12 +121,13 @@ args() {
 		j) [[ "$sel" -lt "$total" ]] && sel=$(( $sel + 1 )) ;;
 		k) [[ "$sel" -gt 1 ]] && sel=$(( $sel - 1 )) ;;
 		q) clear && exit ;;
-		[el]) action && sel=1 ;;
+		[el]) avoid && action && sel=1 ;;
 		h) cd ../ && sel=1 ;;
 		H) cd && sel=1 ;;
-		d) assassinate ;;
+		d) avoid && assassinate ;;
 		n) create_file ;;
 		m) create_dir ;;
+		r) avoid && rename ;;
 		g) sel=1 ;;
 		G) sel="$total" ;;
 		.) [[ "$hidden" == 0 ]] && hidden=1 || hidden=0 ;;
@@ -124,9 +137,9 @@ args() {
 main() {
 	while true; do
 		clear
-		current_dir
 		list_dir
-		read -n 1 -r cmd
+		current_dir
+		read -en 1 cmd
 		[ -z "$cmd" ] && continue
 		args
 	done
