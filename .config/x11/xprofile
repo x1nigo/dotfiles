@@ -5,7 +5,7 @@ xrandr --dpi 96
 xsetroot -solid '#121618' &
 setwp &
 
-autostart="mpd dunst picom slstatus pipewire transmission-daemon"
+autostart="mpd dunst picom sl-bar pipewire transmission-daemon"
 
 for program in $autostart; do
         pidof -s "$program" || "$program" &
