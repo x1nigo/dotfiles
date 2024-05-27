@@ -20,7 +20,7 @@ reset='\e[0m'
 bold='\e[1m'
 
 current_dir() {
-	printf "${black}[%d/%d] %s${reset}\\n\\n" "$sel" "$total" "$(pwd)"
+	printf "\e[1;30m[%d/%d] %s${reset}\\n\\n" "$sel" "$total" "$PWD"
 	# Set the window name.
 	printf '\e]2;fm: %s\e'\\ "$PWD"
 }
@@ -130,7 +130,7 @@ args() {
 		r) avoid && rename ;;
 		g) sel=1 ;;
 		G) sel="$total" ;;
-		.) [[ "$hidden" == 0 ]] && hidden=1 || hidden=0 ;;
+		.) [[ "$hidden" == 0 ]] && hidden=1 || hidden=0 ; sel=1 ;;
 	esac
 }
 

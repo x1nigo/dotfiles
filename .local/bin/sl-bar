@@ -1,0 +1,38 @@
+#!/bin/sh
+
+delim=" | "
+
+delimiter() {
+	dl="$delim"
+	printf "%s" "$dl"
+}
+
+datetime() {
+	date=$(date +'%Y %b %d [%a] %I:%M %p %Z')
+	printf "%s" "$date"
+}
+
+battery() {
+	dir="/sys/class/power_supply/BAT0"
+	bat=$(cat $dir/capacity)
+	status=$(cat $dir/status)
+	case "$status" in
+		"Discharging") stat="" ;;
+		"Charging") stat="+" ;;
+		"Full") stat="@" ;;
+		*) stat="x" ;;
+	esac
+	printf "%s%% [%s]" "$bat" "$stat"
+}
+
+status() {
+	# Place modules here in order.
+	battery
+	delimiter
+	datetime
+}
+
+while true; do
+	xsetroot -name " $(status) "
+	sleep 5
+done
