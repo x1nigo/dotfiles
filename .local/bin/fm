@@ -7,80 +7,109 @@
 sel=1
 hidden=0
 
-# Colors
-black='\e[1;30m'
-red='\e[1;31m'
-green='\e[1;32m'
-yellow='\e[1;33m'
-blue='\e[1;34m'
-purple='\e[1;35m'
-cyan='\e[1;36m'
-white='\e[1;37m'
-reset='\e[0m'
-bold='\e[1m'
+# Setup the terminal.
+setup_terminal() {
+	# Clear screen and hide cursor.
+	printf '\e[?25l\e[2J\e[1;r'
 
+	# Hide user input.
+	stty -echo
+}
+
+# Reset terminal.
+reset_terminal() {
+	# Clear screen and show cursor.
+	printf '\e[?25h\e[1J\e[1;r'
+
+	# Show user input.
+	stty echo
+}
+
+# Prints the current directory.
 current_dir() {
-	printf "\e[1;30m[%d/%d] %s${reset}\\n\\n" "$sel" "$total" "$PWD"
+	printf "\e[0;41;30m[%d/%d] %s${reset}\\n\\n" "$sel" "$total" "$PWD"
 	# Set the window name.
 	printf '\e]2;fm: %s\e'\\ "$PWD"
 }
 
-colors() {
-	case $file_type in
-		inode/directory) color=${blue} ;;
-		audio/*|video/*) color=${purple} ;;
-		image/*) color=${purple} ;;
-		*/pdf) color=${yellow} ;;
-		*) color=${reset} ;;
-	esac
-	cursor='\e[1;40;37m'
-}
+# Different colors for different files.
+# colors() {
+# 	trueloc=$(readlink -f "$i")
+# 	file_type=$(file --mime-type -b "$trueloc")
+# 	case $file_type in
+# 		inode/directory)
+# 			color='\e[0;34m'
+# 			;;
+# 		audio/*|video/*)
+# 			color='\e[0;35m'
+# 			;;
+# 		image/*)
+# 			color='\e[0;35m'
+# 			;;
+# 		*/pdf)
+# 			color='\e[0;33m'
+# 			;;
+# 		*)
+# 			color='\e[0m'
+# 			;;
+# 	esac
+# 	# Color of the cursor [selected item].
+# 	cursor='\e[3;40;37m'
+# }
 
+# List the contents of your current working directory.
 list_dir() {
+	# Color of the cursor [selected item].
+	cursor='\e[3;40;37m'
+ 	reset='\e[0m'
+
+	# List item order.
 	order=1
-	if [[ "$hidden" == 0 ]]; then
-		shopt -u dotglob
-		total=$(ls | wc -l)
-		for i in *; do
-			trueloc=$(readlink -f "$i")
-			file_type=$(file --mime-type -b "$trueloc")
-			colors
-			[[ "$order" == "$sel" ]] && \
-				color=${black} && \
-				printf "${cursor}%s${reset}\\n" "$i" && current="$i" ||
-				printf "${color}%s${reset}\\n" "$i"
-			order=$(( $order + 1 ))
-		done
-	# This is for displaying hidden files.
-	elif [[ "$hidden" == 1 ]]; then
-		shopt -s dotglob
-		total=$(ls -A | wc -l)
-		for i in *; do
-			trueloc=$(readlink -f "$i")
-			file_type=$(file --mime-type -b "$trueloc")
-			colors
-			[[ "$order" == "$sel" ]] && \
-				color=${black} && \
-				printf "${cursor}%s${reset}\\n" "$i" && current="$i" ||
-				printf "${color}%s${reset}\\n" "$i"
-			order=$(( $order + 1 ))
-		done
-	fi
+	case "$hidden" in
+		0)
+			shopt -u dotglob
+			total=$(ls | wc -l)
+			;;
+		1)
+			shopt -s dotglob
+			total=$(ls -A | wc -l)
+			;;
+	esac
+	for i in *; do
+#		colors
+		[[ "$order" == "$sel" ]] && \
+			printf "${cursor}%s${reset}\\n" "$i" && current="$i" ||
+			printf "%s\\n" "$i"
+		order=$(( $order + 1 ))
+	done
 	printf "\\n%s" ""
 }
 
+# These depend on the filetype.
 action() {
 	trueloc=$(readlink -f "$current")
 	file_type=$(file --mime-type -b "$trueloc")
+
 	case $file_type in
-		inode/directory) cd "$current" ;;
-		audio/*|video/*) mpv "$current" ;;
-		image/*) nsxiv "$current" ;;
-		*/pdf) zathura "$current" ;;
-		*) $EDITOR "$current" ;;
+		inode/directory)
+			cd "$current"
+			;;
+		audio/*|video/*)
+			mpv "$current"
+			;;
+		image/*)
+			nsxiv "$current"
+			;;
+		*/pdf)
+			zathura "$current"
+			;;
+		*)
+			$EDITOR "$current"
+			;;
 	esac
 }
 
+# This is really just the delete function.
 assassinate() {
 	clear
 	printf "${bold}%s\\n\\t%s${reset}" "$current" "Assassinate? [y/N]: "
@@ -88,39 +117,44 @@ assassinate() {
 	[[ "$ans" == "y" ]] && rm -rf "$current"
 }
 
+# Rename your file [can also be used to move].
 rename() {
-	clear
-	printf "${bold}%s\\n\\t%s${reset}" "$current" "Rename: "
+	reset_terminal
+	printf "%s\\n\\t%s${reset}" "$current" "Rename: "
 	read ans
 	[[ -z "$ans" ]] && continue
 	mv "$current" "$ans"
 }
 
+# Create a new file.
 create_file() {
-	clear
-	printf "${bold}%s${reset}" "Create File: "
+	reset_terminal
+	printf "%s${reset}" "Create File: "
 	read ans
 	[[ -z "$ans" ]] && continue
 	touch "$ans"
 }
 
+# Create a directory
 create_dir() {
-	clear
-	printf "${bold}%s${reset}" "Create Directory: "
+	reset_terminal
+	printf "%s${reset}" "Create Directory: "
 	read ans
 	[[ -z "$ans" ]] && continue
 	mkdir -p "$ans"
 }
 
+# Don't make an action if directory is empty.
 avoid() {
 	[[ "$current" != "*" ]]
 }
 
+# List of keybindings
 args() {
 	case "$cmd" in
 		j) [[ "$sel" -lt "$total" ]] && sel=$(( $sel + 1 )) ;;
 		k) [[ "$sel" -gt 1 ]] && sel=$(( $sel - 1 )) ;;
-		q) clear && exit ;;
+		q) reset_terminal && exit ;;
 		[el]) avoid && action && sel=1 ;;
 		h) cd ../ && sel=1 ;;
 		H) cd && sel=1 ;;
@@ -134,9 +168,10 @@ args() {
 	esac
 }
 
+# The main function that runs every time.
 main() {
 	while true; do
-		clear
+		setup_terminal
 		list_dir
 		current_dir
 		read -en 1 cmd
@@ -145,4 +180,5 @@ main() {
 	done
 }
 
+# Call the main function.
 main
