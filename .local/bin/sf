@@ -3,12 +3,10 @@
 # sf: The simple file-manager
 # Created by Chris Iñigo <https://github.com/x1nigo>
 
-# Variables
-hidden=1
+# Default variables
+alt_files='ls'
+hide='-u'
 sel=1
-
-# Color of the cursor [selected item].
-cursor='\e[1;40;37m'
 reset='\e[0m'
 
 # Setup the terminal.
@@ -42,21 +40,20 @@ list_dir() {
 	# List item order.
 	order=1
 
-	# Either hide or show hidden files.
-	case "$hidden" in
-		0)
-			shopt -s dotglob
-			total=$(ls -A | wc -l)
-			;;
-		1)
-			shopt -u dotglob
-			total=$(ls | wc -l)
-			;;
-	esac
+	# Sort hidden files alternatively.
+	shopt $hide dotglob && total=$($alt_files | wc -l)
+
+	# Actually print the files.
 	for i in *; do
-		[[ "$order" == "$sel" ]] && \
-			printf "${cursor}%s${reset}\\n" "$i" && current="$i" ||
-			printf "%s\\n" "$i"
+		if [[ -d "$i" ]]; then
+			prefix='\e[0;34m' && suffix='/'
+		else
+			prefix='\e[0m' && suffix=
+		fi
+
+		# Establish cursor position.
+		[[ "$order" == "$sel" ]] && current="$i" && prefix='\e[0;44;30m'
+		printf "${prefix}%s${suffix}${reset}\\n" "$i"
 		order=$((order+1))
 	done
 }
@@ -127,7 +124,7 @@ avoid() {
 
 # List of keybindings
 keys() {
-	case "$cmd" in
+	case "$input" in
 		# Go down
 		j)
 			[[ "$sel" -lt "$total" ]] && sel=$((sel+1))
@@ -178,7 +175,13 @@ keys() {
 			;;
 		# Show hidden files
 		.)
-			[[ "$hidden" == 0 ]] && hidden=1 || hidden=0 ; sel=1
+			if [[ "$hide" == "-s" ]]; then
+				hide='-u' && alt_files='ls'
+			else
+				hide='-s' && alt_files='ls -A'
+			fi
+			# Return cursor to the beginning.
+			sel=1
 			;;
 	esac
 }
@@ -189,8 +192,8 @@ main() {
 		setup_terminal
 		list_dir
 		current_dir
-		read -srn 1 cmd
-		[ -z "$cmd" ] && continue
+		read -srn 1 input
+		[ -z "$input" ] && continue
 		keys
 	done
 }
