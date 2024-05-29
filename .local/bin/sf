@@ -167,7 +167,7 @@ keys() {
 			cd && loc=1
 			;;
 		# Delete a file
-		d)
+		D)
 			avoid && delete
 			;;
 		# Create a file
@@ -179,7 +179,7 @@ keys() {
 			create_dir
 			;;
 		# Rename a file/directory
-		r)
+		R)
 			avoid && rename
 			;;
 		# Go to top of list
