@@ -139,6 +139,36 @@ move() {
 	mv "$focus" "$ans"
 }
 
+keybinds() {
+	setup_terminal
+
+# Main output
+cat << EOF
+Keybindings:
+
+j	go down
+k	go up
+q	quit
+e/l	interact
+h	go to previous directory
+~	go to home directory
+D	delete
+N	new file
+M	new directory
+R	rename
+g	go to top
+G	go to botttom
+c	copy
+m	move
+.	show/hide hidden files
+?	read this help page
+EOF
+
+	# Wait for user to press return
+	printf "\\n%s" "Press \`enter\` to exit help page."
+	read -r enter
+}
+
 # List of keybindings
 keys() {
 	case "$input" in
@@ -207,6 +237,9 @@ keys() {
 			fi
 			# Return cursor to the beginning.
 			loc=1
+			;;
+		?)
+			keybinds
 			;;
 	esac
 }
