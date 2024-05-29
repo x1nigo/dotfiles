@@ -72,7 +72,7 @@ list_dir() {
 			prefix='\e[0;44;30m'
 		fi
 
-		# Finally print the whole thing
+		# Finally print the whole damn thing
 		printf "${prefix}%s${suffix}${reset}\\n" "$item"
 		order=$((order+1))
 	done
