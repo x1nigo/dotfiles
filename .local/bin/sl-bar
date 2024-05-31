@@ -8,8 +8,20 @@ delimiter() {
 }
 
 datetime() {
-	date=$(date +'%Y %b %d [%a] %I:%M %p %Z')
+	date=$(date +'%Y %b %d %a %I:%M %p %Z')
 	printf "%s" "$date"
+}
+
+memory() {
+	mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
+	printf "%s" "$mem_used"
+}
+
+volume() {
+	vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+	vol="${vol#Volume: }"
+
+	printf "vol: %s" "$vol"
 }
 
 battery() {
@@ -17,16 +29,20 @@ battery() {
 	bat=$(cat $dir/capacity)
 	status=$(cat $dir/status)
 	case "$status" in
-		"Discharging") stat="" ;;
-		"Charging") stat="+" ;;
-		"Full") stat="@" ;;
-		*) stat="x" ;;
+		"Discharging") stat='z' ;;
+		"Charging") stat='+' ;;
+		"Full") stat='@' ;;
+		*) stat='x' ;;
 	esac
-	printf "%s%% [%s]" "$bat" "$stat"
+	printf "%s%% %s" "$bat" "$stat"
 }
 
 status() {
 	# Place modules here in order.
+	volume
+	delimiter
+	memory
+	delimiter
 	battery
 	delimiter
 	datetime
@@ -34,5 +50,5 @@ status() {
 
 while true; do
 	xsetroot -name " $(status) "
-	sleep 5
+	sleep 30
 done

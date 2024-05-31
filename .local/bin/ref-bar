@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sleeppid=$(ps -eH | grep -A1 sl-bar | grep sleep | cut -d' ' -f 2)
+kill $sleeppid
