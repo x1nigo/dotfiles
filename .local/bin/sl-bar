@@ -1,6 +1,6 @@
 #!/bin/sh
 
-delim=" | "
+delim="  "
 
 delimiter() {
 	dl="$delim"
@@ -20,12 +20,11 @@ memory() {
 volume() {
 	vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 	vol="${vol#Volume: }"
-
 	printf "vol: %s" "$vol"
 }
 
 battery() {
-	dir="/sys/class/power_supply/BAT0"
+	dir="/sys/class/power_supply/BAT?"
 	bat=$(cat $dir/capacity)
 	status=$(cat $dir/status)
 	case "$status" in
@@ -49,6 +48,6 @@ status() {
 }
 
 while true; do
-	xsetroot -name " $(status) "
+	xsetroot -name "$(status)"
 	sleep 30
 done
