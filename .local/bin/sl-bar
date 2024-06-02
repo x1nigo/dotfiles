@@ -8,7 +8,7 @@ delimiter() {
 }
 
 datetime() {
-	date=$(date +'%Y %b %d %a %I:%M %p %Z')
+	date=$(date +'%Y %b %d %a [%I:%M %p]')
 	printf "%s" "$date"
 }
 
@@ -50,6 +50,6 @@ status() {
 }
 
 while true; do
-	xsetroot -name "$(status)"
+	xsetroot -name " $(status) "
 	sleep 30
 done
