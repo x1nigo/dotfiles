@@ -14,13 +14,15 @@ datetime() {
 
 memory() {
 	mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
-	printf "%s" "$mem_used"
+	printf "[m]: %s" "$mem_used"
 }
 
 volume() {
 	vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 	vol="${vol#Volume: }"
-	printf "vol: %s" "$vol"
+
+	vol=$(printf "%s" "$vol" | sed 's/^1\./1/g;s/^.*\.//g')
+	printf "[v]: %s" "$vol"
 }
 
 battery() {
@@ -33,7 +35,7 @@ battery() {
 		"Full") stat='@' ;;
 		*) stat='x' ;;
 	esac
-	printf "%s%% %s" "$bat" "$stat"
+	printf "[%s]: %s%%" "$stat" "$bat"
 }
 
 status() {
