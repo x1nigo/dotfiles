@@ -42,6 +42,12 @@ ff () {
 	[ -f "$file" ] && cd "$dir" && $EDITOR "$file" && cd "$backtrack"
 	}
 
+# `cd` into your last directory in file-manager.
+sff () {
+	sf
+	cd "$(cat ${XDG_CACHE_HOME:-$HOME/.cache}/sf/.sf_d)"
+}
+
 # Extract files based on their extension.
 extract () {
 	if [ -f "$1" ]; then
