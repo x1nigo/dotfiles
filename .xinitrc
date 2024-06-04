@@ -16,7 +16,7 @@ xset r rate 300 50
 
 # Configure the caps lock key to function differently.
 setxkbmap -option caps:super,altwin:menu_win
-kill $(pidof -x xcape) 2>/dev/null; xcape -e 'Super_L=Escape'
+kill $(pgrep -x xcape) 2>/dev/null; xcape -e 'Super_L=Escape'
 xset -q | grep -q "Caps Lock:\s*on" && xdotool key Caps_Lock
 
 # Merge xresources
