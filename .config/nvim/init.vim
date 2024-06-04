@@ -29,6 +29,9 @@ set clipboard=unnamedplus
 set wildmode=longest,list,full
 set nohlsearch
 set ignorecase
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set incsearch
 set smartcase
 set encoding=utf-8
