@@ -1,33 +1,10 @@
-### Custom kshrc file. ###
+PS1='$USER: ${PWD}
+\$ '
 
-# Source the ksh.kshrc file.
-. /etc/ksh.kshrc
-
-# Use vi-mode and bind the clear-screen command.
 set -o vi
-bind -m vi-command '\C-l: clear-screen' >/dev/null 2>&1
-bind -m vi-insert '\C-l: clear-screen' >/dev/null 2>&1
-
-# Colors for your prompt.
-BLACK='\[\e[1;30m\]'
-RED='\[\e[1;31m\]'
-GREEN='\[\e[1;32m\]'
-YELLOW='\[\e[1;33m\]'
-BLUE='\[\e[1;34m\]'
-PURPLE='\[\e[1;35m\]'
-CYAN='\[\e[1;36m\]'
-WHITE='\[\e[1;37m\]'
-# To reset the colors.
-RESET='\[\e[0m\]'
-
-# Who are you? [Prompt]
-[ $(whoami) = "root" ] && PS1="${RED}[\h ${CYAN}\w${RED}]#${RESET} " || PS1="${RED}[${YELLOW}\u${GREEN}@${BLUE}\h ${PURPLE}\w${RED}]${RESET}\$ "
-
-# Load aliases and shortcuts.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
 
-# Find files under `Home` directory.
 ff () {
 	file="$(find $HOME -type f | fzf --height=40% --layout=reverse --prompt='EDIT FILE: ')"
 	backtrack="$(pwd)"
@@ -36,7 +13,11 @@ ff () {
 	[ -f "$file" ] && cd "$dir" && $EDITOR "$file" && cd "$backtrack"
 }
 
-# Extract files based on their extension.
+sff () {
+	sf
+	cd "$(cat ${XDG_CACHE_HOME:-$HOME/.cache}/sf/.sf_d)"
+}
+
 extract () {
 	if [ -f "$1" ]; then
 		case $1 in
