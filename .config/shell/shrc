@@ -1,5 +1,7 @@
 #!/bin/sh
 
+PS1='\$ '
+
 set -o emacs
 
 # Load aliases and shortcuts.
