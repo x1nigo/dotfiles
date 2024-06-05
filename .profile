@@ -16,7 +16,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # Source the ENV variable
-export ENV=$HOME/.shrc
+export ENV="$HOME/.shrc"
 
 # Start the user interface upon login
 startx
