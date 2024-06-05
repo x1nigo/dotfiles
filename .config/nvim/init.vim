@@ -21,7 +21,7 @@ colorscheme default
 set nocompatible
 set bg=light
 syntax on
-let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_theme='ravenpower'
 
 set title
 set autoindent
