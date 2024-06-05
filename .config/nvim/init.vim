@@ -38,7 +38,7 @@ set encoding=utf-8
 set linebreak
 set wrap
 set noshowcmd
-set number relativenumber
+" set number relativenumber
 
 " Set Map leader
 	let mapleader = ","
