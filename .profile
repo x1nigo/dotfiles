@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Add `~/.local/bin` to $PATH
-export PATH="${PATH}$(find $HOME/.local/bin -type d -printf ':%h/%f')"
+export PATH="$PATH:/home/chris/.local/bin"
 
 # Default programs
 export EDITOR="nvim"
@@ -15,8 +15,8 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-# Source the kshrc file
-export ENV="${XDG_CONFIG_HOME:-$HOME/.config}/ksh/kshrc"
+# Source the ENV variable
+export ENV=$HOME/.shrc
 
-# Start the graphical user interface
+# Start the user interface upon login
 startx
