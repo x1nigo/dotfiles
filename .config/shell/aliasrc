@@ -3,13 +3,20 @@
 # Use neovim for vim if present.
 [ -x "$(command -v nvim)" ] && alias vim="nvim"
 
-# Use $XINITRC variable if file exists.
-[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
-
 # These commands need not require sudo before them.
-for command in mount umount su reboot halt ; do
-	alias $command="sudo $command"
+for command in mount umount su poweroff shutdown reboot halt ; do
+	alias $command="doas $command"
 done; unset command
+
+# Use colors when available
+! [ -z $LS_COLORS ] && {
+	alias ls="ls --color=always"
+	alias diff="diff --color=always"
+}
+
+! [ -z $GREP_COLORS ] && {
+	alias grep="grep --color=always"
+}
 
 # Verbose mode for particular commands.
 alias \
@@ -19,8 +26,6 @@ alias \
 
 # Too lazy to type these.
 alias \
-	merge="xrdb -merge $HOME/.config/x11/xresources" \
-	f="fff" \
 	df="df -h" \
 	du="du -h" \
 	hs="hugo server --noHTTPCache" \
