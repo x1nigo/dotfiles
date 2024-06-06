@@ -11,7 +11,6 @@ sc="cd $HOME/.local/bin && ls -A" \
 sb="cd $HOME/.local/share/backgrounds && ls -A" \
 cfa="$EDITOR $HOME/.config/shell/aliasrc" \
 cfs="$EDITOR $HOME/.config/shell/shortcutrc" \
-cfk="$EDITOR $HOME/.config/ksh/kshrc" \
 cfd="$EDITOR $HOME/.config/dunst/dunstrc" \
 cfZ="$EDITOR $HOME/.config/zathura/zathurarc" \
 cfp="$EDITOR $HOME/.config/picom.conf" \
