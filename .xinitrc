@@ -5,7 +5,7 @@ xrandr --dpi 96
 xsetroot -solid '#121618' &
 # setwp &
 
-autostart="dunst sl-bar transmission-daemon"
+autostart="dunst slstatus transmission-daemon"
 
 for program in $autostart; do
         pgrep -x "$program" || "$program" &
