@@ -38,6 +38,18 @@ battery() {
 	printf "[%s]: %s%%" "$stat" "$bat"
 }
 
+bsd_battery() {
+	case "$(apm -b)" in
+		0) stat='&' ;;
+		1) stat='z' ;;
+		2) stat='!' ;;
+		3) stat='+' ;;
+		4) stat='x' ;;
+		*) stat='?' ;;
+	esac
+	printf "[%s]: %s%%" "$stat" "$(apm -l)"
+}
+
 status() {
 	# Place modules here in order.
 	volume
@@ -45,6 +57,7 @@ status() {
 	memory
 	delimiter
 	battery
+	# bsd_battery
 	delimiter
 	datetime
 }
