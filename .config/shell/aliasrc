@@ -20,7 +20,7 @@ done; unset command
 
 # Verbose mode for particular commands.
 alias \
-	rm="rm -Iv" \
+	rm="rm -iv" \
 	cp="cp -iv" \
 	mv="mv -iv"
 
