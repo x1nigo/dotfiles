@@ -5,7 +5,7 @@ xrandr --dpi 96
 xsetroot -solid '#121618' &
 # setwp &
 
-autostart="mpd dunst sl-bar pipewire transmission-daemon"
+autostart="dunst sl-bar transmission-daemon"
 
 for program in $autostart; do
         pgrep -x "$program" || "$program" &
@@ -20,4 +20,9 @@ kill $(pgrep -x xcape) 2>/dev/null; xcape -e 'Super_L=Escape'
 xset -q | grep -q "Caps Lock:\s*on" && xdotool key Caps_Lock
 
 # Merge xresources
-xrdb -merge ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
+xrdb $HOME/.Xresources
+
+# Suckless' dynamic window manager
+while :; do
+	ssh-agent dwm
+done
