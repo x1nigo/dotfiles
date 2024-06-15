@@ -6,7 +6,7 @@ export PATH="$PATH:/home/chris/.local/bin"
 # Default programs
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="firefox"
+export BROWSER="chromium"
 export VISUAL="nvim"
 
 # XDG base directories
