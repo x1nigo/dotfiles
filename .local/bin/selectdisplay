@@ -31,19 +31,14 @@ twoscreen() {
 }
 
 onescreen() {
-	xrandr --output "$1" --auto --scale 1.0x1.0 $(echo "$allscreens" | grep -v "\b$1" | awk '{print "--output", $1, "--off"}' | paste -sd ' ' -)
-}
-
-cleanup() {
-	setwp    # Render the wallpaper in case of bg inconsistencies.
-	{ killall dunst; setsid -f dunst; } >/dev/null 2>&1    # Restart dunst for proper location on screen.
+	xrandr --output "$1" --auto --scale 1.0x1.0 "$(echo "$allscreens" | grep -v "\b$1" | awk '{print "--output", $1, "--off"}' | paste -sd ' ' -)"
 }
 
 allscreens=$(xrandr -q | grep "connected")
 screens=$(echo "$allscreens" | awk '/ connected/ {print $1}')
 
 [ "$(echo "$screens" | wc -l)" -lt 2 ] &&
-	{ onescreen "$screens"; cleanup; notify-send "Only one screen detected." "Using it in its optimal settings..."; exit ;}
+	{ onescreen "$screens"; notify-send "Only one screen detected." "Using it in its optimal settings..."; exit ;}
 
 chosen=$(printf "%s\\nTwo-monitors\\nManual selection" "$screens" | dmenu -p "Select a display arrangement:")
 
