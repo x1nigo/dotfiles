@@ -3,10 +3,10 @@
 # Change code depending on operating system
 case "$(uname)" in
 	OpenBSD)
-		PID=$(ps -f | grep -A 1 sl-bar | grep sleep | head -1 | sed 's/^\s//' | cut -d' ' -f 1)
+		PID=$(ps -f | grep -A 1 'sl-bar' | grep 'sleep' | head -1 | sed 's/ *//' | cut -d' ' -f 1)
 		;;
 	GNU/Linux)
-		PID=$(ps -eH | grep -A 1 'sl-bar' | grep 'sleep' | sed 's/^\s//;s/\s.*//g')
+		PID=$(ps -eH | grep -A 1 'sl-bar' | grep 'sleep' | sed 's/ *//;s/\s.*//g')
 		;;
 esac
 
