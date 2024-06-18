@@ -1,3 +1,3 @@
 #!/bin/sh
 
-groff -mom ~/.local/share/keybindings.mom -Tpdf | zathura -
+${TERMINAL:-st} -e ${EDITOR:-vi} ~/.local/share/os.txt
