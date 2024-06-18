@@ -2,7 +2,7 @@
 
 # Figure out the operating system
 case "$(uname)" in
-	OpenBSD)
+	"OpenBSD" )
 		volume() {
 			vol=$(sndioctl output.level | sed 's/^.*=//g')
 			raw=$(printf "%0.2f" "$vol" | sed 's/^1\./1/g;s/^.*\.//g')
@@ -15,9 +15,9 @@ case "$(uname)" in
 		}
 
 		memory() {
-			used="$(vmstat | awk 'END {printf $3}')"
+			used="$(vmstat | awk 'END {printf $3}' | sed 's/M/Mi/')"
 			total="$(($(sysctl -n hw.physmem) / 1024 / 1024))"
-			printf "%s / %sM" "$used" "$total"
+			printf "%s / %sMi" "$used" "$total"
 		}
 
 		battery() {
@@ -33,7 +33,7 @@ case "$(uname)" in
 		}
 		;;
 
-	GNU/Linux)
+	"GNU/Linux" | * )
 		memory() {
 			mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
 			printf "[m]: %s" "$mem_used"
