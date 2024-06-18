@@ -75,6 +75,12 @@ datetime() {
 	printf "%s" "$date"
 }
 
+os() {
+	name="$(uname -s)"
+	version="$(uname -r)"
+	printf "%s %s" "$name" "$version"
+}
+
 status() {
  	volume
  	delimiter
@@ -83,6 +89,8 @@ status() {
  	battery
 	delimiter
 	datetime
+	delimiter
+	os
 }
 
 while true; do
