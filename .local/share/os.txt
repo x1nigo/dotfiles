@@ -1,0 +1,52 @@
+Welcome to x1nigo's operating system! -> (void linux / OpenBSD + custom scripts)
+
+I. Introduction
+
+This custom setup is created for both Void Linux and
+OpenBSD as these are what I use. It is meant to be
+as minimal as possible and to get out of your way.
+
+II. Programs
+
+Listed here are most of the programs that I use for
+my system (but not all):
+
+- nsxiv (image viewer)
+- zathura (pdf viewer)
+- mpv (media player)
+- sf (custom-made file manager)
+- vim/neovim (text editor)
+- dwm (window manager)
+- st (terminal)
+- dmenu (launcher)
+
+III. Keybindings
+
+This is very different from Windows or MacOS as this particular
+system prioritizes the use of shortcuts (for speed and
+efficiency).
+
+Here are the more important keybindings to take note of:
+
+- super + return (terminal)
+- super + w (browser)
+- super + backspace (system menu)
+- super + q (close window)
+- super + d (dmenu)
+- super + f1 (read this document)
+- super + f12 (refresh window manager)
+- super + x (change wallpaper)
+- super + insert (shortcuts)
+
+For more keybindings, check out "config.h" under the dwm
+folder located in ~/.local/src/dwm.
+
+IV. Conclusion
+
+Minimalism is at the crux of this system but it does not
+preclude the user from adding whatever he/she wants. After
+all, this is the point of free and open-source software.
+
+Enjoy your stay.
+
+- x1nigo (Chris Iñigo) <https://github.com/x1nigo>
