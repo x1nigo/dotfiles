@@ -1,5 +1,14 @@
 #!/bin/sh
 
-# Look for the PID of `sleep` within the statusbar script; and kill it.
-PID=$(ps -eH | grep -A 1 'sl-bar' | grep 'sleep' | sed 's/^\s//;s/\s.*//g')
+# Change code depending on operating system
+case "$(uname)" in
+	OpenBSD)
+		PID=$(pgrep -l sleep | cut -d' ' -f1)
+		;;
+	GNU/Linux)
+		PID=$(ps -eH | grep -A 1 'sl-bar' | grep 'sleep' | sed 's/^\s//;s/\s.*//g')
+		;;
+esac
+
+# Look for the instance of `sleep` in sl-bar and kill it
 kill $PID

@@ -1,63 +1,86 @@
 #!/bin/sh
 
-delim="  "
+# Figure out the operating system
+case "$(uname)" in
+	OpenBSD)
+		volume() {
+			vol=$(sndioctl output.level | sed 's/^.*=//g')
+			raw=$(printf "%0.2f" "$vol" | sed 's/^1\./1/g;s/^.*\.//g')
+			muted=$(sndioctl output.mute | sed 's/^.*=//g')
+			case "$muted" in
+				0) stat=v ;;
+				1) stat=muted ;;
+			esac
+			printf "[%s]: %s%%" "$stat" "$raw"
+		}
 
+		memory() {
+			used="$(vmstat | awk 'END {printf $3}')"
+			total="$(($(sysctl -n hw.physmem) / 1024 / 1024))"
+			printf "%s / %sM" "$used" "$total"
+		}
+
+		battery() {
+			case "$(apm -b)" in
+				0) stat='&' ;;
+				1) stat='z' ;;
+				2) stat='!' ;;
+				3) stat='+' ;;
+				4) stat='x' ;;
+				*) stat='?' ;;
+			esac
+			printf "[%s]: %s%%" "$stat" "$(apm -l)"
+		}
+		;;
+
+	GNU/Linux)
+		memory() {
+			mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
+			printf "[m]: %s" "$mem_used"
+		}
+
+		volume() {
+			vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+			vol="${vol#Volume: }"
+
+			vol=$(printf "%s" "$vol" | sed 's/^1\./1/g;s/^.*\.//g')
+			printf "[v]: %s%%" "$vol"
+		}
+
+		battery() {
+			dir="/sys/class/power_supply/BAT?"
+			bat=$(cat $dir/capacity)
+			status=$(cat $dir/status)
+			case "$status" in
+				"Discharging") stat='z' ;;
+				"Charging") stat='+' ;;
+				"Full") stat='@' ;;
+				*) stat='x' ;;
+			esac
+			printf "[%s]: %s%%" "$stat" "$bat"
+		}
+		;;
+esac
+
+# The separator between modules
+delim="   "
 delimiter() {
 	dl="$delim"
 	printf "%s" "$dl"
 }
 
+# The date and time custom formatted
 datetime() {
-	date=$(date +'%Y %b %d %a [%I:%M %p]')
+	date=$(date +'%Y %b %d (%a) %I:%M%p')
 	printf "%s" "$date"
 }
 
-memory() {
-	mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
-	printf "[m]: %s" "$mem_used"
-}
-
-volume() {
-	vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
-	vol="${vol#Volume: }"
-
-	vol=$(printf "%s" "$vol" | sed 's/^1\./1/g;s/^.*\.//g')
-	printf "[v]: %s" "$vol"
-}
-
-battery() {
-	dir="/sys/class/power_supply/BAT?"
-	bat=$(cat $dir/capacity)
-	status=$(cat $dir/status)
-	case "$status" in
-		"Discharging") stat='z' ;;
-		"Charging") stat='+' ;;
-		"Full") stat='@' ;;
-		*) stat='x' ;;
-	esac
-	printf "[%s]: %s%%" "$stat" "$bat"
-}
-
-bsd_battery() {
-	case "$(apm -b)" in
-		0) stat='&' ;;
-		1) stat='z' ;;
-		2) stat='!' ;;
-		3) stat='+' ;;
-		4) stat='x' ;;
-		*) stat='?' ;;
-	esac
-	printf "[%s]: %s%%" "$stat" "$(apm -l)"
-}
-
 status() {
-	# Place modules here in order.
-	volume
-	delimiter
-	memory
-	delimiter
-	battery
-	# bsd_battery
+ 	volume
+ 	delimiter
+ 	memory
+ 	delimiter
+ 	battery
 	delimiter
 	datetime
 }
