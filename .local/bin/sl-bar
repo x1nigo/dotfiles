@@ -33,18 +33,15 @@ case "$(uname)" in
 		}
 		;;
 
-	"GNU/Linux" | * )
+	"GNU/Linux" | "Linux" | * )
 		memory() {
 			mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
-			printf "[m]: %s" "$mem_used"
+			printf "%s" "$mem_used"
 		}
 
 		volume() {
 			vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
-			vol="${vol#Volume: }"
-
-			vol=$(printf "%s" "$vol" | sed 's/^1\./1/g;s/^.*\.//g')
-			printf "[v]: %s%%" "$vol"
+			printf "%s" "$vol"
 		}
 
 		battery() {
@@ -57,7 +54,7 @@ case "$(uname)" in
 				"Full") stat='@' ;;
 				*) stat='x' ;;
 			esac
-			printf "[%s]: %s%%" "$stat" "$bat"
+			printf "Battery: %s%% [%s]" "$bat" "$stat"
 		}
 		;;
 esac
@@ -76,7 +73,7 @@ datetime() {
 }
 
 os() {
-	name="$(uname -s)"
+	name="$(uname -o)"
 	version="$(uname -r)"
 	printf "%s %s" "$name" "$version"
 }
