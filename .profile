@@ -4,10 +4,10 @@
 export PATH="$PATH:/home/chris/.local/bin"
 
 # Default programs
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="chromium"
-export VISUAL="nvim"
+export VISUAL="vim"
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
