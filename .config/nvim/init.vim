@@ -65,7 +65,7 @@ set noshowcmd
 	autocmd BufWritePre * :%s/\s\+$//e
 
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
-	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/surf/config.h !sudo make install
+	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/surf/config.h !doas make install
 " Restart dwmblocks automatically after compilation
         autocmd BufWritePost ~/.local/src/dwmblocks/config.h !doas make install && kill $(pgrep -x dwmblocks); setsid -f dwmblocks
 " Restart dunst after its config file is updated
