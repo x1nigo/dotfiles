@@ -3,9 +3,9 @@
 # This is used to adjust for the dots per inch.
 xrandr --dpi 96
 xsetroot -solid '#121618' &
-setwp &
+# setwp &
 
-autostart="dunst picom sl-bar transmission-daemon"
+autostart="dunst sl-bar pipewire transmission-daemon"
 
 for program in $autostart; do
         pgrep -x "$program" || "$program" &
