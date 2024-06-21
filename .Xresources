@@ -1,13 +1,13 @@
-*.font: monospace-10
+*.font: monospace:bold:size=10
 st.alpha: .85
 
 *.background: #121618
 *.foreground: #ebdbb2
-*.cursorColor: #008
+*.cursorColor: #ebdbb2
 
-OBSD:
+Temple:
 *.color0: #282828
-*.color1: #852828
+*.color1: #800000
 *.color2: #A1B56C
 *.color3: #DE935F
 *.color4: #225555
@@ -40,39 +40,3 @@ OBSD:
 ! *.color13: #d3869b
 ! *.color14: #8ec07c
 ! *.color15: #ebdbb2
-
-! Chameleon:
-! *.color0: #2c2c2c
-! *.color1: #cc231c
-! *.color2: #689d69
-! *.color3: #d79922
-! *.color4: #366b71
-! *.color5: #4e5165
-! *.color6: #458587
-! *.color7: #c8bb97
-! *.color8: #777777
-! *.color9: #cc231c
-! *.color10: #689d69
-! *.color11: #d79922
-! *.color12: #366b71
-! *.color13: #4e5165
-! *.color14: #458587
-! *.color15: #c8bb97
-
-! Material:
-! *.color0: #073641
-! *.color1: #EB606B
-! *.color2: #C3E88D
-! *.color3: #F7EB95
-! *.color4: #80CBC3
-! *.color5: #FF2490
-! *.color6: #AEDDFF
-! *.color7: #FFFFFF
-! *.color8: #002B36
-! *.color9: #EB606B
-! *.color10: #C3E88D
-! *.color11: #F7EB95
-! *.color12: #7DC6BF
-! *.color13: #6C71C3
-! *.color14: #34434D
-! *.color15: #FFFFFF
