@@ -11,7 +11,7 @@
     markup = full
     title = Dunst
     class = Dunst
-    font = Monospace 10
+    font = Monospace 12
     format = "<b>%s</b>\n%b"
     background = "#000080"
     foreground = "#808080"
