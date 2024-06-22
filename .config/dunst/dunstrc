@@ -13,13 +13,13 @@
     class = Dunst
     font = Monospace 10
     format = "<b>%s</b>\n%b"
-    background = "#121618"
-    foreground = "#ebdbb2"
-    frame_color = "#500000"
+    background = "#000080"
+    foreground = "#808080"
+    frame_color = "#080808"
     timeout = 5
 
 [urgency_critical]
     background = "#500000"
-    foreground = "#ebdbb2"
+    foreground = "#808080"
     frame_color = "#000000"
     timeout = 5
