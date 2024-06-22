@@ -47,5 +47,3 @@ case $chosen in
 	"Manual selection") arandr ;;
 	*) onescreen "$chosen" ;;
 esac
-
-cleanup
