@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # This way, it works no matter what shell you use.
-PS1='$USER@$(hostname) $(pwd | sed "s|$HOME|~|")\$ '
+PS1='$USER@$(hostname -s):$(pwd)>'
 
 set -o emacs
 
