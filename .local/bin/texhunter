@@ -1,6 +1,0 @@
-#!/bin/sh
-
-file="$(find $HOME/ -type f | grep -e "\.pdf$\|\.epub$" | dmenu -i -l 28 -p "Display Pdf files:")"
-[ -z "$file" ] && exit 1
-
-zathura "$file"
