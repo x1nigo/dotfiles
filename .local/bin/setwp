@@ -12,14 +12,15 @@ render() {
 
 # Select wallpaper from backgrounds folder
 sel() {
-	chosen=$(find $bgdir -type f | dmenu -l 10 -p "Set wallpaper:")
+	chosen="$(find $bgdir -type f | sed "s|$HOME|~|" | dmenu -l 10 -p "Set wallpaper:")"
+	chosen="$(echo "$chosen" | sed "s|~|$HOME|")"
 	[ -z "$chosen" ] && exit
-	cp "$chosen" $bgmain && \\
+	cp "$chosen" $bgmain && \
 	notify-send "New wallpaper!" "\`$chosen\`"
 }
 
 oust() {
-	xwallpaper --clear && \\
+	xwallpaper --clear && \
 	notify-send "Wallpaper cleared!" "Select a new wallpaper [or] execute xsetroot -solid [color]." && exit
 }
 
