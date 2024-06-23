@@ -8,16 +8,16 @@ case "$(uname)" in
 			raw=$(printf "%0.2f" "$vol" | sed 's/^1\./1/g;s/^.*\.//g')
 			muted=$(sndioctl output.mute | sed 's/^.*=//g')
 			case "$muted" in
-				0) stat=v ;;
-				1) stat=muted ;;
+				0) stat=Volume ;;
+				1) stat=Muted ;;
 			esac
-			printf "[%s]: %s%%" "$stat" "$raw"
+			printf "%s: %s%%" "$stat" "$raw"
 		}
 
 		memory() {
 			used="$(vmstat | awk 'END {printf $3}' | sed 's/M/Mi/')"
 			total="$(($(sysctl -n hw.physmem) / 1024 / 1024))"
-			printf "%s / %sMi" "$used" "$total"
+			printf "Memory: %s / %sMi" "$used" "$total"
 		}
 
 		battery() {
@@ -29,14 +29,14 @@ case "$(uname)" in
 				4) stat='x' ;;
 				*) stat='?' ;;
 			esac
-			printf "[%s]: %s%%" "$stat" "$(apm -l)"
+			printf "Battery: %s%% [%s]" "$(apm -l)" "$stat"
 		}
 		;;
 
 	"GNU/Linux" | "Linux" | * )
 		memory() {
 			mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
-			printf "%s" "$mem_used"
+			printf "Memory: %s" "$mem_used"
 		}
 
 		volume() {
@@ -73,7 +73,7 @@ datetime() {
 }
 
 os() {
-	name="$(uname -o)"
+	name="$(uname -s)"
 	version="$(uname -r)"
 	printf "%s %s" "$name" "$version"
 }
