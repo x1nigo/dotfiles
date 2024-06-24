@@ -1,7 +1,15 @@
 #!/bin/sh
 
-# This way, it works no matter what shell you use.
-PS1='$USER@$(hostname -s):$(pwd)>'
+# This is the shrc file; To use this with other shells, just
+# create a symlink with the proper renamed file.
+# (e.g. bashrc / kshrc)
+# ... or just copy the text.
+
+# Know your shell.
+case "$0" in
+	sh) PS1='$USER@$(hostname -s):$(pwd)>' ;;
+	*) PS1='\e[1;33m$USER\e[1;32m@\e[1;34m$(hostname -s):\e[1;35m$(pwd)\e[m>' ;;
+esac
 
 set -o emacs
 
