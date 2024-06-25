@@ -1,4 +1,4 @@
-*.font: monospace:bold:size=10
+*.font: monospace:size=10
 st.alpha: 1.0
 
 *.background: #121618
@@ -22,16 +22,16 @@ st.alpha: 1.0
 DefaultOS:
 *.color0: #282828
 *.color1: #800000
-*.color2: #008000
-*.color3: #aa6000
+*.color2: #008060
+*.color3: #da6000
 *.color4: #000080
 *.color5: #600080
 *.color6: #006080
 *.color7: #808080
 *.color8: #1d2021
 *.color9: #800000
-*.color10: #008000
-*.color11: #aa6000
+*.color10: #008060
+*.color11: #da6000
 *.color12: #000080
 *.color13: #600080
 *.color14: #006080
