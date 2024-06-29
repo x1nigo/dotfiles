@@ -33,7 +33,7 @@ cmd_mode() {
 append_line() {
 	read spec_line
 	start=$spec_line
-	IFS=
+	IFS=" "
 	read -r edited_spec_line
 	for ((i=0;i<${#full_input[@]};i++)) {
 		if [[ $i == $((start-1)) ]]; then
@@ -82,6 +82,7 @@ write() {
 
 # Edit a specific line.
 edit() {
+	IFS=" "
 	read line_number
 	printf "%s\n" "\"${full_input[$((line_number-1))]}\""
 	read -r edited_line
@@ -92,6 +93,7 @@ edit() {
 # Insert mode. This is where you'll be writing
 # text for your file/s.
 insert_mode() {
+	IFS=" "
 	for ((;;)); {
 		read -r input
 		case "$input" in
