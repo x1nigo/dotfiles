@@ -1,0 +1,131 @@
+#!/usr/bin/env bash
+
+# le: a simple terminal line editor written in bash.
+# Created by Chris Iñigo <https://github.com/x1nigo>
+
+create_file() {
+	[[ -z "$1" ]] && return
+	file_name="$1" && echo "\`$file_name\`"
+	while IFS= read -r line; do
+		full_input+=("$line")
+	done < "$file_name"
+}
+
+# Command mode. Enter a command to interact with
+# the script properly.
+cmd_mode() {
+	read cmd
+	case "$cmd" in
+		q) exit ;;
+		a) append_line ;;
+		i) insert_mode ;;
+		d) delete ;;
+		e) edit ;;
+		h) hints ;;
+		w) write ;;
+		p) print_text ;;
+		n) numbered_text ;;
+		*) echo "Unknown command. Enter \`h\` to display keybindings." ;; # This can't really be seen (screen refreshes).
+	esac
+}
+
+# Add a specified line
+append_line() {
+	read spec_line
+	start=$spec_line
+	IFS=
+	read -r edited_spec_line
+	for ((i=0;i<${#full_input[@]};i++)) {
+		if [[ $i == $((start-1)) ]]; then
+			new_full_input+=("$edited_spec_line")
+			new_full_input+=("${full_input[i]}")
+		else
+			new_full_input+=("${full_input[i]}")
+		fi
+	}
+	full_input=()
+	for line in "${new_full_input[@]}"; do
+		full_input+=("$line")
+	done
+	new_full_input=()
+}
+
+# Delete a line.
+delete() {
+	read line_num
+	unset 'full_input[$((line_num-1))]'
+}
+
+# Print the contents of a file.
+print_text() {
+	for line in "${full_input[@]}"; do
+		printf "%s\n" "$line"
+	done
+}
+
+# Print the numbered contents of a file.
+numbered_text() {
+	index=0
+	for line in "${full_input[@]}"; do
+		printf "%2d %s\n" "$((index+1))" "$line"
+		((index++))
+	done
+}
+
+# Save your file.
+write() {
+	[[ -z "$file_name" ]] && printf "%s" "[Saving file...] File name: " && \
+		read -r file_name
+	printf "%s\n" "${full_input[@]}" > "$file_name"
+	echo "File \`$file_name\` written."
+}
+
+# Edit a specific line.
+edit() {
+	read line_number
+	printf "%s\n" "\"${full_input[$((line_number-1))]}\""
+	read -r edited_line
+	full_input[$((line_number-1))]="$edited_line"
+
+}
+
+# Insert mode. This is where you'll be writing
+# text for your file/s.
+insert_mode() {
+	for ((;;)); {
+		read -r input
+		case "$input" in
+			.) break ;;
+			*) full_input+=("$input")
+		esac
+	}
+}
+
+# Keybindings for the unaware
+hints() { cat << EOF
+Keybindings:
+
+q	quit
+a	append a line
+w	save [write]
+d	delete line
+e	edit line
+i	insert mode
+h	hints
+p	print text
+n	print numbered text
+.	return to command mode
+
+EOF
+}
+
+# The main function.
+main() {
+	create_file "$1"
+	# Infinite loop
+	for ((;;)); {
+		cmd_mode
+	}
+}
+
+main "$1"
