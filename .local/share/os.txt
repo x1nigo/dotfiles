@@ -14,8 +14,8 @@ my system (but not all):
 - nsxiv (image viewer)
 - zathura (pdf viewer)
 - mpv (media player)
-- sf (custom-made file manager)
-- vim/neovim (text editor)
+- fm (custom-made file manager)
+- le (custom-made text editor)
 - dwm (window manager)
 - st (terminal)
 - dmenu (launcher)
@@ -30,7 +30,6 @@ Here are the more important keybindings to take note of:
 
 - super + return (terminal)
 - super + w (browser)
-- super + backspace (system menu)
 - super + q (close window)
 - super + d (dmenu)
 - super + f1 (read this document)
