@@ -17,7 +17,7 @@ cmd_mode() {
 	read cmd
 	case "$cmd" in
 		q) exit ;;
-		a) append_line ;;
+		a) append ;;
 		i) insert_mode ;;
 		d) delete ;;
 		e) edit ;;
@@ -30,30 +30,40 @@ cmd_mode() {
 }
 
 # Add a specified line
-append_line() {
+append() {
 	read spec_line
 	start=$spec_line
-	IFS=" "
-	read -r edited_spec_line
-	for ((i=0;i<${#full_input[@]};i++)) {
-		if [[ $i == $((start-1)) ]]; then
-			new_full_input+=("$edited_spec_line")
-			new_full_input+=("${full_input[i]}")
-		else
-			new_full_input+=("${full_input[i]}")
-		fi
+	for ((;;)) {
+		IFS= read -r edited_spec_line
+		case "$edited_spec_line" in
+			";" ) break ;;
+			*)
+				for ((i=0;i<${#full_input[@]};i++)) {
+					if [[ $i == $((start-1)) ]]; then
+						new_full_input+=("$edited_spec_line")
+						new_full_input+=("${full_input[i]}")
+					else
+						new_full_input+=("${full_input[i]}")
+					fi
+				}
+				full_input=()
+				for line in "${new_full_input[@]}"; do
+					full_input+=("$line")
+				done
+				new_full_input=()
+				((start++))
+				;;
+		esac
 	}
-	full_input=()
-	for line in "${new_full_input[@]}"; do
-		full_input+=("$line")
-	done
-	new_full_input=()
 }
 
 # Delete a line.
+del_index=0
 delete() {
 	read line_num
-	unset 'full_input[$((line_num-1))]'
+	actual_num=$((line_num+del_index))
+	unset 'full_input[$((actual_num-1))]'
+	((del_index++))
 }
 
 # Print the contents of a file.
@@ -90,22 +100,20 @@ write() {
 
 # Edit a specific line.
 edit() {
-	IFS=" "
 	read line_number
 	printf "%s\n" "\"${full_input[$((line_number-1))]}\""
-	read -r edited_line
+	IFS= read -r edited_line
 	full_input[$((line_number-1))]="$edited_line"
 
 }
 
-# Insert mode. This is where you'll be writing
-# text for your file/s.
+# Insert mode. This is where you'll be writing text for your file/s.
 insert_mode() {
-	IFS=" "
 	for ((;;)); {
-		read -r input
+		# Read input line without changing anything.
+		IFS= read -r input
 		case "$input" in
-			.) break ;;
+			";" ) break ;;
 			*) full_input+=("$input")
 		esac
 	}
@@ -116,7 +124,7 @@ hints() { cat << EOF
 Keybindings:
 
 q	quit
-a	append a line
+a	append line[s]
 w	save [write]
 d	delete line
 e	edit line
