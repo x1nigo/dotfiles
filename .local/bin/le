@@ -58,12 +58,15 @@ append() {
 }
 
 # Delete a line.
-del_index=0
 delete() {
 	read line_num
-	actual_num=$((line_num+del_index))
-	unset 'full_input[$((actual_num-1))]'
-	((del_index++))
+	unset 'full_input[$line_num]'
+	# Rebuild the array to fix missing indices.
+	for i in "${!full_input[@]}"; do
+		tmp_array+=("${full_input[i]}")
+	done
+	full_input=("${tmp_array[@]}")
+	unset tmp_array
 }
 
 # Print the contents of a file.
@@ -82,12 +85,9 @@ numbered_text() {
 		$((total >= 10)) ) num_dist="%2d" ;;
 		$((total >= 1)) ) num_dist="%d" ;;
 	esac
-	# Modified for loop.
-	index=0
-	for line in "${full_input[@]}"; do
-		printf "$num_dist\t\t%s\n" "$((index+1))" "$line"
-		((index++))
-	done
+	for ((i=0;i<${#full_input[@]};i++)) {
+		printf "$num_dist\t\t%s\n" "$i" "${full_input[i]}"
+	}
 }
 
 # Save your file.
