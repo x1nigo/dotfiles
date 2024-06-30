@@ -65,9 +65,17 @@ print_text() {
 
 # Print the numbered contents of a file.
 numbered_text() {
+	total=${#full_input[@]}
+	case 1 in
+		$((total >= 1000)) ) num_dist="%4d" ;;
+		$((total >= 100)) ) num_dist="%3d" ;;
+		$((total >= 10)) ) num_dist="%2d" ;;
+		$((total >= 1)) ) num_dist="%d" ;;
+	esac
+	# Modified for loop.
 	index=0
 	for line in "${full_input[@]}"; do
-		printf "%2d %s\n" "$((index+1))" "$line"
+		printf "$num_dist\t\t%s\n" "$((index+1))" "$line"
 		((index++))
 	done
 }
