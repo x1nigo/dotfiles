@@ -101,9 +101,9 @@ write() {
 # Edit a specific line.
 edit() {
 	read line_number
-	printf "%s\n" "\"${full_input[$((line_number-1))]}\""
+	printf "%s\n" "\"${full_input[$line_number]}\""
 	IFS= read -r edited_line
-	full_input[$((line_number-1))]="$edited_line"
+	full_input[$line_number]="$edited_line"
 
 }
 
