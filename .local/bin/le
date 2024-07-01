@@ -39,7 +39,7 @@ append() {
 			";" ) break ;;
 			*)
 				for ((i=0;i<${#full_input[@]};i++)) {
-					if [[ $i == $((start-1)) ]]; then
+					if [[ $i == $start ]]; then
 						new_full_input+=("$edited_spec_line")
 						new_full_input+=("${full_input[i]}")
 					else
@@ -71,9 +71,11 @@ delete() {
 
 # Print the contents of a file.
 print_text() {
+	printf "\e[1;3;33m%s\e[m\n" "EOF >>"
 	for line in "${full_input[@]}"; do
 		printf "%s\n" "$line"
 	done
+	printf "\e[1;3;33m%s\e[m\n" "<< EOF"
 }
 
 # Print the numbered contents of a file.
@@ -85,9 +87,11 @@ numbered_text() {
 		$((total >= 10)) ) num_dist="%2d" ;;
 		$((total >= 1)) ) num_dist="%d" ;;
 	esac
+	printf "\e[1;3;33m%s\e[m\n" "EOF >>"
 	for ((i=0;i<${#full_input[@]};i++)) {
-		printf "$num_dist\t\t%s\n" "$i" "${full_input[i]}"
+		printf "\e[1;30m$num_dist\e[m\t\t%s\n" "$i" "${full_input[i]}"
 	}
+	printf "\e[1;3;33m%s\e[m\n" "<< EOF"
 }
 
 # Save your file.
