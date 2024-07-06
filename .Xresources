@@ -1,5 +1,5 @@
 *.font: monospace:size=10
-st.alpha: 1.0
+st.alpha: .85
 
 *.background: #121618
 *.foreground: #ebdbb2
@@ -19,20 +19,20 @@ st.alpha: 1.0
  * Additional numbers repeat the above
  */
 
-DefaultOS:
+Artbox:
 *.color0: #282828
-*.color1: #800000
+*.color1: #852525
 *.color2: #008060
 *.color3: #da6000
-*.color4: #000080
+*.color4: #204085
 *.color5: #600080
-*.color6: #006080
-*.color7: #808080
+*.color6: #689d6a
+*.color7: #008dba
 *.color8: #1d2021
-*.color9: #800000
+*.color9: #852525
 *.color10: #008060
 *.color11: #da6000
-*.color12: #000080
+*.color12: #204085
 *.color13: #600080
-*.color14: #006080
+*.color14: #008dba
 *.color15: #ebdbb2
