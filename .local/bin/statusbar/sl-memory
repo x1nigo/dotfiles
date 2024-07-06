@@ -1,0 +1,14 @@
+#!/bin/sh
+
+case "$(uname)" in
+	"OpenBSD" )
+		used="$(vmstat | awk 'END {printf $3}' | sed 's/M/Mi/')"
+		total="$(($(sysctl -n hw.physmem) / 1024 / 1024))"
+		printf "Memory: %s / %sMi" "$used" "$total"
+		;;
+	* )
+		mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
+		icon=🧠
+		printf "%s%s" "$icon" "$mem_used"
+		;;
+esac
