@@ -1,13 +1,13 @@
 #!/bin/sh
 
 # Add `~/.local/bin` to $PATH
-export PATH="$PATH:/home/chris/.local/bin"
+export PATH="$PATH:/$HOME/.local/bin:$HOME/.local/bin/statusbar"
 
 # Default programs
-export EDITOR="le"
+export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
-export VISUAL="vi"
+export VISUAL="nvim"
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
