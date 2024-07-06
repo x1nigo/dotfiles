@@ -1,96 +1,27 @@
 #!/bin/sh
 
-# Figure out the operating system
-case "$(uname)" in
-	"OpenBSD" )
-		volume() {
-			vol=$(sndioctl output.level | sed 's/^.*=//g')
-			raw=$(printf "%0.2f" "$vol" | sed 's/^1\./1/g;s/^.*\.//g')
-			muted=$(sndioctl output.mute | sed 's/^.*=//g')
-			case "$muted" in
-				0) stat=Volume ;;
-				1) stat=Muted ;;
-			esac
-			printf "%s: %s%%" "$stat" "$raw"
-		}
-
-		memory() {
-			used="$(vmstat | awk 'END {printf $3}' | sed 's/M/Mi/')"
-			total="$(($(sysctl -n hw.physmem) / 1024 / 1024))"
-			printf "Memory: %s / %sMi" "$used" "$total"
-		}
-
-		battery() {
-			case "$(apm -b)" in
-				0) stat='&' ;;
-				1) stat='z' ;;
-				2) stat='!' ;;
-				3) stat='+' ;;
-				4) stat='x' ;;
-				*) stat='?' ;;
-			esac
-			printf "Battery: %s%% [%s]" "$(apm -l)" "$stat"
-		}
-		;;
-
-	"GNU/Linux" | "Linux" | * )
-		memory() {
-			mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
-			printf "Memory: %s" "$mem_used"
-		}
-
-		volume() {
-			vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
-			printf "%s" "$vol"
-		}
-
-		battery() {
-			dir="/sys/class/power_supply/BAT?"
-			bat=$(cat $dir/capacity)
-			status=$(cat $dir/status)
-			case "$status" in
-				"Discharging") stat='z' ;;
-				"Charging") stat='+' ;;
-				"Full") stat='@' ;;
-				*) stat='x' ;;
-			esac
-			printf "Battery: %s%% [%s]" "$bat" "$stat"
-		}
-		;;
-esac
+# Modules are found within the `statusbar` folder labeled: `sl-[module]`.
 
 # The separator between modules
-delim="   "
-delimiter() {
-	dl="$delim"
-	printf "%s" "$dl"
-}
-
-# The date and time custom formatted
-datetime() {
-	date=$(date +'%Y %b %d (%a) %I:%M%p')
-	printf "%s" "$date"
-}
-
-os() {
-	name="$(uname -s)"
-	version="$(uname -r)"
-	printf "%s %s" "$name" "$version"
+delim() {
+	printf "%s" "  "
 }
 
 status() {
- 	volume
- 	delimiter
- 	memory
- 	delimiter
- 	battery
-	delimiter
-	datetime
-	delimiter
-	os
+	sl-blight
+	delim
+ 	sl-volume
+ 	delim
+	sl-traffic
+	delim
+ 	sl-battery
+	delim
+	sl-internet
+	delim
+	sl-date
 }
 
 while true; do
 	xsetroot -name " $(status) "
-	sleep 30
+	sleep 8
 done
