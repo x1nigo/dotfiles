@@ -1,5 +1,5 @@
 set notermguicolors
-syntax off
+syntax on
 
 set title
 set autoindent
@@ -16,7 +16,18 @@ set encoding=utf-8
 set linebreak
 set wrap
 set noshowcmd
+set cursorline
 set number relativenumber
+
+" Colors
+highlight Visual		ctermfg=3		ctermbg=0		cterm=bold
+highlight Comment		ctermfg=4		ctermbg=none	cterm=bold,italic
+highlight Type			ctermfg=2		ctermbg=none	cterm=bold
+highlight PreProc		ctermfg=5		ctermbg=none	cterm=italic
+highlight Statement		ctermfg=3		ctermbg=none	cterm=none
+highlight LineNr		ctermfg=0		ctermbg=none	cterm=bold
+highlight CursorLine	ctermfg=none	ctermbg=none	cterm=none
+highlight CursorLineNr	ctermfg=3		ctermbg=none	cterm=none
 
 " Set Map leader
 	let mapleader = ","
@@ -30,7 +41,7 @@ set number relativenumber
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Automatically read the file type after write
-        autocmd BufWritePost * filetype detect
+	autocmd BufWritePost * filetype detect
 " Read these particular files correctly:
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
