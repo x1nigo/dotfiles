@@ -5,10 +5,14 @@
 # (e.g. bashrc / kshrc)
 # ... or just copy the text.
 
+# Get hostname (sometimes the `hostname` command is not present)
+host=$(cat /etc/hostname)
+[ -z $host ] && host=voidhost
+
 # Know your shell.
 case "$0" in
-	sh) PS1='$USER@$(hostname -s):$(pwd)>' ;;
-	*) PS1='\e[1m$USER@$(hostname -s):$(pwd)>\e[m' ;;
+	sh) PS1='$host:$(pwd | sed "s|$HOME|~|")>' ;;
+	*) PS1='\e[1;35m$host\e[m\e[1m:$(pwd | sed "s|$HOME|~|")>\e[m' ;;
 esac
 
 set -o emacs
@@ -31,7 +35,7 @@ ef () {
 }
 
 # `cd` into your last directory in file-manager.
-sff () {
-	sf
-	cd "$(cat ${XDG_CACHE_HOME:-$HOME/.cache}/sf/.sf_d)"
+fmcd () {
+	fm
+	cd "$(cat ${XDG_CACHE_HOME:-$HOME/.cache}/fm/.fm_d)"
 }
