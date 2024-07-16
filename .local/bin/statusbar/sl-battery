@@ -18,16 +18,15 @@ case "$(uname)" in
 		status=$(cat $dir/status)
 		case "$status" in
 			"Discharging")
-				stat='z'
 				[ $bat -le 20 ] && {
 					icon=🪫
 					notify-send "Attention:" "Battery low!"
 				} || icon=🔋
 				;;
-			"Charging") stat='+' && icon=🔌 ;;
-			"Full") stat='@' && icon=⚡ ;;
-			*) stat='x' ;;
+			"Charging") icon=🔌 ;;
+			"Full") icon=⚡ ;;
+			*) icon=❓ ;;
 		esac
-		printf "%s%s%% [%s]" "$icon" "$bat" "$stat"
+		printf "%s%s%%" "$icon" "$bat"
 		;;
 esac
