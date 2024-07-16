@@ -4,10 +4,10 @@
 export PATH="$PATH:/$HOME/.local/bin:$HOME/.local/bin/statusbar"
 
 # Default programs
-export EDITOR="nvim"
+export EDITOR="vim"
 export TERMINAL="st"
 export BROWSER="firefox"
-export VISUAL="nvim"
+export VISUAL="vim"
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
