@@ -3,7 +3,7 @@ syntax on
 
 set title
 set autoindent
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 set wildmode=longest,list,full
 set nohlsearch
 set ignorecase
@@ -18,6 +18,7 @@ set wrap
 set noshowcmd
 set cursorline
 set number relativenumber
+set viewoptions-=options
 
 " Colors
 highlight Visual		ctermfg=3		ctermbg=0		cterm=bold
@@ -39,6 +40,9 @@ highlight CursorLineNr	ctermfg=3		ctermbg=none	cterm=none
 	map <leader>a :silent !alchemize "%" <enter>
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Save state on exit
+	autocmd BufWinLeave *.* mkview
+	autocmd BufWinEnter *.* silent! loadview
 
 " Automatically read the file type after write
 	autocmd BufWritePost * filetype detect
