@@ -11,8 +11,8 @@ host=$(cat /etc/hostname)
 
 # Know your shell.
 case "$0" in
-	sh) PS1='$host:$(pwd | sed "s|$HOME|~|")>' ;;
-	*) PS1='\e[1;35m$host\e[m\e[1m:$(pwd | sed "s|$HOME|~|")>\e[m' ;;
+	sh) PS1='$host:$(pwd)>' ;;
+	*) PS1='\e[1;35m$host\e[m\e[1m:$(pwd)>\e[m' ;;
 esac
 
 set -o emacs
