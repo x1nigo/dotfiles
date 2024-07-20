@@ -9,10 +9,12 @@ delim() {
 
 status() {
 	sl-blight
-	delim
- 	sl-volume
  	delim
-	sl-traffic
+	sl-memory
+	delim
+	# sl-traffic
+	# delim
+	sl-volume
 	delim
  	sl-battery
 	delim
