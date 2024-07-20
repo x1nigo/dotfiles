@@ -4,10 +4,8 @@ case "$(uname)" in
 	"OpenBSD" )
 		;;
 	* )
-		current=$(xbacklight -get)
-		[ $current -lt 50 ] && {
-			icon=☔
-		} || icon=🌞
-		printf "%s%s%%" "$icon" "$current"
+		current=$(xbacklight -get | sed 's/\..*//g')
+		icon=Bri
+		printf "%s:%s%%" "$icon" "$current"
 		;;
 esac

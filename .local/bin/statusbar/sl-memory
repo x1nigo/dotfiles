@@ -7,8 +7,8 @@ case "$(uname)" in
 		printf "Memory: %s / %sMi" "$used" "$total"
 		;;
 	* )
-		mem_used=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
-		icon=🧠
+		mem_used=$(free -h | awk '/^Mem:/ {print $3 "/" $2}')
+		icon=Mem:
 		printf "%s%s" "$icon" "$mem_used"
 		;;
 esac

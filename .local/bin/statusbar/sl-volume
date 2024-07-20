@@ -14,22 +14,17 @@ case "$(uname)" in
 	* )
 		vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
-		[ "$vol" != "${vol%\[MUTED\]}" ] && exit
+		[ "$vol" != "${vol%\[MUTED\]}" ] && printf "%s" "[Muted]" && exit
 
 		vol="${vol#Volume: }"
 		split() {
-			# For ommiting the . without calling and external program.
+			# For ommiting the . without calling an external program.
 			IFS=$2
 			set -- $1
 			printf '%s' "$@"
 		}
 		vol="$(printf "%.0f" "$(split "$vol" ".")")"
-		case 1 in
-			$((vol >= 70)) ) icon="🔊" ;;
-			$((vol >= 30)) ) icon="🔉" ;;
-			$((vol >= 1)) ) icon="🔈" ;;
-			* ) icon=🔇 && exit ;;
-		esac
-		printf "%s%s%%" "$icon" "$vol"
+		icon=Vol
+		printf "%s:%s%%" "$icon" "$vol"
 		;;
 esac
