@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # This is used to adjust for the dots per inch.
-xrandr --dpi 96
+xrandr --dpi 120
 xsetroot -solid '#121212' &
 # setwp &
 
@@ -17,7 +17,14 @@ xset r rate 300 50
 # Merge xresources
 xrdb $HOME/.Xresources
 
+# Welcome message plus a terminal
+${TERMINAL:-st} &
+readme &
+
 # Suckless' dynamic window manager
 while :; do
 	ssh-agent dwm
 done
+
+# Custom-made window manager
+# exec windowmgr
