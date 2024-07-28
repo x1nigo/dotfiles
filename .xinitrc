@@ -1,11 +1,10 @@
 #!/bin/sh
 
 # This is used to adjust for the dots per inch.
-xrandr --dpi 120
+xrandr --dpi 96
 xsetroot -solid '#121212' &
-# setwp &
 
-autostart="dunst sl-bar pipewire transmission-daemon"
+autostart="dunst sl-bar pipewire"
 
 for program in $autostart; do
 	pgrep -x "$program" || "$program" &
@@ -25,6 +24,3 @@ readme &
 while :; do
 	ssh-agent dwm
 done
-
-# Custom-made window manager
-# exec windowmgr
