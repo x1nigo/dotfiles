@@ -1,4 +1,5 @@
 set notermguicolors
+set nocompatible
 syntax on
 
 set title
@@ -41,8 +42,8 @@ highlight CursorLineNr	ctermfg=3		ctermbg=none	cterm=none
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Save state on exit
-	autocmd BufWinLeave *.* mkview
-	autocmd BufWinEnter *.* silent! loadview
+	" autocmd BufWinLeave *.* mkview
+	" autocmd BufWinEnter *.* silent! loadview
 
 " Automatically read the file type after write
 	autocmd BufWritePost * filetype detect
