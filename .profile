@@ -15,9 +15,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # XDG runtime directory
-! [ -d "$HOME/.local/run/$(id -u)" ] && {
-  mkdir -p "$HOME/.local/run/$(id -u)"
-}
+! [ -d "$HOME/.local/run/$(id -u)" ] && mkdir -p "$HOME/.local/run/$(id -u)"
 export XDG_RUNTIME_DIR="$HOME/.local/run/$(id -u)"
 
 # Source the ENV variable
