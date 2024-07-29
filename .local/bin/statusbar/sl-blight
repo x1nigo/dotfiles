@@ -4,7 +4,7 @@ case "$(uname)" in
 	"OpenBSD" )
 		;;
 	* )
-		current=$(xbacklight -get | sed 's/\..*//g')
+		current=$(xblight -g)
 		icon=Bri
 		printf "%s:%s%%" "$icon" "$current"
 		;;
