@@ -5,12 +5,13 @@ base="${file%.*}"
 ext="${file##*.}"
 
 case "$ext" in
-        c) gcc "$file" -o "$base" && "$base" ;;
-        cpp) g++ "$file" -o "$base" && "$base" ;;
+        c) cc "$file" -o "$base" ;;
+        cpp) c++ "$file" -o "$base" ;;
         h) sudo make clean install ;;
         ms) groff -ms -tbl -T pdf "$file" > "$base".pdf ;;
-	mom) groff -mom "$file" -Tpdf > "$base".pdf ;;
+		mom) groff -mom "$file" -Tpdf > "$base".pdf ;;
         py) python "$file" ;;
         tex) xelatex "$file" ;;
-	md|markdown) lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept -T pdf > "$base".pdf
+		# md|markdown) lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept -T pdf > "$base".pdf
+		md|markdown) pandoc "$file" -t ms -o "$base".pdf ;;
 esac
