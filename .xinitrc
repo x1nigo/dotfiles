@@ -4,7 +4,7 @@
 xrandr --dpi 96
 xsetroot -solid '#121212' &
 
-autostart="dunst sl-bar pipewire"
+autostart="dunst sl-bar pipewire transmission-daemon"
 
 for program in $autostart; do
 	pgrep -x "$program" || "$program" &
@@ -21,6 +21,6 @@ ${TERMINAL:-st} &
 readme &
 
 # Suckless' dynamic window manager
-while :; do
+while true; do
 	ssh-agent dwm
 done

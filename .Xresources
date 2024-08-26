@@ -3,7 +3,7 @@ st.alpha: .85
 
 *.background: #121618
 *.foreground: #ebdbb2
-*.cursorColor: #008
+*.cursorColor: #ebdbb2
 
 /* Colors:
  *
@@ -24,7 +24,7 @@ Artbox:
 *.color1: #852525
 *.color2: #008060
 *.color3: #da6000
-*.color4: #202080
+*.color4: #282880
 *.color5: #602080
 *.color6: #008dba
 *.color7: #ebdbb2
@@ -32,7 +32,7 @@ Artbox:
 *.color9: #852525
 *.color10: #008060
 *.color11: #da6000
-*.color12: #202080
+*.color12: #282880
 *.color13: #602080
 *.color14: #008dba
 *.color15: #ebdbb2
