@@ -1,3 +1,9 @@
+" Plugins
+call plug#begin()
+Plug 'vim-airline/vim-airline'
+call plug#end()
+
+" General
 set notermguicolors
 set nocompatible
 syntax on
@@ -25,11 +31,16 @@ set viewoptions-=options
 highlight Visual		ctermfg=3		ctermbg=0		cterm=bold
 highlight Comment		ctermfg=4		ctermbg=none	cterm=bold,italic
 highlight Type			ctermfg=2		ctermbg=none	cterm=bold
+highlight Title			ctermfg=5		ctermbg=none	cterm=bold
 highlight PreProc		ctermfg=5		ctermbg=none	cterm=italic
 highlight Statement		ctermfg=3		ctermbg=none	cterm=none
 highlight LineNr		ctermfg=0		ctermbg=none	cterm=bold
+highlight Constant		ctermfg=1		ctermbg=none	cterm=none
 highlight CursorLine	ctermfg=none	ctermbg=none	cterm=none
 highlight CursorLineNr	ctermfg=3		ctermbg=none	cterm=none
+highlight String		ctermfg=1		ctermbg=none	cterm=none
+highlight Identifier	ctermfg=6		ctermbg=none	cterm=none
+hi markdownCodeBlock	ctermfg=5		ctermbg=none	cterm=none
 
 " Set Map leader
 	let mapleader = ","
