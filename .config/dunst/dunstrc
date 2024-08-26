@@ -4,6 +4,7 @@
     width = 370
     height = 1000
     origin = top-right
+	offset = 26x50
     indicate_hidden = yes
     transparency = 0
     sort = yes
@@ -15,7 +16,8 @@
     format = "<b>%s\n%b</b>"
     background = "#121618"
     foreground = "#ebdbb2"
-    frame_color = "#500"
+    frame_color = "#828587"
+	frame_width = 1
     timeout = 5
 
 [urgency_critical]
