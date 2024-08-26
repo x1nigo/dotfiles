@@ -2,8 +2,8 @@
 st.alpha: .85
 
 *.background: #121618
-*.foreground: #ebdbb2
-*.cursorColor: #ebdbb2
+*.foreground: #b7b7b7
+*.cursorColor: #b7b7b7
 
 /* Colors:
  *
@@ -19,7 +19,7 @@ st.alpha: .85
  * Additional numbers repeat the above
  */
 
-Artbox:
+Minimalist:
 *.color0: #282828
 *.color1: #852525
 *.color2: #008060
