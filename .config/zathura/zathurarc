@@ -1,9 +1,9 @@
 set selection-clipboard clipboard
 #set recolor
-set recolor-lightcolor "#121618"
-set recolor-darkcolor "#b7b7b7"
-set default-bg "#121618"
-set default-fg "#b7b7b7"
+set recolor-lightcolor "#161617"
+set recolor-darkcolor "#ebdbb2"
+set default-bg "#161617"
+set default-fg "#ebdbb2"
 set page-padding 1
 set highlight-color blue
 set highlight-fg black
