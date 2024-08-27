@@ -1,3 +1,3 @@
 #!/bin/sh
 
-${TERMINAL:-st} -e less ~/.local/share/os.txt
+groff -ms -Tpdf $HOME/.local/share/system.ms | zathura -
