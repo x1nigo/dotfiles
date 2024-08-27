@@ -1,9 +1,9 @@
 *.font: monospace:size=10
 st.alpha: .85
 
-*.background: #121618
-*.foreground: #b7b7b7
-*.cursorColor: #b7b7b7
+*.background: #161617
+*.foreground: #ebdbb2
+*.cursorColor: #ebdbb2
 
 /* Colors:
  *
