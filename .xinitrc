@@ -16,8 +16,7 @@ xset r rate 300 50
 # Merge xresources
 xrdb $HOME/.Xresources
 
-# Welcome message plus a terminal
-${TERMINAL:-st} &
+# Welcome message
 readme &
 
 # Suckless' dynamic window manager
