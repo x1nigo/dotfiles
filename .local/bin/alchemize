@@ -15,7 +15,9 @@ ext="${file##*.}"
 # of the command for compatibility with OpenBSD.
 case $ext in
 	tex) zathura "$base.pdf" & ;;
-	ms|mom) zathura "$base.pdf" & ;;
-	md|markdown) zathura "$base.pdf" & ;;
+	# ms|mom) zathura "$base.pdf" & ;;
+	ms|mom) groff -ms -Tpdf "$file" | zathura - & ;;
+	# md|markdown) zathura "$base.pdf" & ;;
+	md|markdown) pandoc "$file" -t ms | sed 's/^\.SH/\.NH/;s/^\.LP/\.PP/' > tmp.ms && groff -ms -Tpdf tmp.ms | zathura - && rm tmp.ms ;;
 	html) ${BROWSER:-librewolf} "$file" ;;
 esac
