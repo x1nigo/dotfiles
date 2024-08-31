@@ -1,15 +1,20 @@
 set selection-clipboard clipboard
-#set recolor
+# set recolor
 set recolor-lightcolor "#161617"
 set recolor-darkcolor "#ebdbb2"
 set default-bg "#161617"
 set default-fg "#ebdbb2"
+set statusbar-bg "#121212"
+set statusbar-fg "#ebdbb2"
+set statusbar-h-padding 16
+set statusbar-v-padding 2
+set inputbar-fg "#da6000"
 set page-padding 1
-set highlight-color blue
-set highlight-fg black
+set statusbar-basename true
 map r rotate
 map R reload
 map c recolor
+map t toggle_statusbar
 map p print
 map a adjust_window best-fit
 map s adjust_window width
