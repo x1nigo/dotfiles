@@ -2,7 +2,7 @@
 
 # This is used to adjust for the dots per inch.
 xrandr --dpi 96
-xsetroot -solid '#121212' &
+xsetroot -solid '#101010' &
 
 autostart="dunst sl-bar pipewire transmission-daemon"
 
