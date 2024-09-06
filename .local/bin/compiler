@@ -8,9 +8,7 @@ case "$ext" in
         c) cc "$file" -o "$base" ;;
         cpp) c++ "$file" -o "$base" ;;
         h) sudo make clean install ;;
-        ms) groff -ms -Tpdf "$file" > "$base".pdf ;;
-		# ms) groff -ms -Tpdf "$file" | zathura - ;;
-		mom) groff -mom "$file" -Tpdf > "$base".pdf ;;
+        ms) eqn -Tpdf "$file" | groff -ms -Tpdf "$file" > "$base".pdf ;;
         py) python "$file" ;;
         tex) xelatex "$file" ;;
 		# md|markdown) lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept -T pdf > "$base".pdf
