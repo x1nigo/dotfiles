@@ -14,7 +14,7 @@ case "$(uname)" in
 	* )
 		vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
-		[ "$vol" != "${vol%\[MUTED\]}" ] && printf "%s" "[Muted]" && exit
+		[ "$vol" != "${vol%\[MUTED\]}" ] && printf "%s" "🔇[Muted]" && exit
 
 		vol="${vol#Volume: }"
 		split() {
@@ -24,7 +24,7 @@ case "$(uname)" in
 			printf '%s' "$@"
 		}
 		vol="$(printf "%.0f" "$(split "$vol" ".")")"
-		icon=Vol
-		printf "%s:%s%%" "$icon" "$vol"
+		icon=🔉
+		printf "%s%s%%" "$icon" "$vol"
 		;;
 esac
