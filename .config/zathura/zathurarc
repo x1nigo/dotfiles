@@ -8,7 +8,7 @@ set statusbar-bg "#121212"
 set statusbar-fg "#ebdbb2"
 set statusbar-h-padding 16
 set statusbar-v-padding 2
-set inputbar-fg "#da6000"
+set inputbar-fg "#dc2800"
 set page-padding 1
 set statusbar-basename true
 map r rotate
