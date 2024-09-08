@@ -16,8 +16,8 @@ ext="${file##*.}"
 case $ext in
 	tex) zathura "$base.pdf" & ;;
 	# ms|mom) zathura "$base.pdf" & ;;
-	ms|mom) eqn -Tpdf "$file" | groff -ms -Tpdf "$file" | zathura - & ;;
+	ms|mom) groff -e -ms -Tpdf "$file" | zathura - & ;;
 	# md|markdown) zathura "$base.pdf" & ;;
-	md|markdown) pandoc "$file" -t ms | sed 's/^\.SH/\.NH/;s/^\.LP/\.PP/' > tmp.ms && groff -ms -Tpdf tmp.ms | zathura - && rm tmp.ms ;;
+	md|markdown) pandoc "$file" -t ms | sed 's/^\.SH/\.NH/;s/^\.LP/\.PP/' > tmp.ms && groff -e -ms -Tpdf tmp.ms | zathura - && rm tmp.ms ;;
 	html) ${BROWSER:-librewolf} "$file" ;;
 esac

@@ -8,9 +8,9 @@ case "$ext" in
         c) cc "$file" -o "$base" ;;
         cpp) c++ "$file" -o "$base" ;;
         h) sudo make clean install ;;
-        ms) eqn -Tpdf "$file" | groff -ms -Tpdf "$file" > "$base".pdf ;;
+        ms) groff -e -ms -Tpdf "$file" > "$base".pdf ;;
         py) python "$file" ;;
         tex) xelatex "$file" ;;
 		# md|markdown) lowdown --parse-no-intraemph "$file" -Tms | groff -mpdfmark -ms -kept -T pdf > "$base".pdf
-		md|markdown) pandoc "$file" -t ms | sed 's/^\.SH/\.NH/;s/^\.LP/\.PP/' > "$base".ms && groff -ms -Tpdf "$base".ms > "$base".pdf ;;
+		md|markdown) pandoc "$file" -t ms | sed 's/^\.SH/\.NH/;s/^\.LP/\.PP/' > "$base".ms && groff -e -ms -Tpdf "$base".ms > "$base".pdf ;;
 esac
