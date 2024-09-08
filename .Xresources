@@ -21,17 +21,17 @@ st.alpha: .85
 
 Minimalist:
 *.color0: #282828
-*.color1: #852525
+*.color1: #800000
 *.color2: #008060
-*.color3: #da4000
+*.color3: #dc2800
 *.color4: #282880
 *.color5: #602080
 *.color6: #008dba
 *.color7: #ebdbb2
 *.color8: #1d2021
-*.color9: #852525
+*.color9: #800000
 *.color10: #008060
-*.color11: #da4000
+*.color11: #dc2800
 *.color12: #282880
 *.color13: #602080
 *.color14: #008dba
