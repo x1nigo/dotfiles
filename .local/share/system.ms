@@ -1,4 +1,4 @@
-.ds FAM T
+.ds FAM P
 .TL
 Welcome to x1nigo's system setup!
 .AU
@@ -10,7 +10,7 @@ Chris Iñigo
 .NH
 Introduction
 .PP
-This custom setup is meant to be as minimal as possible and to get out of your way. As such, you may find programs and keybindings that speed up certain actions that would otherwise be a pain to do.
+This custom setup is meant to be \f[B]as minimal as possible\f[R] and to get out of your way. As such, you may find programs and keybindings that speed up certain actions that would otherwise be a pain to do.
 .NH
 Programs
 .PP
@@ -36,8 +36,8 @@ Keybindings
 .PP
 Unlike Windows and MacOS, this system prioritizes the use of shortcuts (for speed and efficiency). Here are the more important keybindings to remember:
 .BL
-super + return (terminal)\*[*]
-.FS \*{1\*}
+super + return (terminal)\**
+.FS
 The "super" key simply means the Windows Key or Mac's Command Key. Most window managers use the Alt key by default, but that just isn't feasible nor expedient.
 .FE
 .BL
@@ -55,12 +55,11 @@ super + x (change wallpaper)
 .BL
 super + insert (shortcuts)
 
-For more keybindings, check out "config.h" under the dwm folder located in ~/.local/src/dwm.
+For more keybindings, check out "config.h" under the dwm folder located in
+.UL "~/.local/src/dwm."
 .NH
 Conclusion
 .PP
-Minimalism is at the core of this system but it does not preclude the user from adding whatever he/she wants. After all, this is the point of free and open-source software.
-.I
-Enjoy your stay.
+Minimalism is at the core of this system but it does not preclude the user from adding whatever he/she wants. After all, this is the point of free and open-source software. \f[I]Enjoy your stay.\f[R]
 
-.B "x1nigo (Chris Iñigo) <https://github.com/x1nigo>" "" \*[-]
+\f[B]\*[-]Chris Iñigo (x1nigo) <https://github.com/x1nigo>\f[R]
