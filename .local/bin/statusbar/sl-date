@@ -5,6 +5,6 @@ case "$(uname)" in
 		date "+%Y %b %d (%a) %I:%M%p"
 		;;
 	* )
-		date "+%Y %b %d (%a) 🕗%I:%M%p"
+		date "+%Y %b %d (%a) %I:%M%p"
 		;;
 esac

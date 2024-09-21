@@ -19,14 +19,14 @@ case "$(uname)" in
 		case "$status" in
 			"Discharging")
 				[ $bat -le 20 ] && {
-					icon=🪫
+					icon=LOW
 					notify-send "Attention:" "Battery low!"
-				} || icon=🔋
+				} || icon=BAT
 				;;
-			"Charging") icon=🔌;;
-			"Full") icon=⚡ ;;
-			*) icon=🕰️ ;;
+			"Charging") icon=CHR ;;
+			"Full") icon=FULL ;;
+			*) icon=STAT ;;
 		esac
-		printf "%s%s%%" "$icon" "$bat"
+		printf "[%s]:%s%%" "$icon" "$bat"
 		;;
 esac

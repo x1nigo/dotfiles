@@ -5,7 +5,7 @@ case "$(uname)" in
 		;;
 	* )
 		current=$(xblight -g)
-		[ $current -ge 50 ] && icon=🌅 || icon=☔
-		printf "%s%s%%" "$icon" "$current"
+		[ $current -ge 50 ] && icon=BRI || icon=DRK
+		printf "[%s]:%s%%" "$icon" "$current"
 		;;
 esac
