@@ -1,6 +1,7 @@
 " Plugins
 call plug#begin()
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 " General
@@ -41,6 +42,7 @@ highlight CursorLine	ctermfg=none	ctermbg=8		cterm=none
 highlight CursorLineNr	ctermfg=3		ctermbg=none	cterm=none
 highlight String		ctermfg=1		ctermbg=none	cterm=none
 highlight Identifier	ctermfg=6		ctermbg=none	cterm=none
+highlight Todo			ctermfg=0		ctermbg=3		cterm=none
 hi markdownCodeBlock	ctermfg=5		ctermbg=none	cterm=none
 
 " Set Map leader
@@ -51,6 +53,8 @@ hi markdownCodeBlock	ctermfg=5		ctermbg=none	cterm=none
 	map <leader>c :w! \| !compiler "%" <enter>
 " Open the output of your file
 	map <leader>a :silent !alchemize "%" <enter>
+" Format groff documents
+	map <leader>g :silent !fmtgroff "%" <enter>
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Save state on exit
