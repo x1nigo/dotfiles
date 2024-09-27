@@ -4,7 +4,6 @@
     width = 370
     height = 1000
     origin = top-right
-    offset = 26x50
     indicate_hidden = yes
     transparency = 0
     sort = yes
@@ -13,11 +12,11 @@
     title = Dunst
     class = Dunst
     font = Monospace 10
-    format = "<b>%s\n%b</b>"
+    format = "<b>%s\n</b>%b"
     background = "#161617"
-    foreground = "#ebdbb2"
-    frame_color = "#1d2021"
-    frame_width = 1
+    foreground = "#ebdbb8"
+	frame_color = "#500000"
+    frame_width = 3
     timeout = 5
 
 [urgency_critical]
