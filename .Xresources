@@ -1,9 +1,9 @@
 *.font: monospace:size=10
-st.alpha: .85
+st.alpha: 0.85
 
 *.background: #161617
-*.foreground: #ebdbb2
-*.cursorColor: #ebdbb2
+*.foreground: #ebdbb8
+*.cursorColor: #ebdbb8
 
 /* Colors:
  *
@@ -27,7 +27,7 @@ Minimalist:
 *.color4: #282880
 *.color5: #602080
 *.color6: #008dba
-*.color7: #ebdbb2
+*.color7: #ebdbb8
 *.color8: #1d2021
 *.color9: #800000
 *.color10: #008060
@@ -35,4 +35,4 @@ Minimalist:
 *.color12: #282880
 *.color13: #602080
 *.color14: #008dba
-*.color15: #ebdbb2
+*.color15: #ebdbb8
