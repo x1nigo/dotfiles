@@ -9,6 +9,8 @@ set notermguicolors
 set nocompatible
 syntax on
 
+" let g:airline_theme='raven'
+
 set title
 set autoindent
 set clipboard+=unnamedplus
@@ -31,19 +33,18 @@ set cursorline
 
 " Colors
 highlight Visual		ctermfg=3		ctermbg=0		cterm=bold
-highlight Comment		ctermfg=4		ctermbg=none	cterm=bold,italic
+highlight Comment		ctermfg=4		ctermbg=none	cterm=none
 highlight Type			ctermfg=2		ctermbg=none	cterm=bold
 highlight Title			ctermfg=5		ctermbg=none	cterm=bold
 highlight PreProc		ctermfg=5		ctermbg=none	cterm=italic
 highlight Statement		ctermfg=3		ctermbg=none	cterm=none
-highlight LineNr		ctermfg=0		ctermbg=none	cterm=bold
+highlight LineNr		ctermfg=0		ctermbg=none	cterm=none
 highlight Constant		ctermfg=1		ctermbg=none	cterm=none
-highlight CursorLine	ctermfg=none	ctermbg=8		cterm=none
-highlight CursorLineNr	ctermfg=3		ctermbg=none	cterm=none
+highlight CursorLineNr		ctermfg=3		ctermbg=none	cterm=none
 highlight String		ctermfg=1		ctermbg=none	cterm=none
-highlight Identifier	ctermfg=6		ctermbg=none	cterm=none
+highlight Identifier		ctermfg=6		ctermbg=none	cterm=none
 highlight Todo			ctermfg=0		ctermbg=3		cterm=none
-hi markdownCodeBlock	ctermfg=5		ctermbg=none	cterm=none
+hi markdownCodeBlock		ctermfg=5		ctermbg=none	cterm=none
 
 " Set Map leader
 	let mapleader = ","
@@ -73,6 +74,6 @@ hi markdownCodeBlock	ctermfg=5		ctermbg=none	cterm=none
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
 	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/surf/config.h !doas make install
 " Restart dunst after its config file is updated
-	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pgrep -x dunst); dunst &
+	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pgrep -x dunst) && dunst &
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost .Xresources,.Xdefaults,xresources,xdefaults !xrdb %
