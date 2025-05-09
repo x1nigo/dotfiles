@@ -4,7 +4,7 @@
 # filled with emojis. You can locate the current one in the
 # ~/.local/share/ folder titled emojis.
 
-fullemoji="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/00-emojis | dmenu -l 35 -p "Input emoji to clipboard")"
+fullemoji="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/00-emojis | dmenu -i -l 35 -p "Select emoji to clipboard")"
 emoji="$(echo $fullemoji | cut -d' ' -f1)"
 [ -z "$fullemoji" ] && exit 1
 
