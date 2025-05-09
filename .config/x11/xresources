@@ -1,5 +1,5 @@
 *.font: monospace:size=9
-st.alpha: 0.85
+st.alpha: 0.8
 
 *.background: #121618
 *.foreground: #ebdbb2
