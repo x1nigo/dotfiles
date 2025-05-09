@@ -19,4 +19,4 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_RUNTIME_DIR="$HOME/.local/run/$(id -u)"
 
 # Start the user interface upon login
-startx
+startx ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xinitrc
