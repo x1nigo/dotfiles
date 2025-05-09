@@ -5,10 +5,13 @@ bat=$(cat $dir/capacity)
 status=$(cat $dir/status)
 case "$status" in
 	"Discharging")
-		[ $bat -le 20 ] && {
-			icon=🪫
-			notify-send "Attention:" "Battery low!"
-		} || icon=🔋
+		if [ $bat -le 10 ]; then
+ 			icon=❗🪫 && notify-send "🪫 Battery Low" "Please charge your computer."
+		elif [ $bat -le 15 ]; then
+ 			icon=🪫
+		else
+			icon=🔋
+		fi
 		;;
 	"Charging") icon=🔌 ;;
 	"Full") icon=⚡ ;;
