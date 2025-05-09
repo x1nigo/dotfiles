@@ -18,8 +18,5 @@ export XDG_CACHE_HOME="$HOME/.cache"
 ! [ -d "$HOME/.local/run/$(id -u)" ] && mkdir -p "$HOME/.local/run/$(id -u)"
 export XDG_RUNTIME_DIR="$HOME/.local/run/$(id -u)"
 
-# Source the ENV variable
-export ENV="$HOME/.shrc"
-
 # Start the user interface upon login
 startx
