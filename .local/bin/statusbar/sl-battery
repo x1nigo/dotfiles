@@ -1,32 +1,17 @@
 #!/bin/sh
 
-case "$(uname)" in
-	"OpenBSD" )
-		case "$(apm -b)" in
-			0) stat='&' ;;
-			1) stat='z' ;;
-			2) stat='!' ;;
-			3) stat='+' ;;
-			4) stat='x' ;;
-			*) stat='?' ;;
-		esac
-		printf "Battery: %s%% [%s]" "$(apm -l)" "$stat"
+dir="/sys/class/power_supply/BAT?"
+bat=$(cat $dir/capacity)
+status=$(cat $dir/status)
+case "$status" in
+	"Discharging")
+		[ $bat -le 20 ] && {
+			icon=🪫
+			notify-send "Attention:" "Battery low!"
+		} || icon=🔋
 		;;
-	* )
-		dir="/sys/class/power_supply/BAT?"
-		bat=$(cat $dir/capacity)
-		status=$(cat $dir/status)
-		case "$status" in
-			"Discharging")
-				[ $bat -le 20 ] && {
-					icon=🪫
-					notify-send "Attention:" "Battery low!"
-				} || icon=🔋
-				;;
-			"Charging") icon=🔌 ;;
-			"Full") icon=⚡ ;;
-			*) icon=🕰️ ;;
-		esac
-		printf "%s%s%%" "$icon" "$bat"
-		;;
+	"Charging") icon=🔌 ;;
+	"Full") icon=⚡ ;;
+	*) icon=🕰️ ;;
 esac
+printf "%s%s%%" "$icon" "$bat"

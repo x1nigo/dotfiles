@@ -1,11 +1,5 @@
 #!/bin/sh
 
-case "$(uname)" in
-	"OpenBSD" )
-		;;
-	* )
-		current=$(xblight -g)
-		[ $current -ge 50 ] && icon=🌅 || icon=☔
-		printf "%s%s%%" "$icon" "$current"
-		;;
-esac
+current=$(xblight -g)
+[ $current -ge 50 ] && icon=🌅 || icon=☔
+printf "%s%s%%" "$icon" "$current"

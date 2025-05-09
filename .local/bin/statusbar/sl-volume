@@ -1,30 +1,16 @@
 #!/bin/sh
 
-case "$(uname)" in
-	"OpenBSD" )
-		vol=$(sndioctl output.level | sed 's/^.*=//g')
-		raw=$(printf "%0.2f" "$vol" | sed 's/^1\./1/g;s/^.*\.//g')
-		muted=$(sndioctl output.mute | sed 's/^.*=//g')
-		case "$muted" in
-			0) stat=Volume ;;
-			1) stat=Muted ;;
-		esac
-		printf "%s: %s%%" "$stat" "$raw"
-		;;
-	* )
-		vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
-		[ "$vol" != "${vol%\[MUTED\]}" ] && printf "%s" "🔇[MUTED]" && exit
+[ "$vol" != "${vol%\[MUTED\]}" ] && printf "%s" "🔇[MUTED]" && exit
 
-		vol="${vol#Volume: }"
-		split() {
-			# For ommiting the . without calling an external program.
-			IFS=$2
-			set -- $1
-			printf '%s' "$@"
-		}
-		vol="$(printf "%.0f" "$(split "$vol" ".")")"
-		icon=🔉
-		printf "%s%s%%" "$icon" "$vol"
-		;;
-esac
+vol="${vol#Volume: }"
+split() {
+	# For ommiting the . without calling an external program.
+	IFS=$2
+	set -- $1
+	printf '%s' "$@"
+}
+vol="$(printf "%.0f" "$(split "$vol" ".")")"
+icon=🔉
+printf "%s%s%%" "$icon" "$vol"
