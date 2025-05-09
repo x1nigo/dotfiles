@@ -2,13 +2,13 @@
 
 # Use xclip to put selection to standard output.
 bookmark="$(xclip -o)"
-[ -z $bookmark ] && notify-send "Unable to create a bookmark." "Please try again." && exit 1
+[ -z $bookmark ] && notify-send "😥 Unable to create a bookmark." "Please try again." && exit 1
 # This will be our list of bookmarks.
 file="${XDG_DATA_HOME:-$HOME/.local/share}/01-bookmarks"
 
 # Do not add if bookmark already exists in the file.
 if grep -q "^$bookmark" "$file"; then
-        notify-send "Already bookmarked!" "Don't make me laugh."
+        notify-send "🤡 Already bookmarked!" "Don't make me laugh."
 else
-        echo "$bookmark" >> "$file" && notify-send "Bookmark added!" "\`$bookmark\`"
+        echo "$bookmark" >> "$file" && notify-send "🔖 Bookmark added!" "\`$bookmark\`"
 fi
