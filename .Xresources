@@ -1,38 +1,6 @@
-*.font: monospace:size=10
+*.font: monospace:size=9
 st.alpha: 0.85
 
-*.background: #161617
-*.foreground: #ebdbb8
-*.cursorColor: #ebdbb8
-
-/* Colors:
- *
- * 0 -  black
- * 1 -  red
- * 2 -  green
- * 3 -  yellow
- * 4 -  blue
- * 5 -  magenta
- * 6 -  cyan
- * 7 -  white
- *
- * Additional numbers repeat the above
- */
-
-Minimalist:
-*.color0: #282828
-*.color1: #800000
-*.color2: #008060
-*.color3: #dc2800
-*.color4: #282880
-*.color5: #602080
-*.color6: #008dba
-*.color7: #ebdbb8
-*.color8: #1d2021
-*.color9: #800000
-*.color10: #008060
-*.color11: #dc2800
-*.color12: #282880
-*.color13: #602080
-*.color14: #008dba
-*.color15: #ebdbb8
+*.background: #121618
+*.foreground: #ebdbb2
+*.cursorColor: #ebdbb2
