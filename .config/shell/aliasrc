@@ -2,7 +2,7 @@
 
 # These commands need not require doas before them.
 for command in mount umount su poweroff shutdown reboot halt ; do
-	alias $command="doas $command"
+	alias $command="sudo $command"
 done; unset command
 
 # Use neovim by default if installed
@@ -29,7 +29,6 @@ alias \
 	df="df -h" \
 	du="du -h" \
 	hs="hugo server --noHTTPCache" \
-	m="neomutt" \
 	tmr="transmission-remote" \
 	bc="bc -ql" \
 	rsync="rsync -rtvzP" \
