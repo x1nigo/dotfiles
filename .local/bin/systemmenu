@@ -1,0 +1,8 @@
+#!/bin/sh
+
+act="$(printf "%s\n" "😴 shutdown" "🥾 reboot" | dmenu -fn Monospace-12 -l 5 -p "System configuration action:")"
+
+case $act in
+	😴*) shutdown now ;;
+	🥾*) reboot ;;
+esac
