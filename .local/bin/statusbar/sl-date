@@ -18,4 +18,10 @@ case "$clock" in
 	"12") icon="🕛" ;;
 esac
 
+case $BUTTON in
+	1) notify-send "This Month" "$(cal | sed "s/\<$(date +'%e'|tr -d ' ')\>/<b><span color='red'>&<\/span><\/b>/")" ;;
+	3) notify-send "📅 Time/date module" "\- Left click to show the calendar month." ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
 date "+%Y %b %d (%a) $icon%I:%M%p"

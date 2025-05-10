@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case $BUTTON in
+	1) readme ;;
+	3) notify-send "📚 Readme module" "\- Left click to open README document." ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+echo 📚❓

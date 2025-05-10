@@ -1,0 +1,8 @@
+#!/bin/sh
+
+case $BUTTON in
+	3) notify-send "🖥️ CPU module" "$(sensors | grep 'Core 0:')" ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+sensors | awk '/Core 0:/ {print "🌡️" $3}'

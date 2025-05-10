@@ -1,5 +1,10 @@
 #!/bin/sh
 
+case $BUTTON in
+	3) notify-send "🌐 Network traffic module" "🔻 refers to traffic received, 🔺 for those transmitted." ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
 update() {
 	sum=0
 	for arg; do

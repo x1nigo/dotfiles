@@ -1,0 +1,9 @@
+#!/bin/sh
+
+case $BUTTON in
+	3) notify-send "🧠 Memory module" "\- Make sure it doesn't get too high." ;;
+	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
+esac
+
+memory=$(free -h --mebi | awk '/Mem:/ {print $3, "/", $2}')
+echo "🧠$memory"
