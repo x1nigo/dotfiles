@@ -2,7 +2,7 @@
 
 xset r rate 300 50
 xrandr --dpi 96
-painter &
+setbg &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
 
 autostart="dunst xcompmgr dwmblocks pipewire transmission-daemon"
