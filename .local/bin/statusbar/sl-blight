@@ -1,5 +1,5 @@
 #!/bin/sh
 
-current=$(xblight -g)
-[ $current -ge 50 ] && icon=🌅 || icon=☔
-printf "%s%s%%" "$icon" "$current"
+perc=$(brightnessctl -m | cut -d',' -f4)
+[ $perc -ge 50 ] && icon=🌅 || icon=☔
+printf "%s%s" "$icon" "$perc"
