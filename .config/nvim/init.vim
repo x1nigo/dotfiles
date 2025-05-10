@@ -1,9 +1,3 @@
-" Plugins
-call plug#begin()
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-call plug#end()
-
 " General
 set notermguicolors
 set nocompatible
@@ -72,7 +66,7 @@ hi markdownCodeBlock		ctermfg=5		ctermbg=none	cterm=none
 	autocmd BufWritePre * :%s/\s\+$//e
 
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
-	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/surf/config.h !doas make install
+	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/dwmblocks/config.h !sudo make install
 " Restart dunst after its config file is updated
 	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pgrep -x dunst) && dunst &
 " Run xrdb whenever Xdefaults or Xresources are updated
