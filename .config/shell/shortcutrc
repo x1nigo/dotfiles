@@ -14,5 +14,7 @@ cfs="$EDITOR $HOME/.config/shell/shortcutrc" \
 cfd="$EDITOR $HOME/.config/dunst/dunstrc" \
 cfZ="$EDITOR $HOME/.config/zathura/zathurarc" \
 cfv="$EDITOR $HOME/.config/nvim/init.vim" \
+cfx="$EDITOR $HOME/.config/x11/xinitrc" \
+cfX="$EDITOR $HOME/.config/x11/xresources" \
 cfe="$EDITOR $HOME/.local/share/00-emojis" \
 cfb="$EDITOR $HOME/.local/share/01-bookmarks" \
