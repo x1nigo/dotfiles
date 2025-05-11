@@ -7,4 +7,4 @@ esac
 
 perc=$(brightnessctl -m | cut -d, -f4)
 [ $(echo $perc | sed 's/%//g') -ge 50 ] && icon=🌅 || icon=☔
-printf "%s%s%" "$icon" "$perc"
+printf "%s%s" "$icon" "$perc"
