@@ -8,15 +8,10 @@ done; unset command
 # Use neovim by default if installed
 [ $(command -v nvim) ] && alias vim="nvim"
 
-# Use colors when available
-! [ -z $LS_COLORS ] && {
-	alias ls="ls --color=always"
-	alias diff="diff --color=always"
-}
-
-! [ -z $GREP_COLORS ] && {
-	alias grep="grep --color=always"
-}
+alias \
+	ls="ls --color=always" \
+	diff="diff --color=always" \
+	grep="grep --color=always"
 
 # Verbose mode for particular commands.
 alias \
