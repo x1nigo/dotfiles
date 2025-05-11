@@ -5,11 +5,11 @@ xrandr --dpi 96
 setbg &
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
 
-autostart="dunst xcompmgr dwmblocks pipewire transmission-daemon"
+autostart="mpd dunst xcompmgr dwmblocks pipewire transmission-daemon"
 for program in $autostart; do
 	pgrep -x "$program" || "$program" &
 done >/dev/null 2>&1
 
-while true; do
+while : ; do
 	ssh-agent dwm
 done
