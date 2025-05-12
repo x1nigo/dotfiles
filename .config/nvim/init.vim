@@ -65,8 +65,8 @@ hi markdownCodeBlock		ctermfg=5		ctermbg=none	cterm=none
 
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
 	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h !sudo make install
-	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks; setsid dwmblocks }
+	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks; setsid -f dwmblocks }
 " Restart dunst after its config file is updated
-	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pgrep -x dunst) && dunst &
+	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pidof dunst) && setsid -f dunst
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost .Xresources,.Xdefaults,xresources,xdefaults !xrdb %
