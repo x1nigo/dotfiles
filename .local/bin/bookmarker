@@ -8,7 +8,11 @@ file="${XDG_DATA_HOME:-$HOME/.local/share}/01-bookmarks"
 
 # Do not add if bookmark already exists in the file.
 if grep -q "^$bookmark" "$file"; then
-        notify-send "🤡 Already bookmarked!" "Don't make me laugh."
+	notify-send "🤡 Already bookmarked!" "Don't make me laugh."
 else
-        echo "$bookmark" >> "$file" && notify-send "🔖 Bookmark added!" "\`$bookmark\`"
+	# Make sure its label is unique and easy to identify.
+	label="$(echo cancel | dmenu -fn Monospace-16 -l 8 -p "How would you label it?")"
+	[ -z "$label" ] && notify-send "✍️ No bookmark added." "You must give it a label/description." && exit 1
+	printf "%s\t%s" "$label" "$bookmark" >> "$file" && notify-send "🔖 Bookmark added!" "\`$bookmark\`"
 fi
+

@@ -10,10 +10,10 @@ activewin() {
 		&& notify-send "📸 Took an \`active window\` screenshot!" "You may find it in your ~ directory."
 }
 
-chosen=$(printf "%s\n" "🖥️ desktop" "🖱️ click and drag" "🎯 active window" | dmenu -fn Monospace-16 -i -l 5 -p "Select screenshot type:")
+chosen=$(printf "%s\n" "🖥️ desktop" "🖱️ selected area" "🎯 active window" | dmenu -fn Monospace-16 -i -l 5 -p "Select screenshot type:")
 
 case "$chosen" in
-	📸*) maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
+	🖥️*) maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
 		&& notify-send "📸 Took a \`desktop\` screenshot!" "You may find it in your ~ directory" ; exit ;;
 	🖱️*) selected ;;
 	🎯*) activewin ;;

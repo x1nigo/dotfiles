@@ -1,8 +1,13 @@
 #!/bin/sh
 
-act="$(printf "%s\n" "😴 shutdown" "🥾 reboot" | dmenu -fn Monospace-12 -l 5 -p "System configuration action:")"
+act="$(printf "%s\n" "🛌 shut this computer down" "🔃 restart this machine" | dmenu -fn Monospace-12 -l 5 -p "System configuration action:")"
+if ls -l /sbin/init | grep -q runit; then
+	sys=loginctl
+else
+	sys=systemctl
+fi
 
 case $act in
-	😴*) shutdown now ;;
-	🥾*) reboot ;;
+	🛌*) $sys poweroff ;;
+	🔃*) $sys reboot ;;
 esac
