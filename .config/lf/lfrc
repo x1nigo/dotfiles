@@ -1,0 +1,70 @@
+#!/bin/sh
+
+set previewer '~/.config/lf/scope'
+set cleaner '~/.config/lf/cleaner'
+set icons
+
+# cmds/functions
+cmd open ${{ setsid -f xdg-open "$f" }}
+
+cmd extract ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "extract?[y/N]"
+	read ans
+	[ $ans = "y" ] && {
+		case $fx in
+			*.tar.bz2)   tar xjf "$fx"     ;;
+			*.tar.gz)    tar xzf "$fx"     ;;
+			*.bz2)       bunzip2 "$fx"     ;;
+			*.rar)       unrar e "$fx"     ;;
+			*.gz)        gunzip "$fx"      ;;
+			*.tar)       tar xf "$fx"      ;;
+			*.tbz2)      tar xjf "$fx"     ;;
+			*.tgz)       tar xzf "$fx"     ;;
+			*.zip)       unzip "$fx"       ;;
+			*.Z)         uncompress "$fx"  ;;
+			*.7z)        7z x "$fx"        ;;
+			*.tar.xz)    tar xf "$fx"      ;;
+		esac
+	}
+}}
+
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ $ans = "y" ] && rm -rf -- "$fx" && notify-send "🔫 File(s) deleted." "\`$fx\`"
+}}
+
+cmd newfile ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "new file: "
+	read ans
+	[ -z $ans ] && exit
+	touch "$ans" && notify-send "✍️ New file created!" "\`$ans\`"
+}}
+
+cmd dir ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "new directory: "
+	read ans
+	[ -z $ans ] && exit
+	mkdir -p "$ans" && notify-send "📁 New directory created!" "\`$ans\`"
+}}
+
+# Bindings
+map <enter> open
+map D delete
+map R rename
+map E extract
+map N newfile
+map M dir
+map . set hidden!
