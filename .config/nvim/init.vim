@@ -3,8 +3,6 @@ set notermguicolors
 set nocompatible
 syntax on
 
-" let g:airline_theme='raven'
-
 set title
 set autoindent
 set clipboard+=unnamedplus
@@ -66,7 +64,8 @@ hi markdownCodeBlock		ctermfg=5		ctermbg=none	cterm=none
 	autocmd BufWritePre * :%s/\s\+$//e
 
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
-	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/dwmblocks/config.h !sudo make install
+	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h !sudo make install
+	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks; setsid dwmblocks }
 " Restart dunst after its config file is updated
 	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pgrep -x dunst) && dunst &
 " Run xrdb whenever Xdefaults or Xresources are updated
