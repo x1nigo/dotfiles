@@ -8,6 +8,7 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 [ $(command -v librewolf) ] && export BROWSER="librewolf" || export BROWSER="firefox"
 [ $(command -v nvim) ] && editor="nvim" || editor="vim"
 export EDITOR="$editor"
+export VISUAL="$editor"
 export TERMINAL="st"
 
 # XDG base directories
