@@ -11,7 +11,7 @@ call plug#end()
 
 " General
 	syntax on
-	set notermguicolors
+	set bg=light
 	set title
 	set autoindent
 	set clipboard+=unnamedplus
@@ -27,26 +27,9 @@ call plug#end()
 	set linebreak
 	set wrap
 	set noshowcmd
-	set cursorline
 	set number relativenumber
 	set viewoptions-=options
-	set cursorline
-
-" Colors back in the old days...
-	hi Normal ctermbg=none guibg=none
-	hi Visual		ctermfg=3	ctermbg=0	cterm=bold
-	hi Comment		ctermfg=4	ctermbg=none	cterm=none
-	hi Type			ctermfg=2	ctermbg=none	cterm=bold
-	hi Title		ctermfg=5	ctermbg=none	cterm=bold
-	hi PreProc		ctermfg=5	ctermbg=none	cterm=italic
-	hi Statement	ctermfg=3	ctermbg=none	cterm=none
-	hi LineNr		ctermfg=0	ctermbg=none	cterm=none
-	hi Constant		ctermfg=1	ctermbg=none	cterm=none
-	hi CursorLineNr	ctermfg=3	ctermbg=none	cterm=none
-	hi String		ctermfg=1	ctermbg=none	cterm=none
-	hi Identifier	ctermfg=6	ctermbg=none	cterm=none
-	hi Todo			ctermfg=0	ctermbg=3	cterm=none
-	hi markdownCodeBlock	ctermfg=5	ctermbg=none	cterm=none
+	colorscheme vim
 
 " Set Map leader
 	let mapleader = ","
@@ -56,8 +39,6 @@ call plug#end()
 	map <leader>c :w! \| !compiler "%" <enter>
 " Open the output of your file
 	map <leader>a :silent !alchemize "%" <enter>
-" Format groff documents
-	map <leader>g :silent !fmtgroff "%" <enter>
 " Disables automatic commenting on newline:
 	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Save state on exit
