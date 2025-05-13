@@ -5,7 +5,7 @@ set cleaner '~/.config/lf/cleaner'
 set icons
 
 # cmds/functions
-cmd open ${{ setsid -f xdg-open "$f" }}
+cmd open ${{ opener "$f" }} # `opener` is from ~/.local/bin.
 
 cmd extract ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
