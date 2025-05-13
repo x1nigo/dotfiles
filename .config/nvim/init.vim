@@ -1,42 +1,52 @@
+if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
+	echo "Downloading junegunn/vim-plug to manage plugins..."
+	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+	autocmd VimEnter * PlugInstall
+endif
+
+call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
+Plug 'vim-airline/vim-airline'
+call plug#end()
+
 " General
-set notermguicolors
-set nocompatible
-syntax on
+	syntax on
+	set notermguicolors
+	set title
+	set autoindent
+	set clipboard+=unnamedplus
+	set wildmode=longest,list,full
+	set nohlsearch
+	set ignorecase
+	set tabstop=4
+	set softtabstop=4
+	set shiftwidth=4
+	set incsearch
+	set smartcase
+	set encoding=utf-8
+	set linebreak
+	set wrap
+	set noshowcmd
+	set cursorline
+	set number relativenumber
+	set viewoptions-=options
+	set cursorline
 
-set title
-set autoindent
-set clipboard+=unnamedplus
-set wildmode=longest,list,full
-set nohlsearch
-set ignorecase
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set incsearch
-set smartcase
-set encoding=utf-8
-set linebreak
-set wrap
-set noshowcmd
-set cursorline
-set number relativenumber
-set viewoptions-=options
-set cursorline
-
-" Colors
-highlight Visual		ctermfg=3		ctermbg=0	cterm=bold
-highlight Comment		ctermfg=4		ctermbg=none	cterm=none
-highlight Type			ctermfg=2		ctermbg=none	cterm=bold
-highlight Title			ctermfg=5		ctermbg=none	cterm=bold
-highlight PreProc		ctermfg=5		ctermbg=none	cterm=italic
-highlight Statement		ctermfg=3		ctermbg=none	cterm=none
-highlight LineNr		ctermfg=0		ctermbg=none	cterm=none
-highlight Constant		ctermfg=1		ctermbg=none	cterm=none
-highlight CursorLineNr		ctermfg=3		ctermbg=none	cterm=none
-highlight String		ctermfg=1		ctermbg=none	cterm=none
-highlight Identifier		ctermfg=6		ctermbg=none	cterm=none
-highlight Todo			ctermfg=0		ctermbg=3	cterm=none
-hi markdownCodeBlock		ctermfg=5		ctermbg=none	cterm=none
+" Colors back in the old days...
+	hi Normal ctermbg=none guibg=none
+	hi Visual		ctermfg=3	ctermbg=0	cterm=bold
+	hi Comment		ctermfg=4	ctermbg=none	cterm=none
+	hi Type			ctermfg=2	ctermbg=none	cterm=bold
+	hi Title		ctermfg=5	ctermbg=none	cterm=bold
+	hi PreProc		ctermfg=5	ctermbg=none	cterm=italic
+	hi Statement	ctermfg=3	ctermbg=none	cterm=none
+	hi LineNr		ctermfg=0	ctermbg=none	cterm=none
+	hi Constant		ctermfg=1	ctermbg=none	cterm=none
+	hi CursorLineNr	ctermfg=3	ctermbg=none	cterm=none
+	hi String		ctermfg=1	ctermbg=none	cterm=none
+	hi Identifier	ctermfg=6	ctermbg=none	cterm=none
+	hi Todo			ctermfg=0	ctermbg=3	cterm=none
+	hi markdownCodeBlock	ctermfg=5	ctermbg=none	cterm=none
 
 " Set Map leader
 	let mapleader = ","
@@ -64,9 +74,9 @@ hi markdownCodeBlock		ctermfg=5		ctermbg=none	cterm=none
 	autocmd BufWritePre * :%s/\s\+$//e
 
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
-	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h !sudo make install
-	autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { killall -q dwmblocks; setsid -f dwmblocks }
+	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/dwmblocks/config.h !sudo make install
+	" autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { pkill -x dwmblocks; setsid -f dwmblocks }
 " Restart dunst after its config file is updated
-	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pidof dunst) && setsid -f dunst
+	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pidof dunst) && setsid dunst
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost .Xresources,.Xdefaults,xresources,xdefaults !xrdb %
