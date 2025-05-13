@@ -5,10 +5,10 @@ export PATH="$PATH:/$HOME/.local/bin:$HOME/.local/bin/statusbar"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # Default programs
-export EDITOR="nvim"
+[ $(command -v librewolf) ] && export BROWSER="librewolf" || export BROWSER="firefox"
+[ $(command -v nvim) ] && editor="nvim" || editor="vim"
+export EDITOR="$editor"
 export TERMINAL="st"
-export BROWSER="librewolf"
-export VISUAL="nvim"
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
