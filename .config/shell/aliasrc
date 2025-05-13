@@ -23,6 +23,7 @@ alias \
 alias \
 	df="df -h" \
 	du="du -h" \
+	lf="lfup" \
 	hs="hugo server --noHTTPCache" \
 	tmr="transmission-remote" \
 	bc="bc -ql" \
