@@ -11,7 +11,6 @@ call plug#end()
 
 " General
 	syntax on
-	set bg=light
 	set title
 	set autoindent
 	set clipboard+=unnamedplus
@@ -29,7 +28,15 @@ call plug#end()
 	set noshowcmd
 	set number relativenumber
 	set viewoptions-=options
+
+" Colorscheme
 	colorscheme vim
+	set bg=light
+" Set this to enable your terminal's actual colors. Otherwise, rely on vim's colorscheme.
+"	set notermguicolors
+
+" Custom Colors (set notermguicolors to enable); Enter ":hi" or ":highlight" for more information.
+"	hi Title ctermfg=5 ctermbg=none cterm=none
 
 " Set Map leader
 	let mapleader = ","
