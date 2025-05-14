@@ -7,18 +7,18 @@ st.alpha: 0.85
 
 !! Let it rip
 *.color0: #1d2021
-*.color1: #a42a2a
-*.color2: #2e8a57
+*.color1: #d72828
+*.color2: #28d798
 *.color3: #dc2800
 *.color4: #005577
 *.color5: #6a0dac
-*.color6: #008a8a
+*.color6: #009fd7
 *.color7: #ebdbb2
 *.color8: #282828
-*.color9: #a42a2a
-*.color10: #2e8a57
+*.color9: #d72828
+*.color10: #28d798
 *.color11: #dc2800
 *.color12: #005577
 *.color13: #6a0dac
-*.color14: #008a8a
+*.color14: #009fd7
 *.color15: #ebdbb8
