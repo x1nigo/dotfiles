@@ -4,14 +4,14 @@
     width = 370
     height = 1000
     transparency = 25
-	horizontal_padding = 2
+    horizontal_padding = 2
     font = Monospace 12
     format = "<b>%s</b>\n%b"
-	frame_width = 0
+    frame_width = 0
 
 [urgency_normal]
-    background = "#458588"
-    foreground = "#282828"
+    background = "#282828"
+    foreground = "#ebdbb2"
     timeout = 5
 
 [urgency_critical]
