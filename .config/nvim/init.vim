@@ -33,13 +33,14 @@ call plug#end()
 	colorscheme vim
 	set bg=light
 " Set this to enable your terminal's actual colors. Otherwise, rely on vim's colorscheme.
-"	set notermguicolors
+	set notermguicolors
 
 " Custom Colors (set notermguicolors to enable); Enter ":hi" or ":highlight" for more information.
 "	hi Title ctermfg=5 ctermbg=none cterm=none
 
 " Set Map leader
 	let mapleader = ","
+	map <leader>, /<++><enter>
 " Have a spell check to your document
 	map <leader>s :setlocal spell spelllang=en_us <enter>
 " Use a script to compile a specific file in a certain way
@@ -56,6 +57,7 @@ call plug#end()
 	autocmd BufWritePost * filetype detect
 " Read these particular files correctly:
 	autocmd BufRead,BufNewFile *.tex set filetype=tex
+	autocmd BufWinLeave *.tex !rm -f *.log *.aux
 	autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 	autocmd BufRead,BufNewFile .Xresources,.Xdefaults,xresources,xdefaults set filetype=xdefaults
 " Remove any trailing whitespaces
@@ -65,6 +67,6 @@ call plug#end()
 	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/dwmblocks/config.h !sudo make install
 	" autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { pkill -x dwmblocks; setsid -f dwmblocks }
 " Restart dunst after its config file is updated
-	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pidof dunst) && setsid dunst
+	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pidof dunst) && setsid -f dunst
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost .Xresources,.Xdefaults,xresources,xdefaults !xrdb %
