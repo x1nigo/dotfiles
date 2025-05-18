@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Make sure the videos and their respective titles are separated by a TAB ("\t").
+vidlist="
+"
+
+desc="$(echo "$vidlist" | sed 's/\t.*//;/^$/d' | dmenu -i -l 25 -p "What do you want to watch? (ESC to cancel)")"
+[ -z "$desc" ] && exit 1
+echo "$vidlist" | grep "$desc" | sed 's/.*\t//' | xargs mpv -
