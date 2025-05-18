@@ -32,3 +32,5 @@ statusbar_color = red
 statusbar_time_color = cyan:b
 execute_on_song_change="pkill -RTMIN+4 dwmblocks"
 execute_on_player_state_change="pkill -RTMIN+4 dwmblocks"
+# execute_on_song_change="dwmkill"
+# execute_on_player_state_change="dwmkill"
