@@ -7,6 +7,7 @@ endif
 
 call plug#begin(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/plugged"'))
 Plug 'vim-airline/vim-airline'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 " General
@@ -65,8 +66,7 @@ call plug#end()
 
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
 	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/dwmblocks/config.h !sudo make install
-	" autocmd BufWritePost ~/.local/src/dwmblocks/config.h !cd ~/.local/src/dwmblocks/; sudo make install && { pkill -x dwmblocks; setsid -f dwmblocks }
 " Restart dunst after its config file is updated
-	autocmd BufWritePost ~/.config/dunst/dunstrc !kill $(pidof dunst) && setsid -f dunst
+	autocmd BufWritePost ~/.config/dunst/dunstrc !pkill dunst && setsid -f dunst
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost .Xresources,.Xdefaults,xresources,xdefaults !xrdb %
