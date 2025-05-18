@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# Use this for dwm's statusbar in case dwmblocks is acting up. You may need to install icon fonts.
+# To update the bar in case of a keypress, accompany it with the "dwmkill" script.
+# Uncomment the following functions for the standalone scripts -- unless you're using the sl-scipts.
+
+music(){
+	song="$(mpc status | sed "/^volume:/d;/\\[paused\\].*/d;/\\[playing\\].*/d")"
+	[ -z "$song" ] && return # Use `return` instead of `exit`.
+	$(mpc status | grep -q "\\[playing\\]") && icon= || icon=
+	printf "%s %s" "$icon" "$song"
+}
+
+brightness(){
+	perc=$(brightnessctl -m | cut -d, -f4)
+	echo " $perc"
+}
+
+memory(){
+	memory=$(free -h --mebi | awk '/Mem:/ {print $3, "/", $2}')
+	echo " $memory"
+}
+
+cpu(){
+	sensors | awk '/Core 0:/ {print "" $3}'
+}
+
+volume(){
+	vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+	[ "$vol" != "${vol%\[MUTED\]}" ] && echo  && exit
+	vol="${vol#Volume: }"
+	split() {
+		# For ommiting the . without calling an external program.
+		IFS=.
+		set -- $1
+		printf '%s' "$@"
+	}
+	vol="$(printf "%.0f" "$(split "$vol")")"
+	echo " $vol%"
+}
+
+battery(){
+	dir="/sys/class/power_supply/BAT?"
+	capacity="$(cat $dir/capacity)"
+	echo " $capacity%"
+}
+
+clock(){
+	date "+%Y %b %d %A  %I:%M%p"
+}
+
+while true; do
+	# If needed, you can even use my dwmblocks modules in this script!
+	xsetroot -name " $(music)  $(brightness)  $(memory)  $(cpu)  $(volume)  $(battery)  $(clock) "
+	# xsetroot -name "$(sl-music) $(sl-blight) $(sl-traffic) $(sl-memory) $(sl-cpu) $(sl-volume) $(sl-battery) $(sl-internet) $(sl-date)"
+	sleep 1m
+done
