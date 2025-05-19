@@ -10,7 +10,7 @@
     frame_width = 0
 
 [urgency_normal]
-    background = "#282828"
+    background = "#1d2021"
     foreground = "#ebdbb2"
     timeout = 5
 
