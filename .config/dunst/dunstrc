@@ -5,7 +5,7 @@
     height = 1000
     transparency = 25
     horizontal_padding = 2
-    font = Monospace 12
+    font = Monospace 10
     format = "<b>%s</b>\n%b"
     frame_width = 0
 
