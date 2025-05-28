@@ -3,6 +3,7 @@
 case $BUTTON in
 	1) setsid -f "$TERMINAL" -e ncmpcpp ;;
 	3) notify-send "🎵 Music module" "\- Left click to open ncmpcpp." ;;
+	4) mpc toggle ;;
 	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
 esac
 
