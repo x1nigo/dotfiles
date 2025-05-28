@@ -11,5 +11,5 @@ for program in $autostart; do
 	pgrep -x "$program" || "$program" &
 done >/dev/null 2>&1
 
-# Start the window manager.
+# Start the window manager; without `ssh-agent`, the wm will literally shut down.
 while true; do ssh-agent dwm; done
