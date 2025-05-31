@@ -5,7 +5,7 @@
     height = 1000
     transparency = 25
     horizontal_padding = 2
-    font = Monospace 10
+    font = Monospace 12
     format = "<b>%s</b>\n%b"
     frame_width = 0
 
@@ -15,6 +15,6 @@
     timeout = 5
 
 [urgency_critical]
-    background = "#570000"
-    foreground = "#ebdbb2"
+    background = "#870000"
+    foreground = "#ff2828"
     timeout = 5
