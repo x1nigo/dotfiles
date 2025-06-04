@@ -1,6 +1,5 @@
 autoload -U colors && colors
-# PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
-PS1="%B%{$bg[black]%} %F{cyan}$(date +%I:%M%p)%f; %F{yellow}%n%F{green}@%F{blue}%m %F{magenta}%~%f %F{red}>%f %b "
+PS1="%{$bg[black]%} %B%~ %b "
 setopt autocd
 stty stop undef
 
