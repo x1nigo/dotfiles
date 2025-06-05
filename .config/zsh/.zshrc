@@ -1,5 +1,5 @@
 autoload -U colors && colors
-PS1="%{$bg[black]%} %B%~ %b "
+PS1="%B%F{red}[%f%F{yellow}%n%f%F{green}@%f%F{blue}%m%f %F{magenta}%~%f%F{red}]%f\$%b "
 setopt autocd
 stty stop undef
 
