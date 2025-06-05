@@ -34,7 +34,7 @@ call plug#end()
 	colorscheme vim
 	set bg=light
 " Set this to enable your terminal's actual colors. Otherwise, rely on vim's colorscheme.
-	" set notermguicolors
+	set notermguicolors
 
 " Custom Colors (set notermguicolors to enable); Enter ":hi" or ":highlight" for more information.
 "	hi Title ctermfg=5 ctermbg=none cterm=none
