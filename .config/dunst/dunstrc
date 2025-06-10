@@ -7,7 +7,6 @@
     horizontal_padding = 2
     font = Monospace 10
     format = "<b>%s</b>\n%b"
-    frame_width = 1
     frame_color = "#373737"
 
 [urgency_normal]
