@@ -2,7 +2,7 @@
 *.font: monospace:size=9
 
 !! Transparency (0-1):
-*.alpha: 0.85
+*.alpha: 0.95
 
 !! Set a background, foreground, and cursor color:
 *.background: #1d2021
