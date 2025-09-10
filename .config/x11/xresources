@@ -2,12 +2,12 @@
 *.font: monospace:size=9
 
 !! Transparency (0-1):
-*.alpha: 0.95
+*.alpha: 1.0
 
 !! Set a background, foreground, and cursor color:
 *.background: #1d2021
 *.foreground: #ebdbb2
-*.cursorColor: #ebdbb2
+*.cursorColor: #5787f7
 
 /* name		dark	light */
 /* black	0		8 */
@@ -19,7 +19,7 @@
 /* cyan		6		14 */
 /* white	7		15 */
 
-!! let it rip
+/* !! let it rip */
 *.color0: #1d2021
 *.color1: #d72828
 *.color2: #28d798
@@ -54,5 +54,3 @@
 /* *.color13: #d3869b */
 /* *.color14: #8ec07c */
 /* *.color15: #ebdbb2 */
-/* *.color256: #1d2021 */
-/* *.color257: #ebdbb2 */

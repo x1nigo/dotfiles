@@ -5,11 +5,16 @@ xset r rate 300 50
 xrandr --dpi 96
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
 
-# Autostart function that avoids duplication.
-autostart="mpd dunst setbg xcompmgr dwmblocks pipewire transmission-daemon"
+# Autostart function that avoids duplication. Include programs that are
+# window manager independent.
+autostart="mpd dunst picom setbg pipewire transmission-daemon"
 for program in $autostart; do
 	pgrep -x "$program" || "$program" &
 done >/dev/null 2>&1
 
-# Start the window manager; without `ssh-agent`, the wm will literally shut down.
-while true; do ssh-agent dwm; done
+# Start the window manager; without `ssh-agent`, dwm will literally shut down upon recompiling.
+case "$WM" in
+	"Dwm") dwmblocks &
+		while true; do ssh-agent dwm; done ;;
+	"Qtile") qtile start ;;
+esac
