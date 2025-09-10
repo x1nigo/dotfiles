@@ -5,7 +5,7 @@ export PATH="$PATH:/$HOME/.local/bin:$HOME/.local/bin/statusbar"
 export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # Default programs
-[ $(command -v librewolf) ] && export BROWSER="librewolf" || export BROWSER="firefox"
+[ $(command -v zen-browser) ] && export BROWSER="zen-browser" || export BROWSER="firefox"
 [ $(command -v nvim) ] && editor="nvim" || editor="vim"
 export EDITOR="$editor"
 export VISUAL="$editor"
@@ -25,4 +25,15 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 # export XDG_RUNTIME_DIR="$HOME/.local/run/$(id -u)"
 
 # Start graphical server on user's current tty if not already running.
-[ "$(tty)" = "/dev/tty1" ] && ! pidof -s Xorg >/dev/null 2>&1 && exec startx "$XINITRC"
+echo "Select a window manager to start your system:
+	[1] Dwm - the suckless window manager
+	[2] Qtile - written entirely in Python
+	[*] Exit script; enter shell
+"
+printf "Choice: "
+read -r wm
+case "$wm" in
+	1) export WM="Dwm" && startx "$XINITRC" ;;
+	2) export WM="Qtile" && startx "$XINITRC" ;;
+	*) return ;; # Don't start any window manager and just return to shell.
+esac
