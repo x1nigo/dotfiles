@@ -144,9 +144,9 @@ for i in groups:
     )
 
 my_layout = {
-    "border_width": 2,
+    "border_width": 3,
     "margin": 8,
-    "border_focus": "#870000",
+    "border_focus": "#570000",
     "border_normal": "#282828",
     }
 
@@ -158,22 +158,26 @@ separator_values = {
 layouts = [
     layout.MonadTall(**my_layout),
     layout.Max(),
+    layout.Bsp(**my_layout),
+    layout.Matrix(**my_layout),
     # layout.Columns(),
+    # layout.Tile(),
     # layout.Stack(num_stacks=2),
-    # layout.Bsp(),
-    # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
 floating_layout = layout.Floating(**my_layout)
+floats_kept_above = True
 
 widget_defaults = dict(
-    font="Ubuntu Bold", # Qtile seems to favor sans fonts, preferrably not monospace.
+    # Qtile seems to favor sans fonts, preferrably not monospace.
+    # It also looks better in bold, unlike other window managers.
+    # font = "sans bold",
+    font="Ubuntu Bold",
     foreground="#ebdbb2",
     fontsize=12,
     padding=5,
@@ -283,7 +287,6 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
-floats_kept_above = True
 cursor_warp = False
 auto_fullscreen = True
 focus_on_window_activation = "smart"
