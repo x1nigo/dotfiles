@@ -50,7 +50,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn(terminal), lazy.window.toggle_floating()), # Doesn't really work as I need it to.
     Key([mod], "w", lazy.spawn(browser)),
     Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager))),
-    Key([mod], "d", lazy.spawn("dmenu_run -c")),
+    Key([mod], "d", lazy.spawn("dmenu_run")),
     Key([mod], "b", lazy.spawn("bookmarker")),
     Key([mod], "v", lazy.spawn("watchvid")),
     Key([mod], "q", lazy.window.kill()),
