@@ -261,6 +261,7 @@ screens = [
                         format="%B %d, %Y - %A 🕗 %I:%M%p",
                         foreground = "#8787f7",
                              ),
+                widget.Spacer(length = 3),
             ],
             28, # Bar height
             background = "#1d2021",
