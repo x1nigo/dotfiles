@@ -2,10 +2,13 @@
 
 # Add `~/.local/bin` to $PATH
 export PATH="$PATH:/$HOME/.local/bin:$HOME/.local/bin/statusbar"
-export RANGER_LOAD_DEFAULT_RC=FALSE
 
-# Default programs
-[ $(command -v zen-browser) ] && export BROWSER="zen-browser" || export BROWSER="firefox"
+# Go through a list of browsers and export that which is installed (first in line).
+browsers="zen-browser librewolf firefox chromium"
+for item in $browsers; do
+	command -v "$item" && export BROWSER="$item" && break
+done
+# General programs and commands
 [ $(command -v nvim) ] && editor="nvim" || editor="vim"
 export EDITOR="$editor"
 export VISUAL="$editor"
