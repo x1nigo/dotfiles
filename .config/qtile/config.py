@@ -45,7 +45,7 @@ volumecontrols = "pulsemixer"
 #     subprocess.call(home)
 
 keys = [
-
+    # General programs and other scripts
     Key([mod], "Return", lazy.spawn(terminal)),
     Key([mod, "shift"], "Return", lazy.spawn(terminal), lazy.window.toggle_floating()), # Doesn't really work as I need it to.
     Key([mod], "w", lazy.spawn(browser)),
@@ -61,14 +61,15 @@ keys = [
     Key([mod], "Insert", lazy.spawn("inserter")),
     Key([mod], "grave", lazy.spawn("dmenumoji")),
     Key([mod], "BackSpace", lazy.spawn("systemmenu")),
-
+    # Media commands for both audio and backlight
+    # This current setup uses pipewire and brightnessctl
     Key([], "XF86AudioMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")),
     Key([], "XF86AudioMicMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")),
     Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")),
     Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")),
     Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s 5%+")),
     Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5%-")),
-
+    # Other commands based on the functions keys
     Key([mod], "F1", lazy.spawn("readme")),
     Key([mod], "F2", lazy.spawn("fontwizard")),
     Key([mod], "F3", lazy.spawn("{} -e {}" .format(terminal, volumecontrols))),
@@ -158,7 +159,6 @@ layouts = [
     layout.MonadTall(**my_layout),
     layout.Max(),
     # layout.Columns(),
-    # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
@@ -173,7 +173,7 @@ layouts = [
 floating_layout = layout.Floating(**my_layout)
 
 widget_defaults = dict(
-    font="Ubuntu Bold",
+    font="Ubuntu Bold", # Qtile seems to favor sans fonts, preferrably not monospace.
     foreground="#ebdbb2",
     fontsize=12,
     padding=5,
@@ -185,7 +185,7 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Image(filename = "~/.config/qtile/python.png", margin = 2),
+                widget.Image(filename = "~/.config/qtile/python.png", margin = 3),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
                     highlight_color = ["#121212", "#1d2021"],
@@ -197,7 +197,7 @@ screens = [
                     padding = 2,
                     ),
                 widget.Sep(**separator_values),
-                widget.CurrentLayout(mode = "both", icon_first = True, scale = 0.8),
+                widget.CurrentLayout(mode = "both", icon_first = True, scale = 0.7),
                 widget.Sep(**separator_values),
                 widget.LaunchBar(
                     progs = [("🦊", "zen-browser", "Browser"),
@@ -215,17 +215,27 @@ screens = [
                     empty_group_string = "~",
                     ),
                 widget.Spacer(),
-                widget.MemoryGraph(),
-                widget.Sep(**separator_values),
+                # widget.MemoryGraph(),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
                     fmt = "🌅 Bri: {}",
-                    foreground = "#5787f7",
+                    foreground = "#f7a787",
+                    ),
+                widget.Net(
+                    fmt = "📶 Net: {}",
+                    format = "{down:6.2f}{down_suffix:<2}↓↑{up:6.2f}{up_suffix:<2}",
+                    foreground = "#87d7f7",
+                    ),
+                widget.Sep(**separator_values),
+                widget.Memory(
+                    fmt = "💾 Mem: {}",
+                    foreground = "#f75757",
+                    update_interval = 5,
                     ),
                 widget.Volume(
                     mute_format = "🔇",
                     unmute_format = "📢 Vol: {volume}%",
-                    foreground = "#ff9757",
+                    foreground = "#ff9747",
                     ),
                 widget.Battery(
                     fmt = "{}",
@@ -235,7 +245,7 @@ screens = [
                     charge_char = "🔌",
                     full_char = "⚡",
                     full_short_text = "",
-                    update_interval = 10,
+                    update_interval = 60,
                     notify_below = 20,
                     notification_timeout = 0,
                     foreground = "#87d7a7",
@@ -244,14 +254,14 @@ screens = [
                 widget.Systray(),
                 widget.Clock(
                         format="%B %d, %Y - %A 🕗 %I:%M%p",
-                        foreground = "#87d7f7",
+                        foreground = "#8787f7",
                              ),
             ],
             28, # Bar height
+            background = "#1d2021",
+            # margin = [8, 8, 0, 8], # Orientation: N, E, S, W
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-            background = "#1d2021",
-            margin = [8, 8, 0, 8], # Orientation: N, E, S, W
         ),
 #         wallpaper=logo,
 #         wallpaper_mode="center",
