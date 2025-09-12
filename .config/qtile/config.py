@@ -50,7 +50,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn(terminal), lazy.window.toggle_floating()), # Doesn't really work as I need it to.
     Key([mod], "w", lazy.spawn(browser)),
     Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager))),
-    Key([mod], "d", lazy.spawn("dmenu_run")),
+    Key([mod], "d", lazy.spawn("dmenu_run -h 28")),
     Key([mod], "b", lazy.spawn("bookmarker")),
     Key([mod], "v", lazy.spawn("watchvid")),
     Key([mod], "q", lazy.window.kill()),
@@ -133,7 +133,7 @@ for i in groups:
             Key(
                 [mod, "shift"],
                 i.name,
-                lazy.window.togroup(i.name, switch_group=True),
+                lazy.window.togroup(i.name, switch_group=False),
                 desc=f"Switch to & move focused window to group {i.name}",
             ),
             # Or, use below if you prefer not to switch to that group.
@@ -180,7 +180,7 @@ widget_defaults = dict(
     font="Ubuntu Bold",
     foreground="#ebdbb2",
     fontsize=12,
-    padding=5,
+    padding=7,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -189,7 +189,9 @@ screens = [
     Screen(
         top=bar.Bar(
             [
+                widget.Spacer(length = 8),
                 widget.Image(filename = "~/.config/qtile/python.png", margin = 3),
+                widget.Spacer(length = 4),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
                     highlight_color = ["#121212", "#1d2021"],
@@ -198,7 +200,7 @@ screens = [
                     borderwidth = 3,
                     block_highlight_text_color = "#87d7f7",
                     this_current_screen_border = "#dc2800",
-                    padding = 2,
+                    padding = 3,
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(mode = "both", icon_first = True, scale = 0.7),
@@ -219,11 +221,10 @@ screens = [
                     empty_group_string = "~",
                     ),
                 widget.Spacer(),
-                # widget.MemoryGraph(),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
                     fmt = "🌅 Bri: {}",
-                    foreground = "#f7a787",
+                    foreground = "#ff9745",
                     ),
                 widget.Net(
                     fmt = "📶 Net: {}",
@@ -263,7 +264,7 @@ screens = [
             ],
             28, # Bar height
             background = "#1d2021",
-            # margin = [8, 8, 0, 8], # Orientation: N, E, S, W
+            margin = [8, 8, 0, 8], # Orientation: N, E, S, W
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
