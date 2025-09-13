@@ -28,7 +28,7 @@ import os
 import subprocess
 
 import libqtile.resources
-from libqtile import bar, layout, qtile, widget, hook
+from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 # from libqtile.utils import guess_terminal
@@ -145,7 +145,7 @@ for i in groups:
 
 my_layout = {
     "border_width": 3,
-    "margin": 8,
+    "margin": 12,
     "border_focus": "#570000",
     "border_normal": "#282828",
     }
@@ -173,6 +173,7 @@ layouts = [
 floats_kept_above = True
 floating_layout = layout.Floating(**my_layout,
     float_rules = [
+        *layout.Floating.default_float_rules,
         Match(wm_class = "termfloat"),
         ]
 )
@@ -181,7 +182,7 @@ widget_defaults = dict(
     # Qtile seems to favor sans fonts, preferrably not monospace.
     # It also looks better in bold, unlike other window managers.
     # font = "sans bold",
-    font = "Futura PT Bold",
+    font = "Futura PT Bold", # Make sure the font is available in the first place.
     foreground = "#ebdbb2",
     fontsize = 12,
     padding = 7,
@@ -200,12 +201,12 @@ screens = [
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
                     highlight_color = ["#121212", "#1d2028"],
-                    active = "#f78757",
+                    active = "#87d7f7",
                     inactive = "#373737",
                     borderwidth = 3,
-                    block_highlight_text_color = "#87d7f7",
-                    this_current_screen_border = "#dc2800",
-                    padding = 3,
+                    block_highlight_text_color = "#dc2800",
+                    this_current_screen_border = "#87d7f7",
+                    padding = 2,
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
@@ -220,16 +221,16 @@ screens = [
 #                     foreground = "#f75757",
 #                     ),
 #                 widget.Sep(**separator_values),
-                widget.LaunchBar(
-                    progs = [("🦊", "zen-browser", "Browser"), # librewolf, firefox, chromium, etc.
-                             ("🎯", "st", "The simple terminal"),
-                             ("✍️", "libreoffice", "Libre Office"),
-                             ("🌐", "st -e nmtui", "Network Manager"),
-                             ("🎸", "st -e ncmpcpp", "Music Player"),
-                             ],
-                    padding = 5,
-                    ),
-                widget.Sep(**separator_values),
+#                 widget.LaunchBar(
+#                     progs = [("🦊", "zen-browser", "Browser"), # librewolf, firefox, chromium, etc.
+#                              ("🎯", "st", "The simple terminal"),
+#                              ("✍️", "libreoffice", "Libre Office"),
+#                              ("🌐", "st -e nmtui", "Network Manager"),
+#                              ("🎸", "st -e ncmpcpp", "Music Player"),
+#                              ],
+#                     padding = 5,
+#                     ),
+#                 widget.Sep(**separator_values),
                 widget.WindowName(
                     foreground = "#ebdbb2",
                     max_chars = 50,
@@ -240,14 +241,15 @@ screens = [
                     fmt = "🌅 Bri: {}",
                     foreground = "#ff8757",
                     ),
-                widget.Net(
-                    fmt = "📶 Net: {}",
-                    format = "{down:6.2f}{down_suffix:<2}↓↑{up:6.2f}{up_suffix:<2}",
-                    foreground = "#87d7f7",
-                    ),
-                widget.Sep(**separator_values),
+                widget.CPU(
+                        fmt = "💻 Cpu: {}",
+                        format = "({load_percent}%)",
+                        foreground = "#87d7f7",
+                        update_interval = 5,
+                        ),
                 widget.Memory(
-                    fmt = "💾 Mem: {}",
+                    fmt = "🧠 Mem: {}",
+                    format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
                     foreground = "#f75757",
                     update_interval = 5,
                     ),
@@ -277,8 +279,8 @@ screens = [
                              ),
                 widget.Spacer(length = 3),
             ],
-            28, # Bar height
-            background = "#1d2021",
+            26, # Bar height
+            background = "#121618",
             # margin = [8, 8, 0, 8], # Orientation: N, E, S, W
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
