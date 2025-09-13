@@ -46,36 +46,36 @@ volumecontrols = "pulsemixer"
 
 keys = [
     # General programs and other scripts
-    Key([mod], "Return", lazy.spawn(terminal)),
-    Key([mod, "shift"], "Return", lazy.spawn(terminal), lazy.window.toggle_floating()), # Doesn't really work as I need it to.
-    Key([mod], "w", lazy.spawn(browser)),
-    Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager))),
-    Key([mod], "d", lazy.spawn("dmenu_run -h 28")),
-    Key([mod], "b", lazy.spawn("bookmarker")),
-    Key([mod], "v", lazy.spawn("watchvid")),
-    Key([mod], "q", lazy.window.kill()),
-    Key([mod], "x", lazy.spawn("setbg -d")),
-    Key([mod, "shift"], "x", lazy.spawn("setbg -x")),
-    Key([mod, "shift"], "Space", lazy.window.toggle_floating()),
-    Key([mod], "apostrophe", lazy.spawn(terminal + " -t termfloat -f monospace:size=16 -g 50x20 -e bc -lq")),
-    Key([mod], "Insert", lazy.spawn("inserter")),
-    Key([mod], "grave", lazy.spawn("dmenumoji")),
-    Key([mod], "BackSpace", lazy.spawn("systemmenu")),
+    Key([mod], "Return", lazy.spawn(terminal), desc="Spawn the terminal"),
+    Key([mod, "shift"], "Return", lazy.spawn(terminal + " -n termfloat"), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
+    Key([mod], "w", lazy.spawn(browser), desc="Launch the browser"),
+    Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager)), desc="Spawn the file manager"),
+    Key([mod], "d", lazy.spawn("dmenu_run -h 28"), desc="Launch a program"),
+    Key([mod], "b", lazy.spawn("bookmarker"), desc="Bookmark the highlighted text"),
+    Key([mod], "v", lazy.spawn("watchvid"), desc="Watch a video through your media player"),
+    Key([mod], "q", lazy.window.kill(), desc="Exit a window"),
+    Key([mod], "x", lazy.spawn("setbg -d"), desc="Select a desktop wallpaper/background"),
+    Key([mod, "shift"], "x", lazy.spawn("setbg -x"), desc="Remove the current desktop wallpaper/background"),
+    Key([mod, "shift"], "Space", lazy.window.toggle_floating(), desc="Toggle the floating status of a window"),
+    Key([mod], "apostrophe", lazy.spawn(terminal + " -n termfloat -f monospace:size=16 -g 50x20 -e bc -lq"), desc="Use a terminal-based calculator"),
+    Key([mod], "Insert", lazy.spawn("inserter"), desc="Insert one of your saved bookmarks"),
+    Key([mod], "grave", lazy.spawn("dmenumoji"), desc="Place selected emoji in your clipboard"),
+    Key([mod], "BackSpace", lazy.spawn("systemmenu"), desc="The system menu"),
     # Media commands for both audio and backlight
     # This current setup uses pipewire and brightnessctl
-    Key([], "XF86AudioMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")),
-    Key([], "XF86AudioMicMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")),
-    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s 5%+")),
-    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5%-")),
+    Key([], "XF86AudioMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), desc="Toggle the volume's mute option"),
+    Key([], "XF86AudioMicMute", lazy.spawn("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), desc="Toggle the mic's mute option"),
+    Key([], "XF86AudioRaiseVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), desc="Raise the volume"),
+    Key([], "XF86AudioLowerVolume", lazy.spawn("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), desc="Lower the volume"),
+    Key([], "XF86MonBrightnessUp", lazy.spawn("brightnessctl s 5%+"), desc="Raise the screen brightness"),
+    Key([], "XF86MonBrightnessDown", lazy.spawn("brightnessctl s 5%-"), desc="Lower the screen brightness"),
     # Other commands based on the functions keys
-    Key([mod], "F1", lazy.spawn("readme")),
-    Key([mod], "F2", lazy.spawn("fontwizard")),
-    Key([mod], "F3", lazy.spawn("{} -e {}" .format(terminal, volumecontrols))),
-    Key([mod], "F4", lazy.spawn("selectdisplay")),
-    Key([mod], "F12", lazy.reload_config()),
-    Key([], "Print", lazy.spawn("printscreen")),
+    Key([mod], "F1", lazy.spawn("readme"), desc="Read the README file"),
+    Key([mod], "F2", lazy.spawn("fontwizard"), desc="Select a default font"),
+    Key([mod], "F3", lazy.spawn("{} -e {}" .format(terminal, volumecontrols)), desc="Spawn the audio mixer"),
+    Key([mod], "F4", lazy.spawn("selectdisplay"), desc="Select a display option"),
+    Key([mod], "F12", lazy.reload_config(), desc="Reload the config"),
+    Key([], "Print", lazy.spawn("printscreen"), desc="Take a screenshot"),
 
     # A list of available commands that can be bound to keys can be found
     # at https://docs.qtile.org/en/latest/manual/config/lazy.html
@@ -152,7 +152,7 @@ my_layout = {
 
 separator_values = {
     "size_percent": 50,
-    "foreground": "#373737",
+    "foreground": "#575757",
     }
 
 layouts = [
@@ -170,17 +170,21 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-floating_layout = layout.Floating(**my_layout)
 floats_kept_above = True
+floating_layout = layout.Floating(**my_layout,
+    float_rules = [
+        Match(wm_class = "termfloat"),
+        ]
+)
 
 widget_defaults = dict(
     # Qtile seems to favor sans fonts, preferrably not monospace.
     # It also looks better in bold, unlike other window managers.
     # font = "sans bold",
-    font="Ubuntu Bold",
-    foreground="#ebdbb2",
-    fontsize=12,
-    padding=7,
+    font = "Futura PT Bold",
+    foreground = "#ebdbb2",
+    fontsize = 12,
+    padding = 7,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -192,10 +196,11 @@ screens = [
                 widget.Spacer(length = 8),
                 widget.Image(filename = "~/.config/qtile/python.png", margin = 3),
                 widget.Spacer(length = 4),
+                widget.Sep(**separator_values),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
-                    highlight_color = ["#121212", "#1d2021"],
-                    active = "#ebdbb2",
+                    highlight_color = ["#121212", "#1d2028"],
+                    active = "#f78757",
                     inactive = "#373737",
                     borderwidth = 3,
                     block_highlight_text_color = "#87d7f7",
@@ -203,28 +208,37 @@ screens = [
                     padding = 3,
                     ),
                 widget.Sep(**separator_values),
-                widget.CurrentLayout(mode = "both", icon_first = True, scale = 0.7),
+                widget.CurrentLayout(
+                    mode = "both",
+                    icon_first = True,
+                    scale = 0.7,
+                    foreground = "#f75757",
+                    ),
                 widget.Sep(**separator_values),
+#                 widget.WindowCount(
+#                     show_zero = True,
+#                     foreground = "#f75757",
+#                     ),
+#                 widget.Sep(**separator_values),
                 widget.LaunchBar(
-                    progs = [("🦊", "zen-browser", "Browser"),
+                    progs = [("🦊", "zen-browser", "Browser"), # librewolf, firefox, chromium, etc.
                              ("🎯", "st", "The simple terminal"),
-                             ("🖌️", "gimp", "Gimp"),
-                             ("📜", "libreoffice", "Libre Office"),
-                             ("📡", "st -e nmtui", "Network Manager"),
-                             ("▶️", "st -e ncmpcpp", "Music Player"),
+                             ("✍️", "libreoffice", "Libre Office"),
+                             ("🌐", "st -e nmtui", "Network Manager"),
+                             ("🎸", "st -e ncmpcpp", "Music Player"),
                              ],
+                    padding = 5,
                     ),
                 widget.Sep(**separator_values),
                 widget.WindowName(
-                    foreground = "#87d7f7",
-                    max_chars = 40,
+                    foreground = "#ebdbb2",
+                    max_chars = 50,
                     empty_group_string = "~",
                     ),
-                widget.Spacer(),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
                     fmt = "🌅 Bri: {}",
-                    foreground = "#ff9745",
+                    foreground = "#ff8757",
                     ),
                 widget.Net(
                     fmt = "📶 Net: {}",
@@ -240,7 +254,8 @@ screens = [
                 widget.Volume(
                     mute_format = "🔇",
                     unmute_format = "📢 Vol: {volume}%",
-                    foreground = "#ff9747",
+                    foreground = "#ffa747",
+                    update_interval = 1,
                     ),
                 widget.Battery(
                     fmt = "{}",
@@ -251,21 +266,20 @@ screens = [
                     full_char = "⚡",
                     full_short_text = "",
                     update_interval = 60,
-                    notify_below = 20,
-                    notification_timeout = 0,
                     foreground = "#87d7a7",
                     ),
                 widget.Sep(**separator_values),
                 widget.Systray(),
                 widget.Clock(
-                        format="%B %d, %Y - %A 🕗 %I:%M%p",
+                        format="⌛ %B %d, %Y - %A 🕗 %I:%M%p",
                         foreground = "#8787f7",
+                        update_interval = 5,
                              ),
                 widget.Spacer(length = 3),
             ],
             28, # Bar height
             background = "#1d2021",
-            margin = [8, 8, 0, 8], # Orientation: N, E, S, W
+            # margin = [8, 8, 0, 8], # Orientation: N, E, S, W
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
