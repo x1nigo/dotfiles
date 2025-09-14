@@ -1,0 +1,13 @@
+Config {overrideRedirect = False
+	, font     = "Noto Sans Mono Bold 9"
+	, bgColor  = "#121618"
+	, fgColor  = "#ebdbb2"
+	, position = Static { xpos = 0, ypos = 0, width = 1920, height = 28 }
+	, commands = [
+				   Run Date "⌛ %B %d, %Y - %A 🕗 %I:%M%p" "date" 10
+				 , Run XMonadLog
+				 ]
+	, sepChar = "%"
+	, alignSep = "}{"
+	, template = "%XMonadLog% }{ %date% "
+}
