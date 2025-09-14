@@ -175,6 +175,7 @@ floating_layout = layout.Floating(**my_layout,
     float_rules = [
         *layout.Floating.default_float_rules,
         Match(wm_class = "termfloat"),
+        Match(wm_class = "Xmessage"),
         ]
 )
 
@@ -186,6 +187,7 @@ widget_defaults = dict(
     foreground = "#ebdbb2",
     fontsize = 12,
     padding = 7,
+    margin = 3,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -195,7 +197,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.Spacer(length = 8),
-                widget.Image(filename = "~/.config/qtile/python.png", margin = 3),
+                widget.Image(filename = "~/.config/qtile/python_no_color.png", margin = 3),
                 widget.Spacer(length = 4),
                 widget.Sep(**separator_values),
                 widget.GroupBox(
