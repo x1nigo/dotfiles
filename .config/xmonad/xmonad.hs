@@ -2,7 +2,6 @@ import XMonad
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Loggers
 import qualified XMonad.StackSet as W
-
 import qualified Data.Map as M
 
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
@@ -38,14 +37,14 @@ myNormalColor = "#282828"
 myFocusedColor :: String
 myFocusedColor = "#570000"
 
-windowCount :: X (Maybe String)
-windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+-- windowCount :: X (Maybe String)
+-- windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
+myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+-- myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
 
 main :: IO ()
 main = xmonad
@@ -64,8 +63,8 @@ myXmobarPP = def
     , ppHiddenNoWindows = black . wrap " " " "
     , ppLayout          = red . wrap " " " "
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    , ppExtras          = [windowCount]
-    , ppOrder           = \[ws, l, t, _] -> [ws, l, t]
+    -- , ppExtras          = [windowCount]
+    , ppOrder           = \[ws, l, t] -> [ws, l, t]
     }
     where
         black, red, green, yellow, blue, magenta, cyan, white :: String -> String
@@ -81,11 +80,11 @@ myXmobarPP = def
 myConfig = def
     { modMask            = mod4Mask
     , layoutHook         = lessBorders OnlyFloat $ avoidStruts $ myLayout
-	, manageHook         = myManageHook
+    , manageHook         = myManageHook
     , normalBorderColor  = myNormalColor
     , focusedBorderColor = myFocusedColor
     , borderWidth        = myBorderWidth
-	, workspaces         = myWorkspaces
+    , workspaces         = myWorkspaces
     }
     `additionalKeysP`
         [ ("M-<Return>",              spawn (myTerminal))
@@ -126,21 +125,22 @@ myManageHook = composeAll
 	, isFullscreen            --> doFullFloat
     ]
 
--- Define layouts for convenience and order
 tall     = renamed [Replace "tall"]
-		   $ mySpacing 6
-		   $ Tall 1 (3/100) (1/2)
+           $ mySpacing 6
+           $ Tall 1 (3/100) (1/2)
 
 monocle  = renamed [Replace "monocle"]
-		   $ Full
+         $ Full
 
 threeCol = renamed [Replace "threeCol"]
            $ mySpacing 6
-		   $ ThreeCol 1 (3/100) (1/2)
+           $ ThreeCol 1 (3/100) (1/2)
 
 spirals  = renamed [Replace "spirals"]
            $ mySpacing 6
-		   $ spiral (6/7)
+           $ spiral (6/7)
 
--- My main layout function
-myLayout = tall ||| spirals ||| threeCol ||| noBorders monocle
+myLayout = tall     |||
+           spirals  |||
+           threeCol |||
+           noBorders monocle
