@@ -16,7 +16,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Renamed
 import XMonad.Layout.LayoutModifier
 
-import XMonad.Layout.NoBorders (noBorders, smartBorders)
+import XMonad.Layout.NoBorders (noBorders, lessBorders, Ambiguity(OnlyFloat))
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Spiral
 
@@ -80,7 +80,8 @@ myXmobarPP = def
 
 myConfig = def
     { modMask            = mod4Mask
-    , layoutHook         = avoidStruts $ myLayout
+    , layoutHook         = lessBorders OnlyFloat $ avoidStruts $ myLayout
+	, manageHook         = myManageHook
     , normalBorderColor  = myNormalColor
     , focusedBorderColor = myFocusedColor
     , borderWidth        = myBorderWidth
@@ -142,4 +143,4 @@ spirals  = renamed [Replace "spirals"]
 		   $ spiral (6/7)
 
 -- My main layout function
-myLayout =  smartBorders $ tall ||| spirals ||| threeCol ||| noBorders monocle
+myLayout = tall ||| spirals ||| threeCol ||| noBorders monocle
