@@ -43,8 +43,8 @@ myFocusedColor = "#570000"
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
-myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
--- myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
+-- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
 
 main :: IO ()
 main = xmonad
@@ -55,11 +55,11 @@ main = xmonad
 
 myXmobarPP :: PP
 myXmobarPP = def
-    { ppSep             = " | "
+    { ppSep             = " / "
     , ppTitle           = white . wrap " " " " . shorten 60
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = blue . wrap " " " " . xmobarBorder "Bottom" "#dc2800" 2
-    , ppHidden          = white . wrap " " " "
+    , ppCurrent         = cyan . wrap " " " " . xmobarBorder "Bottom" "#dc2800" 2
+    , ppHidden          = magenta . wrap " " " " . xmobarBorder "Top" "#5787f7" 2
     , ppHiddenNoWindows = black . wrap " " " "
     , ppLayout          = red . wrap " " " "
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
@@ -72,9 +72,9 @@ myXmobarPP = def
         red      = xmobarColor "#f75757" ""
         green    = xmobarColor "#87d7a7" ""
         yellow   = xmobarColor "#ffa747" ""
-        blue     = xmobarColor "#57d7f7" ""
+        blue     = xmobarColor "#5787f7" ""
         magenta  = xmobarColor "#8787f7" ""
-        cyan     = xmobarColor "#87d7f7" ""
+        cyan     = xmobarColor "#57d7f7" ""
         white    = xmobarColor "#ebdbb2" ""
 
 myConfig = def
