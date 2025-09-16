@@ -3,6 +3,8 @@ Config {overrideRedirect = False
 	, bgColor  = "#1d2021"
 	, fgColor  = "#ebdbb2"
 	, position = TopSize L 100 26
+	, lowerOnStart = True
+	, hideOnStart  = False
 	, commands = [
                    Run Com "sl-blight" [] "blight" 50
 				 , Run Cpu ["-t", "<box type=Bottom width=2 color=#87d7f7>💻 <fc=#87d7f7>cpu: (<total>%)</fc></box>"] 300
