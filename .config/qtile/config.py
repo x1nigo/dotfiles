@@ -203,11 +203,11 @@ screens = [
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
                     highlight_color = ["#121212", "#1d2028"],
-                    active = "#87d7f7",
+                    active = "#57d7f7",
                     inactive = "#373737",
                     borderwidth = 3,
-                    block_highlight_text_color = "#dc2800",
-                    this_current_screen_border = "#87d7f7",
+                    block_highlight_text_color = "#57d8f8",
+                    this_current_screen_border = "#dc2800",
                     padding = 2,
                     ),
                 widget.Sep(**separator_values),
@@ -241,7 +241,7 @@ screens = [
                 widget.Backlight(
                     backlight_name = "intel_backlight",
                     fmt = "🌅 Bri: {}",
-                    foreground = "#ff8757",
+                    foreground = "#5787f7",
                     ),
                 widget.CPU(
                         fmt = "💻 Cpu: {}",
@@ -282,7 +282,7 @@ screens = [
                 widget.Spacer(length = 3),
             ],
             26, # Bar height
-            background = "#121618",
+            background = "#1d2021",
             # margin = [8, 8, 0, 8], # Orientation: N, E, S, W
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
