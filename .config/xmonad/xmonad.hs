@@ -15,7 +15,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.Renamed
 import XMonad.Layout.LayoutModifier
 
-import XMonad.Layout.NoBorders (noBorders, lessBorders, Ambiguity(OnlyFloat))
+import XMonad.Layout.NoBorders (noBorders, lessBorders, Ambiguity(OnlyScreenFloat))
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Spiral
 import XMonad.Layout.Grid
@@ -83,14 +83,15 @@ myXmobarPP = def
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-    [ className =? "dialog"   --> doFloat
-	, className =? "download" --> doFloat
-	, isFullscreen            --> doFullFloat
+    [ className =? "dialog"    --> doFloat
+	, className =? "download"  --> doFloat
+    , className =? "termfloat" --> doFloat
+	, isFullscreen             --> doFullFloat
     ]
 
 myConfig = def
     { modMask            = mod4Mask
-    , layoutHook         = lessBorders OnlyFloat $ avoidStruts $ myLayoutHook
+    , layoutHook         = lessBorders OnlyScreenFloat $ avoidStruts $ myLayoutHook
     , manageHook         = myManageHook
     , normalBorderColor  = myNormalColor
     , focusedBorderColor = myFocusedColor
@@ -99,6 +100,7 @@ myConfig = def
     }
     `additionalKeysP`
         [ ("M-<Return>",              spawn (myTerminal))
+        , ("M-S-<Return>",            spawn (myTerminal ++ " -c termfloat"))
         , ("M-d",                     spawn "dmenu_run -h 26 -l 6 -g 8")
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-w",                     spawn (myBrowser))
