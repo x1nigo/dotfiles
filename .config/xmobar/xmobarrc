@@ -1,22 +1,23 @@
 Config {overrideRedirect = False
 	  , font            = "Futura PT Bold 10"
-      , additionalFonts = [ "Mononoki 18" ]
+      , additionalFonts = [ "Mononoki 18"
+                          , "Noto Color Emoji 8"
+                          ]
 	  , bgColor         = "#1d2021"
 	  , fgColor         = "#ebdbb2"
 	  , position        = TopSize L 100 26
 	  , lowerOnStart    = True
 	  , hideOnStart     = False
-	  , commands = [
-                   Run Com "sl-blight" [] "blight" 50
-				 , Run Cpu ["-t", "<box type=Bottom width=2 color=#87d7f7>💻 <fc=#87d7f7>cpu: (<total>%)</fc></box>"] 300
-				 , Run Memory ["-t", "<box type=Bottom width=2 color=#f75757>🧠 <fc=#f75757>mem: <used>M (<usedratio>%)</fc></box>"] 300
-				 , Run Volume "default" "Master" ["-t", "<box type=Bottom width=2 color=#ffa747>📢 <fc=#ffa747>vol: (<volume>%) <status></fc></box>", "--", "--on", "", "--off", "[muted]"] 10
-				 , Run BatteryP ["BAT0"] ["-t", "<box type=Bottom width=2 color=#87d7a7>🔋 <fc=#87d7a7><acstatus> (<left>%)</fc></box>"] 120
-			 	 , Run Date "<box type=Bottom width=2 color=#8787f7>⌛ <fc=#8787f7>%B %d, %Y - %A 🕗 %I:%M%p</fc></box>" "date" 50
-				 , Run Com "echo" ["<fn=1>\xe61f</fn>"] "logo" 3600
-				 , Run XMonadLog
+	  , commands = [ Run Brightness ["-t", "🌅 bri: (<percent>%)", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
+				   , Run Cpu ["-t", "<box type=Bottom width=2 color=#87d7f7>💻 <fc=#87d7f7>cpu: (<total>%)</fc></box>"] 300
+				   , Run Memory ["-t", "<box type=Bottom width=2 color=#f75757>🧠 <fc=#f75757>mem: <used>M (<usedratio>%)</fc></box>"] 300
+				   , Run Volume "default" "Master" ["-t", "<box type=Bottom width=2 color=#ffa747>📢 <fc=#ffa747>vol: (<volume>%) <status></fc></box>", "--", "--on", "", "--off", "[muted]"] 10
+				   , Run BatteryP ["BAT0"] ["-t", "<box type=Bottom width=2 color=#87d7a7>🔋 <fc=#87d7a7><acstatus> (<left>%)</fc></box>"] 120
+			 	   , Run Date "<box type=Bottom width=2 color=#8787f7>🕗 <fc=#8787f7>%B %d, %Y - %A (%I:%M%p)</fc></box>" "date" 50
+				   , Run Com "echo" ["<fn=1>\xe61f</fn>"] "logo" 3600
+				   , Run XMonadLog
 				 ]
 	  , sepChar  = "%"
 	  , alignSep = "}{"
-	  , template = "    %logo%      %XMonadLog% }{ <box type=Bottom width=2 color=#5787f7><fc=#5787f7>%blight%</fc></box>    %cpu%    %memory%    %default:Master%    %battery%    %date% "
+	  , template = "    %logo%      %XMonadLog% }{ <box type=Bottom width=2 color=#5787f7><fc=#5787f7>%bright%</fc></box>    %cpu%    %memory%    %default:Master%    %battery%    %date% "
 }
