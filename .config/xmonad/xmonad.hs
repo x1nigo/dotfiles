@@ -18,6 +18,7 @@ import XMonad.Layout.LayoutModifier
 import XMonad.Layout.NoBorders (noBorders, lessBorders, Ambiguity(OnlyFloat))
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Spiral
+import XMonad.Layout.Grid
 
 myTerminal :: String
 myTerminal = "st"
@@ -48,10 +49,13 @@ myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", 
 
 main :: IO ()
 main = xmonad
-     $ ewmhFullscreen
-     $ ewmh
-     $ withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure myXmobarPP)) defToggleStrutsKey
+     . ewmhFullscreen
+     . ewmh
+     . withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure myXmobarPP)) toggleStrutsKey
      $ myConfig
+     where
+         toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
+         toggleStrutsKey XConfig {modMask = mod4Mask} = (mod4Mask .|. shiftMask, xK_b)
 
 myXmobarPP :: PP
 myXmobarPP = def
@@ -68,18 +72,25 @@ myXmobarPP = def
     }
     where
         black, red, green, yellow, blue, magenta, cyan, white :: String -> String
-        black    = xmobarColor "#373737" ""
-        red      = xmobarColor "#f75757" ""
-        green    = xmobarColor "#87d7a7" ""
-        yellow   = xmobarColor "#ffa747" ""
-        blue     = xmobarColor "#5787f7" ""
-        magenta  = xmobarColor "#8787f7" ""
-        cyan     = xmobarColor "#57d7f7" ""
-        white    = xmobarColor "#ebdbb2" ""
+        black   = xmobarColor "#373737" ""
+        red     = xmobarColor "#f75757" ""
+        green   = xmobarColor "#87d7a7" ""
+        yellow  = xmobarColor "#ffa747" ""
+        blue    = xmobarColor "#5787f7" ""
+        magenta = xmobarColor "#8787f7" ""
+        cyan    = xmobarColor "#57d7f7" ""
+        white   = xmobarColor "#ebdbb2" ""
+
+myManageHook :: ManageHook
+myManageHook = composeAll
+    [ className =? "dialog"   --> doFloat
+	, className =? "download" --> doFloat
+	, isFullscreen            --> doFullFloat
+    ]
 
 myConfig = def
     { modMask            = mod4Mask
-    , layoutHook         = lessBorders OnlyFloat $ avoidStruts $ myLayout
+    , layoutHook         = lessBorders OnlyFloat $ avoidStruts $ myLayoutHook
     , manageHook         = myManageHook
     , normalBorderColor  = myNormalColor
     , focusedBorderColor = myFocusedColor
@@ -88,17 +99,17 @@ myConfig = def
     }
     `additionalKeysP`
         [ ("M-<Return>",              spawn (myTerminal))
-        , ("M-d",                     spawn "dmenu_run -h 26")
+        , ("M-d",                     spawn "dmenu_run -h 26 -l 6 -g 8")
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-w",                     spawn (myBrowser))
-        , ("M-b",                     spawn "bookmarker")
-        , ("M-v",                     spawn "watchvid")
-        , ("M-x",                     spawn "setbg -d")
-        , ("M-S-x",                   spawn "setbg -x")
+        , ("M-b",                     spawn "dm-bookmark")
+        , ("M-v",                     spawn "dm-videos")
+        , ("M-x",                     spawn "dm-wallpaper -d")
+        , ("M-S-x",                   spawn "dm-wallpaper -x")
         , ("M-'",                     spawn (myTerminal ++ " -n termfloat -f monospace:size=16 -g 50x20 -e bc -lq"))
-        , ("M-<Insert>",              spawn "inserter")
-        , ("M-`",                     spawn "dmenumoji")
-        , ("M-<Backspace>",           spawn "systemmenu")
+        , ("M-<Insert>",              spawn "dm-insert")
+        , ("M-`",                     spawn "dm-emoji")
+        , ("M-<Backspace>",           spawn "dm-system")
 
         , ("<XF86AudioMute>",         spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
         , ("<XF86AudioMicMute>",      spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
@@ -109,38 +120,36 @@ myConfig = def
         , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 5%-")
 
         , ("M-<F1>",                  spawn "readme")
-        , ("M-<F2>",                  spawn "fontwizard")
+        , ("M-<F2>",                  spawn "dm-fonts")
         , ("M-<F3>",                  spawn (myTerminal ++ " -e pulsemixer"))
-        , ("M-<F4>",                  spawn "selectdisplay")
+        , ("M-<F4>",                  spawn "dm-display")
         , ("M-<F12>",                 spawn "xmonad --restart" )
         , ("M-C-r",                   spawn "xmonad --recompile" )
-        , ("<Print>",                 spawn "printscreen")
+        , ("<Print>",                 spawn "dm-printscreen")
         , ("M-q",                     kill)
         ]
-
-myManageHook :: ManageHook
-myManageHook = composeAll
-    [ className =? "dialog"   --> doFloat
-	, className =? "download" --> doFloat
-	, isFullscreen            --> doFullFloat
-    ]
 
 tall     = renamed [Replace "tall"]
            $ mySpacing 6
            $ Tall 1 (3/100) (1/2)
 
-monocle  = renamed [Replace "monocle"]
-         $ Full
+spirals  = renamed [Replace "spirals"]
+           $ mySpacing 6
+           $ spiral (6/7)
 
 threeCol = renamed [Replace "threeCol"]
            $ mySpacing 6
            $ ThreeCol 1 (3/100) (1/2)
 
-spirals  = renamed [Replace "spirals"]
+grid     = renamed [Replace "grid"]
            $ mySpacing 6
-           $ spiral (6/7)
+           $ GridRatio (4/3)
 
-myLayout = tall     |||
-           spirals  |||
-           threeCol |||
-           noBorders monocle
+monocle  = renamed [Replace "monocle"]
+           $ Full
+
+myLayoutHook = tall     |||
+               spirals  |||
+               threeCol |||
+               grid     |||
+               noBorders monocle
