@@ -1,0 +1,20 @@
+#!/bin/sh
+
+selected() {
+	maim --quality=10 -u -s $HOME/selected-$(date +%y-%m-%d-%s).png \
+		&& notify-send "📸 Took a \`selected\` screenshot!" "You may find it in your ~ directory."
+}
+
+activewin() {
+	maim --quality=10 -u -i $(xdotool getactivewindow) $HOME/active-$(date +%y-%m-%d-%s).png \
+		&& notify-send "📸 Took an \`active window\` screenshot!" "You may find it in your ~ directory."
+}
+
+chosen=$(printf "%s\n" "🖥️ desktop" "🖱️ selected area" "🎯 active window" | dmenu  -i -l 6 -p "SCREENSHOT:")
+
+case "$chosen" in
+	🖥️*) maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
+		&& notify-send "📸 Took a \`desktop\` screenshot!" "You may find it in your ~ directory" ; exit ;;
+	🖱️*) selected ;;
+	🎯*) activewin ;;
+esac

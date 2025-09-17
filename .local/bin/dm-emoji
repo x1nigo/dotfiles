@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# This is a simple script that requires an external text file
+# filled with emojis. You can locate the current one in the
+# ~/.local/share/ folder titled emojis.
+
+fullemoji="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/00-emojis | dmenu -i -l 6 -g 5 -p "EMOJI:")"
+emoji="$(echo $fullemoji | cut -d' ' -f1)"
+[ -z "$fullemoji" ] && exit 1
+
+echo -n $emoji | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "Selected emoji copied to clipboard!" "\`$fullemoji\`"

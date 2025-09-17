@@ -1,0 +1,36 @@
+#!/bin/sh
+
+# The main file for rendering wallpapers
+bgmain="$HOME/.local/share/bg"
+# Backgrounds folder
+bgdir="$HOME/.local/share/backgrounds"
+
+# Render the wallpaper
+render() {
+	xwallpaper --zoom $bgmain
+}
+
+# Select wallpaper from backgrounds folder
+sel() {
+	chosen="$(find $bgdir -type f | sed "s|$HOME|~|" | dmenu -l 10 -p "Set a wallpaper")"
+	chosen="$(echo "$chosen" | sed "s|~|$HOME|")"
+	[ -z "$chosen" ] && exit
+	cp "$chosen" $bgmain && \
+	notify-send "🖼️ New wallpaper!" "\`$chosen\`"
+}
+
+oust() {
+	xwallpaper --clear && \
+	notify-send "🛑 Wallpaper cleared!" "Select a new wallpaper [or] execute xsetroot -solid [color]." && exit
+}
+
+while getopts "dx" o; do
+	case ${o} in
+		d) sel ;;
+		x) oust ;;
+	esac
+done
+
+# If given a file, then use that as wallpaper.
+! [ -z "$1" ] && cp "$1" $bgmain
+render # If no arguments, then just set the previous wallpaper.

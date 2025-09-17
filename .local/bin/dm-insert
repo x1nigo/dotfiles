@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# This script types out the selected bookmark in conjunction with
+# the `bookmarker` script. Hopefully, each bookmark has a unique
+# name/label for `grep` to pinpoint.
+
+desc="$(cat $HOME/.local/share/01-bookmarks | sed 's/\t.*//' | dmenu -i -l 35 -p "BOOKMARK (ESC to cancel):")"
+[ -z "$desc" ] && exit 1
+url="$(cat $HOME/.local/share/01-bookmarks | grep "$desc" | sed 's/.*\t//')"
+# Execute the bookmark typing process.
+xdotool type "$url"
