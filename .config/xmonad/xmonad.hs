@@ -44,8 +44,8 @@ myFocusedColor = "#570000"
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
+myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+-- myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
 
 main :: IO ()
 main = xmonad
@@ -62,7 +62,7 @@ myXmobarPP = def
     { ppSep             = " / "
     , ppTitle           = white . wrap " " " " . shorten 60
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = cyan . wrap " " " " . xmobarBorder "Bottom" "#dc2800" 2
+    , ppCurrent         = blue . wrap " " " " . xmobarBorder "Bottom" "#dc2800" 2
     , ppHidden          = magenta . wrap " " " " . xmobarBorder "Top" "#5787f7" 2
     , ppHiddenNoWindows = black . wrap " " " "
     , ppLayout          = red . wrap " " " "
