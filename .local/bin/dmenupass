@@ -1,3 +1,0 @@
-#!/bin/sh
-
-dmenu -fn Monospace-18 -P -p "Password:"
