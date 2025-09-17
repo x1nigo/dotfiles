@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# This script is only useful when paired with "dwmstatus". Otherwise, you'd never have to use this.
-# However, it may come in handy if you'd like to shut down a specific process.
-
-PID="$(ps -ejH | grep -i dwmstatus -A1 | grep -i sleep | awk '{print $1}')"
-[ -z "$PID" ] && exit 1 || kill "$PID"
