@@ -1,6 +1,6 @@
 #!/bin/sh
 
-act="$(printf "%s\n" "🛌 shut this computer down" "🔃 restart this machine" "📺 turn the display off" | dmenu -l 6 -p "SYS:")"
+act="$(printf "%s\n" "🛌 shut this computer down" "🔃 restart this machine" "📺 turn the display off" | dmenu -l 6 -fn Monospace-16 -p "SYS:")"
 if ls -l /sbin/init | grep -q runit; then
 	sys=loginctl
 else
