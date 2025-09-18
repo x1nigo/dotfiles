@@ -43,7 +43,6 @@ cmd delete ${{
 cmd newfile ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
-	printf "%s\n\t" "$fx"
 	printf "new file: "
 	read ans
 	[ -z $ans ] && exit
@@ -53,7 +52,6 @@ cmd newfile ${{
 cmd dir ${{
 	clear; tput cup $(($(tput lines)/3)); tput bold
 	set -f
-	printf "%s\n\t" "$fx"
 	printf "new directory: "
 	read ans
 	[ -z $ans ] && exit
