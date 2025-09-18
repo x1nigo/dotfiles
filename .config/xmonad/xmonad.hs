@@ -24,7 +24,7 @@ myTerminal :: String
 myTerminal = "st"
 
 myBrowser :: String
-myBrowser = "zen-browser"
+myBrowser = "brave"
 
 myFileManager :: String
 myFileManager = "lfup"
@@ -60,10 +60,10 @@ main = xmonad
 myXmobarPP :: PP
 myXmobarPP = def
     { ppSep             = " / "
-    , ppTitle           = white . wrap " " " " . shorten 60
+    , ppTitle           = white . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = blue . wrap " " " " . xmobarBorder "Bottom" "#dc2800" 2
-    , ppHidden          = magenta . wrap " " " " . xmobarBorder "Top" "#5787f7" 2
+    , ppCurrent         = blue . wrap " " " " . xmobarBorder "Bottom" "#57d7f7" 3
+    , ppHidden          = magenta . wrap " " " " . xmobarBorder "Top" "#5787f7" 3
     , ppHiddenNoWindows = black . wrap " " " "
     , ppLayout          = red . wrap " " " "
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
@@ -79,7 +79,7 @@ myXmobarPP = def
         blue    = xmobarColor "#5787f7" ""
         magenta = xmobarColor "#8787f7" ""
         cyan    = xmobarColor "#57d7f7" ""
-        white   = xmobarColor "#ebdbb2" ""
+        white   = xmobarColor "#d7d7d7" ""
 
 myManageHook :: ManageHook
 myManageHook = composeAll
@@ -101,14 +101,14 @@ myConfig = def
     `additionalKeysP`
         [ ("M-<Return>",              spawn (myTerminal))
         , ("M-S-<Return>",            spawn (myTerminal ++ " -c termfloat"))
-        , ("M-d",                     spawn "dmenu_run -h 26 -l 6 -g 8")
+        , ("M-d",                     spawn "dmenu_run -p 'RUN:' -h 26 -l 6 -g 8")
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-w",                     spawn (myBrowser))
         , ("M-b",                     spawn "dm-bookmark")
         , ("M-v",                     spawn "dm-videos")
         , ("M-x",                     spawn "dm-wallpaper -d")
         , ("M-S-x",                   spawn "dm-wallpaper -x")
-        , ("M-'",                     spawn (myTerminal ++ " -n termfloat -f monospace:size=16 -g 50x20 -e bc -lq"))
+        , ("M-'",                     spawn (myTerminal ++ " -c termfloat -f monospace:size=16 -g 50x20 -e bc -lq"))
         , ("M-<Insert>",              spawn "dm-insert")
         , ("M-`",                     spawn "dm-emoji")
         , ("M-<Backspace>",           spawn "dm-system")
