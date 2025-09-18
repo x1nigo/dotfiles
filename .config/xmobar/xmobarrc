@@ -3,8 +3,8 @@ Config {overrideRedirect = False
       , additionalFonts = [ "Mononoki 18"
                           , "Noto Color Emoji 8"
                           ]
-	  , bgColor         = "#1d2021"
-	  , fgColor         = "#ebdbb2"
+	  , bgColor         = "#1d2023"
+	  , fgColor         = "#d7d7d7"
 	  , position        = TopSize L 100 26
 	  , lowerOnStart    = True
 	  , hideOnStart     = False
