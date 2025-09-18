@@ -1,5 +1,4 @@
 autoload -U colors && colors
-cat "${XDG_DATA_HOME:-$HOME/.local/share}/prompt_art.txt"
 PS1="%B%F{cyan}%n%f%b on %B%F{magenta}%m%f %F{blue}%~%f
 %F{cyan}->%f%b "
 setopt autocd
