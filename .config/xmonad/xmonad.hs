@@ -101,7 +101,7 @@ myConfig = def
     `additionalKeysP`
         [ ("M-<Return>",              spawn (myTerminal))
         , ("M-S-<Return>",            spawn (myTerminal ++ " -c termfloat"))
-        , ("M-d",                     spawn "dmenu_run -p 'RUN:' -h 26 -l 6 -g 8")
+        , ("M-d",                     spawn "dmenu_run -p 'RUN:' -l 6 -g 8")
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-w",                     spawn (myBrowser))
         , ("M-b",                     spawn "dm-bookmark")
