@@ -7,7 +7,7 @@ xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
 
 # Autostart function that avoids duplication. Include programs that are
 # window manager independent.
-autostart="mpd dunst picom setbg pipewire transmission-daemon"
+autostart="mpd dunst picom dm-wallpaper pipewire transmission-daemon"
 for program in $autostart; do
 	pgrep -x "$program" || "$program" &
 done >/dev/null 2>&1
@@ -17,4 +17,5 @@ case "$WM" in
 	"Dwm") dwmblocks &
 		while true; do ssh-agent dwm; done ;;
 	"Qtile") qtile start ;;
+	"XMonad") exec xmonad ;;
 esac

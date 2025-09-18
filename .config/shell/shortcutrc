@@ -20,5 +20,6 @@ cfX="$EDITOR $HOME/.config/x11/xresources" \
 cfh="$EDITOR $HOME/.config/hypr/hyprland.conf" \
 cfq="$EDITOR $HOME/.config/qtile/config.py" \
 cfxm="$EDITOR $HOME/.config/xmonad/xmonad.hs" \
+cfxb="$EDITOR $HOME/.config/xmobar/xmobarrc" \
 cfe="$EDITOR $HOME/.local/share/00-emojis" \
 cfb="$EDITOR $HOME/.local/share/01-bookmarks" \
