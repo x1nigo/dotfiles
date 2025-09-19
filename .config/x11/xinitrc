@@ -14,8 +14,8 @@ done >/dev/null 2>&1
 
 # Start the window manager; without `ssh-agent`, dwm will literally shut down upon recompiling.
 case "$WM" in
-	"Dwm") dwmblocks &
+	"dwm") dwmblocks &
 		while true; do ssh-agent dwm; done ;;
-	"Qtile") qtile start ;;
-	"XMonad") exec xmonad ;;
+	"qtile") qtile start ;;
+	"xmonad") exec xmonad ;;
 esac
