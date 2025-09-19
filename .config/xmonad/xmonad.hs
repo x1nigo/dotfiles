@@ -39,8 +39,8 @@ myNormalColor = "#282828"
 myFocusedColor :: String
 myFocusedColor = "#570000"
 
-windowCount :: X (Maybe String)
-windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+-- windowCount :: X (Maybe String)
+-- windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
@@ -68,8 +68,8 @@ myXmobarPP = def
     , ppHiddenNoWindows = black . wrap " " " "
     , ppLayout          = red . wrap " " " "
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    , ppExtras          = [windowCount]
-    , ppOrder           = \(ws:l:t:ex) -> [ws,l]++ex++[t]
+    -- , ppExtras          = [windowCount]
+    , ppOrder           = \[ws,l,t] -> [ws,l,t]
     }
     where
         black, red, green, yellow, blue, magenta, cyan, white :: String -> String
