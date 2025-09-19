@@ -3,7 +3,6 @@ import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Loggers
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
-import Data.Maybe (fromJust)
 
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.StatusBar
