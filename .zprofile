@@ -20,7 +20,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
-export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export SUDO_ASKPASS="$HOME/.local/bin/dm-password"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export XMONAD_CONFIG_DIR="$XDG_CONFIG_HOME/xmonad"
 
@@ -32,14 +32,14 @@ export XMONAD_CONFIG_DIR="$XDG_CONFIG_HOME/xmonad"
 echo "Select a window manager to start your system:
 	[1] Dwm, the suckless (dynamic) window manager
 	[2] Qtile, Python's window manager
-	[3] XMonad, written entirely in Haskell
+	[3] Xmonad, written entirely in Haskell
 	[*] Exit script; enter shell
 "
 printf "Choice: "
 read -r wm
 case "$wm" in
-	1) export WM="Dwm" && startx "$XINITRC" ;;
-	2) export WM="Qtile" && startx "$XINITRC" ;;
-	3) export WM="XMonad" && startx "$XINITRC" ;;
+	1) export WM="dwm" && startx "$XINITRC" ;;
+	2) export WM="qtile" && startx "$XINITRC" ;;
+	3) export WM="xmonad" && startx "$XINITRC" ;;
 	*) return ;; # Don't start any window manager and just return to shell.
 esac
