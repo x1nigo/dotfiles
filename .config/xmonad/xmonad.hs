@@ -59,7 +59,7 @@ main = xmonad
 
 myXmobarPP :: PP
 myXmobarPP = def
-    { ppSep             = " / "
+    { ppSep             = " <fc=#575757>|</fc> "
     , ppTitle           = white . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = blue . wrap " " " " . xmobarBorder "Bottom" "#57d7f7" 3
