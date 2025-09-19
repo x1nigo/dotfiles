@@ -3,6 +3,7 @@ import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Loggers
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
+import Data.Maybe (fromJust)
 
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.StatusBar
@@ -38,8 +39,8 @@ myNormalColor = "#282828"
 myFocusedColor :: String
 myFocusedColor = "#570000"
 
--- windowCount :: X (Maybe String)
--- windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+windowCount :: X (Maybe String)
+windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
@@ -67,8 +68,8 @@ myXmobarPP = def
     , ppHiddenNoWindows = black . wrap " " " "
     , ppLayout          = red . wrap " " " "
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    -- , ppExtras          = [windowCount]
-    , ppOrder           = \[ws, l, t] -> [ws, l, t]
+    , ppExtras          = [windowCount]
+    , ppOrder           = \(ws:l:t:ex) -> [ws,l]++ex++[t]
     }
     where
         black, red, green, yellow, blue, magenta, cyan, white :: String -> String
