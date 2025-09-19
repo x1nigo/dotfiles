@@ -15,9 +15,10 @@ Config {overrideRedirect = False
 				   , Run BatteryP ["BAT0"] ["-t", "<box type=Bottom width=2 color=#87d7a7>🔋 <fc=#87d7a7><acstatus> (<left>%)</fc></box>"] 120
 			 	   , Run Date "<box type=Bottom width=2 color=#8787f7>🕗 <fc=#8787f7>%B %d, %Y - %A (%I:%M%p)</fc></box>" "date" 50
 				   , Run Com "echo" ["<fn=1>\xe61f</fn>"] "logo" 3600
+				   , Run Com "echo" [" <fc=#575757>|</fc> "] "sep" 3600
 				   , Run XMonadLog
 				 ]
 	  , sepChar  = "%"
 	  , alignSep = "}{"
-	  , template = "    %logo%      %XMonadLog% }{ %bright%    %cpu%    %memory%    %default:Master%    %battery%    %date% "
+	  , template = "    %logo%      %sep% %XMonadLog% }{ %bright%    %cpu%    %memory%    %default:Master%    %battery%    %date% "
 }
