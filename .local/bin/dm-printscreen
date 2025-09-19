@@ -10,11 +10,11 @@ activewin() {
 		&& notify-send "📸 Took an \`active window\` screenshot!" "You may find it in your ~ directory."
 }
 
-chosen=$(printf "%s\n" "💻 take the entire desktop" "🎯 only a selected area" "🪟 the active window" | dmenu  -i -l 6 -fn Monospace-12 -p "SCREENSHOT:")
+chosen=$(printf "%s\n" "Desktop - The entire screen" "Selected area - Click and drag" "Active window - The focused window" | dmenu -i -l 6 -p "Take a picture of (ESC to cancel):")
 
 case "$chosen" in
-	💻*) maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
+	Desktop*) maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
 		&& notify-send "📸 Took a \`desktop\` screenshot!" "You may find it in your ~ directory" ; exit ;;
-	🎯*) selected ;;
-	🪟*) activewin ;;
+	Selected*) selected ;;
+	Active*) activewin ;;
 esac
