@@ -62,8 +62,8 @@ myXmobarPP = def
     { ppSep             = " <fc=#575757>|</fc> "
     , ppTitle           = white . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = blue . wrap " " " " . xmobarBorder "Bottom" "#57d7f7" 3
-    , ppHidden          = magenta . wrap " " " " . xmobarBorder "Top" "#5787f7" 3
+    , ppCurrent         = magenta . wrap " " " " . xmobarBorder "Bottom" "#57d7f7" 3
+    , ppHidden          = blue . wrap " " " " . xmobarBorder "Top" "#5787f7" 3
     , ppHiddenNoWindows = black . wrap " " " "
     , ppLayout          = red . wrap " " " "
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
@@ -73,12 +73,12 @@ myXmobarPP = def
     where
         black, red, green, yellow, blue, magenta, cyan, white :: String -> String
         black   = xmobarColor "#373737" ""
-        red     = xmobarColor "#f75757" ""
+        red     = xmobarColor "#f74747" ""
         green   = xmobarColor "#87d7a7" ""
-        yellow  = xmobarColor "#ffa747" ""
-        blue    = xmobarColor "#5787f7" ""
-        magenta = xmobarColor "#8787f7" ""
-        cyan    = xmobarColor "#57d7f7" ""
+        yellow  = xmobarColor "#ff8747" ""
+        blue    = xmobarColor "#005577" ""
+        magenta = xmobarColor "#5787f7" ""
+        cyan    = xmobarColor "#87d7f7" ""
         white   = xmobarColor "#d7d7d7" ""
 
 myManageHook :: ManageHook
