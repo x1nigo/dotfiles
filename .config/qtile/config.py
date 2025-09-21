@@ -31,7 +31,8 @@ import libqtile.resources
 from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-# from libqtile.utils import guess_terminal
+import colors
+colors = colors.Dark
 
 mod = "mod4"
 terminal = "st" # guess_terminal()
@@ -50,7 +51,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn(terminal + " -n termfloat"), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
     Key([mod], "w", lazy.spawn(browser), desc="Launch the browser"),
     Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager)), desc="Spawn the file manager"),
-    Key([mod], "d", lazy.spawn("dmenu_run"), desc="Launch a program"),
+    Key([mod], "d", lazy.spawn("dmenu_run -p 'RUN:' -l 6 -g 8"), desc="Launch a program"),
     Key([mod], "b", lazy.spawn("dm-bookmark"), desc="Bookmark the highlighted text"),
     Key([mod], "v", lazy.spawn("dm-videos"), desc="Watch a video through your media player"),
     Key([mod], "q", lazy.window.kill(), desc="Exit a window"),
@@ -152,7 +153,7 @@ my_layout = {
 
 separator_values = {
     "size_percent": 50,
-    "foreground": "#575757",
+    "foreground": "#373737",
     }
 
 layouts = [
@@ -184,9 +185,9 @@ widget_defaults = dict(
     # It also looks better in bold, unlike other window managers.
     # font = "sans bold",
     font = "Futura PT Bold", # Make sure the font is available in the first place.
-    foreground = "#d7d7d7",
+    foreground = colors[7],
     fontsize = 12,
-    padding = 7,
+    padding = 5,
     margin = 3,
 )
 extension_defaults = widget_defaults.copy()
@@ -202,12 +203,12 @@ screens = [
                 widget.Sep(**separator_values),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
-                    highlight_color = ["#121212", "#1d2028"],
-                    active = "#8787f7",
-                    inactive = "#373737",
+                    highlight_color = colors[9],
+                    active = colors[5],
+                    inactive = colors[8],
                     borderwidth = 3,
-                    block_highlight_text_color = "#f74747",
-                    this_current_screen_border = "#87d7f7",
+                    block_highlight_text_color = colors[6],
+                    this_current_screen_border = colors[6],
                     padding = 2,
                     ),
                 widget.Sep(**separator_values),
@@ -215,75 +216,74 @@ screens = [
                     mode = "both",
                     icon_first = True,
                     scale = 0.7,
-                    foreground = "#f74747",
+                    foreground = colors[1],
                     ),
                 widget.Sep(**separator_values),
-#                 widget.WindowCount(
-#                     show_zero = True,
-#                     foreground = "#f74747",
-#                     ),
-#                 widget.Sep(**separator_values),
-#                 widget.LaunchBar(
-#                     progs = [("🦊", "zen-browser", "Browser"), # librewolf, firefox, chromium, etc.
-#                              ("🎯", "st", "The simple terminal"),
-#                              ("✍️", "libreoffice", "Libre Office"),
-#                              ("🌐", "st -e nmtui", "Network Manager"),
-#                              ("🎸", "st -e ncmpcpp", "Music Player"),
-#                              ],
-#                     padding = 5,
-#                     ),
-#                 widget.Sep(**separator_values),
+                widget.LaunchBar(
+                    progs = [("🦁", "brave", "Browser"), # librewolf, firefox, chromium, etc.
+                             ("🎯", "st", "The simple terminal"),
+                             ("✍️", "libreoffice", "Libre Office"),
+                             ("🌐", "st -e nmtui", "Network Manager"),
+                             ("🎸", "st -e ncmpcpp", "Music Player"),
+                             ],
+                    padding = 5,
+                    ),
+                widget.Sep(**separator_values),
                 widget.WindowName(
-                    foreground = "#d7d7d7",
+                    foreground = colors[7],
                     max_chars = 50,
                     empty_group_string = "~",
                     ),
+                widget.GenPollCommand(
+                    cmd = ["uname", "-r"],
+                    fmt = "  {}",
+                    foreground = colors[8]
+                    ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
-                    fmt = "󰛨   bri: ({})",
-                    foreground = "#005577",
+                    fmt = "󰛨   Bri: ({})",
+                    foreground = colors[4],
                     ),
                 widget.CPU(
-                        fmt = "   cpu: {}",
+                        fmt = "   Cpu: {}",
                         format = "({load_percent}%)",
-                        foreground = "#87d7f7",
+                        foreground = colors[6],
                         update_interval = 5,
                         ),
                 widget.Memory(
-                    fmt = "   mem: {}",
+                    fmt = "   Mem: {}",
                     format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
-                    foreground = "#f74747",
+                    foreground = colors[1],
                     update_interval = 5,
                     ),
                 widget.Volume(
                     mute_format = "  muted",
-                    unmute_format = "   vol: ({volume}%)",
-                    foreground = "#ff8747",
+                    unmute_format = "   Vol: ({volume}%)",
+                    foreground = colors[3],
                     update_interval = 1,
                     ),
                 widget.Battery(
                     fmt = "{}",
-                    format = "{char}   bat: ({percent:2.0%})",
+                    format = "{char}   Bat: ({percent:2.0%})",
                     discharge_char = "",
                     empty_char = "",
                     charge_char = "",
                     full_char = "",
                     full_short_text = "",
                     update_interval = 60,
-                    foreground = "#87d7a7",
+                    foreground = colors[2],
                     ),
-                widget.Sep(**separator_values),
                 widget.Systray(),
                 widget.Clock(
                         format="󰥔  %B %d, %Y - %A (%I:%M%p)",
-                        foreground = "#5787f7",
+                        foreground = colors[5],
                         update_interval = 5,
                              ),
                 widget.Spacer(length = 3),
             ],
             26, # Bar height
-            background = "#1d2023",
-            # margin = [8, 8, 0, 8], # Orientation: N, E, S, W
+            background = colors[0],
+            margin = [8, 8, 0, 8], # Orientation: N, E, S, W
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
