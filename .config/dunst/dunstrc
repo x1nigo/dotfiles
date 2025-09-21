@@ -5,9 +5,9 @@
     height = 1000
     transparency = 0
     horizontal_padding = 2
-    font = Monospace 10
+    font = Monospace 9
     format = "<b>%s</b>\n%b"
-	frame_color = "#373737"
+	frame_color = "#87d7f7"
     frame_width = 2
 
 [urgency_normal]
