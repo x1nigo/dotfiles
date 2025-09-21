@@ -18,7 +18,7 @@ Config {overrideRedirect = False
 				   , Run Memory ["-t", "<fc=#f74747><fn=2>\xf233</fn>    mem: <used>M (<usedratio>%)</fc>"] 300
 				   , Run Volume "default" "Master" ["-t", "<fc=#ff8747><fn=2>\xf45f</fn>    vol: (<volume>%) <status></fc>", "--", "--on", "", "--off", "[muted]"] 10
 				   , Run BatteryP ["BAT0"] ["-t", "<fc=#87d7a7><fn=2>\xf240</fn>    <acstatus> (<left>%)</fc>", "--", "-o", "bat:"] 120
-			 	   , Run Date "<fc=#5787f7><fn=2>\xf0954</fn>   %B %d, %Y - %A (%I:%M%p)</fc>" "date" 50
+			 	   , Run Date "<fc=#5757d7><fn=2>\xf0954</fn>   %B %d, %Y - %A (%I:%M%p)</fc>" "date" 50
 				   , Run Com "echo" ["<fn=1>\xe61f</fn>"] "logo" 3600
 				   , Run Com "echo" [" <fc=#575757>|</fc> "] "sep" 3600
 				   , Run Com "uname" ["-r"] "release" 3600
@@ -29,5 +29,5 @@ Config {overrideRedirect = False
 	  , alignSep = "}{"
 	  -- Uncomment this to remove the underlines (bottom borders).
 	  -- , template = "    %logo%     %sep% %XMonadLog% }{ <fc=#373742>%penguin% %release%</fc>    %bright%    %cpu%    %memory%    %default:Master%    %battery%    %date% "
-	  , template = "    %logo%     %sep% %XMonadLog% }{ <box type=Bottom width=2 color=#373742><fc=#373742>%penguin% %release%</fc></box>    <box type=Bottom width=2 color=#005577>%bright%</box>    <box type=Bottom width=2 color=#57d7f7>%cpu%</box>    <box type=Bottom width=2 color=#f74747>%memory%</box>    <box type=Bottom width=2 color=#ff8747>%default:Master%</box>    <box type=Bottom width=2 color=#87d7a7>%battery%</box>    <box type=Bottom width=2 color=#5787f7>%date%</box> "
+	  , template = "    %logo%     %sep% %XMonadLog% }{ <box type=Bottom width=2 color=#373742><fc=#373742>%penguin% %release%</fc></box>    <box type=Bottom width=2 color=#005577>%bright%</box>    <box type=Bottom width=2 color=#57d7f7>%cpu%</box>    <box type=Bottom width=2 color=#f74747>%memory%</box>    <box type=Bottom width=2 color=#ff8747>%default:Master%</box>    <box type=Bottom width=2 color=#87d7a7>%battery%</box>    <box type=Bottom width=2 color=#5757d7>%date%</box> "
 }
