@@ -35,7 +35,7 @@ from libqtile.lazy import lazy
 
 mod = "mod4"
 terminal = "st" # guess_terminal()
-browser = "zen-browser" # librewolf, firefox, etc.
+browser = "brave" # librewolf, firefox, etc.
 filemanager = "lfup"
 volumecontrols = "pulsemixer"
 
@@ -51,7 +51,7 @@ keys = [
     Key([mod], "w", lazy.spawn(browser), desc="Launch the browser"),
     Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager)), desc="Spawn the file manager"),
     Key([mod], "d", lazy.spawn("dmenu_run"), desc="Launch a program"),
-    Key([mod], "b", lazy.spawn("dm-insert"), desc="Bookmark the highlighted text"),
+    Key([mod], "b", lazy.spawn("dm-bookmark"), desc="Bookmark the highlighted text"),
     Key([mod], "v", lazy.spawn("dm-videos"), desc="Watch a video through your media player"),
     Key([mod], "q", lazy.window.kill(), desc="Exit a window"),
     Key([mod], "x", lazy.spawn("dm-wallpaper -d"), desc="Select a desktop wallpaper/background"),
@@ -184,7 +184,7 @@ widget_defaults = dict(
     # It also looks better in bold, unlike other window managers.
     # font = "sans bold",
     font = "Futura PT Bold", # Make sure the font is available in the first place.
-    foreground = "#ebdbb2",
+    foreground = "#d7d7d7",
     fontsize = 12,
     padding = 7,
     margin = 3,
@@ -203,11 +203,11 @@ screens = [
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
                     highlight_color = ["#121212", "#1d2028"],
-                    active = "#57d7f7",
+                    active = "#8787f7",
                     inactive = "#373737",
                     borderwidth = 3,
-                    block_highlight_text_color = "#57d8f8",
-                    this_current_screen_border = "#dc2800",
+                    block_highlight_text_color = "#f74747",
+                    this_current_screen_border = "#87d7f7",
                     padding = 2,
                     ),
                 widget.Sep(**separator_values),
@@ -215,12 +215,12 @@ screens = [
                     mode = "both",
                     icon_first = True,
                     scale = 0.7,
-                    foreground = "#f75757",
+                    foreground = "#f74747",
                     ),
                 widget.Sep(**separator_values),
 #                 widget.WindowCount(
 #                     show_zero = True,
-#                     foreground = "#f75757",
+#                     foreground = "#f74747",
 #                     ),
 #                 widget.Sep(**separator_values),
 #                 widget.LaunchBar(
@@ -234,40 +234,40 @@ screens = [
 #                     ),
 #                 widget.Sep(**separator_values),
                 widget.WindowName(
-                    foreground = "#ebdbb2",
+                    foreground = "#d7d7d7",
                     max_chars = 50,
                     empty_group_string = "~",
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
-                    fmt = "🌅 Bri: {}",
-                    foreground = "#5787f7",
+                    fmt = "󰛨   bri: ({})",
+                    foreground = "#005577",
                     ),
                 widget.CPU(
-                        fmt = "💻 Cpu: {}",
+                        fmt = "   cpu: {}",
                         format = "({load_percent}%)",
                         foreground = "#87d7f7",
                         update_interval = 5,
                         ),
                 widget.Memory(
-                    fmt = "🧠 Mem: {}",
+                    fmt = "   mem: {}",
                     format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
-                    foreground = "#f75757",
+                    foreground = "#f74747",
                     update_interval = 5,
                     ),
                 widget.Volume(
-                    mute_format = "🔇",
-                    unmute_format = "📢 Vol: {volume}%",
-                    foreground = "#ffa747",
+                    mute_format = "  muted",
+                    unmute_format = "   vol: ({volume}%)",
+                    foreground = "#ff8747",
                     update_interval = 1,
                     ),
                 widget.Battery(
                     fmt = "{}",
-                    format = "{char} Bat: {percent:2.0%}",
-                    discharge_char = "🔋",
-                    empty_char = "🪫",
-                    charge_char = "🔌",
-                    full_char = "⚡",
+                    format = "{char}   bat: ({percent:2.0%})",
+                    discharge_char = "",
+                    empty_char = "",
+                    charge_char = "",
+                    full_char = "",
                     full_short_text = "",
                     update_interval = 60,
                     foreground = "#87d7a7",
@@ -275,8 +275,8 @@ screens = [
                 widget.Sep(**separator_values),
                 widget.Systray(),
                 widget.Clock(
-                        format="⌛ %B %d, %Y - %A 🕗 %I:%M%p",
-                        foreground = "#8787f7",
+                        format="󰥔  %B %d, %Y - %A (%I:%M%p)",
+                        foreground = "#5787f7",
                         update_interval = 5,
                              ),
                 widget.Spacer(length = 3),
