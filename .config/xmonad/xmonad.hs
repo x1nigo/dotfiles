@@ -62,7 +62,7 @@ myXmobarPP = def
     { ppSep             = " <fc=#575757>|</fc> "
     , ppTitle           = white . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = cyan . wrap " " " " . xmobarBorder "Bottom" "#57d7f7" 3
+    , ppCurrent         = cyan . wrap " " " " . xmobarBorder "Bottom" "#87d7f7" 3
     , ppHidden          = magenta . wrap " " " " . xmobarBorder "Top" "#5757d7" 3
     , ppHiddenNoWindows = black . wrap " " " "
     , ppLayout          = red . wrap " " " "
