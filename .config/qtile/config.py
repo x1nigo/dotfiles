@@ -39,6 +39,7 @@ terminal = "st" # guess_terminal()
 browser = "brave" # librewolf, firefox, etc.
 filemanager = "lfup"
 volumecontrols = "pulsemixer"
+dmenu_command = "dmenu_run -p 'RUN:' -l 6 -g 8"
 
 # @hook.subscribe.startup_once
 # def autostart():
@@ -51,7 +52,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn(terminal + " -n termfloat"), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
     Key([mod], "w", lazy.spawn(browser), desc="Launch the browser"),
     Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager)), desc="Spawn the file manager"),
-    Key([mod], "d", lazy.spawn("dmenu_run -p 'RUN:' -l 6 -g 8"), desc="Launch a program"),
+    Key([mod], "d", lazy.spawn(dmenu_command), desc="Launch a program"),
     Key([mod], "b", lazy.spawn("dm-bookmark"), desc="Bookmark the highlighted text"),
     Key([mod], "v", lazy.spawn("dm-videos"), desc="Watch a video through your media player"),
     Key([mod], "q", lazy.window.kill(), desc="Exit a window"),
@@ -187,7 +188,7 @@ widget_defaults = dict(
     font = "Futura PT Bold", # Make sure the font is available in the first place.
     foreground = colors[7],
     fontsize = 12,
-    padding = 5,
+    padding = 7,
     margin = 3,
 )
 extension_defaults = widget_defaults.copy()
@@ -198,7 +199,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.Spacer(length = 8),
-                widget.Image(filename = "~/.config/qtile/python_no_color.png", margin = 3),
+                widget.Image(filename = "~/.config/qtile/python.png", margin = 3),
                 widget.Spacer(length = 4),
                 widget.Sep(**separator_values),
                 widget.GroupBox(
@@ -209,7 +210,7 @@ screens = [
                     borderwidth = 3,
                     block_highlight_text_color = colors[6],
                     this_current_screen_border = colors[6],
-                    padding = 2,
+                    padding = 1,
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
@@ -231,13 +232,14 @@ screens = [
                 widget.Sep(**separator_values),
                 widget.WindowName(
                     foreground = colors[7],
-                    max_chars = 50,
+                    max_chars = 70,
                     empty_group_string = "~",
                     ),
                 widget.GenPollCommand(
                     cmd = ["uname", "-r"],
                     fmt = "  {}",
-                    foreground = colors[8]
+                    foreground = colors[8],
+                    update_interval = 360
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
@@ -257,33 +259,33 @@ screens = [
                     update_interval = 5,
                     ),
                 widget.Volume(
-                    mute_format = "  muted",
+                    mute_format = "   Muted: ({volume}%)",
                     unmute_format = "   Vol: ({volume}%)",
                     foreground = colors[3],
                     update_interval = 1,
                     ),
                 widget.Battery(
                     fmt = "{}",
-                    format = "{char}   Bat: ({percent:2.0%})",
-                    discharge_char = "",
+                    format = "{char}  Bat: ({percent:2.0%})",
+                    discharge_char = "",
                     empty_char = "",
                     charge_char = "",
-                    full_char = "",
+                    full_char = "",
                     full_short_text = "",
                     update_interval = 60,
                     foreground = colors[2],
                     ),
                 widget.Systray(),
                 widget.Clock(
-                        format="󰥔  %B %d, %Y - %A (%I:%M%p)",
+                        format="  %B %d, %Y - %A (%I:%M%p)",
                         foreground = colors[5],
                         update_interval = 5,
                              ),
-                widget.Spacer(length = 3),
+                widget.Spacer(length = 2),
             ],
-            26, # Bar height
+            28, # Bar height
             background = colors[0],
-            margin = [8, 8, 0, 8], # Orientation: N, E, S, W
+            margin = [8, 12, 0, 12], # Orientation: N, E, S, W
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
         ),
