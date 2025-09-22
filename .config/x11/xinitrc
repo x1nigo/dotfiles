@@ -12,8 +12,12 @@ for program in $autostart; do
 	pgrep -x "$program" || "$program" &
 done >/dev/null 2>&1
 
-# Start the window manager; without `ssh-agent`, dwm will literally shut down upon recompiling.
-case "$WM" in
+# Start the window manager (WM); without `ssh-agent`, dwm will literally shut down upon recompiling.
+# Available WMs in my config:
+# - dwm
+# - qtile
+# - xmonad
+case "$WM" in # The `WM` variable is taken from `.zprofile`.
 	"dwm") dwmblocks &
 		while true; do ssh-agent dwm; done ;;
 	"qtile") qtile start ;;
