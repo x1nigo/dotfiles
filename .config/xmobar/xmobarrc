@@ -6,18 +6,18 @@
 Config {overrideRedirect = False
 	  , font             = "Futura PT Bold 9"
       , additionalFonts  = [ "Mononoki 18" -- for the haskell logo
-                           , "Mononoki 12" -- for general symbols
+                           , "Mononoki 10" -- for general symbols
                            ]
 	  , bgColor          = "#1d2023"
 	  , fgColor          = "#d7d7d7"
-	  , position         = TopSize L 100 26
+	  , position         = TopSize L 100 28
 	  , lowerOnStart     = True
 	  , hideOnStart      = False
 	  , commands = [ Run Brightness ["-t", "<fc=#005577><fn=2>\xf06e8</fn>    bri: (<percent>%)</fc>", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
 				   , Run Cpu ["-t", "<fc=#57d7f7><fn=2>\xf108</fn>    cpu: (<total>%)</fc>"] 300
 				   , Run Memory ["-t", "<fc=#f74747><fn=2>\xf233</fn>    mem: <used>M (<usedratio>%)</fc>"] 300
-				   , Run Volume "default" "Master" ["-t", "<fc=#ff8747><fn=2>\xf45f</fn>    vol: (<volume>%) <status></fc>", "--", "--on", "", "--off", "[muted]"] 10
-				   , Run BatteryP ["BAT0"] ["-t", "<fc=#87d7a7><fn=2>\xf240</fn>    <acstatus> (<left>%)</fc>", "--", "-o", "bat:"] 120
+				   , Run Volume "default" "Master" ["-t", "<fc=#ff8747><fn=2>\xf45f</fn>    vol: (<volume>%) <status></fc>", "--", "--on", "", "--off", "-> muted"] 10
+				   , Run BatteryP ["BAT0"] ["-t", "<fc=#87d7a7><fn=2>\xf0e7</fn>   <acstatus> (<left>%)</fc>", "--", "-o", "bat:"] 120
 			 	   , Run Date "<fc=#5757d7><fn=2>\xf0954</fn>   %B %d, %Y - %A (%I:%M%p)</fc>" "date" 50
 				   , Run Com "echo" ["<fn=1>\xe61f</fn>"] "logo" 3600
 				   , Run Com "echo" [" <fc=#575757>|</fc> "] "sep" 3600
