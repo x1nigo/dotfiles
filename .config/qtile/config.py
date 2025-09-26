@@ -62,6 +62,7 @@ keys = [
     Key([mod], "apostrophe", lazy.spawn(terminal + " -n termfloat -f monospace:size=16 -g 50x20 -e bc -lq"), desc="Use a terminal-based calculator"),
     Key([mod], "Insert", lazy.spawn("dm-insert"), desc="Insert one of your saved bookmarks"),
     Key([mod], "grave", lazy.spawn("dm-emoji"), desc="Place selected emoji in your clipboard"),
+    Key([mod], "u", lazy.spawn("dm-unicode"), desc="Copy selected unicode character"),
     Key([mod], "BackSpace", lazy.spawn("dm-system"), desc="The system menu"),
     # Media commands for both audio and backlight
     # This current setup uses pipewire and brightnessctl
@@ -199,18 +200,18 @@ screens = [
         top=bar.Bar(
             [
                 widget.Spacer(length = 8),
-                widget.Image(filename = "~/.config/qtile/python.png", margin = 3),
+                widget.Image(filename = "~/.config/qtile/CB2OS.png", margin = 8),
                 widget.Spacer(length = 4),
                 widget.Sep(**separator_values),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
                     highlight_color = colors[9],
-                    active = colors[5],
+                    active = colors[3],
                     inactive = colors[8],
                     borderwidth = 3,
                     block_highlight_text_color = colors[6],
-                    this_current_screen_border = colors[6],
-                    padding = 1,
+                    this_current_screen_border = colors[5],
+                    padding = 2,
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
@@ -222,9 +223,9 @@ screens = [
                 widget.Sep(**separator_values),
                 widget.LaunchBar(
                     progs = [("🦁", "brave", "Browser"), # librewolf, firefox, chromium, etc.
-                             ("🎯", "st", "The simple terminal"),
-                             ("✍️", "libreoffice", "Libre Office"),
-                             ("🌐", "st -e nmtui", "Network Manager"),
+                             ("🚀", "st", "The simple terminal"),
+                             ("🔖", "libreoffice", "Libre Office"),
+                             ("🌍", "st -e nmtui", "Network Manager"),
                              ("🎸", "st -e ncmpcpp", "Music Player"),
                              ],
                     padding = 5,
@@ -243,41 +244,42 @@ screens = [
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
-                    fmt = "󰛨   Bri: ({})",
+                    fmt = "󰛨   bri: ({})",
                     foreground = colors[4],
+                    update_interval = 6,
                     ),
                 widget.CPU(
-                        fmt = "   Cpu: {}",
+                        fmt = "   cpu: {}",
                         format = "({load_percent}%)",
                         foreground = colors[6],
-                        update_interval = 5,
+                        update_interval = 30,
                         ),
                 widget.Memory(
-                    fmt = "   Mem: {}",
+                    fmt = "   mem: {}",
                     format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
                     foreground = colors[1],
-                    update_interval = 5,
+                    update_interval = 30,
                     ),
                 widget.Volume(
-                    mute_format = "   Muted: ({volume}%)",
-                    unmute_format = "   Vol: ({volume}%)",
+                    mute_format = "   muted: ({volume}%)",
+                    unmute_format = "   vol: ({volume}%)",
                     foreground = colors[3],
                     update_interval = 1,
                     ),
                 widget.Battery(
                     fmt = "{}",
-                    format = "{char}  Bat: ({percent:2.0%})",
+                    format = "{char}  bat: ({percent:2.0%})",
                     discharge_char = "",
                     empty_char = "",
                     charge_char = "",
                     full_char = "",
                     full_short_text = "",
-                    update_interval = 60,
+                    update_interval = 12,
                     foreground = colors[2],
                     ),
                 widget.Systray(),
                 widget.Clock(
-                        format="  %B %d, %Y - %A (%I:%M%p)",
+                        format="  %a, %b %d, %Y - %I:%M%p",
                         foreground = colors[5],
                         update_interval = 5,
                              ),
@@ -286,8 +288,8 @@ screens = [
             28, # Bar height
             background = colors[0],
             margin = [8, 12, 0, 12], # Orientation: N, E, S, W
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
+            # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
         ),
 #         wallpaper=logo,
 #         wallpaper_mode="center",
