@@ -9,7 +9,7 @@ import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts)
-import XMonad.Hooks.ManageHelpers (isFullscreen, doFullFloat)
+import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat)
 
 import XMonad.Layout.Spacing
 import XMonad.Layout.Renamed
@@ -59,13 +59,13 @@ main = xmonad
 
 myXmobarPP :: PP
 myXmobarPP = def
-    { ppSep             = " <fc=#575757>|</fc> "
+    { ppSep             = " <fc=#373737>|</fc> "
     , ppTitle           = white . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = cyan . wrap " " " " . xmobarBorder "Bottom" "#87d7f7" 3
-    , ppHidden          = magenta . wrap " " " " . xmobarBorder "Top" "#5757d7" 3
+    , ppCurrent         = cyan . wrap " " " " . xmobarBorder "Bottom" "#5757d7" 3
+    , ppHidden          = yellow . wrap " " " "
     , ppHiddenNoWindows = black . wrap " " " "
-    , ppLayout          = red . wrap " " " "
+    , ppLayout          = red . wrap " " " " . xmobarBorder "Top" "#f74747" 3
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
     -- , ppExtras          = [windowCount]
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
@@ -86,6 +86,7 @@ myManageHook = composeAll
     [ className =? "dialog"    --> doFloat
 	, className =? "download"  --> doFloat
     , className =? "termfloat" --> doFloat
+    , isDialog                 --> doFloat
 	, isFullscreen             --> doFullFloat
     ]
 
@@ -111,6 +112,7 @@ myConfig = def
         , ("M-'",                     spawn (myTerminal ++ " -c termfloat -f monospace:size=16 -g 50x20 -e bc -lq"))
         , ("M-<Insert>",              spawn "dm-insert")
         , ("M-`",                     spawn "dm-emoji")
+        , ("M-u",                     spawn "dm-unicode")
         , ("M-<Backspace>",           spawn "dm-system")
 
         , ("<XF86AudioMute>",         spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
