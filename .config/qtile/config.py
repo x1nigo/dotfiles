@@ -28,9 +28,14 @@ import os
 import subprocess
 
 import libqtile.resources
-from libqtile import bar, layout, qtile, widget
+from libqtile import bar, layout, qtile # , widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+
+# `qtile-extras` from the AUR
+from qtile_extras import widget
+from qtile_extras.widget.decorations import BorderDecoration
+
 import colors
 colors = colors.Dark
 
@@ -199,10 +204,8 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Spacer(length = 8),
                 # The margin really depends on what kind of image is rendered.
                 widget.Image(filename = "~/.config/qtile/CB2OS-Logo.png", margin = 0),
-                widget.Spacer(length = 4),
                 widget.Sep(**separator_values),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
@@ -233,6 +236,7 @@ screens = [
                     ),
                 widget.Sep(**separator_values),
                 widget.WindowName(
+                    fmt = "*{}*",
                     foreground = colors[6],
                     max_chars = 70,
                     empty_group_string = "~",
@@ -241,31 +245,66 @@ screens = [
                     cmd = ["uname", "-r"],
                     fmt = "  {}",
                     foreground = colors[8],
-                    update_interval = 360
+                    update_interval = 360,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = colors[8],
+                            padding_x = 5,
+                            ),
+                        ],
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
                     fmt = "󰛨   bri: ({})",
                     foreground = colors[4],
                     update_interval = 6,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = colors[4],
+                            padding_x = 5,
+                            ),
+                        ],
                     ),
                 widget.CPU(
                         fmt = "   cpu: {}",
                         format = "({load_percent}%)",
                         foreground = colors[6],
                         update_interval = 30,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = colors[6],
+                            padding_x = 5,
+                            ),
+                        ],
                         ),
                 widget.Memory(
                     fmt = "   mem: {}",
                     format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
                     foreground = colors[1],
                     update_interval = 30,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = colors[1],
+                            padding_x = 5,
+                            ),
+                        ],
                     ),
                 widget.Volume(
                     mute_format = "   muted: ({volume}%)",
                     unmute_format = "   vol: ({volume}%)",
                     foreground = colors[3],
                     update_interval = 1,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = colors[3],
+                            padding_x = 5,
+                            ),
+                        ],
                     ),
                 widget.Battery(
                     fmt = "{}",
@@ -277,18 +316,31 @@ screens = [
                     full_short_text = "",
                     update_interval = 12,
                     foreground = colors[2],
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = colors[2],
+                            padding_x = 5,
+                            ),
+                        ],
                     ),
                 widget.Systray(),
                 widget.Clock(
-                        format="󰥔  %a, %b %d, %Y - %I:%M%p",
-                        foreground = colors[5],
-                        update_interval = 5,
-                             ),
-                widget.Spacer(length = 2),
+                    format="󰥔  %a, %b %d, %Y - %I:%M%p",
+                    foreground = colors[5],
+                    update_interval = 5,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = colors[5],
+                            padding_x = 5,
+                            ),
+                        ],
+                     ),
             ],
             28, # Bar height
             background = colors[0],
-            margin = [8, 12, 0, 12], # Orientation: N, E, S, W
+            # margin = [8, 12, 0, 12], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
         ),
