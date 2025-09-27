@@ -200,7 +200,8 @@ screens = [
         top=bar.Bar(
             [
                 widget.Spacer(length = 8),
-                widget.Image(filename = "~/.config/qtile/CB2OS.png", margin = 8),
+                # The margin really depends on what kind of image is rendered.
+                widget.Image(filename = "~/.config/qtile/CB2OS-Logo.png", margin = 0),
                 widget.Spacer(length = 4),
                 widget.Sep(**separator_values),
                 widget.GroupBox(
@@ -232,7 +233,7 @@ screens = [
                     ),
                 widget.Sep(**separator_values),
                 widget.WindowName(
-                    foreground = colors[7],
+                    foreground = colors[6],
                     max_chars = 70,
                     empty_group_string = "~",
                     ),
@@ -279,7 +280,7 @@ screens = [
                     ),
                 widget.Systray(),
                 widget.Clock(
-                        format="  %a, %b %d, %Y - %I:%M%p",
+                        format="󰥔  %a, %b %d, %Y - %I:%M%p",
                         foreground = colors[5],
                         update_interval = 5,
                              ),
