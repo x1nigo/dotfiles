@@ -1,11 +1,11 @@
 set selection-clipboard clipboard
 # set recolor
-set recolor-lightcolor "#161617"
-set recolor-darkcolor "#ebdbb8"
-set default-bg "#121212"
-set default-fg "#ebdbb8"
-set statusbar-bg "#121212"
-set statusbar-fg "#ebdbb8"
+set recolor-lightcolor "#1d2023"
+set recolor-darkcolor "#d7d7d7"
+set default-bg "#1d2023"
+set default-fg "#d7d7d7"
+set statusbar-bg "#1d2023"
+set statusbar-fg "#d7d7d7"
 set statusbar-h-padding 16
 set statusbar-v-padding 2
 set inputbar-fg "#dc2800"
