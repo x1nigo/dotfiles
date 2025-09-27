@@ -47,6 +47,15 @@ mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 -- myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
 
+myManageHook :: ManageHook
+myManageHook = composeAll
+    [ className =? "dialog"    --> doFloat
+	, className =? "download"  --> doFloat
+    , className =? "termfloat" --> doFloat
+    , isDialog                 --> doFloat
+	, isFullscreen             --> doFullFloat
+    ]
+
 main :: IO ()
 main = xmonad
      . ewmhFullscreen
@@ -60,7 +69,7 @@ main = xmonad
 myXmobarPP :: PP
 myXmobarPP = def
     { ppSep             = " <fc=#373737>|</fc> "
-    , ppTitle           = white . wrap " " " " . shorten 70
+    , ppTitle           = cyan . wrap "*" "*" . shorten 70
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = cyan . wrap " " " " . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = yellow . wrap " " " "
@@ -81,18 +90,9 @@ myXmobarPP = def
         cyan    = xmobarColor "#87d7f7" ""
         white   = xmobarColor "#d7d7d7" ""
 
-myManageHook :: ManageHook
-myManageHook = composeAll
-    [ className =? "dialog"    --> doFloat
-	, className =? "download"  --> doFloat
-    , className =? "termfloat" --> doFloat
-    , isDialog                 --> doFloat
-	, isFullscreen             --> doFullFloat
-    ]
-
 myConfig = def
     { modMask            = mod4Mask
-    , layoutHook         = lessBorders OnlyScreenFloat $ avoidStruts $ myLayoutHook
+    , layoutHook         = myLayoutHook
     , manageHook         = myManageHook
     , normalBorderColor  = myNormalColor
     , focusedBorderColor = myFocusedColor
@@ -152,8 +152,8 @@ grid     = renamed [Replace "grid"]
 monocle  = renamed [Replace "monocle"]
            $ Full
 
-myLayoutHook = tall     |||
-               spirals  |||
-               threeCol |||
-               grid     |||
-               noBorders monocle
+myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts $ tall     |||
+                                                           spirals  |||
+                                                           threeCol |||
+                                                           grid     |||
+                                                           noBorders monocle
