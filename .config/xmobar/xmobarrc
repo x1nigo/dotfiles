@@ -6,7 +6,7 @@
 Config {overrideRedirect = False
 	  , font             = "Futura PT Bold 9"
       , additionalFonts  = [ "Mononoki 18" -- for the haskell logo
-                           , "Mononoki 10" -- for general symbols
+                           , "Mononoki 11" -- for general symbols
                            ]
 	  , bgColor          = "#1d2023"
 	  , fgColor          = "#d7d7d7"
