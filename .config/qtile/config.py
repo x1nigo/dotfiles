@@ -152,9 +152,9 @@ for i in groups:
     )
 
 my_layout = {
-    "border_width": 3,
-    "margin": 12,
-    "border_focus": "#570000",
+    "border_width": 2,
+    "margin": 8,
+    "border_focus": "#d7d7d7",
     "border_normal": "#282828",
     }
 
@@ -313,9 +313,10 @@ screens = [
                     empty_char = "",
                     charge_char = "",
                     full_char = "",
-                    full_short_text = "",
-                    update_interval = 12,
+                    full_short_text = "full",
+                    not_charging_char = "!",
                     foreground = colors[2],
+                    update_interval = 12,
                     decorations = [
                         BorderDecoration(
                             border_width = [0, 0, 2, 0],
