@@ -28,7 +28,7 @@ import os
 import subprocess
 
 import libqtile.resources
-from libqtile import bar, layout, qtile # , widget
+from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
@@ -194,9 +194,9 @@ layouts = [
 
 floats_kept_above = True
 floating_layout = layout.Floating(
-        border_width = 3,
-        border_focus = "#570000",
-        border_normal = "#282828",
+    border_width = 3,
+    border_focus = "#870000",
+    border_normal = "#282828",
     float_rules = [
         *layout.Floating.default_float_rules,
         Match(wm_class = "termfloat"),
@@ -208,7 +208,7 @@ widget_defaults = dict(
     # Qtile seems to favor sans fonts, preferrably not monospace.
     # It also looks better in bold, unlike other window managers.
     # font = "sans bold",
-    font = "Open Sans Bold", # Make sure the font is available in the first place.
+    font = "Ubuntu Bold", # Make sure the font is available in the first place. Use `fc-list` to see.
     foreground = colors[7],
     fontsize = 12,
     padding = 7,
@@ -241,22 +241,22 @@ screens = [
                     scale = 0.7,
                     foreground = colors[1],
                     ),
-                widget.Sep(**separator_values),
-                widget.LaunchBar(
-                    progs = [("🦁", "brave", "Browser"), # librewolf, firefox, chromium, etc.
-                             ("🚀", "st", "The simple terminal"),
-                             ("⌨️", "libreoffice", "Libre Office"),
-                             ("🌏", "st -e nmtui", "Network Manager"),
-                             ("🎸", "st -e ncmpcpp", "Music Player"),
-                             ],
-                    padding = 5,
-                    ),
+                #                 widget.Sep(**separator_values),
+                #                 widget.LaunchBar(
+                #                     progs = [("🦁", "brave", "Browser"), # librewolf, firefox, chromium, etc.
+                #                              ("🚀", "st", "The simple terminal"),
+                #                              ("⌨️", "libreoffice", "Libre Office"),
+                #                              ("🌏", "st -e nmtui", "Network Manager"),
+                #                              ("🎸", "st -e ncmpcpp", "Music Player"),
+                #                              ],
+                #                     padding = 5,
+                #                     ),
                 widget.Sep(**separator_values),
                 widget.WindowName(
-                    fmt = "*{}*",
+                    fmt = "{}",
                     foreground = colors[6],
                     max_chars = 70,
-                    empty_group_string = "~",
+                    # empty_group_string = "~",
                     ),
                 widget.GenPollCommand(
                     cmd = ["uname", "-r"],
@@ -273,7 +273,7 @@ screens = [
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
-                    fmt = "󰛨   scr: ({})",
+                    fmt = "󰛨   Scr: {}",
                     foreground = colors[4],
                     update_interval = 6,
                     decorations = [
@@ -285,8 +285,8 @@ screens = [
                         ],
                     ),
                 widget.CPU(
-                    fmt = "   cpu: {}",
-                    format = "({load_percent}%)",
+                    fmt = "   Cpu: {}",
+                    format = "{load_percent}%",
                     foreground = colors[6],
                     update_interval = 30,
                     decorations = [
@@ -298,7 +298,7 @@ screens = [
                         ],
                     ),
                 widget.Memory(
-                    fmt = "   mem: {}",
+                    fmt = "   Mem: {}",
                     format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
                     foreground = colors[1],
                     update_interval = 30,
@@ -311,8 +311,8 @@ screens = [
                         ],
                     ),
                 widget.Volume(
-                    mute_format = "   muted: ({volume}%)",
-                    unmute_format = "   vol: ({volume}%)",
+                    mute_format = "   Muted: {volume}%",
+                    unmute_format = "   Vol: {volume}%",
                     foreground = colors[3],
                     update_interval = 1,
                     decorations = [
@@ -325,7 +325,7 @@ screens = [
                     ),
                 widget.Battery(
                     fmt = "{}",
-                    format = "{char}  bat: ({percent:2.0%})",
+                    format = "{char}  Bat: {percent:2.0%}",
                     discharge_char = "",
                     empty_char = "",
                     charge_char = "",
@@ -356,9 +356,9 @@ screens = [
                         ],
                      ),
             ],
-            28, # Bar height
+            30, # Bar height
             background = colors[0],
-            # margin = [8, 8, 0, 8], # Orientation: N, E, S, W
+            margin = [8, 12, 0, 12], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
         ),
