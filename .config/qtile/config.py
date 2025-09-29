@@ -125,7 +125,21 @@ keys = [
 #         )
 #     )
 
-groups = [Group(i) for i in "123456789"]
+# groups = [Group(i) for i in "123456789"]
+groups = []
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+# Edit these to indicate new labels for workspaces
+group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+# group_labels = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
+
+for i in range(len(group_names)):
+    groups.append(
+        Group(
+            name=group_names[i],
+            label=group_labels[i],
+            )
+        )
 
 for i in groups:
     keys.extend(
@@ -153,8 +167,8 @@ for i in groups:
 
 my_layout = {
     "border_width": 2,
-    "margin": 8,
-    "border_focus": "#d7d7d7",
+    "margin": 12,
+    "border_focus": "#57d7f7",
     "border_normal": "#282828",
     }
 
@@ -179,7 +193,10 @@ layouts = [
 ]
 
 floats_kept_above = True
-floating_layout = layout.Floating(**my_layout,
+floating_layout = layout.Floating(
+        border_width = 3,
+        border_focus = "#570000",
+        border_normal = "#282828",
     float_rules = [
         *layout.Floating.default_float_rules,
         Match(wm_class = "termfloat"),
@@ -191,11 +208,11 @@ widget_defaults = dict(
     # Qtile seems to favor sans fonts, preferrably not monospace.
     # It also looks better in bold, unlike other window managers.
     # font = "sans bold",
-    font = "Futura PT Bold", # Make sure the font is available in the first place.
+    font = "Open Sans Bold", # Make sure the font is available in the first place.
     foreground = colors[7],
     fontsize = 12,
     padding = 7,
-    margin = 3,
+    margin = 5,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -228,8 +245,8 @@ screens = [
                 widget.LaunchBar(
                     progs = [("🦁", "brave", "Browser"), # librewolf, firefox, chromium, etc.
                              ("🚀", "st", "The simple terminal"),
-                             ("🔖", "libreoffice", "Libre Office"),
-                             ("🌍", "st -e nmtui", "Network Manager"),
+                             ("⌨️", "libreoffice", "Libre Office"),
+                             ("🌏", "st -e nmtui", "Network Manager"),
                              ("🎸", "st -e ncmpcpp", "Music Player"),
                              ],
                     padding = 5,
@@ -256,7 +273,7 @@ screens = [
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
-                    fmt = "󰛨   bri: ({})",
+                    fmt = "󰛨   scr: ({})",
                     foreground = colors[4],
                     update_interval = 6,
                     decorations = [
@@ -268,10 +285,10 @@ screens = [
                         ],
                     ),
                 widget.CPU(
-                        fmt = "   cpu: {}",
-                        format = "({load_percent}%)",
-                        foreground = colors[6],
-                        update_interval = 30,
+                    fmt = "   cpu: {}",
+                    format = "({load_percent}%)",
+                    foreground = colors[6],
+                    update_interval = 30,
                     decorations = [
                         BorderDecoration(
                             border_width = [0, 0, 2, 0],
@@ -279,7 +296,7 @@ screens = [
                             padding_x = 5,
                             ),
                         ],
-                        ),
+                    ),
                 widget.Memory(
                     fmt = "   mem: {}",
                     format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
@@ -327,7 +344,7 @@ screens = [
                     ),
                 widget.Systray(),
                 widget.Clock(
-                    format="󰥔  %a, %b %d, %Y - %I:%M%p",
+                    format="󱎫  %a, %b %d, %Y - %I:%M %p",
                     foreground = colors[5],
                     update_interval = 5,
                     decorations = [
@@ -341,7 +358,7 @@ screens = [
             ],
             28, # Bar height
             background = colors[0],
-            # margin = [8, 12, 0, 12], # Orientation: N, E, S, W
+            # margin = [8, 8, 0, 8], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
         ),
