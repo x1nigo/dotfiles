@@ -3,9 +3,10 @@
     follow = keyboard
     width = 370
     height = 1000
+	offset = 6x52
     transparency = 0
     horizontal_padding = 2
-    font = Futura PT 10
+    font = Sans 9
     format = "<b>%s</b>\n%b"
 	frame_color = "#57d7f7"
 	frame_width = 2
