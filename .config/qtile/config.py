@@ -57,6 +57,7 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn(terminal + " -n termfloat"), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
     Key([mod], "w", lazy.spawn(browser), desc="Launch the browser"),
     Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager)), desc="Spawn the file manager"),
+    Key([mod], "e", lazy.spawn("emacs"), desc="Launch emacs and edit something"),
     Key([mod], "d", lazy.spawn(dmenu_command), desc="Launch a program"),
     Key([mod], "b", lazy.spawn("dm-bookmark"), desc="Bookmark the highlighted text"),
     Key([mod], "v", lazy.spawn("dm-videos"), desc="Watch a video through your media player"),
@@ -167,7 +168,7 @@ for i in groups:
 
 my_layout = {
     "border_width": 2,
-    "margin": 12,
+    "margin": 16,
     "border_focus": "#57d7f7",
     "border_normal": "#282828",
     }
@@ -195,7 +196,7 @@ layouts = [
 floats_kept_above = True
 floating_layout = layout.Floating(
     border_width = 3,
-    border_focus = "#870000",
+    border_focus = "#570028",
     border_normal = "#282828",
     float_rules = [
         *layout.Floating.default_float_rules,
@@ -241,16 +242,16 @@ screens = [
                     scale = 0.7,
                     foreground = colors[1],
                     ),
-                #                 widget.Sep(**separator_values),
-                #                 widget.LaunchBar(
-                #                     progs = [("🦁", "brave", "Browser"), # librewolf, firefox, chromium, etc.
-                #                              ("🚀", "st", "The simple terminal"),
-                #                              ("⌨️", "libreoffice", "Libre Office"),
-                #                              ("🌏", "st -e nmtui", "Network Manager"),
-                #                              ("🎸", "st -e ncmpcpp", "Music Player"),
-                #                              ],
-                #                     padding = 5,
-                #                     ),
+                #                widget.Sep(**separator_values),
+                #                widget.LaunchBar(
+                #                    progs = [("🦁", "brave", "Browser"), # librewolf, firefox, chromium, etc.
+                #                        ("🚀", "st", "The simple terminal"),
+                #                        ("⌨️", "libreoffice", "Libre Office"),
+                #                        ("🌏", "st -e nmtui", "Network Manager"),
+                #                        ("🎸", "st -e ncmpcpp", "Music Player"),
+                #                        ],
+                #                    padding = 5,
+                #                    ),
                 widget.Sep(**separator_values),
                 widget.WindowName(
                     fmt = "{}",
@@ -358,7 +359,7 @@ screens = [
             ],
             30, # Bar height
             background = colors[0],
-            margin = [8, 12, 0, 12], # Orientation: N, E, S, W
+            margin = [8, 8, 0, 8], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
         ),
