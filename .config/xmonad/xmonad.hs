@@ -2,18 +2,21 @@ import XMonad
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Loggers
 import qualified XMonad.StackSet as W
+
 import qualified Data.Map as M
+-- import Data.Maybe (fromJust)
 
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks (avoidStruts)
+import XMonad.Hooks.ManageDocks (avoidStruts, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat)
 
 import XMonad.Layout.Spacing
 import XMonad.Layout.Renamed
 import XMonad.Layout.LayoutModifier
+import XMonad.Layout.ToggleLayouts
 
 import XMonad.Layout.NoBorders (noBorders, lessBorders, Ambiguity(OnlyScreenFloat))
 import XMonad.Layout.ThreeColumns
@@ -36,7 +39,7 @@ myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#570000"
+myFocusedColor = "#870000"
 
 -- windowCount :: X (Maybe String)
 -- windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
@@ -47,13 +50,17 @@ mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 -- myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
 
+-- myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
+-- clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
+--     where i = fromJust $ M.lookup ws myWorkspaceIndices
+
 myManageHook :: ManageHook
 myManageHook = composeAll
     [ className =? "dialog"    --> doFloat
-	, className =? "download"  --> doFloat
+    , className =? "download"  --> doFloat
     , className =? "termfloat" --> doFloat
     , isDialog                 --> doFloat
-	, isFullscreen             --> doFullFloat
+    , isFullscreen             --> doFullFloat
     ]
 
 main :: IO ()
@@ -69,12 +76,12 @@ main = xmonad
 myXmobarPP :: PP
 myXmobarPP = def
     { ppSep             = " <fc=#373737>|</fc> "
-    , ppTitle           = cyan . wrap "*" "*" . shorten 70
+    , ppTitle           = cyan . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = cyan . wrap " " " " . xmobarBorder "Bottom" "#5757d7" 3
-    , ppHidden          = yellow . wrap " " " "
-    , ppHiddenNoWindows = black . wrap " " " "
-    , ppLayout          = red . wrap " " " " . xmobarBorder "Top" "#f74747" 3
+    , ppCurrent         = cyan . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
+    , ppHidden          = yellow . wrap "" " "
+    , ppHiddenNoWindows = black . wrap "" " "
+    , ppLayout          = red . wrap " " " "
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
     -- , ppExtras          = [windowCount]
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
@@ -87,8 +94,8 @@ myXmobarPP = def
         yellow  = xmobarColor "#ff8747" ""
         blue    = xmobarColor "#005577" ""
         magenta = xmobarColor "#5757d7" ""
-        cyan    = xmobarColor "#87d7f7" ""
-        white   = xmobarColor "#d7d7d7" ""
+        cyan    = xmobarColor "#57d7f7" ""
+        white   = xmobarColor "#d7d7f7" ""
 
 myConfig = def
     { modMask            = mod4Mask
@@ -105,6 +112,7 @@ myConfig = def
         , ("M-d",                     spawn "dmenu_run -p 'RUN:' -l 6 -g 8")
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-w",                     spawn (myBrowser))
+        , ("M-e",                     spawn "emacs")
         , ("M-b",                     spawn "dm-bookmark")
         , ("M-v",                     spawn "dm-videos")
         , ("M-x",                     spawn "dm-wallpaper -d")
@@ -130,6 +138,7 @@ myConfig = def
         , ("M-<F12>",                 spawn "xmonad --restart" )
         , ("M-C-r",                   spawn "xmonad --recompile" )
         , ("<Print>",                 spawn "dm-printscreen")
+        , ("M-f",                     sendMessage (Toggle "monocle") >> sendMessage ToggleStruts) -- fullscreen toggle workaround
         , ("M-q",                     kill)
         ]
 
@@ -152,8 +161,9 @@ grid     = renamed [Replace "grid"]
 monocle  = renamed [Replace "monocle"]
            $ Full
 
-myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts $ tall     |||
-                                                           spirals  |||
-                                                           threeCol |||
-                                                           grid     |||
-                                                           noBorders monocle
+myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts
+                                           $ toggleLayouts (noBorders monocle)
+                                           $ tall     |||
+                                             spirals  |||
+                                             threeCol |||
+                                             grid
