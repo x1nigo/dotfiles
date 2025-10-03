@@ -1,16 +1,18 @@
+-- =======
+-- Imports
+-- =======
+
 import XMonad
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Loggers
 import qualified XMonad.StackSet as W
 
 import qualified Data.Map as M
--- import Data.Maybe (fromJust)
 
-import XMonad.Hooks.DynamicLog (dynamicLogWithPP, wrap, xmobarPP, xmobarColor, shorten, PP(..))
+import XMonad.Hooks.StatusBar.PP (wrap, xmobarColor, xmobarBorder, xmobarPP, shorten, xmobarStrip, PP(..))
 import XMonad.Hooks.StatusBar
-import XMonad.Hooks.StatusBar.PP
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks (avoidStruts, ToggleStruts(..))
+import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat)
 
 import XMonad.Layout.Spacing
@@ -23,6 +25,10 @@ import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Spiral
 import XMonad.Layout.Grid
 
+-- =========
+-- Variables
+-- =========
+
 myTerminal :: String
 myTerminal = "st"
 
@@ -33,71 +39,64 @@ myFileManager :: String
 myFileManager = "lfup"
 
 myBorderWidth :: Dimension
-myBorderWidth = 3
+myBorderWidth = 2
 
 myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#870000"
-
--- windowCount :: X (Maybe String)
--- windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
+myFocusedColor = "#57d7f7"
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
-myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
--- myWorkspaces = [" www ", " dev ", " doc ", " vid ", " pix ", " mus ", " vbox ", " art ", " sys "]
+-- ==========
+-- Workspaces
+-- ==========
 
--- myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
--- clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
---     where i = fromJust $ M.lookup ws myWorkspaceIndices
+myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+
+-- =====
+-- Hooks
+-- =====
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-    [ className =? "dialog"    --> doFloat
-    , className =? "download"  --> doFloat
-    , className =? "termfloat" --> doFloat
+    [ className =? "termfloat" --> doFloat
     , isDialog                 --> doFloat
     , isFullscreen             --> doFullFloat
     ]
 
+-- ====
+-- Main
+-- ====
+
 main :: IO ()
 main = xmonad
-     . ewmhFullscreen
-     . ewmh
-     . withEasySB (statusBarProp "xmobar ~/.config/xmobar/xmobarrc" (pure myXmobarPP)) toggleStrutsKey
-     $ myConfig
-     where
-         toggleStrutsKey :: XConfig Layout -> (KeyMask, KeySym)
-         toggleStrutsKey XConfig {modMask = mod4Mask} = (mod4Mask .|. shiftMask, xK_b)
+    . ewmhFullscreen
+    . ewmh
+    . withEasySB mySB defToggleStrutsKey
+    $ myConf
 
-myXmobarPP :: PP
-myXmobarPP = def
+mySB = statusBarProp "xmobar $HOME/.config/xmobar/xmobarrc" (pure myPP)
+
+myPP = def
     { ppSep             = " <fc=#373737>|</fc> "
-    , ppTitle           = cyan . wrap " " " " . shorten 70
+    , ppTitle           = xmobarColor "#57d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = cyan . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
-    , ppHidden          = yellow . wrap "" " "
-    , ppHiddenNoWindows = black . wrap "" " "
-    , ppLayout          = red . wrap " " " "
-    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    -- , ppExtras          = [windowCount]
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
+    , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
+    , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap "" " "
+    , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
+    , ppUrgent          = xmobarColor "#f78747" "" . wrap "!" "!"
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
     }
-    where
-        black, red, green, yellow, blue, magenta, cyan, white :: String -> String
-        black   = xmobarColor "#373737" ""
-        red     = xmobarColor "#f74747" ""
-        green   = xmobarColor "#87d7a7" ""
-        yellow  = xmobarColor "#ff8747" ""
-        blue    = xmobarColor "#005577" ""
-        magenta = xmobarColor "#5757d7" ""
-        cyan    = xmobarColor "#57d7f7" ""
-        white   = xmobarColor "#d7d7f7" ""
 
-myConfig = def
+-- =====================================
+-- Custom configuration and keybindings
+-- =====================================
+
+myConf = def
     { modMask            = mod4Mask
     , layoutHook         = myLayoutHook
     , manageHook         = myManageHook
@@ -122,15 +121,12 @@ myConfig = def
         , ("M-`",                     spawn "dm-emoji")
         , ("M-u",                     spawn "dm-unicode")
         , ("M-<Backspace>",           spawn "dm-system")
-
         , ("<XF86AudioMute>",         spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
         , ("<XF86AudioMicMute>",      spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
         , ("<XF86AudioRaiseVolume>",  spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
         , ("<XF86AudioLowerVolume>",  spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
-
         , ("<XF86MonBrightnessUp>",   spawn "brightnessctl s 5%+")
         , ("<XF86MonBrightnessDown>", spawn "brightnessctl s 5%-")
-
         , ("M-<F1>",                  spawn "readme")
         , ("M-<F2>",                  spawn "dm-fonts")
         , ("M-<F3>",                  spawn (myTerminal ++ " -e pulsemixer"))
@@ -138,9 +134,13 @@ myConfig = def
         , ("M-<F12>",                 spawn "xmonad --restart" )
         , ("M-C-r",                   spawn "xmonad --recompile" )
         , ("<Print>",                 spawn "dm-printscreen")
-        , ("M-f",                     sendMessage (Toggle "monocle") >> sendMessage ToggleStruts) -- fullscreen toggle workaround
+        , ("M-f",                     sendMessage (Toggle "monocle") >> sendMessage ToggleStruts) -- fullscreen toggle
         , ("M-q",                     kill)
         ]
+
+-- =======
+-- Layouts
+-- =======
 
 tall     = renamed [Replace "tall"]
            $ mySpacing 6
