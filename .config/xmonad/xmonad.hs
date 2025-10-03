@@ -45,7 +45,7 @@ myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#57d7f7"
+myFocusedColor = "#5757d7"
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
@@ -82,7 +82,7 @@ mySB = statusBarProp "xmobar $HOME/.config/xmobar/xmobarrc" (pure myPP)
 
 myPP = def
     { ppSep             = " <fc=#373737>|</fc> "
-    , ppTitle           = xmobarColor "#57d7f7" "" . wrap " " " " . shorten 70
+    , ppTitle           = xmobarColor "#5757d7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
@@ -112,7 +112,7 @@ myConf = def
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-w",                     spawn (myBrowser))
         , ("M-e",                     spawn "emacs")
-        , ("M-b",                     spawn "dm-bookmark")
+        , ("M-S-b",                   spawn "dm-bookmark")
         , ("M-v",                     spawn "dm-videos")
         , ("M-x",                     spawn "dm-wallpaper -d")
         , ("M-S-x",                   spawn "dm-wallpaper -x")
