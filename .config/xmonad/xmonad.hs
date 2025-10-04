@@ -1,3 +1,8 @@
+-- ===========================================================
+-- x1nigo's xmonad config
+-- https://github.com/x1nigo/dotfiles/.config/xmonad/xmonad.hs
+-- ===========================================================
+
 -- =======
 -- Imports
 -- =======
@@ -5,14 +10,15 @@
 import XMonad
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Loggers
-import qualified XMonad.StackSet as W
+import XMonad.Util.ClickableWorkspaces -- requires `xdotool` in $PATH + UnsafeXMonadLog in `xmobar`
 
+import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 
 import XMonad.Hooks.StatusBar.PP (wrap, xmobarColor, xmobarBorder, xmobarPP, shorten, xmobarStrip, PP(..))
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.EwmhDesktops
-import XMonad.Hooks.ManageDocks (avoidStruts, docks, ToggleStruts(..))
+import XMonad.Hooks.ManageDocks (avoidStruts, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat)
 
 import XMonad.Layout.Spacing
@@ -24,6 +30,8 @@ import XMonad.Layout.NoBorders (noBorders, lessBorders, Ambiguity(OnlyScreenFloa
 import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Spiral
 import XMonad.Layout.Grid
+import XMonad.Layout.CenteredMaster
+import XMonad.Layout.SimplestFloat
 
 -- =========
 -- Variables
@@ -33,7 +41,7 @@ myTerminal :: String
 myTerminal = "st"
 
 myBrowser :: String
-myBrowser = "brave"
+myBrowser = "zen-browser"
 
 myFileManager :: String
 myFileManager = "lfup"
@@ -45,7 +53,7 @@ myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#5757d7"
+myFocusedColor = "#57d7f7"
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
@@ -55,6 +63,8 @@ mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 -- ==========
 
 myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+-- myWorkspaces = [" www ", " dev ", " art ", " vid ", " mus ", " virt ", " fx ", " sys ", " null "]
+-- myWorkspaces = [" one ", " two ", " three ", " four ", " five ", " six ", " seven ", " eight ", " nine "]
 
 -- =====
 -- Hooks
@@ -72,19 +82,20 @@ myManageHook = composeAll
 -- ====
 
 main :: IO ()
-main = xmonad
+main = do
+      xmonad
     . ewmhFullscreen
     . ewmh
     . withEasySB mySB defToggleStrutsKey
     $ myConf
 
-mySB = statusBarProp "xmobar $HOME/.config/xmobar/xmobarrc" (pure myPP)
+mySB = statusBarProp "xmobar $HOME/.config/xmobar/xmobarrc" (clickablePP myPP)
 
 myPP = def
     { ppSep             = " <fc=#373737>|</fc> "
-    , ppTitle           = xmobarColor "#5757d7" "" . wrap " " " " . shorten 70
+    , ppTitle           = xmobarColor "#57d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
+    , ppCurrent         = xmobarColor "#57d7f7" "". wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
     , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap "" " "
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
@@ -158,12 +169,20 @@ grid     = renamed [Replace "grid"]
            $ mySpacing 6
            $ GridRatio (4/3)
 
+cmaster  = renamed [Replace "cmaster"]
+           $ mySpacing 6
+           $ centerMaster Grid
+
 monocle  = renamed [Replace "monocle"]
            $ Full
 
-myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts
-                                           $ toggleLayouts (noBorders monocle)
-                                           $ tall     |||
-                                             spirals  |||
-                                             threeCol |||
-                                             grid
+floating = renamed [Replace "floating"]
+           $ simplestFloat
+
+myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts $ toggleLayouts (noBorders monocle)
+                                                         $ tall     |||
+                                                           spirals  |||
+                                                           threeCol |||
+                                                           grid     |||
+                                                           cmaster  |||
+                                                           floating
