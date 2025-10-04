@@ -47,7 +47,7 @@ myFileManager :: String
 myFileManager = "lfup"
 
 myBorderWidth :: Dimension
-myBorderWidth = 3
+myBorderWidth = 2
 
 myNormalColor :: String
 myNormalColor = "#282828"
