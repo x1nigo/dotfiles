@@ -4,7 +4,7 @@
 export PATH="$PATH:/$HOME/.local/bin:$HOME/.local/bin/modules"
 
 # Go through a list of browsers and export that which is installed (first in line).
-browsers="brave zen-browser librewolf firefox chromium"
+browsers="zen-browser librewolf firefox brave chromium"
 for item in $browsers; do
 	command -v "$item" && export BROWSER="$item" && break
 done
