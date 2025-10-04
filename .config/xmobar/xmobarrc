@@ -4,7 +4,7 @@
 -- alsa-utils (for amixer)
 
 Config {overrideRedirect = False
-	  , font             = "Sans Bold 9" -- adjust the size with respect to the specific font
+	  , font             = "Sans Bold 9"
       , additionalFonts  = [ "Mononoki 18" -- for the haskell logo
                            , "Mononoki 11" -- for general symbols
                            ]
@@ -13,7 +13,7 @@ Config {overrideRedirect = False
 	  , position         = TopSize L 100 26
 	  , lowerOnStart     = True
 	  , hideOnStart      = False
-	  , commands = [ Run Brightness ["-t", "<fc=#005577><fn=2>\xf06e8</fn>   Bri: <percent>%</fc>", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
+	  , commands = [ Run Brightness ["-t", "<fc=#005577><fn=2>\xf05a8</fn>   Bri: <percent>%</fc>", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
 				   , Run Cpu ["-t", "<fc=#57d7f7><fn=2>\xf01c4</fn>    Cpu: <total>%</fc>"] 300
 				   , Run Memory ["-t", "<fc=#f74747><fn=2>\xf233</fn>    Mem: <used>M (<usedratio>%)</fc>"] 300
 				   , Run Volume "default" "Master" ["-t", "<fc=#ff8747><fn=2>\xf0a1</fn>    Vol: <volume>% <status></fc>", "--", "--on", "", "--off", "-> muted"] 10
@@ -23,7 +23,7 @@ Config {overrideRedirect = False
 				   , Run Com "echo" [" <fc=#373737>|</fc> "] "sep" 3600
 				   , Run Com "uname" ["-r"] "release" 3600
 				   , Run Com "echo" ["<fn=2>\xf17c</fn>"] "penguin" 3600
-				   , Run UnsafeXMonadLog
+				   , Run UnsafeXMonadLog -- allows clickable workspaces
 				   -- , Run XMonadLog
 				   ]
 	  , sepChar  = "%"
