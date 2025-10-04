@@ -185,4 +185,5 @@ myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts $ toggleLayouts (noBord
                                                            threeCol |||
                                                            grid     |||
                                                            cmaster  |||
+                                                           monocle  |||
                                                            floating
