@@ -31,7 +31,9 @@ import XMonad.Layout.ThreeColumns
 import XMonad.Layout.Spiral
 import XMonad.Layout.Grid
 import XMonad.Layout.CenteredMaster
+import XMonad.Layout.CenterMainFluid
 import XMonad.Layout.SimplestFloat
+import XMonad.Layout.StackTile
 
 -- =========
 -- Variables
@@ -47,7 +49,7 @@ myFileManager :: String
 myFileManager = "lfup"
 
 myBorderWidth :: Dimension
-myBorderWidth = 2
+myBorderWidth = 3
 
 myNormalColor :: String
 myNormalColor = "#282828"
@@ -86,7 +88,7 @@ main = do
       xmonad
     . ewmhFullscreen
     . ewmh
-    . withEasySB mySB defToggleStrutsKey
+    . withEasySB mySB defToggleStrutsKey -- outputs to `xmobar`
     $ myConf
 
 mySB = statusBarProp "xmobar $HOME/.config/xmobar/xmobarrc" (clickablePP myPP)
@@ -95,7 +97,7 @@ myPP = def
     { ppSep             = " <fc=#373737>|</fc> "
     , ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#57d7f7" "". wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
     , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap "" " "
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
@@ -153,37 +155,49 @@ myConf = def
 -- Layouts
 -- =======
 
-tall     = renamed [Replace "tall"]
-           $ mySpacing 6
-           $ Tall 1 (3/100) (1/2)
+-- NOTE: changes to spacing, renaming, and ratio of layouts will probably require a reboot
 
-spirals  = renamed [Replace "spirals"]
-           $ mySpacing 6
-           $ spiral (6/7)
+tall      = renamed [Replace "tall"]
+            $ mySpacing 6
+            $ Tall 1 (3/100) (1/2)
 
-threeCol = renamed [Replace "threeCol"]
-           $ mySpacing 6
-           $ ThreeCol 1 (3/100) (1/2)
+stackT    = renamed [Replace "stackT"]
+            $ mySpacing 6
+            $ StackTile 1 (3/100) (1/2)
 
-grid     = renamed [Replace "grid"]
-           $ mySpacing 6
-           $ GridRatio (4/3)
+fibonacci = renamed [Replace "fibonacci"]
+            $ mySpacing 6
+            $ spiral (6/7)
 
-cmaster  = renamed [Replace "cmaster"]
-           $ mySpacing 6
-           $ centerMaster Grid
+threeCol  = renamed [Replace "threeCol"]
+            $ mySpacing 6
+            $ ThreeCol 1 (3/100) (1/2)
 
-monocle  = renamed [Replace "monocle"]
-           $ Full
+grid      = renamed [Replace "grid"]
+            $ mySpacing 6
+            $ GridRatio (4/3)
 
-floating = renamed [Replace "floating"]
-           $ simplestFloat
+cmaster   = renamed [Replace "cmaster"]
+            $ mySpacing 6
+            $ centerMaster Grid
+
+cmasterF  = renamed [Replace "cmasterF"]
+            $ mySpacing 6
+            $ CenterMainFluid 1 (3/100) (70/100)
+
+monocle   = renamed [Replace "monocle"]
+            $ Full
+
+floating  = renamed [Replace "floating"]
+            $ simplestFloat
 
 myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts $ toggleLayouts (noBorders monocle)
-                                                         $ tall     |||
-                                                           spirals  |||
-                                                           threeCol |||
-                                                           grid     |||
-                                                           cmaster  |||
-                                                           monocle  |||
+                                                         $ tall      |||
+                                                           stackT    |||
+                                                           fibonacci |||
+                                                           threeCol  |||
+                                                           grid      |||
+                                                           cmaster   |||
+                                                           cmasterF  |||
+                                                           monocle   |||
                                                            floating
