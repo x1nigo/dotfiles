@@ -3,7 +3,7 @@
 -- any `sans` font, and make necessary edits
 -- alsa-utils (for amixer)
 
-Config {overrideRedirect = False
+Config {overrideRedirect = True -- `True` prevents xmonad from treating xmobar as a regular window
 	  , font             = "Noto Sans Bold 9"
       , additionalFonts  = [ "Mononoki 18"
                            , "Mononoki 11"
@@ -11,8 +11,7 @@ Config {overrideRedirect = False
 	  , bgColor          = "#21242b"
 	  , fgColor          = "#d7d7f7"
 	  , position         = TopSize L 100 26
-	  , lowerOnStart     = True
-	  , hideOnStart      = False
+	  , lowerOnStart     = True -- `True` prevents xmobar from overlapping windows on restart
 	  , commands = [ Run Brightness ["-t", "<fc=#5757d7><fn=2>\xf05a8</fn>   Bri: <percent>%</fc>", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
 				   , Run Cpu ["-t", "<fc=#57d7f7><fn=2>\xf01c4</fn>    Cpu: <total>%</fc>"] 300
 				   , Run Memory ["-t", "<fc=#f74747><fn=2>\xf233</fn>    Mem: <used>M (<usedratio>%)</fc>"] 300
