@@ -21,7 +21,7 @@ Config {overrideRedirect = False
 			 	   , Run Date "<fc=#5757d7><fn=2>\xf13ab</fn>   %a, %b %d, %Y - %I:%M %p</fc>" "date" 50
 				   , Run Com "echo" ["<fn=1><fc=#d7d7f7>\xe61f</fc></fn>"] "logo" 3600
 				   , Run Com "echo" [" <fc=#373737>|</fc> "] "sep" 3600
-				   , Run Uptime ["-t", "<fc=#005577>Uptime: <hours>h <minutes>m</fc>"] 3600
+				   , Run Uptime ["-t", "<fc=#005577><fn=2>\xf0b2c</fn>   Up: <hours>h <minutes>m</fc>"] 3600
 				   , Run DiskU [("/", "<fc=#87d7f7><fn=2>\xf0c7</fn>  Disk: <free> free</fc>")] [] 3600
 				   , Run UnsafeXMonadLog -- allows clickable workspaces
 				   -- , Run XMonadLog
