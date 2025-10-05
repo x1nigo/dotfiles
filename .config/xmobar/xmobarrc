@@ -1,12 +1,12 @@
 -- Requirements:
--- ttf-mononoki-nerd
+-- ttf-mononoki-nerd (for symbols)
 -- any `sans` font, and make necessary edits
 -- alsa-utils (for amixer)
 
 Config {overrideRedirect = False
-	  , font             = "Open Sans Bold 9"
-      , additionalFonts  = [ "Mononoki 18" -- for the haskell logo
-                           , "Mononoki 11" -- for general symbols
+	  , font             = "Noto Sans Bold 9"
+      , additionalFonts  = [ "Mononoki 18"
+                           , "Mononoki 11"
                            ]
 	  , bgColor          = "#21242b"
 	  , fgColor          = "#d7d7f7"
