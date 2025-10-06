@@ -21,7 +21,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doCenterFloat, doFullFloat)
 
-import XMonad.Layout.Spacing
+import XMonad.Layout.Spacing (spacingWithEdge, toggleWindowSpacingEnabled, toggleScreenSpacingEnabled)
 import XMonad.Layout.Renamed
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.ToggleLayouts
@@ -57,16 +57,11 @@ myNormalColor = "#282828"
 myFocusedColor :: String
 myFocusedColor = "#870000"
 
-mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
-mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
-
 -- ==========
 -- Workspaces
 -- ==========
 
 myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
--- myWorkspaces = [" www ", " dev ", " art ", " vid ", " mus ", " virt ", " fx ", " sys ", " null "]
--- myWorkspaces = [" one ", " two ", " three ", " four ", " five ", " six ", " seven ", " eight ", " nine "]
 
 -- =====
 -- Hooks
@@ -98,7 +93,7 @@ mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 
 myPP = def
     { ppSep             = " <fc=#373737>|</fc> "
-    , ppTitle           = xmobarColor "#57d7f7" "" . wrap " " " " . shorten 70
+    , ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
@@ -150,6 +145,7 @@ myConf = def
         , ("M-C-r",                   spawn "xmonad --recompile" )
         , ("<Print>",                 spawn "dm-printscreen")
         , ("M-f",                     sendMessage (Toggle "monocle") >> sendMessage ToggleStruts) -- fullscreen toggle
+        , ("M-g",                     toggleWindowSpacingEnabled >> toggleScreenSpacingEnabled)
         , ("M-q",                     kill)
         ]
 
@@ -160,27 +156,31 @@ myConf = def
 -- NOTE: changes to spacing, renaming, and ratio of layouts will probably require a reboot
 
 tall      = renamed [Replace "tall"]
-            $ mySpacing 6
+            $ spacingWithEdge 6
             $ Tall 1 (3/100) (1/2)
 
 stackT    = renamed [Replace "stackT"]
-            $ mySpacing 6
+            $ spacingWithEdge 6
             $ StackTile 1 (3/100) (1/2)
 
 fibonacci = renamed [Replace "fibonacci"]
-            $ mySpacing 6
+            $ spacingWithEdge 6
             $ spiral (6/7)
 
 threeCol  = renamed [Replace "threeCol"]
+            $ spacingWithEdge 6
             $ ThreeCol 1 (3/100) (1/2)
 
 grid      = renamed [Replace "grid"]
+            $ spacingWithEdge 6
             $ GridRatio (4/3)
 
 cmaster   = renamed [Replace "cmaster"]
+            $ spacingWithEdge 6
             $ centerMaster Grid
 
 cmasterF  = renamed [Replace "cmasterF"]
+            $ spacingWithEdge 6
             $ CenterMainFluid 1 (3/100) (70/100)
 
 monocle   = renamed [Replace "monocle"]
