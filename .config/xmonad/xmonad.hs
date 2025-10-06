@@ -127,7 +127,6 @@ myConf = def
         , ("M-d",                     spawn "dmenu_run -p 'RUN:' -l 6 -g 8")
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-w",                     spawn (myBrowser))
-        , ("M-e",                     spawn "emacs")
         , ("M-b",                     spawn "dm-bookmark")
         , ("M-v",                     spawn "dm-videos")
         , ("M-x",                     spawn "dm-wallpaper -d")
