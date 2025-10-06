@@ -3,15 +3,11 @@
 # Add `~/.local/bin` to $PATH
 export PATH="$PATH:/$HOME/.local/bin:$HOME/.local/bin/modules"
 
-# Go through a list of browsers and export that which is installed (first in line).
-browsers="zen-browser librewolf firefox brave chromium"
-for item in $browsers; do
-	command -v "$item" && export BROWSER="$item" && break
-done
 # General programs and commands
 [ $(command -v nvim) ] && editor="nvim" || editor="vim"
 export EDITOR="$editor"
 export VISUAL="$editor"
+export BROWSER="firefox"
 export TERMINAL="st"
 
 # XDG base directories
@@ -29,11 +25,11 @@ export XMONAD_CONFIG_DIR="$XDG_CONFIG_HOME/xmonad"
 # export XDG_RUNTIME_DIR="$HOME/.local/run/$(id -u)"
 
 # Start graphical server on user's current tty if not already running.
-echo "Select a window manager to start your system:
-	[1] Dwm, the suckless (dynamic) window manager
-	[2] Qtile, Python's window manager
-	[3] Xmonad, written entirely in Haskell
-	[*] Exit script; enter shell
+echo "Select a window manager (WM) to start your system:
+	 1  Dwm    - The suckless window manager, written in C
+	 2  Qtile  - Python's window manager
+	 3  Xmonad - WM written entirely in Haskell
+	 *  Exit   - Enter the shell
 "
 printf "Choice: "
 read -r wm
