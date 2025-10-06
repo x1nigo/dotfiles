@@ -55,7 +55,7 @@ myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#870000"
+myFocusedColor = "#57d7f7"
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
@@ -88,14 +88,17 @@ main = do
       xmonad
     . ewmhFullscreen
     . ewmh
-    . withEasySB mySB defToggleStrutsKey -- outputs to `xmobar`
+    . withEasySB mySB mySK -- outputs to `xmobar`
     $ myConf
 
 mySB = statusBarProp "xmobar $HOME/.config/xmobar/xmobarrc" (clickablePP myPP)
 
+mySK :: XConfig Layout -> (KeyMask, KeySym)
+mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
+
 myPP = def
     { ppSep             = " <fc=#373737>|</fc> "
-    , ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
+    , ppTitle           = xmobarColor "#57d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
@@ -125,7 +128,7 @@ myConf = def
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-w",                     spawn (myBrowser))
         , ("M-e",                     spawn "emacs")
-        , ("M-S-b",                   spawn "dm-bookmark")
+        , ("M-b",                     spawn "dm-bookmark")
         , ("M-v",                     spawn "dm-videos")
         , ("M-x",                     spawn "dm-wallpaper -d")
         , ("M-S-x",                   spawn "dm-wallpaper -x")
@@ -170,19 +173,15 @@ fibonacci = renamed [Replace "fibonacci"]
             $ spiral (6/7)
 
 threeCol  = renamed [Replace "threeCol"]
-            $ mySpacing 6
             $ ThreeCol 1 (3/100) (1/2)
 
 grid      = renamed [Replace "grid"]
-            $ mySpacing 6
             $ GridRatio (4/3)
 
 cmaster   = renamed [Replace "cmaster"]
-            $ mySpacing 6
             $ centerMaster Grid
 
 cmasterF  = renamed [Replace "cmasterF"]
-            $ mySpacing 6
             $ CenterMainFluid 1 (3/100) (70/100)
 
 monocle   = renamed [Replace "monocle"]
