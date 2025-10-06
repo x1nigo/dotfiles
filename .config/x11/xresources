@@ -1,12 +1,12 @@
 !! Set a default font and font size:
-*.font: monospace:size=9
+*.font: monospace:size=10
 
 !! Transparency (0-1):
 *.alpha: 1.0
 
 !! Set a background, foreground, and cursor color:
-*.background: #1d2023
-*.foreground: #d7d7d7
+*.background: #21242b
+*.foreground: #d7d7f7
 *.cursorColor: #5787f7
 
 /* name		dark	light */
@@ -20,19 +20,19 @@
 /* white	7		15 */
 
 /* !! 2001 */
-*.color0: #1d2023
+*.color0: #21242b
 *.color1: #f74747
 *.color2: #87d7a7
 *.color3: #ff8747
-*.color4: #005577
+*.color4: #5787d7
 *.color5: #5757d7
-*.color6: #87d7f7
-*.color7: #d7d7d7
+*.color6: #57d7f7
+*.color7: #d7d7f7
 *.color8: #373742
 *.color9: #f74747
 *.color10: #87d7a7
 *.color11: #ff8747
-*.color12: #005577
+*.color12: #5787d7
 *.color13: #5757d7
-*.color14: #87d7f7
-*.color15: #d7d7d7
+*.color14: #57d7f7
+*.color15: #d7d7f7
