@@ -49,13 +49,13 @@ myFileManager :: String
 myFileManager = "lfup"
 
 myBorderWidth :: Dimension
-myBorderWidth = 2
+myBorderWidth = 3
 
 myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#57d7f7"
+myFocusedColor = "#870000"
 
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
