@@ -57,7 +57,6 @@ keys = [
     Key([mod, "shift"], "Return", lazy.spawn(terminal + " -n termfloat"), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
     Key([mod], "w", lazy.spawn(browser), desc="Launch the browser"),
     Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager)), desc="Spawn the file manager"),
-    Key([mod], "e", lazy.spawn("emacs"), desc="Launch emacs and edit something"),
     Key([mod], "d", lazy.spawn(dmenu_command), desc="Launch a program"),
     Key([mod], "b", lazy.spawn("dm-bookmark"), desc="Bookmark the highlighted text"),
     Key([mod], "v", lazy.spawn("dm-videos"), desc="Watch a video through your media player"),
