@@ -19,7 +19,7 @@ import XMonad.Hooks.StatusBar.PP (wrap, xmobarColor, xmobarBorder, xmobarPP, sho
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts, ToggleStruts(..))
-import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doFullFloat)
+import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doCenterFloat, doFullFloat)
 
 import XMonad.Layout.Spacing
 import XMonad.Layout.Renamed
@@ -74,7 +74,7 @@ myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-    [ className =? "termfloat" --> doFloat
+    [ className =? "termfloat" --> doCenterFloat
     , isDialog                 --> doFloat
     , isFullscreen             --> doFullFloat
     ]
