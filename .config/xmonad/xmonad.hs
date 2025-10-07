@@ -54,6 +54,9 @@ myBrowser = "zen-browser"
 myFileManager :: String
 myFileManager = "lfup"
 
+myMusicPlayer :: String
+myMusicPlayer = "ncmpcpp"
+
 myBorderWidth :: Dimension
 myBorderWidth = 2
 
@@ -148,6 +151,7 @@ myConf = def
         , ("M-<Space>",               promote)
         , ("M-d",                     spawn "dmenu_run -p 'RUN:' -l 6 -g 8")
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
+        , ("M-n",                     spawn (myTerminal ++ " -e " ++ myMusicPlayer))
         , ("M-w",                     spawn (myBrowser))
         , ("M-b",                     spawn "dm-bookmark")
         , ("M-v",                     spawn "dm-videos")
