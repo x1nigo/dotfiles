@@ -21,7 +21,7 @@ import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doCenterFloat, doFullFloat)
 
-import XMonad.Layout.Spacing (spacingWithEdge, toggleWindowSpacingEnabled, toggleScreenSpacingEnabled)
+import XMonad.Layout.Spacing (spacingWithEdge, toggleWindowSpacingEnabled, toggleScreenSpacingEnabled, incScreenWindowSpacing, decScreenWindowSpacing, setScreenWindowSpacing)
 import XMonad.Layout.Renamed
 import XMonad.Layout.LayoutModifier
 import XMonad.Layout.ToggleLayouts
@@ -127,7 +127,7 @@ myConf = def
         , ("M-x",                     spawn "dm-wallpaper -d")
         , ("M-S-x",                   spawn "dm-wallpaper -x")
         , ("M-'",                     spawn (myTerminal ++ " -c termfloat -f monospace:size=16 -g 50x20 -e bc -lq"))
-        , ("M-<Insert>",              spawn "dm-insert")
+        , ("<Insert>",                spawn "dm-insert")
         , ("M-`",                     spawn "dm-emoji")
         , ("M-u",                     spawn "dm-unicode")
         , ("M-<Backspace>",           spawn "dm-system")
@@ -146,6 +146,9 @@ myConf = def
         , ("<Print>",                 spawn "dm-printscreen")
         , ("M-f",                     sendMessage (Toggle "monocle") >> sendMessage ToggleStruts) -- fullscreen toggle
         , ("M-g",                     toggleWindowSpacingEnabled >> toggleScreenSpacingEnabled)
+        , ("M-S-g",                   setScreenWindowSpacing 4)
+        , ("M-C-k",                   incScreenWindowSpacing 1)
+        , ("M-C-j",                   decScreenWindowSpacing 1)
         , ("M-q",                     kill)
         ]
 
@@ -156,31 +159,31 @@ myConf = def
 -- NOTE: changes to spacing, renaming, and ratio of layouts will probably require a reboot
 
 tall      = renamed [Replace "tall"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ Tall 1 (3/100) (1/2)
 
 stackT    = renamed [Replace "stackT"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ StackTile 1 (3/100) (1/2)
 
 fibonacci = renamed [Replace "fibonacci"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ spiral (6/7)
 
 threeCol  = renamed [Replace "threeCol"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ ThreeCol 1 (3/100) (1/2)
 
 grid      = renamed [Replace "grid"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ GridRatio (4/3)
 
 cmaster   = renamed [Replace "cmaster"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ centerMaster Grid
 
 cmasterF  = renamed [Replace "cmasterF"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ CenterMainFluid 1 (3/100) (70/100)
 
 monocle   = renamed [Replace "monocle"]
