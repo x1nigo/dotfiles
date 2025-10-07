@@ -3,6 +3,7 @@
 # Increases autorepeat rate.
 xset r rate 300 50
 xrandr --dpi 96
+xsetroot -cursor_name left_ptr
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
 
 # Autostart function that avoids duplication. Include programs that are
