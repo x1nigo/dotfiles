@@ -14,12 +14,18 @@ import XMonad.Util.ClickableWorkspaces -- requires `xdotool` in $PATH + UnsafeXM
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
+import XMonad.Actions.Promote
 
 import XMonad.Hooks.StatusBar.PP (wrap, xmobarColor, xmobarBorder, xmobarPP, shorten, xmobarStrip, PP(..))
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.EwmhDesktops
 import XMonad.Hooks.ManageDocks (avoidStruts, ToggleStruts(..))
 import XMonad.Hooks.ManageHelpers (isFullscreen, isDialog, doCenterFloat, doFullFloat)
+
+import XMonad.Prompt
+import XMonad.Prompt.XMonad (xmonadPrompt)
+import XMonad.Prompt.Shell (shellPrompt)
+import XMonad.Prompt.Man (manPrompt)
 
 import XMonad.Layout.Spacing (spacingWithEdge, toggleWindowSpacingEnabled, toggleScreenSpacingEnabled, incScreenWindowSpacing, decScreenWindowSpacing, setScreenWindowSpacing)
 import XMonad.Layout.Renamed
@@ -49,13 +55,13 @@ myFileManager :: String
 myFileManager = "lfup"
 
 myBorderWidth :: Dimension
-myBorderWidth = 3
+myBorderWidth = 2
 
 myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#870000"
+myFocusedColor = "#5757d7"
 
 -- ==========
 -- Workspaces
@@ -103,6 +109,25 @@ myPP = def
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
     }
 
+-- ======================
+-- Prompt (xmonad-native)
+-- ======================
+
+myXPConfig :: XPConfig
+myXPConfig = def
+    { font                = "xft:monospace:size=10"
+    , bgColor             = "#21242b"
+    , fgColor             = "#d7d7f7"
+    , bgHLight            = "#8787f7"
+    , fgHLight            = "#282828"
+    , promptBorderWidth   = 0
+    , position            = Top
+    , alwaysHighlight     = True
+    , height              = 26
+    , historySize         = 0
+    , showCompletionOnTab = False
+    }
+
 -- =====================================
 -- Custom configuration and keybindings
 -- =====================================
@@ -119,6 +144,8 @@ myConf = def
     `additionalKeysP`
         [ ("M-<Return>",              spawn (myTerminal))
         , ("M-S-<Return>",            spawn (myTerminal ++ " -c termfloat"))
+        , ("M-<Tab>",                 sendMessage NextLayout)
+        , ("M-<Space>",               promote)
         , ("M-d",                     spawn "dmenu_run -p 'RUN:' -l 6 -g 8")
         , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-w",                     spawn (myBrowser))
@@ -149,6 +176,9 @@ myConf = def
         , ("M-S-g",                   setScreenWindowSpacing 4)
         , ("M-C-k",                   incScreenWindowSpacing 1)
         , ("M-C-j",                   decScreenWindowSpacing 1)
+        , ("M-p",                     shellPrompt myXPConfig)
+        , ("M-S-p",                   xmonadPrompt myXPConfig)
+        , ("M-m",                     manPrompt myXPConfig)
         , ("M-q",                     kill)
         ]
 
@@ -200,5 +230,5 @@ myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts $ toggleLayouts (noBord
                                                            grid      |||
                                                            cmaster   |||
                                                            cmasterF  |||
-                                                           monocle   |||
+                                                 noBorders monocle   |||
                                                            floating
