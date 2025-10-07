@@ -70,7 +70,8 @@ myFocusedColor = "#5757d7"
 -- Workspaces
 -- ==========
 
-myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+-- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+myWorkspaces = [" www ", " dev ", " media ", " type ", " art ", " gfx ", " mus ", " sys ", " null "]
 
 -- =====
 -- Hooks
@@ -104,9 +105,9 @@ myPP = def
     { ppSep             = " <fc=#373737>|</fc> "
     , ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
-    , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
-    , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap "" " "
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
+    , ppHidden          = xmobarColor "#ff8747" "" . wrap " " " "
+    , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap " " " "
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#f78747" "" . wrap "!" "!"
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
