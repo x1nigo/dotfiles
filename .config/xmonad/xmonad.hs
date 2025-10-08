@@ -64,7 +64,7 @@ myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#57e7d7"
+myFocusedColor = "#5757f7"
 
 -- ==========
 -- Workspaces
