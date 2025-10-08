@@ -64,7 +64,7 @@ myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#5757d7"
+myFocusedColor = "#57e7d7"
 
 -- ==========
 -- Workspaces
@@ -82,6 +82,12 @@ myManageHook = composeAll
     [ className =? "termfloat" --> doCenterFloat
     , isDialog                 --> doFloat
     , isFullscreen             --> doFullFloat
+    , className =? "zen"                     --> doShift ( myWorkspaces !! 0 )
+    , className =? "Brave-browser"           --> doShift ( myWorkspaces !! 0 )
+    , className =? "librewolf"               --> doShift ( myWorkspaces !! 0 )
+    , className =? "firefox"                 --> doShift ( myWorkspaces !! 0 )
+    , className =? "Gimp"                    --> doShift ( myWorkspaces !! 5 )
+    , className =? "libreoffice-startcenter" --> doShift ( myWorkspaces !! 3 )
     ]
 
 -- ====
@@ -102,11 +108,11 @@ mySK :: XConfig Layout -> (KeyMask, KeySym)
 mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 
 myPP = def
-    { ppSep             = " <fc=#373737>|</fc> "
+    { ppSep             = " | "
     , ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
-    , ppHidden          = xmobarColor "#ff8747" "" . wrap " " " "
+    , ppHidden          = xmobarColor "#5757d7" "" . wrap " " " "
     , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap " " " "
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#f78747" "" . wrap "!" "!"
