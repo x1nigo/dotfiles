@@ -64,7 +64,7 @@ myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#5757f7"
+myFocusedColor = "#d7d7f7"
 
 -- ==========
 -- Workspaces
@@ -111,9 +111,9 @@ myPP = def
     { ppSep             = " | "
     , ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
-    , ppHidden          = xmobarColor "#5757d7" "" . wrap " " " "
-    , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap " " " "
+    , ppCurrent         = xmobarColor "#5757f7" "" . wrap "[" "]"
+    , ppHidden          = xmobarColor "#ff8747" ""
+    , ppHiddenNoWindows = xmobarColor "#373737" ""
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#f78747" "" . wrap "!" "!"
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
@@ -133,7 +133,7 @@ myXPConfig = def
     , promptBorderWidth   = 0
     , position            = Top
     , alwaysHighlight     = True
-    , height              = 26
+    , height              = 24
     , historySize         = 0
     , showCompletionOnTab = False
     }
@@ -184,7 +184,7 @@ myConf = def
         , ("<Print>",                 spawn "dm-printscreen")
         , ("M-f",                     sendMessage (Toggle "monocle") >> sendMessage ToggleStruts) -- fullscreen toggle
         , ("M-g",                     toggleWindowSpacingEnabled >> toggleScreenSpacingEnabled)
-        , ("M-S-g",                   setScreenWindowSpacing 4)
+        , ("M-S-g",                   setScreenWindowSpacing 6)
         , ("M-C-k",                   incScreenWindowSpacing 1)
         , ("M-C-j",                   decScreenWindowSpacing 1)
         , ("M-p",                     shellPrompt myXPConfig)
@@ -200,31 +200,31 @@ myConf = def
 -- NOTE: changes to spacing, renaming, and ratio of layouts will probably require a reboot
 
 tall      = renamed [Replace "tall"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 8
             $ Tall 1 (3/100) (1/2)
 
 stackT    = renamed [Replace "stackT"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 8
             $ StackTile 1 (3/100) (1/2)
 
 fibonacci = renamed [Replace "fibonacci"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 8
             $ spiral (6/7)
 
 threeCol  = renamed [Replace "threeCol"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 8
             $ ThreeCol 1 (3/100) (1/2)
 
 grid      = renamed [Replace "grid"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 8
             $ GridRatio (4/3)
 
 cmaster   = renamed [Replace "cmaster"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 8
             $ centerMaster Grid
 
 cmasterF  = renamed [Replace "cmasterF"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 8
             $ CenterMainFluid 1 (3/100) (70/100)
 
 monocle   = renamed [Replace "monocle"]
