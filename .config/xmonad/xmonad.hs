@@ -150,7 +150,7 @@ mySWNConfig = def
     { swn_font    = "xft:monospace:bold:size=32"
     , swn_bgcolor = "#21242b"
     , swn_color   = "#d7d7f7"
-    , swn_fade    = 1
+    , swn_fade    = 1.5
     }
 
 myTreeConf :: TSConfig a
@@ -174,8 +174,15 @@ myActions =
     , Node (TSNode "Applications" "Select the usual programs to run" (return ()))
 	    [ Node (TSNode "Terminal" "Open up the terminal" (spawn myTerminal)) []
 	    , Node (TSNode "Browser" "Search the internet (www)" (spawn myBrowser)) []
+	    , Node (TSNode "File Manager" "Navigate the filesystem" (spawn (myTerminal ++ " -e " ++ myFileManager))) []
+	    , Node (TSNode "Music Player" "Listen to some tunes" (spawn (myTerminal ++ " -e " ++ myMusicPlayer))) []
 	    , Node (TSNode "Image Editor" "Run an image-editing program" (spawn "gimp")) []
 	    , Node (TSNode "Office Suite" "Create/Edit documents" (spawn "libreoffice")) []
+        ]
+    , Node (TSNode "System" "Execute a system action" (return ()))
+	    [ Node (TSNode "Shutdown" "Shuts the system down" (spawn "systemctl poweroff")) []
+	    , Node (TSNode "Restart/Reboot" "Reboot the system" (spawn "systemctl reboot")) []
+	    , Node (TSNode "Display" "Turns the display off" (spawn "xset dpms force off")) []
         ]
     ]
 
@@ -209,7 +216,8 @@ myConf = def
         , ("<Insert>",                spawn "dm-insert")
         , ("M-`",                     spawn "dm-emoji")
         , ("M-u",                     spawn "dm-unicode")
-        , ("M-<Backspace>",           spawn "dm-system")
+        -- , ("M-<Backspace>",           spawn "dm-system")
+        , ("M-<Backspace>",           treeselectAction myTreeConf myActions)
         , ("<XF86AudioMute>",         spawn "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")
         , ("<XF86AudioMicMute>",      spawn "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")
         , ("<XF86AudioRaiseVolume>",  spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")
@@ -231,7 +239,6 @@ myConf = def
         , ("M-p",                     shellPrompt myXPConfig)
         , ("M-S-p",                   xmonadPrompt myXPConfig)
         , ("M-m",                     manPrompt myXPConfig)
-        , ("M-S-t",                   treeselectAction myTreeConf myActions)
         , ("M-q",                     kill)
         ]
 
