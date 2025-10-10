@@ -53,7 +53,7 @@ myTerminal :: String
 myTerminal = "st"
 
 myBrowser :: String
-myBrowser = "zen-browser"
+myBrowser = "firefox"
 
 myFileManager :: String
 myFileManager = "lfup"
@@ -62,13 +62,13 @@ myMusicPlayer :: String
 myMusicPlayer = "ncmpcpp"
 
 myBorderWidth :: Dimension
-myBorderWidth = 2
+myBorderWidth = 3
 
 myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#d7d7f7"
+myFocusedColor = "#570000"
 
 -- ==========
 -- Workspaces
