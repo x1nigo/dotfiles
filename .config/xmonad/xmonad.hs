@@ -9,7 +9,6 @@
 
 import XMonad
 import XMonad.Util.EZConfig (additionalKeysP)
-import XMonad.Util.Loggers
 import XMonad.Util.ClickableWorkspaces -- requires `xdotool` in $PATH + UnsafeXMonadLog in `xmobar`
 import System.Exit
 
@@ -103,7 +102,7 @@ myManageHook = composeAll
 main :: IO ()
 main = xmonad . ewmhFullscreen . ewmh . withEasySB mySB mySK $ myConf
 
-mySB = statusBarProp "xmobar $HOME/.config/xmobar/xmobarrc" (clickablePP myPP)
+mySB = statusBarProp "xmobar" (clickablePP myPP)
 
 mySK :: XConfig Layout -> (KeyMask, KeySym)
 mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
@@ -146,17 +145,17 @@ myXPConfig = def
 
 mySWNConfig :: SWNConfig
 mySWNConfig = def
-    { swn_font    = "xft:monospace:bold:size=32"
+    { swn_font    = "xft:monospace:bold:size=26"
     , swn_bgcolor = "#21242b"
     , swn_color   = "#d7d7f7"
-    , swn_fade    = 1.5
+    , swn_fade    = 1.0
     }
 
 myTreeConf :: TSConfig a
 myTreeConf = def
     { ts_hidechildren = True
     , ts_background   = 0xe721242b
-    , ts_font         = "xft:monospace-10"
+    , ts_font         = "xft:monospace:size=10"
     , ts_node_width   = 200
     , ts_node_height  = 24
     , ts_node         = (0xffd7d7f7, 0xff21242b)
@@ -166,8 +165,9 @@ myTreeConf = def
 
 myActions =
     [ Node (TSNode "XMonad" "Execute an xmonad-specific action" (return ()))
-	    [ Node (TSNode "Restart WM" "Restart xmonad" (spawn "xmonad --restart")) []
-	    , Node (TSNode "Recompile WM" "Recompile xmonad" (spawn "xmonad --recompile")) []
+        [ Node (TSNode "Restart WM" "Restart xmonad" (spawn "xmonad --restart")) []
+        , Node (TSNode "Recompile WM" "Recompile xmonad" (spawn "xmonad --recompile")) []
+        , Node (TSNode "Edit Config" "Edit the xmonad configuration file" (spawn (myTerminal ++ " -e nvim $HOME/.config/xmonad/xmonad.hs"))) []
 	    , Node (TSNode "Logout/Quit" "Log (quit) out of xmonad" (io exitSuccess)) []
         ]
     , Node (TSNode "Applications" "Select the usual programs to run" (return ()))
@@ -227,8 +227,8 @@ myConf = def
         , ("M-<F2>",                  spawn "dm-fonts")
         , ("M-<F3>",                  spawn (myTerminal ++ " -e pulsemixer"))
         , ("M-<F4>",                  spawn "dm-display")
-        , ("M-<F12>",                 spawn "xmonad --restart" )
-        , ("M-C-r",                   spawn "xmonad --recompile" )
+        , ("M-<F12>",                 spawn "xmonad --restart")
+        , ("M-C-r",                   spawn "xmonad --recompile")
         , ("<Print>",                 spawn "dm-printscreen")
         , ("M-f",                     sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
         , ("M-C-b",                   sendMessage (MT.Toggle NOBORDERS))
@@ -282,13 +282,14 @@ monocle   = renamed [Replace "monocle"]
 floating  = renamed [Replace "floating"]
             $ simplestFloat
 
-myLayoutHook = showWName' mySWNConfig $ lessBorders OnlyScreenFloat $ avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
-                                                                                  $ tall      |||
-                                                                                    stackT    |||
-                                                                                    fibonacci |||
-                                                                                    threeCol  |||
-                                                                                    grid      |||
-                                                                                    cmaster   |||
-                                                                                    cmasterF  |||
-                                                                          noBorders monocle   |||
-                                                                                    floating
+myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
+                                                         $ showWName' mySWNConfig
+                                                         $ tall      |||
+                                                           stackT    |||
+                                                           fibonacci |||
+                                                           threeCol  |||
+                                                           grid      |||
+                                                           cmaster   |||
+                                                           cmasterF  |||
+                                                 noBorders monocle   |||
+                                                           floating
