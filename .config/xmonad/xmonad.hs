@@ -11,9 +11,6 @@ import XMonad
 import XMonad.Util.EZConfig (additionalKeysP)
 import XMonad.Util.Loggers
 import XMonad.Util.ClickableWorkspaces -- requires `xdotool` in $PATH + UnsafeXMonadLog in `xmobar`
-
-import qualified XMonad.StackSet as W
-import qualified Data.Map as M
 import System.Exit
 
 import XMonad.Actions.Promote
@@ -34,7 +31,9 @@ import XMonad.Prompt.Man (manPrompt)
 import XMonad.Layout.Spacing (spacingWithEdge, toggleWindowSpacingEnabled, toggleScreenSpacingEnabled, incScreenWindowSpacing, decScreenWindowSpacing, setScreenWindowSpacing)
 import XMonad.Layout.Renamed
 import XMonad.Layout.LayoutModifier
-import XMonad.Layout.ToggleLayouts
+import qualified XMonad.Layout.MultiToggle as MT
+import XMonad.Layout.MultiToggle (mkToggle, Toggle, EOT(EOT), (??))
+import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, NOBORDERS))
 import XMonad.Layout.ShowWName
 
 import XMonad.Layout.NoBorders (noBorders, lessBorders, Ambiguity(OnlyScreenFloat))
@@ -76,7 +75,7 @@ myFocusedColor = "#d7d7f7"
 -- ==========
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = ["www", "dev", "media", "typeW", "art", "sfx", "mus", "sys", "null"]
+myWorkspaces = [" www ", " dev ", " media ", " typeW ", " art ", " sfx ", " mus ", " sys ", " null "]
 
 -- =====
 -- Hooks
@@ -231,14 +230,15 @@ myConf = def
         , ("M-<F12>",                 spawn "xmonad --restart" )
         , ("M-C-r",                   spawn "xmonad --recompile" )
         , ("<Print>",                 spawn "dm-printscreen")
-        , ("M-f",                     sendMessage (Toggle "monocle") >> sendMessage ToggleStruts) -- fullscreen toggle
-        , ("M-g",                     toggleWindowSpacingEnabled >> toggleScreenSpacingEnabled)
-        , ("M-S-g",                   setScreenWindowSpacing 6)
+        , ("M-f",                     sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
+        , ("M-C-b",                   sendMessage (MT.Toggle NOBORDERS))
+        , ("M-g",                     toggleWindowSpacingEnabled  >> toggleScreenSpacingEnabled)
+        , ("M-S-g",                   setScreenWindowSpacing 4)
         , ("M-C-k",                   incScreenWindowSpacing 1)
         , ("M-C-j",                   decScreenWindowSpacing 1)
-        , ("M-p",                     shellPrompt myXPConfig)
+        , ("M-p",                     shellPrompt  myXPConfig)
         , ("M-S-p",                   xmonadPrompt myXPConfig)
-        , ("M-m",                     manPrompt myXPConfig)
+        , ("M-m",                     manPrompt    myXPConfig)
         , ("M-q",                     kill)
         ]
 
@@ -282,7 +282,7 @@ monocle   = renamed [Replace "monocle"]
 floating  = renamed [Replace "floating"]
             $ simplestFloat
 
-myLayoutHook = showWName' mySWNConfig $ lessBorders OnlyScreenFloat $ avoidStruts $ toggleLayouts (noBorders monocle)
+myLayoutHook = showWName' mySWNConfig $ lessBorders OnlyScreenFloat $ avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
                                                                                   $ tall      |||
                                                                                     stackT    |||
                                                                                     fibonacci |||
