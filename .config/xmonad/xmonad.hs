@@ -108,10 +108,10 @@ mySK :: XConfig Layout -> (KeyMask, KeySym)
 mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 
 myPP = def
-    { ppSep             = " | "
+    { ppSep             = " <fc=#373737>|</fc> "
     , ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#5757f7" "" . wrap "[" "]"
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>*</fc>" "<fc=#5757d7>*</fc>"
     , ppHidden          = xmobarColor "#ff8747" "" . wrap " " " "
     , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap " " " "
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
@@ -144,7 +144,7 @@ myXPConfig = def
 
 mySWNConfig :: SWNConfig
 mySWNConfig = def
-    { swn_font    = "xft:monospace:bold:size=26"
+    { swn_font    = "xft:monospace:bold:size=47"
     , swn_bgcolor = "#21242b"
     , swn_color   = "#d7d7f7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
@@ -166,7 +166,8 @@ myActions =
     [ Node (TSNode "XMonad" "Execute an xmonad-specific action" (return ()))
         [ Node (TSNode "Restart WM" "Restart xmonad" (spawn "xmonad --restart")) []
         , Node (TSNode "Recompile WM" "Recompile xmonad" (spawn "xmonad --recompile")) []
-        , Node (TSNode "Edit Config" "Edit the xmonad configuration file" (spawn (myTerminal ++ " -e nvim $HOME/.config/xmonad/xmonad.hs"))) []
+        , Node (TSNode "Main Config" "Edit the xmonad configuration file" (spawn (myTerminal ++ " -e $EDITOR $HOME/.config/xmonad/xmonad.hs"))) []
+        , Node (TSNode "Xmobar Config" "Technically, not part of xmonad" (spawn (myTerminal ++ " -e $EDITOR $HOME/.config/xmobar/xmobarrc"))) []
 	    , Node (TSNode "Logout/Quit" "Log (quit) out of xmonad" (io exitSuccess)) []
         ]
     , Node (TSNode "Applications" "Select the usual programs to run" (return ()))
@@ -177,6 +178,7 @@ myActions =
 	    , Node (TSNode "Image Editor" "Run an image-editing program" (spawn "gimp")) []
 	    , Node (TSNode "Office Suite" "Create/Edit documents" (spawn "libreoffice")) []
         ]
+    , Node (TSNode "Audio" "Configure both volume and microphone" (spawn (myTerminal ++ " -e pulsemixer"))) []
     , Node (TSNode "System" "Execute a system action" (return ()))
 	    [ Node (TSNode "Shutdown" "Shuts the system down" (spawn "systemctl poweroff")) []
 	    , Node (TSNode "Restart/Reboot" "Reboot the system" (spawn "systemctl reboot")) []
