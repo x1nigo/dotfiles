@@ -4,7 +4,7 @@
 -- alsa-utils (for amixer)
 
 Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar as a regular window
-	   , font             = "Fira Sans Bold 9"
+	   , font             = "Sans Bold 9"
        , additionalFonts  = [ "Mononoki 18"
                             , "Mononoki 11"
                             ]
@@ -16,7 +16,7 @@ Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar 
 				    , Run Cpu ["-t", "<fc=#ff8747><fn=2>\xf01c4</fn>    Cpu: <total>%</fc>"] 300
 				    , Run Memory ["-t", "<fc=#f74747><fn=2>\xf233</fn>    Mem: <used>M (<usedratio>%)</fc>"] 300
 				    , Run Volume "default" "Master" ["-t", "<fc=#57d7f7><fn=2>\xf0a1</fn>    Vol: <volume>% <status></fc>", "--", "--on", "", "--off", "[M]"] 10
-				    , Run BatteryP ["BAT0"] ["-t", "<fc=#87d7a7><fn=2>\xf140b</fn>  <acstatus>: <left>%</fc>", "--", "-o", "Bat"] 120
+				    , Run BatteryP ["BAT0"] ["-t", "<fc=#87d7a7><fn=2>\xf140b</fn>  <acstatus>: <left>%</fc>", "--", "-o", "Bat", "-L", "10", "-H", "20", "-l", "#ff0000", "-m", "#ff8747"] 120
 			 	    , Run Date "<fc=#57d7f7><fn=2>\xf13ab</fn>   %a, %b %d, %Y - %I:%M %p</fc>" "date" 50
 				    , Run Com "echo" ["<fn=1><fc=#d7d7f7>\xe61f</fc></fn>"] "logo" 3600
 				    , Run Com "echo" [" <fc=#d7d7f7>|</fc> "] "sep" 3600
