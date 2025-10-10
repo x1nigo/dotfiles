@@ -140,7 +140,6 @@ myXPConfig = def
 
 -- =========================
 -- Show WS names upon switch
--- See `myLayoutHook`
 -- =========================
 
 mySWNConfig :: SWNConfig
@@ -148,7 +147,7 @@ mySWNConfig = def
     { swn_font    = "xft:monospace:bold:size=26"
     , swn_bgcolor = "#21242b"
     , swn_color   = "#d7d7f7"
-    , swn_fade    = 1.0
+    , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
 
 myTreeConf :: TSConfig a
@@ -212,7 +211,7 @@ myConf = def
         , ("M-x",                     spawn "dm-wallpaper -d")
         , ("M-S-x",                   spawn "dm-wallpaper -x")
         , ("M-'",                     spawn (myTerminal ++ " -c termfloat -f monospace:size=16 -g 50x20 -e bc -lq"))
-        , ("<Insert>",                spawn "dm-insert")
+        , ("M-<Insert>",              spawn "dm-insert")
         , ("M-`",                     spawn "dm-emoji")
         , ("M-u",                     spawn "dm-unicode")
         -- , ("M-<Backspace>",           spawn "dm-system")
