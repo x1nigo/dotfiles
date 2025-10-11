@@ -93,6 +93,7 @@ myManageHook = composeAll
     , className =? "Gimp"                    --> doShift ( myWorkspaces !! 5 )
     , className =? "libreoffice-startcenter" --> doShift ( myWorkspaces !! 3 )
     , className =? "Lxappearance"            --> doShift ( myWorkspaces !! 7 )
+    , className =? "Nitrogen"                --> doShift ( myWorkspaces !! 7 )
     ]
 
 -- ====
@@ -108,10 +109,10 @@ mySK :: XConfig Layout -> (KeyMask, KeySym)
 mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 
 myPP = def
-    { ppSep             = " <fc=#373737>|</fc> "
-    , ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
+    { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>*</fc>" "<fc=#5757d7>*</fc>"
+    -- , ppCurrent         = xmobarColor "#57d7f7" "" . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = xmobarColor "#ff8747" "" . wrap " " " "
     , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap " " " "
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
