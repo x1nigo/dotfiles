@@ -4,7 +4,7 @@
 -- alsa-utils (for amixer)
 
 Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar as a regular window
-	   , font             = "Open Sans 9"
+	   , font             = "Noto Sans 9"
        , additionalFonts  = [ "Mononoki 18"
                             , "Mononoki 11"
                             ]
