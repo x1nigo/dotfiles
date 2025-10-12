@@ -115,9 +115,10 @@ myPP = def
     -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>*</fc>" "<fc=#5757d7>*</fc>"
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
-    , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap "" " "
+    , ppHiddenNoWindows = xmobarColor "#005577" "" . wrap "" " "
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#f78747" "" . wrap "!" "!"
+    , ppSep             = " <fc=#ff8747><fn=1>:</fn></fc> "
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
     }
 
