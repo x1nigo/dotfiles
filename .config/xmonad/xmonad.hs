@@ -73,8 +73,8 @@ myFocusedColor = "#570000"
 -- Workspaces
 -- ==========
 
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" www ", " dev ", " media ", " typeW ", " art ", " sfx ", " mus ", " sys ", " null "]
+myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+-- myWorkspaces = [" www ", " dev ", " media ", " typeW ", " art ", " sfx ", " mus ", " sys ", " null "]
 
 -- =====
 -- Hooks
@@ -83,17 +83,18 @@ myWorkspaces = [" www ", " dev ", " media ", " typeW ", " art ", " sfx ", " mus 
 myManageHook :: ManageHook
 myManageHook = composeAll
     [ className =? "termfloat" --> doCenterFloat
+    , className =? "Xmessage"  --> doCenterFloat
     , isDialog                 --> doFloat
     , isFullscreen             --> doFullFloat
-    , className =? "zen"                     --> doShift ( myWorkspaces !! 0 )
-    , className =? "Brave-browser"           --> doShift ( myWorkspaces !! 0 )
-    , className =? "librewolf"               --> doShift ( myWorkspaces !! 0 )
-    , className =? "firefox"                 --> doShift ( myWorkspaces !! 0 )
-    , className =? "mpv"                     --> doShift ( myWorkspaces !! 2 )
-    , className =? "Gimp"                    --> doShift ( myWorkspaces !! 5 )
-    , className =? "libreoffice-startcenter" --> doShift ( myWorkspaces !! 3 )
-    , className =? "Lxappearance"            --> doShift ( myWorkspaces !! 7 )
-    , className =? "Nitrogen"                --> doShift ( myWorkspaces !! 7 )
+--    , className =? "zen"                     --> doShift ( myWorkspaces !! 0 )
+--    , className =? "Brave-browser"           --> doShift ( myWorkspaces !! 0 )
+--    , className =? "librewolf"               --> doShift ( myWorkspaces !! 0 )
+--    , className =? "firefox"                 --> doShift ( myWorkspaces !! 0 )
+--    , className =? "mpv"                     --> doShift ( myWorkspaces !! 2 )
+--    , className =? "Gimp"                    --> doShift ( myWorkspaces !! 5 )
+--    , className =? "libreoffice-startcenter" --> doShift ( myWorkspaces !! 3 )
+--    , className =? "Lxappearance"            --> doShift ( myWorkspaces !! 7 )
+--    , className =? "Nitrogen"                --> doShift ( myWorkspaces !! 7 )
     ]
 
 -- ====
@@ -111,10 +112,10 @@ mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 myPP = def
     { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>*</fc>" "<fc=#5757d7>*</fc>"
-    -- , ppCurrent         = xmobarColor "#57d7f7" "" . xmobarBorder "Bottom" "#5757d7" 3
-    , ppHidden          = xmobarColor "#ff8747" "" . wrap " " " "
-    , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap " " " "
+    -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>*</fc>" "<fc=#5757d7>*</fc>"
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
+    , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
+    , ppHiddenNoWindows = xmobarColor "#373737" "" . wrap "" " "
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#f78747" "" . wrap "!" "!"
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
