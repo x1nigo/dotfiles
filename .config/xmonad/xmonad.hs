@@ -112,12 +112,12 @@ mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 myPP = def
     { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>*</fc>" "<fc=#5757d7>*</fc>"
+    -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>[</fc>" "<fc=#5757d7>]</fc>"
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
     , ppHiddenNoWindows = xmobarColor "#005577" "" . wrap "" " "
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
-    , ppUrgent          = xmobarColor "#f78747" "" . wrap "!" "!"
+    , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#ff8747><fn=1>:</fn></fc> "
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
     }
@@ -147,7 +147,7 @@ myXPConfig = def
 
 mySWNConfig :: SWNConfig
 mySWNConfig = def
-    { swn_font    = "xft:monospace:bold:size=47"
+    { swn_font    = "xft:monospace:bold:size=50"
     , swn_bgcolor = "#21242b"
     , swn_color   = "#d7d7f7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
@@ -180,6 +180,7 @@ myActions =
 	    , Node (TSNode "Music Player" "Listen to some tunes" (spawn (myTerminal ++ " -e " ++ myMusicPlayer))) []
 	    , Node (TSNode "Image Editor" "Run an image-editing program" (spawn "gimp")) []
 	    , Node (TSNode "Office Suite" "Create/Edit documents" (spawn "libreoffice")) []
+	    , Node (TSNode "Wallpaper" "Change desktop wallpaper" (spawn "nitrogen")) []
         ]
     , Node (TSNode "Audio" "Configure both volume and microphone" (spawn (myTerminal ++ " -e pulsemixer"))) []
     , Node (TSNode "System" "Execute a system action" (return ()))
