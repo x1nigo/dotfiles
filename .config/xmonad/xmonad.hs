@@ -112,10 +112,10 @@ mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 myPP = def
     { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>[</fc>" "<fc=#5757d7>]</fc>"
-    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
-    , ppHidden          = xmobarColor "#ff8747" "" . wrap "" " "
-    , ppHiddenNoWindows = xmobarColor "#005577" "" . wrap "" " "
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>[</fc>" "<fc=#5757d7>]</fc>"
+    -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
+    , ppHidden          = xmobarColor "#ff8747" "" . wrap "" ""
+    -- , ppHiddenNoWindows = xmobarColor "#005577" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#ff8747><fn=1>:</fn></fc> "
