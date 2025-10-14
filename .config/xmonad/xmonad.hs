@@ -15,6 +15,7 @@ import System.Exit
 import XMonad.Actions.Promote
 import Data.Tree
 import XMonad.Actions.TreeSelect
+import XMonad.Actions.Minimize (minimizeWindow, maximizeWindow, withLastMinimized)
 
 import XMonad.Hooks.StatusBar.PP (wrap, xmobarColor, xmobarBorder, xmobarPP, shorten, xmobarStrip, PP(..))
 import XMonad.Hooks.StatusBar
@@ -34,6 +35,7 @@ import qualified XMonad.Layout.MultiToggle as MT
 import XMonad.Layout.MultiToggle (mkToggle, Toggle, EOT(EOT), (??))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(NBFULL, NOBORDERS))
 import XMonad.Layout.ShowWName
+import XMonad.Layout.Minimize
 
 import XMonad.Layout.NoBorders (noBorders, lessBorders, Ambiguity(OnlyScreenFloat))
 import XMonad.Layout.ThreeColumns
@@ -243,7 +245,9 @@ myConf = def
         , ("M-C-j",                   decScreenWindowSpacing 1)
         , ("M-p",                     shellPrompt  myXPConfig)
         , ("M-S-p",                   xmonadPrompt myXPConfig)
-        , ("M-m",                     manPrompt    myXPConfig)
+        , ("M-C-m",                   manPrompt    myXPConfig)
+        , ("M-m",                     withFocused minimizeWindow)
+        , ("M-S-m",                   withLastMinimized maximizeWindow)
         , ("M-q",                     kill)
         ]
 
@@ -255,36 +259,45 @@ myConf = def
 
 tall      = renamed [Replace "tall"]
             $ spacingWithEdge 4
+            $ minimize
             $ Tall 1 (3/100) (1/2)
 
 stackT    = renamed [Replace "stackT"]
             $ spacingWithEdge 4
+            $ minimize
             $ StackTile 1 (3/100) (1/2)
 
 fibonacci = renamed [Replace "fibonacci"]
             $ spacingWithEdge 4
+            $ minimize
             $ spiral (6/7)
 
 threeCol  = renamed [Replace "threeCol"]
             $ spacingWithEdge 4
+            $ minimize
             $ ThreeCol 1 (3/100) (1/2)
 
 grid      = renamed [Replace "grid"]
             $ spacingWithEdge 4
+            $ minimize
             $ GridRatio (4/3)
 
 cmaster   = renamed [Replace "cmaster"]
             $ spacingWithEdge 4
+            $ minimize
             $ centerMaster Grid
 
 cmasterF  = renamed [Replace "cmasterF"]
             $ spacingWithEdge 4
+            $ minimize
             $ CenterMainFluid 1 (3/100) (70/100)
 
 monocle   = renamed [Replace "monocle"]
+            $ minimize
             $ Full
 
 floating  = renamed [Replace "floating"]
+            $ minimize
             $ simplestFloat
 
 myLayoutHook = lessBorders OnlyScreenFloat $ avoidStruts $ mkToggle (NBFULL ?? NOBORDERS ?? EOT)
