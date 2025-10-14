@@ -74,7 +74,7 @@ myFocusedColor = "#570000"
 -- ==========
 
 myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
--- myWorkspaces = [" www ", " dev ", " media ", " typeW ", " art ", " sfx ", " mus ", " sys ", " null "]
+-- myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " mus ", " sys ", " null "]
 
 -- =====
 -- Hooks
@@ -116,7 +116,7 @@ myPP = def
     -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
     , ppHidden          = xmobarColor "#ff8747" "" . wrap "" ""
     -- , ppHiddenNoWindows = xmobarColor "#005577" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
-    , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
+    , ppLayout          = xmobarColor "#f75757" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#ff8747><fn=1>:</fn></fc> "
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
@@ -156,7 +156,7 @@ mySWNConfig = def
 myTreeConf :: TSConfig a
 myTreeConf = def
     { ts_hidechildren = True
-    , ts_background   = 0xe721242b
+    , ts_background   = 0xd721242b
     , ts_font         = "xft:monospace:size=10"
     , ts_node_width   = 200
     , ts_node_height  = 24
@@ -180,13 +180,13 @@ myActions =
 	    , Node (TSNode "Music Player" "Listen to some tunes" (spawn (myTerminal ++ " -e " ++ myMusicPlayer))) []
 	    , Node (TSNode "Image Editor" "Run an image-editing program" (spawn "gimp")) []
 	    , Node (TSNode "Office Suite" "Create/Edit documents" (spawn "libreoffice")) []
-	    , Node (TSNode "Wallpaper" "Change desktop wallpaper" (spawn "nitrogen")) []
+	    , Node (TSNode "Wallpaper Setter" "Change desktop wallpaper" (spawn "nitrogen")) []
         ]
     , Node (TSNode "Audio" "Configure both volume and microphone" (spawn (myTerminal ++ " -e pulsemixer"))) []
     , Node (TSNode "System" "Execute a system action" (return ()))
 	    [ Node (TSNode "Shutdown" "Shuts the system down" (spawn "systemctl poweroff")) []
 	    , Node (TSNode "Restart/Reboot" "Reboot the system" (spawn "systemctl reboot")) []
-	    , Node (TSNode "Display" "Turns the display off" (spawn "xset dpms force off")) []
+	    , Node (TSNode "Display Off" "Turns the display off" (spawn "xset dpms force off")) []
         ]
     ]
 
