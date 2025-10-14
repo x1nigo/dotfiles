@@ -21,7 +21,7 @@
 
 /* !! 2001 */
 *.color0: #21242b
-*.color1: #f74747
+*.color1: #f75757
 *.color2: #87d7a7
 *.color3: #ff8747
 *.color4: #005577
@@ -29,7 +29,7 @@
 *.color6: #57d7f7
 *.color7: #d7d7f7
 *.color8: #373742
-*.color9: #f74747
+*.color9: #f75757
 *.color10: #87d7a7
 *.color11: #ff8747
 *.color12: #005577
