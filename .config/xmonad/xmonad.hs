@@ -75,8 +75,8 @@ myFocusedColor = "#570000"
 -- Workspaces
 -- ==========
 
-myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
--- myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " mus ", " sys ", " null "]
+-- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " mus ", " sys ", " null "]
 
 -- =====
 -- Hooks
@@ -88,15 +88,15 @@ myManageHook = composeAll
     , className =? "Xmessage"  --> doCenterFloat
     , isDialog                 --> doFloat
     , isFullscreen             --> doFullFloat
---    , className =? "zen"                     --> doShift ( myWorkspaces !! 0 )
---    , className =? "Brave-browser"           --> doShift ( myWorkspaces !! 0 )
---    , className =? "librewolf"               --> doShift ( myWorkspaces !! 0 )
---    , className =? "firefox"                 --> doShift ( myWorkspaces !! 0 )
---    , className =? "mpv"                     --> doShift ( myWorkspaces !! 2 )
---    , className =? "Gimp"                    --> doShift ( myWorkspaces !! 5 )
---    , className =? "libreoffice-startcenter" --> doShift ( myWorkspaces !! 3 )
---    , className =? "Lxappearance"            --> doShift ( myWorkspaces !! 7 )
---    , className =? "Nitrogen"                --> doShift ( myWorkspaces !! 7 )
+    , className =? "zen"                     --> doShift ( myWorkspaces !! 0 )
+    , className =? "Brave-browser"           --> doShift ( myWorkspaces !! 0 )
+    , className =? "librewolf"               --> doShift ( myWorkspaces !! 0 )
+    , className =? "firefox"                 --> doShift ( myWorkspaces !! 0 )
+    , className =? "mpv"                     --> doShift ( myWorkspaces !! 2 )
+    , className =? "Gimp"                    --> doShift ( myWorkspaces !! 5 )
+    , className =? "libreoffice-startcenter" --> doShift ( myWorkspaces !! 3 )
+    , className =? "Lxappearance"            --> doShift ( myWorkspaces !! 7 )
+    , className =? "Nitrogen"                --> doShift ( myWorkspaces !! 7 )
     ]
 
 -- ====
@@ -114,13 +114,13 @@ mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 myPP = def
     { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "<fc=#5757d7>[</fc>" "<fc=#5757d7>]</fc>"
-    -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#5757d7" 3
-    , ppHidden          = xmobarColor "#ff8747" "" . wrap "" ""
-    -- , ppHiddenNoWindows = xmobarColor "#005577" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
-    , ppLayout          = xmobarColor "#f75757" "" . wrap " " " "
+    -- , ppCurrent         = xmobarColor "#ff8747" "" . wrap "<fc=#570000>[</fc>" "<fc=#570000>]</fc>"
+    , ppCurrent         = xmobarColor "#ff8747" "" . wrap "" "" . xmobarBorder "Top" "#570000" 3
+    , ppHidden          = xmobarColor "#5757d7" "" . wrap "" ""
+    , ppHiddenNoWindows = xmobarColor "#005577" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
+    , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
-    , ppSep             = " <fc=#ff8747><fn=1>:</fn></fc> "
+    , ppSep             = " <fc=#373737><fn=1>|</fn></fc> "
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
     }
 
@@ -130,12 +130,13 @@ myPP = def
 
 myXPConfig :: XPConfig
 myXPConfig = def
-    { font                = "xft:monospace:size=10"
+    { font                = "xft:monospace:size=10:antialias=true:autohint:true"
     , bgColor             = "#21242b"
     , fgColor             = "#d7d7f7"
     , bgHLight            = "#8787f7"
     , fgHLight            = "#282828"
-    , promptBorderWidth   = 0
+    , borderColor         = "#373742"
+    , promptBorderWidth   = 2
     , position            = Top
     , alwaysHighlight     = True
     , height              = 24
@@ -149,7 +150,7 @@ myXPConfig = def
 
 mySWNConfig :: SWNConfig
 mySWNConfig = def
-    { swn_font    = "xft:monospace:bold:size=50"
+    { swn_font    = "xft:monospace:bold:size=50:antialias=true:autohint:true"
     , swn_bgcolor = "#21242b"
     , swn_color   = "#d7d7f7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
@@ -159,7 +160,7 @@ myTreeConf :: TSConfig a
 myTreeConf = def
     { ts_hidechildren = True
     , ts_background   = 0xd721242b
-    , ts_font         = "xft:monospace:size=10"
+    , ts_font         = "xft:monospace:size=10:antialias=true:autohint:true"
     , ts_node_width   = 200
     , ts_node_height  = 24
     , ts_node         = (0xffd7d7f7, 0xff21242b)
@@ -249,6 +250,7 @@ myConf = def
         , ("M-m",                     withFocused minimizeWindow)
         , ("M-S-m",                   withLastMinimized maximizeWindow)
         , ("M-q",                     kill)
+        , ("M-S-q",                   io exitSuccess)
         ]
 
 -- =======
