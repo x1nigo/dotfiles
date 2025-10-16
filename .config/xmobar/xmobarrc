@@ -1,36 +1,36 @@
 -- Requirements:
--- ttf-mononoki-nerd (for symbols)
+-- otf-hasklig-nerd (or any other nerd font; for symbols)
 -- any `sans` font, and make necessary edits
 -- alsa-utils (for amixer)
 
 Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar as a regular window
-	   , font             = "Ubuntu Bold 9"
+	   , font             = "Sans Bold 9"
        , additionalFonts  = [ "Sans 11"
-                            , "Mononoki 11"
-                            , "Mononoki 18"
+                            , "Hasklug 11"
+                            , "Hasklug 18"
                             ]
 	   , bgColor          = "#21242b"
 	   , fgColor          = "#d7d7f7"
        , alpha            = 255 -- 0 is fully transparent, 255 is opaque
 	   , position         = TopSize L 100 24
+	   -- , position         = Static { xpos = 8, ypos = 8, width = 1904, height = 30 }
 	   , lowerOnStart     = True -- `True` prevents xmobar from overlapping windows on restart
        , iconRoot         = ".config/xmobar/"
 	   , commands = [ Run Brightness ["-t", "<fc=#5757d7><fn=2>\xf05a8</fn>    Bri: <percent>%</fc>", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
 				    , Run Cpu ["-t", "<fc=#ff8747><fn=2>\xf01c4</fn>    Cpu: <total>%</fc>"] 300
-				    , Run Memory ["-t", "<fc=#f75757><fn=2>\xf233</fn>    Mem: <used>M (<usedratio>%)</fc>"] 300
+				    , Run Memory ["-t", "<fc=#f74747><fn=2>\xf233</fn>    Mem: <used>M (<usedratio>%)</fc>"] 300
 				    , Run Volume "default" "Master" ["-t", "<fc=#57d7f7><fn=2>\xf0a1</fn>    Vol: <volume>% <status></fc>", "--", "--on", "", "--off", "[M]"] 10
 				    , Run BatteryP ["BAT0"] ["-t", "<fc=#87d7a7><fn=2>\xf140b</fn>  <acstatus></fc>", "-L", "11", "-l", "#ff0000", "--", "-O", "On: <left>%", "-o", "Bat: <left>%"] 120
 			 	    , Run Date "<fc=#57d7f7><fn=2>\xf13ab</fn>   %a, %b %d, %Y - %I:%M %p</fc>" "date" 50
-				    , Run Com "echo" ["<fn=3><fc=#d7d7f7>\xe61f</fc></fn>"] "logo" 3600
-				    , Run Com "echo" [" <fc=#ff8747><fn=1>:</fn></fc> "] "sep" 3600
-				    , Run Uptime ["-t", "<fc=#57e7d7><fn=2>\xf0b2c</fn>   Up: <hours>h <minutes>m</fc>"] 3600
+				    , Run Uptime ["-t", "<fc=#57e7d7><fn=2>\xf0b2c</fn>   Uptime: <hours>h <minutes>m</fc>"] 3600
 				    , Run DiskU [("/", "<fc=#8787f7><fn=2>\xf0c7</fn>  Disk: <free> free</fc>")] [] 3600
+				    , Run Com "echo" ["<fn=3><fc=#d7d7f7>\xe61f</fc></fn>"] "logo" 3600
+				    , Run Com "echo" [" <fc=#373737><fn=1>|</fn></fc> "] "sep" 3600
 				    , Run UnsafeXMonadLog -- allows clickable workspaces
 				    -- , Run XMonadLog
 				    ]
 	   , sepChar  = "%"
 	   , alignSep = "}{"
 	   -- Uncomment this to remove the underlines (bottom borders).
-	   -- , template = " <icon=haskell.xpm/>  %UnsafeXMonadLog% }{ %uptime% %sep% %bright% %sep% %cpu% %sep% %memory% %sep% %default:Master% %sep% %disku% %sep% %battery% %sep% %date% "
-	   , template = " <icon=haskell.xpm/>  %UnsafeXMonadLog% }{ <box type=Bottom width=2 color=#57e7d7>%uptime%</box>   <box type=Bottom width=2 color=#5757d7>%bright%</box>   <box type=Bottom width=2 color=#ff8747>%cpu%</box>   <box type=Bottom width=2 color=#f75757>%memory%</box>   <box type=Bottom width=2 color=#57d7f7>%default:Master%</box>   <box type=Bottom width=2 color=#8787f7>%disku%</box>   <box type=Bottom width=2 color=#87d7a7>%battery%</box>   <box type=Bottom width=2 color=#57d7f7>%date%</box> "
-}
+	   -- , template = " <icon=haskell-logo.xpm/>  %UnsafeXMonadLog% }{ %uptime% %sep% %bright% %sep% %cpu% %sep% %memory% %sep% %default:Master% %sep% %disku% %sep% %battery% %sep% %date% "
+	   , template = " <icon=haskell-logo.xpm/> %sep% %UnsafeXMonadLog% }{ <box type=Bottom width=2 color=#57e7d7>%uptime%</box>   <box type=Bottom width=2 color=#5757d7>%bright%</box>   <box type=Bottom width=2 color=#ff8747>%cpu%</box>   <box type=Bottom width=2 color=#f74747>%memory%</box>   <box type=Bottom width=2 color=#57d7f7>%default:Master%</box>   <box type=Bottom width=2 color=#8787f7>%disku%</box>   <box type=Bottom width=2 color=#87d7a7>%battery%</box>   <box type=Bottom width=2 color=#57d7f7>%date%</box> " }
