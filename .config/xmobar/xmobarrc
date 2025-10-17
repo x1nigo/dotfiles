@@ -12,8 +12,8 @@ Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar 
 	   , bgColor          = "#21242b"
 	   , fgColor          = "#d7d7f7"
        , alpha            = 255 -- 0 is fully transparent, 255 is opaque
-	   , position         = TopSize L 100 24
-	   -- , position         = Static { xpos = 8, ypos = 8, width = 1904, height = 30 }
+	   -- , position         = TopSize L 100 24
+	   , position         = Static { xpos = 8, ypos = 4, width = 1904, height = 24 }
 	   , lowerOnStart     = True -- `True` prevents xmobar from overlapping windows on restart
        , iconRoot         = ".config/xmobar/"
 	   , commands = [ Run Brightness ["-t", "<fc=#5757d7><fn=2>\xf05a8</fn>   Bri: <percent>%</fc>", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
@@ -32,5 +32,5 @@ Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar 
 	   , sepChar  = "%"
 	   , alignSep = "}{"
 	   -- Uncomment this to remove the underlines (bottom borders).
-	   -- , template = "   <icon=haskell-logo.xpm/> %sep% %UnsafeXMonadLog% }{ %uptime%    %bright%    %cpu%    %memory%    %default:Master%    %disku%    %battery%    %date%   "
-	   , template = "   <icon=haskell-logo.xpm/> %sep% %UnsafeXMonadLog% }{ <box type=Bottom width=2 color=#57e7d7>%uptime%</box>   <box type=Bottom width=2 color=#5757d7>%bright%</box>   <box type=Bottom width=2 color=#ff8747>%cpu%</box>   <box type=Bottom width=2 color=#f74747>%memory%</box>   <box type=Bottom width=2 color=#57d7f7>%default:Master%</box>   <box type=Bottom width=2 color=#8787f7>%disku%</box>   <box type=Bottom width=2 color=#87d7a7>%battery%</box>   <box type=Bottom width=2 color=#57d7f7>%date%</box>   " }
+	   , template = "   <icon=haskell-logo.xpm/> %sep% %UnsafeXMonadLog% }{ %uptime%    %bright%    %cpu%    %memory%    %default:Master%    %disku%    %battery%    %date%   "
+	   -- , template = "   <icon=haskell-logo.xpm/> %sep% %UnsafeXMonadLog% }{ <box type=Bottom width=2 color=#57e7d7>%uptime%</box>   <box type=Bottom width=2 color=#5757d7>%bright%</box>   <box type=Bottom width=2 color=#ff8747>%cpu%</box>   <box type=Bottom width=2 color=#f74747>%memory%</box>   <box type=Bottom width=2 color=#57d7f7>%default:Master%</box>   <box type=Bottom width=2 color=#8787f7>%disku%</box>   <box type=Bottom width=2 color=#87d7a7>%battery%</box>   <box type=Bottom width=2 color=#57d7f7>%date%</box>   " }
