@@ -130,10 +130,10 @@ myPP = def
 
 myXPConfig :: XPConfig
 myXPConfig = def
-    { font                = "xft:monospace:size=10:antialias=true:autohint:true"
+    { font                = "xft:monospace:bold:size=9"
     , bgColor             = "#21242b"
     , fgColor             = "#d7d7f7"
-    , bgHLight            = "#8787f7"
+    , bgHLight            = "#5757d7"
     , fgHLight            = "#282828"
     , borderColor         = "#373742"
     , promptBorderWidth   = 2
@@ -150,9 +150,9 @@ myXPConfig = def
 
 mySWNConfig :: SWNConfig
 mySWNConfig = def
-    { swn_font    = "xft:monospace:bold:size=50:antialias=true:autohint:true"
-    , swn_bgcolor = "#21242b"
-    , swn_color   = "#d7d7f7"
+    { swn_font    = "xft:monospace:bold:size=50"
+    , swn_bgcolor = "#f74747"
+    , swn_color   = "#282828"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
 
@@ -160,12 +160,12 @@ myTreeConf :: TSConfig a
 myTreeConf = def
     { ts_hidechildren = True
     , ts_background   = 0xd721242b
-    , ts_font         = "xft:monospace:size=10:antialias=true:autohint:true"
+    , ts_font         = "xft:monospace:size=9"
     , ts_node_width   = 200
     , ts_node_height  = 24
     , ts_node         = (0xffd7d7f7, 0xff21242b)
     , ts_nodealt      = (0xffd7d7f7, 0xff1d2024)
-    , ts_highlight    = (0xff282828, 0xff5757d7)
+    , ts_highlight    = (0xff282828, 0xfff74747)
     }
 
 myActions =
@@ -183,7 +183,11 @@ myActions =
 	    , Node (TSNode "Music Player" "Listen to some tunes" (spawn (myTerminal ++ " -e " ++ myMusicPlayer))) []
 	    , Node (TSNode "Image Editor" "Run an image-editing program" (spawn "gimp")) []
 	    , Node (TSNode "Office Suite" "Create/Edit documents" (spawn "libreoffice")) []
-	    , Node (TSNode "Wallpaper Setter" "Change desktop wallpaper" (spawn "nitrogen")) []
+        ]
+    , Node (TSNode "Appearance/Theme" "Customize your desktop" (return ()))
+	    [ Node (TSNode "Wallpaper Setter" "Change desktop wallpaper" (spawn "nitrogen")) []
+	    , Node (TSNode "Lxappearance" "Adjust GTK settings" (spawn "lxappearance")) []
+	    , Node (TSNode "Font Configuration" "Configure font settings" (spawn (myTerminal ++ " -e $EDITOR $HOME/.config/fontconfig/fonts.conf"))) []
         ]
     , Node (TSNode "Audio" "Configure both volume and microphone" (spawn (myTerminal ++ " -e pulsemixer"))) []
     , Node (TSNode "System" "Execute a system action" (return ()))
