@@ -139,7 +139,7 @@ myXPConfig = def
     , promptBorderWidth   = 2
     , position            = Top
     , alwaysHighlight     = True
-    , height              = 24
+    , height              = 26
     , historySize         = 0
     , showCompletionOnTab = False
     }
@@ -162,7 +162,7 @@ myTreeConf = def
     , ts_background   = 0xd721242b
     , ts_font         = "xft:monospace:size=9"
     , ts_node_width   = 200
-    , ts_node_height  = 24
+    , ts_node_height  = 26
     , ts_node         = (0xffd7d7f7, 0xff21242b)
     , ts_nodealt      = (0xffd7d7f7, 0xff1d2024)
     , ts_highlight    = (0xff282828, 0xfff74747)
