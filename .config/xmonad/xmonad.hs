@@ -63,7 +63,7 @@ myMusicPlayer :: String
 myMusicPlayer = "ncmpcpp"
 
 myBorderWidth :: Dimension
-myBorderWidth = 3
+myBorderWidth = 2
 
 myNormalColor :: String
 myNormalColor = "#282828"
@@ -76,7 +76,7 @@ myFocusedColor = "#570000"
 -- ==========
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " mus ", " sys ", " null "]
+myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " null "]
 
 -- =====
 -- Hooks
@@ -93,8 +93,10 @@ myManageHook = composeAll
     , className =? "librewolf"               --> doShift ( myWorkspaces !! 0 )
     , className =? "firefox"                 --> doShift ( myWorkspaces !! 0 )
     , className =? "mpv"                     --> doShift ( myWorkspaces !! 2 )
-    , className =? "Gimp"                    --> doShift ( myWorkspaces !! 5 )
     , className =? "libreoffice-startcenter" --> doShift ( myWorkspaces !! 3 )
+    , className =? "Gimp"                    --> doShift ( myWorkspaces !! 4 )
+    , className =? "kdenlive"                --> doShift ( myWorkspaces !! 5 )
+    , className =? "Audacity"                --> doShift ( myWorkspaces !! 6 )
     , className =? "Lxappearance"            --> doShift ( myWorkspaces !! 7 )
     , className =? "Nitrogen"                --> doShift ( myWorkspaces !! 7 )
     ]
@@ -114,13 +116,13 @@ mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 myPP = def
     { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    -- , ppCurrent         = xmobarColor "#ff8747" "" . wrap "<fc=#570000>[</fc>" "<fc=#570000>]</fc>"
-    , ppCurrent         = xmobarColor "#ff8747" "" . wrap "" "" . xmobarBorder "Top" "#570000" 3
-    , ppHidden          = xmobarColor "#5757d7" "" . wrap "" ""
+    -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" "" . xmobarBorder "Top" "#57d7f7" 3
+    , ppHidden          = xmobarColor "#8787f7" "" . wrap "" ""
     , ppHiddenNoWindows = xmobarColor "#005577" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
-    , ppSep             = " <fc=#373737><fn=1>|</fn></fc> "
+    , ppSep             = " <fc=#373742><fn=1>|</fn></fc> "
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
     }
 
@@ -245,7 +247,7 @@ myConf = def
         , ("M-f",                     sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
         , ("M-C-b",                   sendMessage (MT.Toggle NOBORDERS))
         , ("M-g",                     toggleWindowSpacingEnabled  >> toggleScreenSpacingEnabled)
-        , ("M-S-g",                   setScreenWindowSpacing 4)
+        , ("M-S-g",                   setScreenWindowSpacing 6)
         , ("M-C-k",                   incScreenWindowSpacing 1)
         , ("M-C-j",                   decScreenWindowSpacing 1)
         , ("M-p",                     shellPrompt  myXPConfig)
@@ -264,37 +266,37 @@ myConf = def
 -- NOTE: changes to spacing, renaming, ratio, and other aspects of layouts will probably require a reboot
 
 tall      = renamed [Replace "tall"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 6
             $ minimize
             $ Tall 1 (3/100) (1/2)
 
 stackT    = renamed [Replace "stackT"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 6
             $ minimize
             $ StackTile 1 (3/100) (1/2)
 
 fibonacci = renamed [Replace "fibonacci"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 6
             $ minimize
             $ spiral (6/7)
 
 threeCol  = renamed [Replace "threeCol"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 6
             $ minimize
             $ ThreeCol 1 (3/100) (1/2)
 
 grid      = renamed [Replace "grid"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 6
             $ minimize
             $ GridRatio (4/3)
 
 cmaster   = renamed [Replace "cmaster"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 6
             $ minimize
             $ centerMaster Grid
 
 cmasterF  = renamed [Replace "cmasterF"]
-            $ spacingWithEdge 4
+            $ spacingWithEdge 6
             $ minimize
             $ CenterMainFluid 1 (3/100) (70/100)
 
