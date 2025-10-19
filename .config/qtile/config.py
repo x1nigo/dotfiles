@@ -34,7 +34,7 @@ from libqtile.lazy import lazy
 
 mod = "mod4"
 terminal = "st" # guess_terminal()
-browser = "brave" # librewolf, firefox, etc.
+browser = "firefox" # librewolf, firefox, etc.
 filemanager = "lfup"
 volumecontrols = "pulsemixer"
 dmenu_command = "dmenu_run -p 'RUN:' -l 6 -g 8"
