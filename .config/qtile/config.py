@@ -238,7 +238,7 @@ screens = [
                     # mode = "both",
                     # icon_first = True,
                     # scale = 0.7,
-                    foreground = colors[1],
+                    foreground = "#f74747",
                     ),
                 widget.Sep(**separator_values),
                 widget.LaunchBar(
