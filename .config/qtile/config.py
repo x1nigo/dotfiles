@@ -32,7 +32,7 @@ from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
-# For these, qtile-extras need to be installed
+# For these, `qtile-extras` needs to be installed
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
