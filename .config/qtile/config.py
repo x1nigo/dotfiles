@@ -39,6 +39,11 @@ filemanager = "lfup"
 volumecontrols = "pulsemixer"
 dmenu_command = "dmenu_run -p 'RUN:' -l 6 -g 8"
 
+gaps = 12
+borderwidth = 2
+focusedcolor = "#370077"
+normalcolor = "#282828"
+
 # @hook.subscribe.startup_once
 # def autostart():
 #     home = os.path.expanduser('~/.config/qtile/autostart.sh')
@@ -125,8 +130,8 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 # Edit these to indicate new labels for workspaces
 # group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-# group_labels = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " mus ", " sys ", " null "]
-group_labels = ["", "", "", "󰼭", "", "", "󰽰", "", "󰚌"]
+# group_labels = [" WWW ", " DEV ", " MEDIA ", " DOCX ", " ART ", " SFX ", " AUDIO ", " SYS ", " NULL "]
+group_labels = ["󰊷", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌"]
 
 for i in range(len(group_names)):
     groups.append(
@@ -161,10 +166,10 @@ for i in groups:
     )
 
 my_layout = {
-    "border_width": 3,
-    "margin": 8,
-    "border_focus": "#570000",
-    "border_normal": "#282828",
+    "border_width": borderwidth,
+    "margin": gaps,
+    "border_focus": focusedcolor,
+    "border_normal": normalcolor,
     }
 
 separator_values = {
@@ -189,8 +194,8 @@ layouts = [
 
 floats_kept_above = True
 floating_layout = layout.Floating(
-    border_width = 3,
-    border_focus = "#570028",
+    border_width = borderwidth,
+    border_focus = "#570037",
     border_normal = "#282828",
     float_rules = [
         *layout.Floating.default_float_rules,
@@ -235,9 +240,6 @@ screens = [
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
-                    # mode = "both",
-                    # icon_first = True,
-                    # scale = 0.7,
                     foreground = "#f74747",
                     ),
                 widget.Sep(**separator_values),
@@ -286,10 +288,13 @@ screens = [
                     foreground = "#57d7f7",
                     update_interval = 1,
                     ),
-                widget.HDD(
-                    device = "nvme0n1",
+                widget.DF(
                     fmt = "   Disk: {}",
+                    partition = "/",
+                    format = "{uf}{m} free",
+                    visible_on_warn = False,
                     foreground = "#8787f7",
+                    update_interval = 360
                     ),
                 widget.Battery(
                     fmt = "{}",
@@ -312,7 +317,7 @@ screens = [
             ],
             26, # Bar height
             background = "#21242b",
-            margin = [4, 8, 0, 8], # Orientation: N, E, S, W
+            margin = [gaps // 3, gaps, 0, gaps], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
         ),
