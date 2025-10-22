@@ -32,6 +32,10 @@ from libqtile import bar, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
+# For these, qtile-extras need to be installed
+from qtile_extras import widget
+from qtile_extras.widget.decorations import BorderDecoration
+
 mod = "mod4"
 terminal = "st" # guess_terminal()
 browser = "firefox" # librewolf, firefox, etc.
@@ -39,9 +43,9 @@ filemanager = "lfup"
 volumecontrols = "pulsemixer"
 dmenu_command = "dmenu_run -p 'RUN:' -l 6 -g 8"
 
-gaps = 12
+gaps = 8
 borderwidth = 2
-focusedcolor = "#370077"
+focusedcolor = "#570087"
 normalcolor = "#282828"
 
 # @hook.subscribe.startup_once
@@ -195,7 +199,7 @@ layouts = [
 floats_kept_above = True
 floating_layout = layout.Floating(
     border_width = borderwidth,
-    border_focus = "#570037",
+    border_focus = "#57d7f7",
     border_normal = "#282828",
     float_rules = [
         *layout.Floating.default_float_rules,
@@ -211,7 +215,7 @@ widget_defaults = dict(
     font = "Sans Bold", # Make sure the font is available in the first place. Use `fc-list` to see.
     foreground = "#d7d7f7",
     fontsize = 12,
-    padding = 8,
+    padding = 5,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -220,7 +224,6 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                # The margin really depends on what kind of image is rendered.
                 widget.Prompt(
                     fmt = "{}",
                     cursor = True,
@@ -236,7 +239,6 @@ screens = [
                     borderwidth = 3,
                     block_highlight_text_color = "#57d7f7",
                     this_current_screen_border = "#5757d7",
-                    padding = 6,
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
@@ -263,30 +265,70 @@ screens = [
                     fmt = "󰬬   {}",
                     foreground = "#57e7d7",
                     update_interval = 360,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = "#57e7d7",
+                            padding_x = 5,
+                            )
+                        ],
+                    padding = 5,
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
                     fmt = "󰖨   Bri: {}",
                     foreground = "#5757d7",
                     update_interval = 6,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = "#5757d7",
+                            padding_x = 5,
+                            )
+                        ],
+                    padding = 5,
                     ),
                 widget.CPU(
                     fmt = "󰇄   Cpu: {}",
                     format = "{load_percent}%",
                     foreground = "#ff8747",
                     update_interval = 30,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = "#ff8747",
+                            padding_x = 5,
+                            )
+                        ],
+                    padding = 5,
                     ),
                 widget.Memory(
                     fmt = "   Mem: {}",
                     format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
                     foreground = "#f74747",
                     update_interval = 30,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = "#f74747",
+                            padding_x = 5,
+                            )
+                        ],
+                    padding = 5,
                     ),
                 widget.Volume(
                     mute_format = "   Muted: {volume}%",
                     unmute_format = "   Vol: {volume}%",
                     foreground = "#57d7f7",
                     update_interval = 1,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = "#57d7f7",
+                            padding_x = 5,
+                            )
+                        ],
+                    padding = 5,
                     ),
                 widget.DF(
                     fmt = "   Disk: {}",
@@ -294,7 +336,15 @@ screens = [
                     format = "{uf}{m} free",
                     visible_on_warn = False,
                     foreground = "#8787f7",
-                    update_interval = 360
+                    update_interval = 360,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = "#8787f7",
+                            padding_x = 5,
+                            )
+                        ],
+                    padding = 5,
                     ),
                 widget.Battery(
                     fmt = "{}",
@@ -307,12 +357,28 @@ screens = [
                     not_charging_char = "!",
                     foreground = "#87d7a7",
                     update_interval = 12,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = "#87d7a7",
+                            padding_x = 5,
+                            )
+                        ],
+                    padding = 5,
                     ),
                 widget.Systray(),
                 widget.Clock(
                     format="󱎫   %a, %b %d, %Y - %I:%M %p",
                     foreground = "#57d7f7",
                     update_interval = 5,
+                    decorations = [
+                        BorderDecoration(
+                            border_width = [0, 0, 2, 0],
+                            colour = "#57d7f7",
+                            padding_x = 5,
+                            )
+                        ],
+                    padding = 5,
                      ),
             ],
             26, # Bar height
