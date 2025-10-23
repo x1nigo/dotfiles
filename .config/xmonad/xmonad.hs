@@ -62,14 +62,17 @@ myFileManager = "lfup"
 myMusicPlayer :: String
 myMusicPlayer = "ncmpcpp"
 
+myAudioMixer :: String
+myAudioMixer = "pulsemixer"
+
 myBorderWidth :: Dimension
-myBorderWidth = 2
+myBorderWidth = 3
 
 myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#570000"
+myFocusedColor = "#370057"
 
 -- ==========
 -- Workspaces
@@ -119,7 +122,7 @@ myPP = def
     -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" "" . xmobarBorder "Top" "#57d7f7" 3
     , ppHidden          = xmobarColor "#8787f7" "" . wrap "" ""
-    , ppHiddenNoWindows = xmobarColor "#005577" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
+    , ppHiddenNoWindows = xmobarColor "#5787d7" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#373742><fn=1>|</fn></fc> "
@@ -153,8 +156,8 @@ myXPConfig = def
 mySWNConfig :: SWNConfig
 mySWNConfig = def
     { swn_font    = "xft:monospace:bold:size=50"
-    , swn_bgcolor = "#f74747"
-    , swn_color   = "#282828"
+    , swn_bgcolor = "#570087"
+    , swn_color   = "#d7d7f7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
 
@@ -167,7 +170,7 @@ myTreeConf = def
     , ts_node_height  = 26
     , ts_node         = (0xffd7d7f7, 0xff21242b)
     , ts_nodealt      = (0xffd7d7f7, 0xff1d2024)
-    , ts_highlight    = (0xff282828, 0xfff74747)
+    , ts_highlight    = (0xff282828, 0xff5757d7)
     }
 
 myActions =
@@ -187,11 +190,14 @@ myActions =
 	    , Node (TSNode "Office Suite" "Create/Edit documents" (spawn "libreoffice")) []
         ]
     , Node (TSNode "Appearance/Theme" "Customize your desktop" (return ()))
-	    [ Node (TSNode "Wallpaper Setter" "Change desktop wallpaper" (spawn "nitrogen")) []
+	    [ Node (TSNode "Nitrogen" "Change desktop wallpaper" (spawn "nitrogen")) []
 	    , Node (TSNode "Lxappearance" "Adjust GTK settings" (spawn "lxappearance")) []
 	    , Node (TSNode "Font Configuration" "Configure font settings" (spawn (myTerminal ++ " -e $EDITOR $HOME/.config/fontconfig/fonts.conf"))) []
         ]
-    , Node (TSNode "Audio" "Configure both volume and microphone" (spawn (myTerminal ++ " -e pulsemixer"))) []
+    , Node (TSNode "Audio" "Change audio settings" (return ()))
+	    [ Node (TSNode "Pulsemixer" "Manipulate audio input/output" (spawn (myTerminal ++ " -e " ++ myAudioMixer))) []
+	    , Node (TSNode "Audacity" "Edit and record audio" (spawn "audacity")) []
+        ]
     , Node (TSNode "System" "Execute a system action" (return ()))
 	    [ Node (TSNode "Shutdown" "Shuts the system down" (spawn "systemctl poweroff")) []
 	    , Node (TSNode "Restart/Reboot" "Reboot the system" (spawn "systemctl reboot")) []
@@ -247,7 +253,7 @@ myConf = def
         , ("M-f",                     sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts)
         , ("M-C-b",                   sendMessage (MT.Toggle NOBORDERS))
         , ("M-g",                     toggleWindowSpacingEnabled  >> toggleScreenSpacingEnabled)
-        , ("M-S-g",                   setScreenWindowSpacing 6)
+        , ("M-S-g",                   setScreenWindowSpacing 4)
         , ("M-C-k",                   incScreenWindowSpacing 1)
         , ("M-C-j",                   decScreenWindowSpacing 1)
         , ("M-p",                     shellPrompt  myXPConfig)
@@ -266,37 +272,37 @@ myConf = def
 -- NOTE: changes to spacing, renaming, ratio, and other aspects of layouts will probably require a reboot
 
 tall      = renamed [Replace "tall"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ minimize
             $ Tall 1 (3/100) (1/2)
 
 stackT    = renamed [Replace "stackT"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ minimize
             $ StackTile 1 (3/100) (1/2)
 
 fibonacci = renamed [Replace "fibonacci"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ minimize
             $ spiral (6/7)
 
 threeCol  = renamed [Replace "threeCol"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ minimize
             $ ThreeCol 1 (3/100) (1/2)
 
 grid      = renamed [Replace "grid"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ minimize
             $ GridRatio (4/3)
 
 cmaster   = renamed [Replace "cmaster"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ minimize
             $ centerMaster Grid
 
 cmasterF  = renamed [Replace "cmasterF"]
-            $ spacingWithEdge 6
+            $ spacingWithEdge 4
             $ minimize
             $ CenterMainFluid 1 (3/100) (70/100)
 
