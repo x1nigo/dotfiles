@@ -51,7 +51,7 @@ import XMonad.Layout.StackTile
 -- =========
 
 myTerminal :: String
-myTerminal = "st"
+myTerminal = "alacritty"
 
 myBrowser :: String
 myBrowser = "firefox"
@@ -220,7 +220,7 @@ myConf = def
     }
     `additionalKeysP`
         [ ("M-<Return>",              spawn (myTerminal))
-        , ("M-S-<Return>",            spawn (myTerminal ++ " -c termfloat"))
+        , ("M-S-<Return>",            spawn (myTerminal ++ " --class termfloat"))
         , ("M-<Tab>",                 sendMessage NextLayout)
         , ("M-<Space>",               promote)
         , ("M-d",                     spawn "dmenu_run -p 'RUN:' -l 6 -g 8")
