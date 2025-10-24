@@ -122,7 +122,7 @@ myPP = def
     -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" "" . xmobarBorder "Top" "#57d7f7" 3
     , ppHidden          = xmobarColor "#8787f7" "" . wrap "" ""
-    , ppHiddenNoWindows = xmobarColor "#5787d7" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
+    , ppHiddenNoWindows = xmobarColor "#373742" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#373742><fn=1>|</fn></fc> "
@@ -135,7 +135,7 @@ myPP = def
 
 myXPConfig :: XPConfig
 myXPConfig = def
-    { font                = "xft:monospace:bold:size=9"
+    { font                = "xft:monospace:bold:size=12"
     , bgColor             = "#21242b"
     , fgColor             = "#d7d7f7"
     , bgHLight            = "#5757d7"
@@ -144,7 +144,7 @@ myXPConfig = def
     , promptBorderWidth   = 2
     , position            = Top
     , alwaysHighlight     = True
-    , height              = 26
+    , height              = 32
     , historySize         = 0
     , showCompletionOnTab = False
     }
@@ -156,7 +156,7 @@ myXPConfig = def
 mySWNConfig :: SWNConfig
 mySWNConfig = def
     { swn_font    = "xft:monospace:bold:size=50"
-    , swn_bgcolor = "#570087"
+    , swn_bgcolor = "#21242b"
     , swn_color   = "#d7d7f7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
@@ -165,9 +165,9 @@ myTreeConf :: TSConfig a
 myTreeConf = def
     { ts_hidechildren = True
     , ts_background   = 0xd721242b
-    , ts_font         = "xft:monospace:size=9"
-    , ts_node_width   = 200
-    , ts_node_height  = 26
+    , ts_font         = "xft:monospace:size=16"
+    , ts_node_width   = 320
+    , ts_node_height  = 36
     , ts_node         = (0xffd7d7f7, 0xff21242b)
     , ts_nodealt      = (0xffd7d7f7, 0xff1d2024)
     , ts_highlight    = (0xff282828, 0xff5757d7)
