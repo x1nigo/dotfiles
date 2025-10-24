@@ -33,7 +33,7 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "st" # guess_terminal()
+terminal = "alacritty"
 browser = "firefox" # librewolf, firefox, etc.
 filemanager = "lfup"
 volumecontrols = "pulsemixer"
@@ -54,7 +54,7 @@ normalcolor = "#282828"
 keys = [
     # General programs and other scripts
     Key([mod], "Return", lazy.spawn(terminal), desc="Spawn the terminal"),
-    Key([mod, "shift"], "Return", lazy.spawn(terminal + " -n termfloat"), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
+    Key([mod, "shift"], "Return", lazy.spawn(terminal + " --class termfloat"), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
     Key([mod], "w", lazy.spawn(browser), desc="Launch the browser"),
     Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager)), desc="Spawn the file manager"),
     Key([mod], "d", lazy.spawn(dmenu_command), desc="Launch a program"),
