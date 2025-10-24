@@ -133,7 +133,7 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 # Edit these to indicate new labels for workspaces
 # group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 # group_labels = [" WWW ", " DEV ", " MEDIA ", " DOCX ", " ART ", " SFX ", " AUDIO ", " SYS ", " NULL "]
-group_labels = ["󰊷", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌"]
+group_labels = ["󰊷", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌"]
 
 for i in range(len(group_names)):
     groups.append(
@@ -181,10 +181,10 @@ separator_values = {
 
 layouts = [
     layout.MonadTall(**my_layout),
-    layout.Max(),
-    layout.Bsp(**my_layout),
+    layout.Columns(initial_ratio = 2),
+    layout.Bsp(),
     layout.Matrix(**my_layout),
-    # layout.Columns(),
+    layout.Max(),
     # layout.Tile(),
     # layout.Stack(num_stacks=2),
     # layout.MonadWide(),
@@ -197,7 +197,7 @@ layouts = [
 floats_kept_above = True
 floating_layout = layout.Floating(
     border_width = borderwidth,
-    border_focus = "#57d7f7",
+    border_focus = "#570000",
     border_normal = "#282828",
     float_rules = [
         *layout.Floating.default_float_rules,
@@ -231,7 +231,7 @@ screens = [
                     ),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
-                    highlight_color = "#1d2023",
+                    highlight_color = "#21242b",
                     active = "#ff8747",
                     inactive = "#373742",
                     borderwidth = 3,
@@ -260,15 +260,15 @@ screens = [
                     # empty_group_string = "~",
                     ),
                 widget.GenPollCommand(
-                    cmd = ["sl-uptime"],
-                    fmt = "󰬬   Uptime: {}",
+                    cmd = ["sl-uptime"], # This relies on an external script
+                    fmt = "  Uptime: {}",
                     foreground = "#57e7d7",
                     update_interval = 360,
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
                     fmt = "󰖨   Bri: {}",
-                    foreground = "#5757d7",
+                    foreground = "#5787d7",
                     update_interval = 6,
                     ),
                 widget.CPU(
@@ -278,7 +278,7 @@ screens = [
                     update_interval = 30,
                     ),
                 widget.Memory(
-                    fmt = "   Mem: {}",
+                    fmt = "󰒋   Mem: {}",
                     format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
                     foreground = "#f74747",
                     update_interval = 30,
@@ -300,9 +300,9 @@ screens = [
                 widget.Battery(
                     fmt = "{}",
                     format = "{char}  Bat: {percent:2.0%}",
-                    discharge_char = "󰋑",
+                    discharge_char = "󱐋",
                     empty_char = "",
-                    charge_char = "󱐋",
+                    charge_char = "",
                     full_char = "",
                     full_short_text = "full",
                     not_charging_char = "!",
