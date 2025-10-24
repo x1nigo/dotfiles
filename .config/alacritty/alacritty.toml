@@ -1,6 +1,6 @@
 [window]
 dynamic_padding = false
-opacity = 1.0
+opacity = 0.85
 title = "Alacritty"
 
 [window.class]
@@ -48,7 +48,7 @@ red =     "#f74747"
 green =   "#87d7a7"
 yellow =  "#f78747"
 blue =    "#5787d7"
-magenta = "#5757d7"
+magenta = "#8787f7"
 cyan =    "#57d7f7"
 white =   "#d7d7f7"
 
@@ -58,7 +58,7 @@ red =     "#f74747"
 green =   "#87d7a7"
 yellow =  "#f78747"
 blue =    "#5787d7"
-magenta = "#5757d7"
+magenta = "#8787f7"
 cyan =    "#57d7f7"
 white =   "#d7d7f7"
 
