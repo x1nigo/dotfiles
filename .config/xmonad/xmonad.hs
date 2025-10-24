@@ -231,7 +231,7 @@ myConf = def
         , ("M-v",                     spawn "dm-videos")
         , ("M-x",                     spawn "dm-wallpaper -d")
         , ("M-S-x",                   spawn "dm-wallpaper -x")
-        , ("M-'",                     spawn (myTerminal ++ " -c termfloat -f monospace:size=16 -g 50x20 -e bc -lq"))
+        , ("M-'",                     spawn (myTerminal ++ " --class termfloat -e bc -lq"))
         , ("M-<Insert>",              spawn "dm-insert")
         , ("M-`",                     spawn "dm-emoji")
         , ("M-u",                     spawn "dm-unicode")
