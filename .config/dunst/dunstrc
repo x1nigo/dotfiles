@@ -1,19 +1,19 @@
 [global]
     monitor = 0
     follow = keyboard
-    width = 370
+    width = 380
     height = 1000
 	offset = 6x52
     transparency = 0
     horizontal_padding = 2
-    font = Sans 9
+    font = Monospace 10
     format = "<b>%s</b>\n%b"
 	frame_color = "#57d7f7"
 	frame_width = 2
 
 [urgency_normal]
     background = "#1d2023"
-    foreground = "#d7d7d7"
+    foreground = "#d7d7f7"
     timeout = 5
 
 [urgency_critical]
