@@ -1,0 +1,67 @@
+[window]
+dynamic_padding = false
+opacity = 1.0
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 2
+y = 2
+
+[font]
+size = 8.0
+
+[font.bold]
+family = "Monospace"
+style = "Bold"
+
+[font.bold_italic]
+family = "Monospace"
+style = "Bold Italic"
+
+[font.italic]
+family = "Monospace"
+style = "Italic"
+
+[font.normal]
+family = "Monospace"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 2
+
+[colors.primary]
+foreground = "#d7d7f7"
+background = "#21242b"
+
+[colors.selection]
+text = "#282828"
+background = "#f74747"
+
+[colors.normal]
+black =   "#21242b"
+red =     "#f74747"
+green =   "#87d7a7"
+yellow =  "#f78747"
+blue =    "#5787d7"
+magenta = "#5757d7"
+cyan =    "#57d7f7"
+white =   "#d7d7f7"
+
+[colors.bright]
+black =   "#373742"
+red =     "#f74747"
+green =   "#87d7a7"
+yellow =  "#f78747"
+blue =    "#5787d7"
+magenta = "#5757d7"
+cyan =    "#57d7f7"
+white =   "#d7d7f7"
+
+[cursor.style]
+shape = "Block"
+blinking = "Never"
