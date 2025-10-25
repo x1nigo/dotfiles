@@ -78,8 +78,8 @@ myFocusedColor = "#370057"
 -- Workspaces
 -- ==========
 
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " null "]
+myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+-- myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " null "]
 
 -- =====
 -- Hooks
@@ -120,9 +120,9 @@ myPP = def
     { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
     -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
-    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" "" . xmobarBorder "Top" "#57d7f7" 3
-    , ppHidden          = xmobarColor "#8787f7" "" . wrap "" ""
-    , ppHiddenNoWindows = xmobarColor "#373742" "" . wrap "" "" -- Uncomment to show unoccupied workspaces
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap " " " " . xmobarBorder "Bottom" "#5757f7" 3
+    , ppHidden          = xmobarColor "#d7d7f7" "" . wrap " " " " . xmobarBorder "Bottom" "#373742" 3
+    , ppHiddenNoWindows = xmobarColor "#373742" "" . wrap " " " " -- Uncomment to show unoccupied workspaces
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#373742><fn=1>|</fn></fc> "
@@ -156,7 +156,7 @@ myXPConfig = def
 mySWNConfig :: SWNConfig
 mySWNConfig = def
     { swn_font    = "xft:monospace:bold:size=50"
-    , swn_bgcolor = "#21242b"
+    , swn_bgcolor = "#370057"
     , swn_color   = "#d7d7f7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
@@ -274,7 +274,7 @@ myConf = def
 tall      = renamed [Replace "tall"]
             $ spacingWithEdge 4
             $ minimize
-            $ Tall 1 (3/100) (1/2)
+            $ Tall 1 (3/100) (11/20)
 
 stackT    = renamed [Replace "stackT"]
             $ spacingWithEdge 4
