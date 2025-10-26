@@ -133,7 +133,7 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 # Edit these to indicate new labels for workspaces
 # group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 # group_labels = [" WWW ", " DEV ", " MEDIA ", " DOCX ", " ART ", " SFX ", " AUDIO ", " SYS ", " NULL "]
-group_labels = ["󰊷", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌"]
+group_labels = ["", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌"]
 
 for i in range(len(group_names)):
     groups.append(
@@ -232,12 +232,13 @@ screens = [
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
                     highlight_color = "#21242b",
-                    active = "#ff8747",
+                    active = "#8787f7",
                     inactive = "#373742",
                     borderwidth = 3,
                     block_highlight_text_color = "#57d7f7",
-                    this_current_screen_border = "#5757d7",
-                    padding = 5,
+                    this_current_screen_border = "#57d7f7",
+                    fontsize = 10,
+                    padding = 6,
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
@@ -246,12 +247,13 @@ screens = [
                 widget.Sep(**separator_values),
                 widget.LaunchBar(
                     progs = [("🦊", "firefox", "Browser"), # librewolf, firefox, chromium, etc.
-                            ("🚀", "st", "The simple terminal"),
-                            ("🌏", "st -e nmtui", "Network Manager"),
-                            ("🎸", "st -e ncmpcpp", "Music Player"),
-                    ],
-                    padding = 5,
-                ),
+                        ("🚀", "st", "The simple terminal"),
+                        ("🌏", "st -e nmtui", "Network Manager"),
+                        ("🎸", "st -e ncmpcpp", "Music Player"),
+                        ],
+                    fontsize = 8,
+                    padding = 6,
+                    ),
                 widget.Sep(**separator_values),
                 widget.WindowName(
                     fmt = "{}",
@@ -261,14 +263,14 @@ screens = [
                     ),
                 widget.GenPollCommand(
                     cmd = ["sl-uptime"], # This relies on an external script
-                    fmt = "  Uptime: {}",
-                    foreground = "#57e7d7",
+                    fmt = "󱎫  Uptime: {}",
+                    foreground = "#d72757",
                     update_interval = 360,
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
                     fmt = "󰖨   Bri: {}",
-                    foreground = "#5787d7",
+                    foreground = "#5757d7",
                     update_interval = 6,
                     ),
                 widget.CPU(
@@ -309,14 +311,14 @@ screens = [
                     foreground = "#f75727",
                     update_interval = 12,
                     ),
-                widget.Systray(),
                 widget.Clock(
-                    format="󱎫   %a, %b %d, %Y - %I:%M %p",
+                    format="󰥔  %a, %b %d, %Y - %I:%M %p",
                     foreground = "#57d7f7",
                     update_interval = 5,
                      ),
+                widget.Systray(),
             ],
-            26, # Bar height
+            30, # Bar height
             background = "#21242b",
             margin = [gaps // 2, gaps, 0, gaps], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
