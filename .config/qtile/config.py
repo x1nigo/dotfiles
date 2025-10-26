@@ -37,11 +37,12 @@ terminal = "alacritty"
 browser = "firefox" # librewolf, firefox, etc.
 filemanager = "lfup"
 volumecontrols = "pulsemixer"
+music_player = "ncmpcpp"
 dmenu_command = "dmenu_run -p 'RUN:' -l 6 -g 8"
 
 gaps = 8
-borderwidth = 3
-focusedcolor = "#370057"
+borderwidth = 2
+focusedcolor = "#570087"
 normalcolor = "#282828"
 
 #TODO: Create a function that changes gaps/margins in real-time.
@@ -54,9 +55,10 @@ normalcolor = "#282828"
 keys = [
     # General programs and other scripts
     Key([mod], "Return", lazy.spawn(terminal), desc="Spawn the terminal"),
-    Key([mod, "shift"], "Return", lazy.spawn(terminal + " --class termfloat"), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
+    Key([mod, "shift"], "Return", lazy.spawn("{} --class termfloat".format(terminal)), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
     Key([mod], "w", lazy.spawn(browser), desc="Launch the browser"),
-    Key([mod], "r", lazy.spawn("{} -e {}" .format(terminal, filemanager)), desc="Spawn the file manager"),
+    Key([mod], "r", lazy.spawn("{} -e {}".format(terminal, filemanager)), desc="Spawn the file manager"),
+    Key([mod], "n", lazy.spawn("{} -e {}".format(terminal, music_player)), desc="Listen to some tunes"),
     Key([mod], "d", lazy.spawn(dmenu_command), desc="Launch a program"),
     Key([mod], "p", lazy.spawncmd(), desc="Built-in qtile launcher"),
     Key([mod], "b", lazy.spawn("dm-bookmark"), desc="Bookmark the highlighted text"),
@@ -81,7 +83,7 @@ keys = [
     # Other commands based on the functions keys
     Key([mod], "F1", lazy.spawn("readme"), desc="Read the README file"),
     Key([mod], "F2", lazy.spawn("dm-fonts"), desc="Select a default font"),
-    Key([mod], "F3", lazy.spawn("{} -e {}" .format(terminal, volumecontrols)), desc="Spawn the audio mixer"),
+    Key([mod], "F3", lazy.spawn("{} -e {}".format(terminal, volumecontrols)), desc="Spawn the audio mixer"),
     Key([mod], "F4", lazy.spawn("dm-display"), desc="Select a display option"),
     Key([mod], "F12", lazy.reload_config(), desc="Reload the config"),
     Key([], "Print", lazy.spawn("dm-printscreen"), desc="Take a screenshot"),
@@ -105,7 +107,7 @@ keys = [
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     # Key([mod], "f", lazy.window.toggle_fullscreen()),
@@ -247,9 +249,9 @@ screens = [
                 widget.Sep(**separator_values),
                 widget.LaunchBar(
                     progs = [("🦊", "firefox", "Browser"), # librewolf, firefox, chromium, etc.
-                        ("🚀", "st", "The simple terminal"),
-                        ("🌏", "st -e nmtui", "Network Manager"),
-                        ("🎸", "st -e ncmpcpp", "Music Player"),
+                        ("🚀", terminal, "The terminal emulator"),
+                        ("🌏", "{} -e nmtui".format(terminal), "Network Manager"),
+                        ("🎸", "{} -e ncmpcpp".format(terminal), "Music Player"),
                         ],
                     fontsize = 8,
                     padding = 6,
