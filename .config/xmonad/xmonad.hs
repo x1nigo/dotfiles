@@ -66,20 +66,20 @@ myAudioMixer :: String
 myAudioMixer = "pulsemixer"
 
 myBorderWidth :: Dimension
-myBorderWidth = 3
+myBorderWidth = 2
 
 myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#370057"
+myFocusedColor = "#570087"
 
 -- ==========
 -- Workspaces
 -- ==========
 
-myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
--- myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " null "]
+-- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " null "]
 
 -- =====
 -- Hooks
@@ -120,9 +120,9 @@ myPP = def
     { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
     -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
-    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap " " " " . xmobarBorder "Bottom" "#5757f7" 3
-    , ppHidden          = xmobarColor "#d7d7f7" "" . wrap " " " " . xmobarBorder "Bottom" "#373742" 3
-    , ppHiddenNoWindows = xmobarColor "#373742" "" . wrap " " " " -- Uncomment to show unoccupied workspaces
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#570087" 3
+    , ppHidden          = xmobarColor "#d7d7f7" "" . wrap "" " "
+    , ppHiddenNoWindows = xmobarColor "#373742" "" . wrap "" " " -- Uncomment to show unoccupied workspaces
     , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#373742><fn=1>|</fn></fc> "
@@ -138,8 +138,8 @@ myXPConfig = def
     { font                = "xft:monospace:bold:size=12"
     , bgColor             = "#21242b"
     , fgColor             = "#d7d7f7"
-    , bgHLight            = "#5757d7"
-    , fgHLight            = "#282828"
+    , bgHLight            = "#570087"
+    , fgHLight            = "#d7d7f7"
     , borderColor         = "#373742"
     , promptBorderWidth   = 2
     , position            = Top
@@ -170,7 +170,7 @@ myTreeConf = def
     , ts_node_height  = 36
     , ts_node         = (0xffd7d7f7, 0xff21242b)
     , ts_nodealt      = (0xffd7d7f7, 0xff1d2024)
-    , ts_highlight    = (0xff282828, 0xff5757d7)
+    , ts_highlight    = (0xffd7d7f7, 0xff370057)
     }
 
 myActions =
