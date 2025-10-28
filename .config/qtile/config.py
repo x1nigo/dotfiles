@@ -33,17 +33,17 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
 mod = "mod4"
-terminal = "alacritty"
-browser = "firefox" # librewolf, firefox, etc.
-filemanager = "lfup"
-volumecontrols = "pulsemixer"
-music_player = "ncmpcpp"
-dmenu_command = "dmenu_run -p 'RUN:' -l 6 -g 8"
+myTerminal = "alacritty"
+myBrowser = "firefox" # librewolf, firefox, etc.
+myFileManager = "lfup"
+myAudioMixer = "pulsemixer"
+myMusicPlayer = "ncmpcpp"
 
-gaps = 8
-borderwidth = 2
-focusedcolor = "#570087"
-normalcolor = "#282828"
+myGaps = 8
+myBorder = 2
+myFocusedColor = "#570087"
+myFocusedFloatColor = "#57d7f7"
+myNormalColor = "#282828"
 
 #TODO: Create a function that changes gaps/margins in real-time.
 
@@ -54,12 +54,12 @@ normalcolor = "#282828"
 
 keys = [
     # General programs and other scripts
-    Key([mod], "Return", lazy.spawn(terminal), desc="Spawn the terminal"),
-    Key([mod, "shift"], "Return", lazy.spawn("{} --class termfloat".format(terminal)), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
-    Key([mod], "w", lazy.spawn(browser), desc="Launch the browser"),
-    Key([mod], "r", lazy.spawn("{} -e {}".format(terminal, filemanager)), desc="Spawn the file manager"),
-    Key([mod], "n", lazy.spawn("{} -e {}".format(terminal, music_player)), desc="Listen to some tunes"),
-    Key([mod], "d", lazy.spawn(dmenu_command), desc="Launch a program"),
+    Key([mod], "Return", lazy.spawn(myTerminal), desc="Spawn the terminal"),
+    Key([mod, "shift"], "Return", lazy.spawn("{} --class termfloat".format(myTerminal)), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
+    Key([mod], "w", lazy.spawn(myBrowser), desc="Launch the browser"),
+    Key([mod], "r", lazy.spawn("{} -e {}".format(myTerminal, myFileManager)), desc="Spawn the file manager"),
+    Key([mod], "n", lazy.spawn("{} -e {}".format(myTerminal, myMusicPlayer)), desc="Listen to some tunes"),
+    Key([mod], "d", lazy.spawn("dmenu_run -p 'Run:' -l 6 -g 8"), desc="Launch a program"),
     Key([mod], "p", lazy.spawncmd(), desc="Built-in qtile launcher"),
     Key([mod], "b", lazy.spawn("dm-bookmark"), desc="Bookmark the highlighted text"),
     Key([mod], "v", lazy.spawn("dm-videos"), desc="Watch a video through your media player"),
@@ -67,7 +67,7 @@ keys = [
     Key([mod], "x", lazy.spawn("dm-wallpaper -d"), desc="Select a desktop wallpaper/background"),
     Key([mod, "shift"], "x", lazy.spawn("dm-wallpaper -x"), desc="Remove the current desktop wallpaper/background"),
     Key([mod, "shift"], "Space", lazy.window.toggle_floating(), desc="Toggle the floating status of a window"),
-    Key([mod], "apostrophe", lazy.spawn(terminal + " -n termfloat -f monospace:size=16 -g 50x20 -e bc -lq"), desc="Use a terminal-based calculator"),
+    Key([mod], "apostrophe", lazy.spawn(myTerminal + " --class termfloat -e bc -lq"), desc="Use a terminal-based calculator"),
     Key([mod], "Insert", lazy.spawn("dm-insert"), desc="Insert one of your saved bookmarks"),
     Key([mod], "grave", lazy.spawn("dm-emoji"), desc="Place selected emoji in your clipboard"),
     Key([mod], "u", lazy.spawn("dm-unicode"), desc="Copy selected unicode character"),
@@ -83,7 +83,7 @@ keys = [
     # Other commands based on the functions keys
     Key([mod], "F1", lazy.spawn("readme"), desc="Read the README file"),
     Key([mod], "F2", lazy.spawn("dm-fonts"), desc="Select a default font"),
-    Key([mod], "F3", lazy.spawn("{} -e {}".format(terminal, volumecontrols)), desc="Spawn the audio mixer"),
+    Key([mod], "F3", lazy.spawn("{} -e {}".format(myTerminal, myAudioMixer)), desc="Spawn the audio mixer"),
     Key([mod], "F4", lazy.spawn("dm-display"), desc="Select a display option"),
     Key([mod], "F12", lazy.reload_config(), desc="Reload the config"),
     Key([], "Print", lazy.spawn("dm-printscreen"), desc="Take a screenshot"),
@@ -128,14 +128,13 @@ keys = [
 #         )
 #     )
 
-# groups = [Group(i) for i in "123456789"]
 groups = []
-group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 # Edit these to indicate new labels for workspaces
-# group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-# group_labels = [" WWW ", " DEV ", " MEDIA ", " DOCX ", " ART ", " SFX ", " AUDIO ", " SYS ", " NULL "]
-group_labels = ["", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌"]
+# group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+# group_labels = [" WWW ", " DEV ", " MEDIA ", " DOCX ", " ART ", " SFX ", " AUDIO ", " SYS ", " NULL ", " MISC "]
+group_labels = ["", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌", ""]
 
 for i in range(len(group_names)):
     groups.append(
@@ -170,10 +169,10 @@ for i in groups:
     )
 
 my_layout = {
-    "border_width": borderwidth,
-    "margin": gaps,
-    "border_focus": focusedcolor,
-    "border_normal": normalcolor,
+    "border_width": myBorder,
+    "margin": myGaps,
+    "border_focus": myFocusedColor,
+    "border_normal": myNormalColor,
     }
 
 separator_values = {
@@ -198,9 +197,9 @@ layouts = [
 
 floats_kept_above = True
 floating_layout = layout.Floating(
-    border_width = borderwidth,
-    border_focus = "#570000",
-    border_normal = "#282828",
+    border_width = myBorder,
+    border_focus = myFocusedFloatColor,
+    border_normal = myNormalColor,
     float_rules = [
         *layout.Floating.default_float_rules,
         Match(wm_class = "termfloat"),
@@ -225,6 +224,8 @@ screens = [
         top=bar.Bar(
             [
                 widget.Prompt(
+                    font = "Monospace",
+                    background = "#370057",
                     fmt = "{}",
                     cursor = True,
                     cursor_color = "#5757f7",
@@ -238,7 +239,7 @@ screens = [
                     inactive = "#373742",
                     borderwidth = 3,
                     block_highlight_text_color = "#57d7f7",
-                    this_current_screen_border = "#57d7f7",
+                    this_current_screen_border = "#570087",
                     fontsize = 10,
                     padding = 6,
                     ),
@@ -249,9 +250,9 @@ screens = [
                 widget.Sep(**separator_values),
                 widget.LaunchBar(
                     progs = [("🦊", "firefox", "Browser"), # librewolf, firefox, chromium, etc.
-                        ("🚀", terminal, "The terminal emulator"),
-                        ("🌏", "{} -e nmtui".format(terminal), "Network Manager"),
-                        ("🎸", "{} -e ncmpcpp".format(terminal), "Music Player"),
+                        ("🚀", myTerminal, "The terminal emulator"),
+                        ("🌏", "{} -e nmtui".format(myTerminal), "Network Manager"),
+                        ("🎸", "{} -e ncmpcpp".format(myTerminal), "Music Player"),
                         ],
                     fontsize = 8,
                     padding = 6,
@@ -265,7 +266,7 @@ screens = [
                     ),
                 widget.GenPollCommand(
                     cmd = ["sl-uptime"], # This relies on an external script
-                    fmt = "󱎫  Uptime: {}",
+                    fmt = "⧗  Uptime: {}",
                     foreground = "#d72757",
                     update_interval = 360,
                     ),
@@ -314,7 +315,7 @@ screens = [
                     update_interval = 12,
                     ),
                 widget.Clock(
-                    format="󰥔  %a, %b %d, %Y - %I:%M %p",
+                    format="󰥔   %a, %b %d, %Y - %I:%M %p",
                     foreground = "#57d7f7",
                     update_interval = 5,
                      ),
@@ -322,7 +323,7 @@ screens = [
             ],
             30, # Bar height
             background = "#21242b",
-            margin = [gaps // 2, gaps, 0, gaps], # Orientation: N, E, S, W
+            margin = [myGaps // 2, myGaps, 0, myGaps], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
         ),
