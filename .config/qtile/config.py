@@ -225,23 +225,23 @@ screens = [
             [
                 widget.Prompt(
                     font = "Monospace",
-                    background = "#370057",
-                    fmt = "{}",
                     cursor = True,
-                    cursor_color = "#5757f7",
+                    cursor_color = "#d7d7f7",
                     foreground = "#d7d7f7",
-                    prompt = "Run: ",
+                    prompt = "Prompt: ",
                     ),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
-                    highlight_color = "#21242b",
+                    highlight_color = "#1d2023",
                     active = "#8787f7",
                     inactive = "#373742",
                     borderwidth = 3,
                     block_highlight_text_color = "#57d7f7",
                     this_current_screen_border = "#570087",
-                    fontsize = 10,
+                    font = "Monospace",
+                    fontsize = 14,
                     padding = 6,
+                    disable_drag = True,
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
@@ -249,7 +249,7 @@ screens = [
                     ),
                 widget.Sep(**separator_values),
                 widget.LaunchBar(
-                    progs = [("🦊", "firefox", "Browser"), # librewolf, firefox, chromium, etc.
+                    progs = [("🦊", "firefox", "Browser"),
                         ("🚀", myTerminal, "The terminal emulator"),
                         ("🌏", "{} -e nmtui".format(myTerminal), "Network Manager"),
                         ("🎸", "{} -e ncmpcpp".format(myTerminal), "Music Player"),
@@ -284,7 +284,7 @@ screens = [
                     ),
                 widget.Memory(
                     fmt = "󰒋   Mem: {}",
-                    format = "{MemUsed:.0f}{mm} ({MemPercent:.0f}%)",
+                    format = "{MemPercent}%",
                     foreground = "#f74747",
                     update_interval = 30,
                     ),
