@@ -12,12 +12,12 @@ Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar 
 	   , bgColor          = "#21242b"
 	   , fgColor          = "#d7d7f7"
        , alpha            = 255 -- 0 is fully transparent, 255 is opaque
-	   , position         = TopSize L 100 24
-	   -- , position         = Static { xpos = 8, ypos = 4, width = 1904, height = 24 }
+	   , position         = TopSize L 100 26
+	   -- , position         = Static { xpos = 8, ypos = 4, width = 1904, height = 26 }
 	   , lowerOnStart     = True -- `True` prevents xmobar from overlapping windows on restart
        , iconRoot         = ".config/xmobar/"
 	   , commands = [ Run Brightness ["-t", "<fc=#5757d7><fn=2>\xf05a8</fn>   Bri: <percent>%</fc>", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
-				    , Run Cpu ["-t", "<fc=#ff8747><fn=2>\xf01c4</fn>   Cpu: <total>%</fc>"] 300
+				    , Run Cpu ["-t", "<fc=#ff8747><fn=2>\xf0e5e</fn>   Cpu: <total>%</fc>"] 300
 				    , Run Memory ["-t", "<fc=#f74747><fn=2>\xf048b</fn>   Mem: <used>M (<usedratio>%)</fc>"] 300
 				    , Run Volume "default" "Master" ["-t", "<fc=#57d7f7><fn=2>\xf0a1</fn>   Vol: <volume>% <status></fc>", "--", "--on", "", "--off", "[Muted]"] 10
 				    , Run BatteryP ["BAT0"] ["-t", "<fc=#f75727><fn=2>\xf140b</fn> <acstatus></fc>", "-L", "11", "-l", "#ff0000", "--", "-O", "Charging: <left>%", "-o", "Bat: <left>%"] 120
