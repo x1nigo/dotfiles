@@ -35,12 +35,12 @@ from libqtile.lazy import lazy
 mod = "mod4"
 myTerminal = "alacritty"
 myBrowser = "firefox" # librewolf, firefox, etc.
-myFileManager = "lfup"
+myFileManager = "pcmanfm"
 myAudioMixer = "pulsemixer"
 myMusicPlayer = "ncmpcpp"
 
 myGaps = 8
-myBorder = 2
+myBorderWidth = 2
 myFocusedColor = "#570087"
 myFocusedFloatColor = "#57d7f7"
 myNormalColor = "#282828"
@@ -57,7 +57,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(myTerminal), desc="Spawn the terminal"),
     Key([mod, "shift"], "Return", lazy.spawn("{} --class termfloat".format(myTerminal)), desc="Spawn a floating terminal"), # Make sure to set the proper float rules for this to work.
     Key([mod], "w", lazy.spawn(myBrowser), desc="Launch the browser"),
-    Key([mod], "r", lazy.spawn("{} -e {}".format(myTerminal, myFileManager)), desc="Spawn the file manager"),
+    Key([mod], "r", lazy.spawn(myFileManager), desc="Spawn the file manager"),
     Key([mod], "n", lazy.spawn("{} -e {}".format(myTerminal, myMusicPlayer)), desc="Listen to some tunes"),
     Key([mod], "d", lazy.spawn("dmenu_run -p 'Run:' -l 6 -g 8"), desc="Launch a program"),
     Key([mod], "p", lazy.spawncmd(), desc="Built-in qtile launcher"),
@@ -134,7 +134,7 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 # Edit these to indicate new labels for workspaces
 # group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 # group_labels = [" WWW ", " DEV ", " MEDIA ", " DOCX ", " ART ", " SFX ", " AUDIO ", " SYS ", " NULL ", " MISC "]
-group_labels = ["", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌", ""]
+group_labels = ["", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌", ""]
 
 for i in range(len(group_names)):
     groups.append(
@@ -168,8 +168,8 @@ for i in groups:
         ]
     )
 
-my_layout = {
-    "border_width": myBorder,
+myLayout = {
+    "border_width": myBorderWidth,
     "margin": myGaps,
     "border_focus": myFocusedColor,
     "border_normal": myNormalColor,
@@ -181,14 +181,14 @@ separator_values = {
     }
 
 layouts = [
-    layout.MonadTall(**my_layout),
-    layout.Columns(initial_ratio = 2),
+    layout.MonadTall(**myLayout),
+    layout.MonadWide(**myLayout),
+    layout.Columns(**myLayout, initial_ratio = 1.5),
     layout.Bsp(),
-    layout.Matrix(**my_layout),
+    layout.Matrix(**myLayout),
     layout.Max(),
     # layout.Tile(),
     # layout.Stack(num_stacks=2),
-    # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
@@ -197,7 +197,7 @@ layouts = [
 
 floats_kept_above = True
 floating_layout = layout.Floating(
-    border_width = myBorder,
+    border_width = myBorderWidth,
     border_focus = myFocusedFloatColor,
     border_normal = myNormalColor,
     float_rules = [
@@ -245,7 +245,7 @@ screens = [
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
-                    foreground = "#f74747",
+                    foreground = "#8700d7",
                     ),
                 widget.Sep(**separator_values),
                 widget.LaunchBar(
@@ -277,7 +277,7 @@ screens = [
                     update_interval = 6,
                     ),
                 widget.CPU(
-                    fmt = "󰇄   Cpu: {}",
+                    fmt = "󰹞   Cpu: {}",
                     format = "{load_percent}%",
                     foreground = "#ff8747",
                     update_interval = 30,
@@ -318,12 +318,12 @@ screens = [
                     format="󰥔   %a, %b %d, %Y - %I:%M %p",
                     foreground = "#57d7f7",
                     update_interval = 5,
-                     ),
+                    ),
                 widget.Systray(),
             ],
-            30, # Bar height
+            26, # Bar height
             background = "#21242b",
-            margin = [myGaps // 2, myGaps, 0, myGaps], # Orientation: N, E, S, W
+            # margin = [myGaps // 2, myGaps, 0, myGaps], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
         ),
