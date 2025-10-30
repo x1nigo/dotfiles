@@ -57,7 +57,7 @@ myBrowser :: String
 myBrowser = "firefox"
 
 myFileManager :: String
-myFileManager = "lfup"
+myFileManager = "pcmanfm"
 
 myMusicPlayer :: String
 myMusicPlayer = "ncmpcpp"
@@ -78,7 +78,7 @@ myFocusedColor = "#570087"
 -- Workspaces
 -- ==========
 
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+-- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", "10"]
 myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " null "]
 
 -- =====
@@ -121,9 +121,9 @@ myPP = def
     , ppTitleSanitize   = xmobarStrip
     -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#570087" 3
-    , ppHidden          = xmobarColor "#d7d7f7" "" . wrap "" " "
+    , ppHidden          = xmobarColor "#8787f7" "" . wrap "" " "
     , ppHiddenNoWindows = xmobarColor "#373742" "" . wrap "" " " -- Uncomment to show unoccupied workspaces
-    , ppLayout          = xmobarColor "#f74747" "" . wrap " " " "
+    , ppLayout          = xmobarColor "#8700d7" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#373742><fn=1>|</fn></fc> "
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
@@ -156,7 +156,7 @@ myXPConfig = def
 mySWNConfig :: SWNConfig
 mySWNConfig = def
     { swn_font    = "xft:monospace:bold:size=50"
-    , swn_bgcolor = "#370057"
+    , swn_bgcolor = "#21242b"
     , swn_color   = "#d7d7f7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
@@ -224,7 +224,7 @@ myConf = def
         , ("M-<Tab>",                 sendMessage NextLayout)
         , ("M-<Space>",               promote)
         , ("M-d",                     spawn "dmenu_run -p 'RUN:' -l 6 -g 8")
-        , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
+        , ("M-r",                     spawn (myFileManager))
         , ("M-n",                     spawn (myTerminal ++ " -e " ++ myMusicPlayer))
         , ("M-w",                     spawn (myBrowser))
         , ("M-b",                     spawn "dm-bookmark")
