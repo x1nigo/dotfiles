@@ -132,7 +132,7 @@ groups = []
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 # Edit these to indicate new labels for workspaces
-# group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+# group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 # group_labels = [" WWW ", " DEV ", " MEDIA ", " DOCX ", " ART ", " SFX ", " AUDIO ", " SYS ", " NULL ", " MISC "]
 group_labels = ["", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌", ""]
 
@@ -322,7 +322,7 @@ screens = [
                 widget.Systray(),
             ],
             26, # Bar height
-            background = "#21242b",
+            background = "#21242bef",
             # margin = [myGaps // 2, myGaps, 0, myGaps], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
