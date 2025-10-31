@@ -78,7 +78,7 @@ myFocusedColor = "#570087"
 -- Workspaces
 -- ==========
 
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 ", "10"]
+-- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " null "]
 
 -- =====
@@ -96,6 +96,7 @@ myManageHook = composeAll
     , className =? "librewolf"               --> doShift ( myWorkspaces !! 0 )
     , className =? "firefox"                 --> doShift ( myWorkspaces !! 0 )
     , className =? "mpv"                     --> doShift ( myWorkspaces !! 2 )
+    , className =? "vlc"                     --> doShift ( myWorkspaces !! 2 )
     , className =? "libreoffice-startcenter" --> doShift ( myWorkspaces !! 3 )
     , className =? "Gimp"                    --> doShift ( myWorkspaces !! 4 )
     , className =? "kdenlive"                --> doShift ( myWorkspaces !! 5 )
@@ -121,7 +122,7 @@ myPP = def
     , ppTitleSanitize   = xmobarStrip
     -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
     , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#570087" 3
-    , ppHidden          = xmobarColor "#8787f7" "" . wrap "" " "
+    , ppHidden          = xmobarColor "#d7d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#373742" 3
     , ppHiddenNoWindows = xmobarColor "#373742" "" . wrap "" " " -- Uncomment to show unoccupied workspaces
     , ppLayout          = xmobarColor "#8700d7" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
@@ -135,16 +136,16 @@ myPP = def
 
 myXPConfig :: XPConfig
 myXPConfig = def
-    { font                = "xft:monospace:bold:size=12"
+    { font                = "xft:monospace:size=9"
     , bgColor             = "#21242b"
     , fgColor             = "#d7d7f7"
-    , bgHLight            = "#570087"
-    , fgHLight            = "#d7d7f7"
+    , bgHLight            = "#5757d7"
+    , fgHLight            = "#282828"
     , borderColor         = "#373742"
-    , promptBorderWidth   = 2
+    , promptBorderWidth   = 0
     , position            = Top
     , alwaysHighlight     = True
-    , height              = 32
+    , height              = 26
     , historySize         = 0
     , showCompletionOnTab = False
     }
@@ -156,8 +157,8 @@ myXPConfig = def
 mySWNConfig :: SWNConfig
 mySWNConfig = def
     { swn_font    = "xft:monospace:bold:size=50"
-    , swn_bgcolor = "#21242b"
-    , swn_color   = "#d7d7f7"
+    , swn_bgcolor = "#d7d7f7"
+    , swn_color   = "#282828"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
 
@@ -165,9 +166,9 @@ myTreeConf :: TSConfig a
 myTreeConf = def
     { ts_hidechildren = True
     , ts_background   = 0xd721242b
-    , ts_font         = "xft:monospace:size=16"
-    , ts_node_width   = 320
-    , ts_node_height  = 36
+    , ts_font         = "xft:monospace:size=9"
+    , ts_node_width   = 250
+    , ts_node_height  = 26
     , ts_node         = (0xffd7d7f7, 0xff21242b)
     , ts_nodealt      = (0xffd7d7f7, 0xff1d2024)
     , ts_highlight    = (0xffd7d7f7, 0xff370057)
