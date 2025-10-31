@@ -6,7 +6,7 @@
 Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar as a regular window
 	   , font             = "Sans Bold 9"
        , additionalFonts  = [ "Sans 11"
-                            , "Hasklug 11"
+                            , "Hasklug 10"
                             , "Hasklug 20"
                             ]
 	   , bgColor          = "#21242b"
