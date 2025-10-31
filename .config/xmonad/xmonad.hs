@@ -136,7 +136,7 @@ myPP = def
 
 myXPConfig :: XPConfig
 myXPConfig = def
-    { font                = "xft:monospace:size=9"
+    { font                = "xft:monospace:size=10"
     , bgColor             = "#21242b"
     , fgColor             = "#d7d7f7"
     , bgHLight            = "#5757d7"
@@ -166,7 +166,7 @@ myTreeConf :: TSConfig a
 myTreeConf = def
     { ts_hidechildren = True
     , ts_background   = 0xd721242b
-    , ts_font         = "xft:monospace:size=9"
+    , ts_font         = "xft:monospace:size=10"
     , ts_node_width   = 250
     , ts_node_height  = 26
     , ts_node         = (0xffd7d7f7, 0xff21242b)
