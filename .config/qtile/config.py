@@ -134,7 +134,7 @@ group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 # Edit these to indicate new labels for workspaces
 # group_labels = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 # group_labels = [" WWW ", " DEV ", " MEDIA ", " DOCX ", " ART ", " SFX ", " AUDIO ", " SYS ", " NULL ", " MISC "]
-group_labels = ["", "", "", "󰼭", "", "󰈈", "󰽰", "", "󰚌", ""]
+group_labels = ["", "", "", "󰼭", "", "󰈈", "", "", "󰣘", ""]
 
 for i in range(len(group_names)):
     groups.append(
