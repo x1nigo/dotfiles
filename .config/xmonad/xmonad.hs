@@ -79,7 +79,7 @@ myFocusedColor = "#570087"
 -- ==========
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " null "]
+myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " misc "]
 
 -- =====
 -- Hooks
@@ -120,10 +120,9 @@ mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 myPP = def
     { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    -- , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
-    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#570087" 3
-    , ppHidden          = xmobarColor "#d7d7f7" "" . wrap "" " " . xmobarBorder "Bottom" "#373742" 3
-    , ppHiddenNoWindows = xmobarColor "#373742" "" . wrap "" " " -- Uncomment to show unoccupied workspaces
+    , ppCurrent         = xmobarColor "#282828" "#570087"
+    , ppHidden          = xmobarColor "#d7d7f7" ""
+    , ppHiddenNoWindows = xmobarColor "#373742" ""
     , ppLayout          = xmobarColor "#8700d7" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#373742><fn=1>|</fn></fc> "
@@ -156,11 +155,15 @@ myXPConfig = def
 
 mySWNConfig :: SWNConfig
 mySWNConfig = def
-    { swn_font    = "xft:monospace:bold:size=50"
+    { swn_font    = "xft:monospace:size=50"
     , swn_bgcolor = "#d7d7f7"
     , swn_color   = "#282828"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
+
+-- ===========
+-- Tree Select
+-- ===========
 
 myTreeConf :: TSConfig a
 myTreeConf = def
