@@ -4,7 +4,7 @@
 -- alsa-utils (for amixer)
 
 Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar as a regular window
-	   , font             = "Sans Bold 9"
+	   , font             = "Sans 9"
        , additionalFonts  = [ "Sans 11"
                             , "Hasklug 10"
                             , "Hasklug 20"
@@ -12,18 +12,18 @@ Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar 
 	   , bgColor          = "#21242b"
 	   , fgColor          = "#d7d7f7"
        , alpha            = 255 -- 0 is fully transparent, 255 is opaque
-	   , position         = TopSize L 100 26
-	   -- , position         = Static { xpos = 8, ypos = 4, width = 1904, height = 26 }
+	   , position         = TopSize L 100 24
+	   -- , position         = Static { xpos = 8, ypos = 4, width = 1904, height = 24 }
 	   , lowerOnStart     = True -- `True` prevents xmobar from overlapping windows on restart
        , iconRoot         = ".config/xmobar/"
-	   , commands = [ Run Brightness ["-t", "<fc=#5757d7><fn=2>\xf05a8</fn>   Bri: <percent>%</fc>", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
-				    , Run Cpu ["-t", "<fc=#ff8747><fn=2>\xf0e5e</fn>   Cpu: <total>%</fc>"] 300
-				    , Run Memory ["-t", "<fc=#f74747><fn=2>\xf048b</fn>   Mem: <used>M (<usedratio>%)</fc>"] 300
-				    , Run Volume "default" "Master" ["-t", "<fc=#57d7f7><fn=2>\xf0a1</fn>   Vol: <volume>% <status></fc>", "--", "--on", "", "--off", "[Muted]"] 10
-				    , Run BatteryP ["BAT0"] ["-t", "<fc=#f75727><fn=2>\xf140b</fn> <acstatus></fc>", "-L", "11", "-l", "#ff0000", "--", "-O", "Charging: <left>%", "-o", "Bat: <left>%"] 120
-			 	    , Run Date "<fc=#57d7f7><fn=2>\xf0954</fn>   %a, %b %d, %Y - %I:%M %p</fc>" "date" 50
-				    , Run Uptime ["-t", "<fc=#d72757><fn=2>\x29d7</fn>  Uptime: <hours>h <minutes>m</fc>"] 3600
-				    , Run DiskU [("/", "<fc=#8787f7><fn=2>\xf0c7</fn>  Disk: <free> free</fc>")] [] 3600
+	   , commands = [ Run Brightness ["-t", "<fc=#5757d7><fn=2>\xf05a8</fn></fc>   Bri: <percent>%", "--", "-D", "/sys/class/backlight/intel_backlight"] 60
+				    , Run Cpu ["-t", "<fc=#ff8747><fn=2>\xf0e5e</fn></fc>   Cpu: <total>%"] 300
+				    , Run Memory ["-t", "<fc=#f74747><fn=2>\xf048b</fn></fc>   Mem: <used>M (<usedratio>%)"] 300
+				    , Run Volume "default" "Master" ["-t", "<fc=#57d7f7><fn=2>\xf0a1</fn></fc>   Vol: <volume>% <status>", "--", "--on", "", "--off", "[Muted]"] 10
+				    , Run BatteryP ["BAT0"] ["-t", "<fc=#f75727><fn=2>\xf140b</fn></fc>  <acstatus>", "-L", "11", "-l", "#ff0000", "--", "-O", "Charging: <left>%", "-o", "Bat: <left>%"] 120
+			 	    , Run Date "<fc=#57d7f7><fn=2>\xf0954</fn></fc>   %a, %b %d, %Y - %I:%M %p" "date" 50
+				    , Run Uptime ["-t", "<fc=#d72757><fn=2>\x29d7</fn></fc>  Uptime: <hours>h <minutes>m"] 3600
+				    , Run DiskU [("/", "<fc=#8787f7><fn=2>\xf0c7</fn></fc>   Disk: <free> free")] [] 3600
 				    , Run Com "echo" ["<fn=3><fc=#d7d7f7>\xe61f</fc></fn>"] "logo" 3600
 				    , Run Com "echo" [" <fc=#373737><fn=1>|</fn></fc> "] "sep" 3600
 				    , Run UnsafeXMonadLog -- allows clickable workspaces
@@ -32,5 +32,5 @@ Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar 
 	   , sepChar  = "%"
 	   , alignSep = "}{"
 	   -- Uncomment this to remove the underlines (bottom borders).
-	   -- , template = "  %logo%    %sep% %UnsafeXMonadLog% }{ %uptime%      %bright%      %cpu%      %memory%      %default:Master%      %disku%      %battery%      %date%  "
-	   , template = "  %logo%    %sep% %UnsafeXMonadLog% }{ <box type=Bottom width=2 color=#d72757>%uptime%</box>    <box type=Bottom width=2 color=#5757d7>%bright%</box>    <box type=Bottom width=2 color=#ff8747>%cpu%</box>    <box type=Bottom width=2 color=#f74747>%memory%</box>    <box type=Bottom width=2 color=#57d7f7>%default:Master%</box>    <box type=Bottom width=2 color=#8787f7>%disku%</box>    <box type=Bottom width=2 color=#f75727>%battery%</box>    <box type=Bottom width=2 color=#57d7f7>%date%</box>   " }
+	   -- , template = "  %logo%    %sep% %UnsafeXMonadLog% }{ %uptime%    %bright%    %cpu%    %memory%    %default:Master%    %disku%    %battery%    %date% "
+	   , template = "  %logo%    %sep% %UnsafeXMonadLog% }{ <box type=Bottom width=2 color=#d72757>%uptime%</box>    <box type=Bottom width=2 color=#5757d7>%bright%</box>    <box type=Bottom width=2 color=#ff8747>%cpu%</box>    <box type=Bottom width=2 color=#f74747>%memory%</box>    <box type=Bottom width=2 color=#57d7f7>%default:Master%</box>    <box type=Bottom width=2 color=#8787f7>%disku%</box>    <box type=Bottom width=2 color=#f75727>%battery%</box>    <box type=Bottom width=2 color=#57d7f7>%date%</box> " }
