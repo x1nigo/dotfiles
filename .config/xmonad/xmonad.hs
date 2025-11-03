@@ -120,7 +120,7 @@ mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 myPP = def
     { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#282828" "#570087"
+    , ppCurrent         = xmobarColor "#d7d7f7" "#370057"
     , ppHidden          = xmobarColor "#d7d7f7" ""
     , ppHiddenNoWindows = xmobarColor "#373742" ""
     , ppLayout          = xmobarColor "#8700d7" "" . wrap " " " "
@@ -138,8 +138,8 @@ myXPConfig = def
     { font                = "xft:monospace:size=10"
     , bgColor             = "#21242b"
     , fgColor             = "#d7d7f7"
-    , bgHLight            = "#5757d7"
-    , fgHLight            = "#282828"
+    , bgHLight            = "#370057"
+    , fgHLight            = "#d7d7f7"
     , borderColor         = "#373742"
     , promptBorderWidth   = 0
     , position            = Top
@@ -156,8 +156,8 @@ myXPConfig = def
 mySWNConfig :: SWNConfig
 mySWNConfig = def
     { swn_font    = "xft:monospace:size=50"
-    , swn_bgcolor = "#d7d7f7"
-    , swn_color   = "#282828"
+    , swn_bgcolor = "#21242b"
+    , swn_color   = "#d7d7f7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
 
