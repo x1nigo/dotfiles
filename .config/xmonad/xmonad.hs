@@ -57,7 +57,7 @@ myBrowser :: String
 myBrowser = "firefox"
 
 myFileManager :: String
-myFileManager = "pcmanfm"
+myFileManager = "lfup"
 
 myMusicPlayer :: String
 myMusicPlayer = "ncmpcpp"
@@ -78,8 +78,11 @@ myFocusedColor = "#570087"
 -- Workspaces
 -- ==========
 
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
-myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " misc "]
+-- NOTE: If using `monospace` fonts, don't put spaces around workspace items.
+-- For example: Instead of " 1 ", just input "1".
+
+-- myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+myWorkspaces = ["www", "dev", "media", "docx", "art", "sfx", "audio", "sys", "misc"]
 
 -- =====
 -- Hooks
@@ -118,12 +121,12 @@ mySK :: XConfig Layout -> (KeyMask, KeySym)
 mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 
 myPP = def
-    { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
+    { ppTitle           = xmobarColor "#d7d7f7" "" . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#d7d7f7" "#370057"
+    , ppCurrent         = xmobarColor "#8700d7" "" . wrap "[" "]"
     , ppHidden          = xmobarColor "#d7d7f7" ""
     , ppHiddenNoWindows = xmobarColor "#373742" ""
-    , ppLayout          = xmobarColor "#8700d7" "" . wrap " " " "
+    , ppLayout          = xmobarColor "#8700d7" ""
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#373742><fn=1>|</fn></fc> "
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
@@ -228,7 +231,7 @@ myConf = def
         , ("M-<Tab>",                 sendMessage NextLayout)
         , ("M-<Space>",               promote)
         , ("M-d",                     spawn "dmenu_run -p 'RUN:' -l 6 -g 8")
-        , ("M-r",                     spawn (myFileManager))
+        , ("M-r",                     spawn (myTerminal ++ " -e " ++ myFileManager))
         , ("M-n",                     spawn (myTerminal ++ " -e " ++ myMusicPlayer))
         , ("M-w",                     spawn (myBrowser))
         , ("M-b",                     spawn "dm-bookmark")
