@@ -261,7 +261,7 @@ screens = [
                 widget.WindowName(
                     fmt = "{}",
                     foreground = "#d7d7f7",
-                    max_chars = 70,
+                    max_chars = 60,
                     # empty_group_string = "~",
                     ),
                 widget.GenPollCommand(
