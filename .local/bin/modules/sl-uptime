@@ -1,3 +1,5 @@
 #!/bin/sh
 
-uptime -p | sed 's/up //g;s/ hours\?,/h/g;s/ minutes\?/m/g'
+time="$(uptime -p | sed 's/up //g;s/ hours\?,/h/g;s/ minutes\?/m/g')"
+
+echo "$time"

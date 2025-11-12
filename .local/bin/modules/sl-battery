@@ -1,31 +1,6 @@
 #!/bin/sh
 
-case $BUTTON in
-	3) notify-send "🔋 Battery module" "Legend:
-- 🔋 discharging
-- 🦥 not charging
-- 🕰️ stagnant charge
-- 🔌 charging
-- ⚡ charged
-- 🪫 battery low, ❗ if dangerous" ;;
-	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
-esac
-
 dir="/sys/class/power_supply/BAT?"
 bat=$(cat $dir/capacity)
-status=$(cat $dir/status)
-case "$status" in
-	"Discharging")
-		if [ $bat -le 10 ]; then
- 			icon=❗🪫 && notify-send "🪫 Battery Low" "Please charge your computer."
-		elif [ $bat -le 15 ]; then
- 			icon=🪫
-		else
-			icon=🔋
-		fi
-		;;
-	"Charging") icon=🔌 ;;
-	"Full") icon=⚡ ;;
-	*) icon=🕰️ ;;
-esac
-printf "%s%s%%" "$icon" "$bat"
+
+echo "$bat%"

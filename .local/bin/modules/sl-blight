@@ -1,10 +1,5 @@
 #!/bin/sh
 
-case $BUTTON in
-	3) notify-send "💡 Brightness module" "Shows 🌅 if at least 50%, ☔ if otherwise." ;;
-	6) setsid -f "$TERMINAL" -e "$EDITOR" "$0" ;;
-esac
-
 perc=$(brightnessctl -m | cut -d, -f4)
-[ $(echo $perc | sed 's/%//g') -ge 50 ] && icon=🌅 || icon=☔
-printf "%s%s" "$icon" "$perc"
+
+echo "$perc"
