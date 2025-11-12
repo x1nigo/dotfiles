@@ -66,13 +66,13 @@ myAudioMixer :: String
 myAudioMixer = "pulsemixer"
 
 myBorderWidth :: Dimension
-myBorderWidth = 2
+myBorderWidth = 3
 
 myNormalColor :: String
 myNormalColor = "#282828"
 
 myFocusedColor :: String
-myFocusedColor = "#570087"
+myFocusedColor = "#570000"
 
 -- ==========
 -- Workspaces
@@ -81,8 +81,8 @@ myFocusedColor = "#570087"
 -- NOTE: If using `monospace` fonts, don't put spaces around workspace items.
 -- For example: Instead of " 1 ", just input "1".
 
--- myWorkspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
-myWorkspaces = ["www", "dev", "media", "docx", "art", "sfx", "audio", "sys", "misc"]
+-- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
+myWorkspaces = [" www ", " dev ", " media ", " docx ", " art ", " sfx ", " audio ", " sys ", " misc "]
 
 -- =====
 -- Hooks
@@ -121,12 +121,12 @@ mySK :: XConfig Layout -> (KeyMask, KeySym)
 mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 
 myPP = def
-    { ppTitle           = xmobarColor "#d7d7f7" "" . shorten 70
+    { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = xmobarColor "#8700d7" "" . wrap "[" "]"
-    , ppHidden          = xmobarColor "#d7d7f7" ""
+    , ppCurrent         = xmobarColor "#57d7f7" "" . wrap "[" "]"
+    , ppHidden          = xmobarColor "#005577" ""
     , ppHiddenNoWindows = xmobarColor "#373742" ""
-    , ppLayout          = xmobarColor "#8700d7" ""
+    , ppLayout          = xmobarColor "#870057" "" . wrap " " " "
     , ppUrgent          = xmobarColor "#ff0000" "" . wrap "!" "!"
     , ppSep             = " <fc=#373742><fn=1>|</fn></fc> "
     , ppOrder           = \[ws,l,t] -> [ws,l,t]
@@ -158,7 +158,7 @@ myXPConfig = def
 
 mySWNConfig :: SWNConfig
 mySWNConfig = def
-    { swn_font    = "xft:monospace:size=50"
+    { swn_font    = "xft:monospace:bold:size=50"
     , swn_bgcolor = "#21242b"
     , swn_color   = "#d7d7f7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
