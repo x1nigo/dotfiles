@@ -1,6 +1,6 @@
 [window]
 dynamic_padding = false
-opacity = 0.85
+opacity = 1.0
 title = "Alacritty"
 
 [window.class]
@@ -12,7 +12,7 @@ x = 2
 y = 2
 
 [font]
-size = 8.0
+size = 7.0
 
 [font.bold]
 family = "Monospace"
@@ -36,7 +36,7 @@ y = 2
 
 [colors.primary]
 foreground = "#d7d7f7"
-background = "#21242b"
+background = "#1d2026"
 
 [colors.selection]
 text = "#282828"
@@ -47,7 +47,7 @@ black =   "#21242b"
 red =     "#f74747"
 green =   "#87d7a7"
 yellow =  "#f78747"
-blue =    "#5787d7"
+blue =    "#005577"
 magenta = "#8787f7"
 cyan =    "#57d7f7"
 white =   "#d7d7f7"
@@ -57,7 +57,7 @@ black =   "#373742"
 red =     "#f74747"
 green =   "#87d7a7"
 yellow =  "#f78747"
-blue =    "#5787d7"
+blue =    "#005577"
 magenta = "#8787f7"
 cyan =    "#57d7f7"
 white =   "#d7d7f7"
