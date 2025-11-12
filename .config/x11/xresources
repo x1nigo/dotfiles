@@ -1,8 +1,8 @@
 !! Set a default font and font size:
-*.font: monospace:size=9
+*.font: monospace:size=10
 
 !! Transparency (0-1):
-*.alpha: 0.85
+*.alpha: 1.0
 
 !! Set a background, foreground, and cursor color:
 *.background: #21242b
@@ -21,18 +21,18 @@
 
 /* !! 2001 */
 *.color0: #21242b
-*.color1: #f75757
+*.color1: #f74747
 *.color2: #87d7a7
-*.color3: #ff8747
+*.color3: #f78747
 *.color4: #005577
-*.color5: #5757d7
+*.color5: #8787f7
 *.color6: #57d7f7
 *.color7: #d7d7f7
 *.color8: #373742
-*.color9: #f75757
+*.color9: #f74747
 *.color10: #87d7a7
-*.color11: #ff8747
+*.color11: #f78747
 *.color12: #005577
-*.color13: #5757d7
+*.color13: #8787f7
 *.color14: #57d7f7
 *.color15: #d7d7f7
