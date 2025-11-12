@@ -40,9 +40,9 @@ myAudioMixer = "pulsemixer"
 myMusicPlayer = "ncmpcpp"
 
 myGaps = 8
-myBorderWidth = 2
-myFocusedColor = "#570087"
-myFocusedFloatColor = "#57d7f7"
+myBorderWidth = 3
+myFocusedColor = "#570000"
+myFocusedFloatColor = "#570037"
 myNormalColor = "#282828"
 
 #TODO: Create a function that changes gaps/margins in real-time.
@@ -211,7 +211,7 @@ widget_defaults = dict(
     # Qtile seems to favor sans fonts, preferrably not monospace.
     # It also looks better in bold, unlike other window managers.
     # font = "sans bold",
-    font = "Monospace Bold", # Make sure the font is available in the first place. Use `fc-list` to see.
+    font = "Sans Bold", # Make sure the font is available in the first place. Use `fc-list` to see.
     foreground = "#d7d7f7",
     fontsize = 12,
     padding = 8,
@@ -233,19 +233,19 @@ screens = [
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
                     highlight_color = "#1d2023",
-                    active = "#8787f7",
+                    active = "#005577",
                     inactive = "#373742",
                     borderwidth = 3,
                     block_highlight_text_color = "#57d7f7",
-                    this_current_screen_border = "#570087",
+                    this_current_screen_border = "#570000",
                     font = "Monospace",
-                    fontsize = 14,
+                    fontsize = 10,
                     padding = 6,
                     disable_drag = True,
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
-                    foreground = "#8700d7",
+                    foreground = "#f74747",
                     ),
                 widget.Sep(**separator_values),
                 widget.LaunchBar(
@@ -266,36 +266,36 @@ screens = [
                     ),
                 widget.GenPollCommand(
                     cmd = ["sl-uptime"], # This relies on an external script
-                    fmt = "⧗ Uptime: {}",
+                    fmt = "⧗  Uptime: {}",
                     foreground = "#d72757",
                     update_interval = 360,
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
-                    fmt = "󰖨 Bri: {}",
+                    fmt = "󰖨   Bri: {}",
                     foreground = "#5757d7",
                     update_interval = 6,
                     ),
                 widget.CPU(
-                    fmt = "󰹞 Cpu: {}",
+                    fmt = "󰹞  Cpu: {}",
                     format = "{load_percent}%",
                     foreground = "#ff8747",
                     update_interval = 30,
                     ),
                 widget.Memory(
-                    fmt = "󰒋 Mem: {}",
+                    fmt = "󰒋   Mem: {}",
                     format = "{MemPercent}%",
                     foreground = "#f74747",
                     update_interval = 30,
                     ),
                 widget.Volume(
-                    mute_format = " Muted: {volume}%",
-                    unmute_format = " Vol: {volume}%",
+                    mute_format = "   Muted: {volume}%",
+                    unmute_format = "   Vol: {volume}%",
                     foreground = "#57d7f7",
                     update_interval = 1,
                     ),
                 widget.DF(
-                    fmt = " Disk: {}",
+                    fmt = "   Disk: {}",
                     partition = "/",
                     format = "{uf}{m} free",
                     visible_on_warn = False,
@@ -304,7 +304,7 @@ screens = [
                     ),
                 widget.Battery(
                     fmt = "{}",
-                    format = "{char} Bat: {percent:2.0%}",
+                    format = "{char}  Bat: {percent:2.0%}",
                     discharge_char = "󱐋",
                     empty_char = "",
                     charge_char = "",
@@ -315,14 +315,14 @@ screens = [
                     update_interval = 12,
                     ),
                 widget.Clock(
-                    format="󰥔 %a, %b %d, %Y - %I:%M %p",
+                    format="󰥔   %a, %b %d, %Y - %I:%M %p",
                     foreground = "#57d7f7",
                     update_interval = 5,
                     ),
                 widget.Systray(),
             ],
             26, # Bar height
-            background = "#21242bef",
+            background = "#1d2026ef",
             margin = [myGaps // 2, myGaps, 0, myGaps], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
