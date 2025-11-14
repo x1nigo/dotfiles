@@ -10,7 +10,7 @@ Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar 
                             , "Hasklug 20"
                             ]
 	   , bgColor          = "#1d2026"
-	   , fgColor          = "#d7d7f7"
+	   , fgColor          = "#d7d7d7"
        , border           = TopB
        , borderColor      = "#570000"
        , borderWidth      = 3
@@ -27,7 +27,7 @@ Config { overrideRedirect = True -- `True` prevents xmonad from treating xmobar 
 			 	    , Run Date "<fc=#57d7f7><fn=2>\xf0954</fn>   %a, %b %d, %Y - %I:%M %p</fc>" "date" 50
 				    , Run Uptime ["-t", "<fc=#d72757><fn=2>\x29d7</fn>  Uptime: <hours>h <minutes>m</fc>"] 3600
 				    , Run DiskU [("/", "<fc=#8787f7><fn=2>\xf0c7</fn>   Disk: <free> free</fc>")] [] 3600
-				    , Run Com "echo" ["<fn=3><fc=#d7d7f7>\xe61f</fc></fn>"] "logo" 3600
+				    , Run Com "echo" ["<fn=3><fc=#d7d7d7>\xe61f</fc></fn>"] "logo" 3600
 				    , Run Com "echo" [" <fc=#373737><fn=1>|</fn></fc> "] "sep" 3600
 				    , Run UnsafeXMonadLog -- allows clickable workspaces
 				    -- , Run XMonadLog
