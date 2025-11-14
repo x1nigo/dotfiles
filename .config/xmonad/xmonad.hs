@@ -141,7 +141,7 @@ myXPConfig = def
     { font                = "xft:monospace:size=10"
     , bgColor             = "#1d2026"
     , fgColor             = "#d7d7f7"
-    , bgHLight            = "#5757d7"
+    , bgHLight            = "#57e7d7"
     , fgHLight            = "#282828"
     , borderColor         = "#373742"
     , promptBorderWidth   = 0
@@ -177,7 +177,7 @@ myTreeConf = def
     , ts_node_height  = 26
     , ts_node         = (0xffd7d7f7, 0xff21242b)
     , ts_nodealt      = (0xffd7d7f7, 0xff1d2026)
-    , ts_highlight    = (0xff282828, 0xff5757d7)
+    , ts_highlight    = (0xff282828, 0xff57e7d7)
     }
 
 myActions =
