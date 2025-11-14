@@ -35,7 +35,7 @@ x = 0
 y = 2
 
 [colors.primary]
-foreground = "#d7d7f7"
+foreground = "#d7d7d7"
 background = "#1d2026"
 
 [colors.selection]
@@ -50,7 +50,7 @@ yellow =  "#f78747"
 blue =    "#005577"
 magenta = "#8787f7"
 cyan =    "#57d7f7"
-white =   "#d7d7f7"
+white =   "#d7d7d7"
 
 [colors.bright]
 black =   "#373742"
@@ -60,7 +60,7 @@ yellow =  "#f78747"
 blue =    "#005577"
 magenta = "#8787f7"
 cyan =    "#57d7f7"
-white =   "#d7d7f7"
+white =   "#d7d7d7"
 
 [cursor.style]
 shape = "Block"
