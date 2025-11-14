@@ -121,7 +121,7 @@ mySK :: XConfig Layout -> (KeyMask, KeySym)
 mySK XConfig { modMask = m } = (m .|. shiftMask, xK_b)
 
 myPP = def
-    { ppTitle           = xmobarColor "#d7d7f7" "" . wrap " " " " . shorten 70
+    { ppTitle           = xmobarColor "#d7d7d7" "" . wrap " " " " . shorten 70
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = xmobarColor "#57e7d7" "" . wrap "[" "]"
     , ppHidden          = xmobarColor "#5757d7" ""
@@ -140,7 +140,7 @@ myXPConfig :: XPConfig
 myXPConfig = def
     { font                = "xft:monospace:size=10"
     , bgColor             = "#1d2026"
-    , fgColor             = "#d7d7f7"
+    , fgColor             = "#d7d7d7"
     , bgHLight            = "#57e7d7"
     , fgHLight            = "#282828"
     , borderColor         = "#373742"
@@ -160,7 +160,7 @@ mySWNConfig :: SWNConfig
 mySWNConfig = def
     { swn_font    = "xft:monospace:bold:size=50"
     , swn_bgcolor = "#1d2026"
-    , swn_color   = "#d7d7f7"
+    , swn_color   = "#d7d7d7"
     , swn_fade    = 1.0 -- if you `restart` xmonad before the WN fades, xmonad will quit!
     }
 
@@ -175,8 +175,8 @@ myTreeConf = def
     , ts_font         = "xft:monospace:size=10"
     , ts_node_width   = 250
     , ts_node_height  = 26
-    , ts_node         = (0xffd7d7f7, 0xff21242b)
-    , ts_nodealt      = (0xffd7d7f7, 0xff1d2026)
+    , ts_node         = (0xffd7d7d7, 0xff21242b)
+    , ts_nodealt      = (0xffd7d7d7, 0xff1d2026)
     , ts_highlight    = (0xff282828, 0xff57e7d7)
     }
 
