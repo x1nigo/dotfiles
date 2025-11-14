@@ -1,3 +1,5 @@
 #!/bin/sh
 
-sensors | awk '/Core 0:/ {print $3}'
+cpu="$(sensors | awk '/Core 0:/ {print $3}')"
+
+echo "$cpu"
