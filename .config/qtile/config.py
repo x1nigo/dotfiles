@@ -41,8 +41,8 @@ myMusicPlayer = "ncmpcpp"
 
 myGaps = 8
 myBorderWidth = 3
-myFocusedColor = "#570000"
-myFocusedFloatColor = "#570037"
+myFocusedColor = "#270057"
+myFocusedFloatColor = "#370057"
 myNormalColor = "#282828"
 
 #TODO: Create a function that changes gaps/margins in real-time.
@@ -212,7 +212,7 @@ widget_defaults = dict(
     # It also looks better in bold, unlike other window managers.
     # font = "sans bold",
     font = "Sans Bold", # Make sure the font is available in the first place. Use `fc-list` to see.
-    foreground = "#d7d7f7",
+    foreground = "#d8d8d8",
     fontsize = 12,
     padding = 8,
 )
@@ -226,104 +226,93 @@ screens = [
                 widget.Prompt(
                     font = "Monospace",
                     cursor = True,
-                    cursor_color = "#d7d7f7",
-                    foreground = "#d7d7f7",
+                    cursor_color = "#d8d8d8",
+                    foreground = "#d8d8d8",
                     prompt = "Prompt: ",
                     ),
+                # widget.Image(
+                    # filename = "~/.config/qtile/T141-D.jpg",
+                    # scale = "True",
+                    # ),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
-                    highlight_color = "#1d2023",
-                    active = "#005577",
+                    highlight_color = "#121212",
+                    active = "#5757d7",
                     inactive = "#373742",
                     borderwidth = 3,
                     block_highlight_text_color = "#57d7f7",
-                    this_current_screen_border = "#570000",
+                    this_current_screen_border = "#270057",
                     font = "Monospace",
-                    fontsize = 10,
+                    fontsize = 12,
                     padding = 6,
                     disable_drag = True,
                     ),
                 widget.Sep(**separator_values),
                 widget.CurrentLayout(
-                    foreground = "#f74747",
-                    ),
-                widget.Sep(**separator_values),
-                widget.LaunchBar(
-                    progs = [("🦊", "firefox", "Browser"),
-                        ("🚀", myTerminal, "The terminal emulator"),
-                        ("🌏", "{} -e nmtui".format(myTerminal), "Network Manager"),
-                        ("🎸", "{} -e ncmpcpp".format(myTerminal), "Music Player"),
-                        ],
-                    fontsize = 8,
-                    padding = 6,
+                    foreground = "#d8d8d8",
+                    icon_first = True,
+                    mode = "icon",
+                    scale = .7,
                     ),
                 widget.Sep(**separator_values),
                 widget.WindowName(
                     fmt = "{}",
-                    foreground = "#d7d7f7",
+                    foreground = "#d8d8d8",
                     max_chars = 60,
                     # empty_group_string = "~",
                     ),
                 widget.GenPollCommand(
                     cmd = ["sl-uptime"], # This relies on an external script
-                    fmt = "⧗  Uptime: {}",
-                    foreground = "#d72757",
+                    fmt = "Uptime: {}",
                     update_interval = 360,
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
-                    fmt = "󰖨   Bri: {}",
-                    foreground = "#5757d7",
+                    fmt = "Bri: {}",
                     update_interval = 6,
                     ),
                 widget.CPU(
-                    fmt = "󰹞  Cpu: {}",
+                    fmt = "Cpu: {}",
                     format = "{load_percent}%",
-                    foreground = "#ff8747",
                     update_interval = 30,
                     ),
                 widget.Memory(
-                    fmt = "󰒋   Mem: {}",
+                    fmt = "Mem: {}",
                     format = "{MemPercent}%",
-                    foreground = "#f74747",
                     update_interval = 30,
                     ),
                 widget.Volume(
-                    mute_format = "   Muted: {volume}%",
-                    unmute_format = "   Vol: {volume}%",
-                    foreground = "#57d7f7",
+                    mute_format = "Muted: {volume}%",
+                    unmute_format = "Vol: {volume}%",
                     update_interval = 1,
                     ),
                 widget.DF(
-                    fmt = "   Disk: {}",
+                    fmt = "Disk: {}",
                     partition = "/",
                     format = "{uf}{m} free",
                     visible_on_warn = False,
-                    foreground = "#8787f7",
                     update_interval = 360,
                     ),
                 widget.Battery(
                     fmt = "{}",
-                    format = "{char}  Bat: {percent:2.0%}",
+                    format = "Bat: {percent:2.0%}",
                     discharge_char = "󱐋",
                     empty_char = "",
                     charge_char = "",
                     full_char = "",
-                    full_short_text = "full",
+                    full_short_text = "[FULL]",
                     not_charging_char = "!",
-                    foreground = "#f75727",
                     update_interval = 12,
                     ),
                 widget.Clock(
-                    format="󰥔   %a, %b %d, %Y - %I:%M %p",
-                    foreground = "#57d7f7",
+                    format="%a, %b %d, %Y - %I:%M %p",
                     update_interval = 5,
                     ),
                 widget.Systray(),
             ],
             26, # Bar height
-            background = "#1d2026ef",
-            margin = [myGaps // 2, myGaps, 0, myGaps], # Orientation: N, E, S, W
+            background = "#121618ff",
+            # margin = [myGaps // 2, myGaps, 0, myGaps], # Orientation: N, E, S, W
             # border_width=[0, 2, 0, 2],  # Draw top and bottom borders
             # border_color=["#000000", "#f74747", "#000000", "#ff8747"]
         ),
