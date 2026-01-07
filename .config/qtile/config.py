@@ -42,7 +42,7 @@ myMusicPlayer = "ncmpcpp"
 myGaps = 8
 myBorderWidth = 3
 myFocusedColor = "#270057"
-myFocusedFloatColor = "#989898"
+myFocusedFloatColor = "#570027"
 myNormalColor = "#1d2021"
 
 #TODO: Create a function that changes gaps/margins in real-time.
