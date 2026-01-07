@@ -42,8 +42,8 @@ myMusicPlayer = "ncmpcpp"
 myGaps = 8
 myBorderWidth = 3
 myFocusedColor = "#270057"
-myFocusedFloatColor = "#370057"
-myNormalColor = "#282828"
+myFocusedFloatColor = "#989898"
+myNormalColor = "#1d2021"
 
 #TODO: Create a function that changes gaps/margins in real-time.
 
@@ -236,15 +236,16 @@ screens = [
                     # ),
                 widget.GroupBox(
                     highlight_method = "line", # block, text, etc.
-                    highlight_color = "#121212",
+                    highlight_color = "#000000",
                     active = "#5757d7",
                     inactive = "#373742",
                     borderwidth = 3,
                     block_highlight_text_color = "#57d7f7",
                     this_current_screen_border = "#270057",
                     font = "Monospace",
-                    fontsize = 12,
-                    padding = 6,
+                    fontsize = 14,
+                    padding = 2,
+                    margin_x = 6,
                     disable_drag = True,
                     ),
                 widget.Sep(**separator_values),
@@ -257,45 +258,52 @@ screens = [
                 widget.Sep(**separator_values),
                 widget.WindowName(
                     fmt = "{}",
-                    foreground = "#d8d8d8",
+                    foreground = "#373742",
                     max_chars = 60,
                     # empty_group_string = "~",
                     ),
                 widget.GenPollCommand(
                     cmd = ["sl-uptime"], # This relies on an external script
                     fmt = "Uptime: {}",
+                    foreground = "#373742",
                     update_interval = 360,
                     ),
                 widget.Backlight(
                     backlight_name = "intel_backlight",
                     fmt = "Bri: {}",
+                    foreground = "#373742",
                     update_interval = 6,
                     ),
                 widget.CPU(
                     fmt = "Cpu: {}",
                     format = "{load_percent}%",
+                    foreground = "#373742",
                     update_interval = 30,
                     ),
                 widget.Memory(
                     fmt = "Mem: {}",
                     format = "{MemPercent}%",
+                    foreground = "#373742",
                     update_interval = 30,
                     ),
                 widget.Volume(
                     mute_format = "Muted: {volume}%",
                     unmute_format = "Vol: {volume}%",
+                    foreground = "#373742",
                     update_interval = 1,
                     ),
                 widget.DF(
                     fmt = "Disk: {}",
                     partition = "/",
                     format = "{uf}{m} free",
+                    foreground = "#373742",
                     visible_on_warn = False,
                     update_interval = 360,
                     ),
                 widget.Battery(
                     fmt = "{}",
                     format = "Bat: {percent:2.0%}",
+                    foreground = "#373742",
                     discharge_char = "󱐋",
                     empty_char = "",
                     charge_char = "",
@@ -304,8 +312,10 @@ screens = [
                     not_charging_char = "!",
                     update_interval = 12,
                     ),
+                widget.Sep(**separator_values),
                 widget.Clock(
                     format="%a, %b %d, %Y - %I:%M %p",
+                    foreground = "#57d7f7",
                     update_interval = 5,
                     ),
                 widget.Systray(),
