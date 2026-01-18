@@ -8,7 +8,7 @@ export PATH="$PATH:/$HOME/.local/bin:$HOME/.local/bin/modules"
 export EDITOR="$editor"
 export VISUAL="$editor"
 export BROWSER="firefox"
-export TERMINAL="st"
+export TERMINAL="alacritty"
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -16,6 +16,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_CACHE_HOME="$HOME/.cache"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
+export XAUTHORITY="$HOME/.Xauthority"
 export SUDO_ASKPASS="$HOME/.local/bin/dm-password"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export XMONAD_CONFIG_DIR="$XDG_CONFIG_HOME/xmonad"
@@ -26,10 +27,11 @@ export XMONAD_CONFIG_DIR="$XDG_CONFIG_HOME/xmonad"
 
 # Start graphical server on user's current tty if not already running.
 echo "Select a window manager (WM) to start your system:
-	 1  Dwm    - The suckless window manager, written in C
-	 2  Qtile  - Python's window manager
-	 3  Xmonad - WM written entirely in Haskell
-	 *  Exit   - Enter the shell
+	 1  Dwm      - The suckless window manager, written in C
+	 2  Qtile    - Python's window manager
+	 3  Xmonad   - WM written entirely in Haskell
+	 4  Hyprland - The future (wayland)
+	 *  Exit     - Enter the shell
 "
 printf "Choice: "
 read -r wm
@@ -37,5 +39,6 @@ case "$wm" in
 	1) export WM="dwm" && startx "$XINITRC" ;;
 	2) export WM="qtile" && startx "$XINITRC" ;;
 	3) export WM="xmonad" && startx "$XINITRC" ;;
+	4) export WM="hyprland" && start-hyprland ;;
 	*) return ;; # Don't start any window manager and just return to shell.
 esac
