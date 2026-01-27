@@ -7,7 +7,7 @@
 
 * {
     background-color:            #121618;
-    border-color:                #57d7f7;
+    border-color:                #ff8747;
     text-color:                  #d8d8d8;
     font:                        "Ubuntu 10";
     prompt-font:                 "Ubuntu Bold 10";
