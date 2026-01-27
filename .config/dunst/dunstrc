@@ -3,20 +3,20 @@
     follow = keyboard
     width = 380
     height = 1000
-	offset = 6x52
+	offset = 8x32
     transparency = 0
     horizontal_padding = 2
     font = Monospace 10
     format = "<b>%s</b>\n%b"
-	frame_color = "#57d7f7"
+	frame_color = "#ff8747"
 	frame_width = 2
 
 [urgency_normal]
-    background = "#21242b"
-    foreground = "#d7d7d7"
+    background = "#121618"
+    foreground = "#d8d8d8"
     timeout = 5
 
 [urgency_critical]
-    background = "#f75757"
+    background = "#f74747"
     foreground = "#282828"
     timeout = 5
