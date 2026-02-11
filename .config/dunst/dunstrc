@@ -6,14 +6,14 @@
 	offset = 16x32
     transparency = 0
     horizontal_padding = 2
-    font = Monospace 10
-    format = "<b>%s</b>\n%b"
-	frame_color = "#ff8747"
+    font = Monospace 9
+    format = "<b>%s</b>\n<i>%b</i>"
+	frame_color = "#b7b7b7"
 	frame_width = 2
 
 [urgency_normal]
-    background = "#1d2021"
-    foreground = "#d8d8d8"
+    background = "#121618"
+    foreground = "#b7b7b7"
     timeout = 5
 
 [urgency_critical]
