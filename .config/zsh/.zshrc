@@ -1,10 +1,10 @@
 autoload -U colors && colors
-PS1="%B%F{red}%n%f %F{yellow}on%f %F{magenta}%m%f %F{blue}%~%f
-%F{cyan}->%f%b "
+PS1="%B%F{red}%n%f%b on %B%F{cyan}%m%f %F{blue}%~%f
+%F{white}->%f%b "
 setopt autocd
 stty stop undef
 
-[ $(command -v colorscript) ] && colorscript -r
+# [ $(command -v colorscript) ] && colorscript -r
 
 # Load aliases and shortcuts.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
