@@ -8,7 +8,7 @@ export PATH="$PATH:/$HOME/.local/bin:$HOME/.local/bin/modules"
 export EDITOR="$editor"
 export VISUAL="$editor"
 export BROWSER="firefox"
-export TERMINAL="alacritty"
+export TERMINAL="st"
 
 # XDG base directories
 export XDG_CONFIG_HOME="$HOME/.config"
