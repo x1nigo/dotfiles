@@ -38,8 +38,9 @@ call plug#end()
 
 " Custom Colors (set notermguicolors to enable); Enter ":hi" or ":highlight" for more information.
 "	hi Title ctermfg=5 ctermbg=none cterm=none
-	hi LineNr ctermfg=8 ctermbg=none cterm=none
+	hi LineNr ctermfg=3 ctermbg=none cterm=none
 	hi Comment ctermfg=8 ctermbg=none cterm=none
+	hi Statement ctermfg=3 ctermbg=none cterm=none
 
 " Set Map leader
 	let mapleader = ","
@@ -67,8 +68,8 @@ call plug#end()
 	autocmd BufWritePre * :%s/\s\+$//e
 
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
-	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/dwmblocks/config.h !sudo make install
+	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/dwmblocks/blocks.h !sudo make install
 " Restart dunst after its config file is updated
-	autocmd BufWritePost ~/.config/dunst/dunstrc !pkill dunst & { setsid dunst }
+	autocmd BufWritePost ~/.config/dunst/dunstrc !pkill dunst && setsid dunst
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost .Xresources,.Xdefaults,xresources,xdefaults !xrdb %
