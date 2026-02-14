@@ -1,0 +1,7 @@
+#!/bin/sh
+
+unicode_full="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/02-unicode | rofi -dmenu -i -p "Choose a unicode character (ESC to cancel):")"
+unicode="$(echo $unicode_full | cut -d' ' -f1)"
+[ -z "$unicode_full" ] && exit 1
+
+echo "$unicode" | wl-copy >/dev/null 2>&1 && notify-send "Unicode character copied!" "$unicode_full"

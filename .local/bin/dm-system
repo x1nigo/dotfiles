@@ -1,6 +1,6 @@
 #!/bin/sh
 
-act="$(printf "%s\n" "Shutdown - Turn the computer off" "Reboot - Restart the system" "Display off - A simple black screen" | dmenu -i -l 6 -fn Monospace-10 -p "SYSTEM (ESC to cancel):")"
+act="$(printf "%s\n" "Shutdown - Turn the computer off" "Reboot - Restart the system" "Display off - A simple black screen" | dmenu -i -l 6 -p "SYSTEM (ESC to cancel):")"
 if ls -l /sbin/init | grep -q runit; then
 	sys=loginctl
 else

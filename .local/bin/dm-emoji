@@ -4,8 +4,8 @@
 # filled with emojis. You can locate the current one in the
 # ~/.local/share/ folder titled emojis.
 
-fullemoji="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/00-emojis | dmenu -i -l 6 -g 3 -p "Copy an emoji (ESC to cancel):")"
+fullemoji="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/00-emojis | dmenu -i -l 16 -p "Copy an emoji (ESC to cancel):")"
 emoji="$(echo $fullemoji | cut -d' ' -f1)"
 [ -z "$fullemoji" ] && exit 1
 
-echo -n $emoji | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "Selected emoji copied to clipboard!" "\`$fullemoji\`"
+echo -n $emoji | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "Selected emoji copied to clipboard!" "$fullemoji"

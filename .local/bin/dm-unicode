@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# This is a simple script that requires an external text file
+# filled with unicode characters.
+
+unicode_full="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/02-unicode | dmenu -i -l 6 -p "Choose a unicode character (ESC to cancel):")"
+unicode="$(echo $unicode_full | cut -d' ' -f1)"
+[ -z "$unicode_full" ] && exit 1
+
+echo -n $unicode | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "Selected unicode character copied to clipboard!" "\`$unicode_full\`"

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# TODO: Create a script for updating the system
+
+act="$(printf "%s\n" "Shutdown - Turn the computer off" "Reboot - Restart the system" "Display Off - Turn monitor display off" "Display On - Exactly what it says" | rofi -dmenu -i -p "SYSTEM (ESC to cancel):")"
+
+if ls -l /sbin/init | grep -q runit; then
+	sys=loginctl
+else
+	sys=systemctl
+fi
+
+case $act in
+	Shutdown*) $sys poweroff ;;
+	Reboot*) $sys reboot ;;
+	"Display Off"*) hyprctl dispatch dpms off ;;
+	"Display On"*) hyprctl dispatch dpms on ;;
+esac

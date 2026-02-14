@@ -6,7 +6,7 @@ file="$1"
 base="${file%.*}"
 ext="${file##*.}"
 
-if [ "$WM" = "Dwm" ]; then
+if [[ "$WM" == "dwm" || "$WM" == "hyprland" ]]; then
 	case $ext in
 		png) sxiv "$file" ;;
 		jpeg) sxiv "$file" ;;
@@ -22,6 +22,7 @@ if [ "$WM" = "Dwm" ]; then
 		opus) mpv "$file" ;;
 		webm) mpv "$file" ;;
 		docx) libreoffice "$file" ;;
+		odt) libreoffice "$file" ;;
 		doc) libreoffice "$file" ;;
 		xlsx) libreoffice "$file" ;;
 		pptx) libreoffice "$file" ;;
@@ -46,6 +47,7 @@ else
 		opus) swallow mpv "$file" ;;
 		webm) swallow mpv "$file" ;;
 		docx) swallow libreoffice "$file" ;;
+		odt) swallow libreoffice "$file" ;;
 		doc) swallow libreoffice "$file" ;;
 		xlsx) swallow libreoffice "$file" ;;
 		pptx) swallow libreoffice "$file" ;;

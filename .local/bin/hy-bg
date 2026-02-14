@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# The main file for rendering wallpapers
+bgmain="$HOME/.local/share/bg"
+# Backgrounds folder
+bgdir="$HOME/.local/share/backgrounds"
+
+chosen="$(find "$bgdir" -type f | rofi -dmenu -i -p "Choose a background (ESC to cancel):")"
+[ -z "$chosen" ] && exit 1
+cp "$chosen" $bgmain && \
+notify-send "Background set!" "$chosen" -i "$chosen" || exit 1
+
+# Close all instances of hyprpaper and refresh
+killall hyprpaper && setsid -f hyprpaper >/dev/null 2>&1

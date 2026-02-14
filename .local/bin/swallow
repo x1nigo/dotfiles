@@ -6,6 +6,6 @@
 #	e.g. swallow sxiv image.png
 
 old_window_id="$(xdo id)"
-if [[ -n $1 && -f $2 ]]; then # Checks if program and file even exist.
-	xdo hide "$old_window_id"; "$1" "$2"; xdo show "$old_window_id"
+if [[ -n $1 && -n $@ ]]; then # Checks if program and file even exist.
+	xdo hide "$old_window_id"; "$@"; xdo show "$old_window_id"
 fi
