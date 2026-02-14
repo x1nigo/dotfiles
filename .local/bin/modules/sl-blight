@@ -1,5 +1,6 @@
 #!/bin/sh
 
-perc=$(brightnessctl -m | cut -d, -f4)
+percent="$(brightnessctl -m | cut -d, -f4 | sed "s/%//g")"
+[ $percent -lt 50 ] && icon=🌂 || icon=🌅
 
-echo "$perc"
+echo "$icon$percent%"

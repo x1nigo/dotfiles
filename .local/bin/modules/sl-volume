@@ -1,11 +1,14 @@
 #!/bin/sh
 
-vol=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
-[ "$vol" != "${vol%\[MUTED\]}" ] && echo "^c#ff0000^Muted" && exit
+vol="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"
+
+# If muted, print 🔇 and exit.
+[ "$vol" != "${vol%\[MUTED\]}" ] && echo 🔇 && exit
 
 vol="${vol#Volume: }"
+
 split() {
-	# For ommiting the . without calling an external program.
+	# For ommiting the . without calling and external program.
 	IFS=$2
 	set -- $1
 	printf '%s' "$@"
@@ -13,4 +16,11 @@ split() {
 
 vol="$(printf "%.0f" "$(split "$vol" ".")")"
 
-echo "$vol%"
+case 1 in
+	$((vol >= 70)) ) icon="🔊" ;;
+	$((vol >= 30)) ) icon="🔉" ;;
+	$((vol >= 1)) ) icon="🔈" ;;
+	* ) echo 🔇 && exit ;;
+esac
+
+echo "$icon$vol%"

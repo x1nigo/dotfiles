@@ -1,4 +1,4 @@
 #!/bin/sh
 
 disk="$(df -h | awk '/\/$/ {print $4, "free"}')"
-echo "$disk"
+echo "🚩$disk"
