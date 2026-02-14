@@ -3,7 +3,7 @@
     follow = keyboard
     width = 380
     height = 1000
-	offset = 16x32
+	offset = 16x42
     transparency = 0
     horizontal_padding = 2
     font = Monospace 9
@@ -12,7 +12,7 @@
 	frame_width = 2
 
 [urgency_normal]
-    background = "#121618"
+    background = "#1d2021"
     foreground = "#b7b7b7"
     timeout = 5
 
