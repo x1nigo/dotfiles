@@ -1,6 +1,6 @@
 autoload -U colors && colors
-PS1="%B%F{red}%n%f%b on %B%F{cyan}%m%f %F{blue}%~%f
-%F{white}->%f%b "
+
+PS1="%B%F{red}[%F{yellow}%n%F{green}@%F{blue}%m %F{magenta}%~%F{red}]%f\$%b "
 setopt autocd
 stty stop undef
 
