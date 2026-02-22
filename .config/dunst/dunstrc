@@ -6,7 +6,7 @@
 	offset = 16x42
     transparency = 0
     horizontal_padding = 2
-    font = Monospace 9
+    font = Monospace 10
     format = "<b>%s</b>\n<i>%b</i>"
 	frame_color = "#b7b7b7"
 	frame_width = 2
