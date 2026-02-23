@@ -6,7 +6,7 @@
 
 !! Set a background, foreground, and cursor color:
 *.background: #1d2021
-*.foreground: #d7d7d7
+*.foreground: #ebdbb2
 
 /* name		dark	light */
 /* black	0		8 */
@@ -21,17 +21,17 @@
 /* !! 2001 */
 *.color0: #1d2021
 *.color1: #f74747
-*.color2: #87d7a7
+*.color2: #57e7d7
 *.color3: #f78747
 *.color4: #005577
-*.color5: #8787f7
+*.color5: #8787d7
 *.color6: #57d7f7
-*.color7: #b7b7b7
+*.color7: #ebdbb2
 *.color8: #282828
 *.color9: #f74747
-*.color10: #87d7a7
+*.color10: #57e7d7
 *.color11: #f78747
 *.color12: #005577
-*.color13: #8787f7
+*.color13: #8787d7
 *.color14: #57d7f7
-*.color15: #b7b7b7
+*.color15: #ebdbb2

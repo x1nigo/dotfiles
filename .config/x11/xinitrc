@@ -21,6 +21,7 @@ done >/dev/null 2>&1
 # - xmonad
 case "$WM" in # The `WM` variable is taken from `.zprofile`.
 	"dwm") dwmblocks &
+		dm-wallpaper &
 		while true; do ssh-agent dwm; done ;;
 	"qtile") qtile start ;;
 	"xmonad") exec xmonad ;;
