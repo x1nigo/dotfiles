@@ -7,7 +7,7 @@ done; unset command
 
 # Use neovim by default if installed
 [ $(command -v nvim) ] && alias vim="nvim"
-[ $(command -v eza) ] && alias ls="eza -l" || alias ls="ls -l --color=always"
+[ $(command -v eza) ] && alias ls="eza" || alias ls="ls --color=always"
 
 alias \
 	diff="diff --color=always" \
