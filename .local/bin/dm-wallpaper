@@ -16,7 +16,7 @@ sel() {
 	chosen="$(echo "$chosen" | sed "s|~|$HOME|")"
 	[ -z "$chosen" ] && exit
 	cp "$chosen" $bgmain && \
-	notify-send "🖼️ New wallpaper!" "\`$chosen\`"
+	notify-send "🖼️ New wallpaper!" "$chosen" -i "$chosen" || exit 1
 }
 
 oust() {
