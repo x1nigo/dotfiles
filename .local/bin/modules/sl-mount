@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ -n "$(df -h | grep -i "/mnt$" 2>/dev/null)" ]; then
+	mounticon="🐴" && device="$(echo $(df | grep -i "/mnt$") | awk '{print $1}')"
+else
+	mounticon="🏠" && device=""
+fi
+
+printf "%s%s\\n" "$mounticon" "$device"

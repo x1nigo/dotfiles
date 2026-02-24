@@ -1,5 +1,10 @@
 #!/bin/sh
 
-cpu="$(sensors | awk '/Core 0:/ {print $3}')"
+temp="$(sensors | awk '/Core 0:/ {print $3}' | sed 's/+//;s/\..*//')"
+case 1 in
+	$((temp >= 60)) ) icon="🔥" ;;
+	$((temp >= 45)) ) icon="🥵" ;;
+	$((temp >= 1)) ) icon="🥶" ;;
+esac
 
-echo "🔥$cpu"
+printf "%s%s°C\\n" "$icon" "$temp"

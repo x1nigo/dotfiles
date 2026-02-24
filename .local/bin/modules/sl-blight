@@ -1,6 +1,18 @@
 #!/bin/sh
 
-percent="$(brightnessctl -m | cut -d, -f4 | sed "s/%//g")"
-[ $percent -lt 50 ] && icon=🌂 || icon=🌅
+# current brightness
+curr_brightness=$(cat /sys/class/backlight/*/brightness)
 
-echo "$icon$percent%"
+# max_brightness
+max_brightness=$(cat /sys/class/backlight/*/max_brightness)
+
+# brightness percentage
+brightness_per=$((100 * curr_brightness / max_brightness))
+
+case 1 in
+	$((brightness_per >= 50)) ) icon="🌅" ;;
+	$((brightness_per >= 25)) ) icon="🌂" ;;
+	$((brightness_per >= 1)) ) icon="🌑" ;;
+esac
+
+printf "%s%s%%\\n" "$icon" "$brightness_per"
