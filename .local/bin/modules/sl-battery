@@ -1,5 +1,16 @@
 #!/bin/sh
 
+case "$BUTTON" in
+	3) notify-send "⚡ battery / power status levels" "Legend:
+⚡🔋🪫🔌🛑❓, respectively
+	fully-charged;
+	discharging;
+	near-empty;
+	charging;
+	not charging; and
+	no idea" ;;
+esac
+
 # Loop through all attached batteries and format the info
 for battery in /sys/class/power_supply/BAT?*; do
 	# If non-first battery, print a space separator.

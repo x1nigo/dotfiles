@@ -1,0 +1,8 @@
+#!/bin/sh
+
+case "$BUTTON" in
+	1) $TERMINAL -f Monospace-12 -e $EDITOR $HOME/.local/share/README.md ;;
+	3) notify-send "❓ README file" "Exactly what it says. Left-click to read important stuff." ;;
+esac
+
+printf "❓\\n"

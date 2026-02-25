@@ -1,5 +1,9 @@
 #!/bin/sh
 
+case "$BUTTON" in
+	3) notify-send "📅 date and time" "Notice how the clock emoji reflects the actual hour of the day/night." ;;
+esac
+
 clock=$(date '+%I')
 
 case "$clock" in

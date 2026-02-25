@@ -1,8 +1,13 @@
 #!/bin/sh
 
+case "$BUTTON" in
+	1) $TERMINAL -e pulsemixer ;;
+	3) notify-send "🗣 microphone" "Left-click to mute/unmute." ;;
+esac
+
 mic="$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"
 
-[ "$mic" != "${mic%\[MUTED\]}" ] && echo ⏹  && exit
+[ "$mic" != "${mic%\[MUTED\]}" ] && printf "⏹\\n"  && exit
 
 mic="${mic#Volume: }"
 
@@ -15,4 +20,4 @@ split() {
 
 mic="$(printf "%.0f" "$(split "$mic" ".")")"
 
-echo "🗣$mic%"
+printf "🗣%s%%\\n" "$mic"

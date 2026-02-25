@@ -1,5 +1,9 @@
 #!/bin/sh
 
+case "$BUTTON" in
+	3) notify-send "🔻received / 🔺transmitted" "Shows the per-second bytes received and transmitted through an internet connection." ;;
+esac
+
 update() {
     sum=0
     for arg; do

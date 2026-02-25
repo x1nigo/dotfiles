@@ -1,3 +1,8 @@
 #!/bin/sh
 
+case "$BUTTON" in
+	1) $TERMINAL -e htop ;;
+	3) notify-send "🤖 RAM / random access memory" "Shows the current usage of RAM against the total." ;;
+esac
+
 free --mebi | sed -n '2{p;q}' | awk '{printf ("🤖%2.2fGiB/%2.2fGiB\n", ( $3 / 1024), ($2 / 1024))}'

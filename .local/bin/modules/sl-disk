@@ -1,4 +1,12 @@
 #!/bin/sh
 
-disk="$(df -h | awk '/\/$/ {print $4, "free"}')"
-echo "🚩$disk"
+case "$BUTTON" in
+	3) notify-send "🏠 disk space" "Shows the root directory's free space. Updates once in a while." ;;
+esac
+
+# Checks the current storage of the root ("/") directory.
+if [ "$(df -h | awk '/\/$/ {print $5}' | sed 's/\%//')" -ge 50 ]; then
+	df -h | awk '/\/$/ {print "🚩" $4, "(" $5, "free" ")"}'
+else
+	df -h | awk '/\/$/ {print "🏠" $4, "(" $5, "free" ")"}'
+fi

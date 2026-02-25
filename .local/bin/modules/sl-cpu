@@ -1,5 +1,12 @@
 #!/bin/sh
 
+case "$BUTTON" in
+	3) notify-send "🖥 CPU / central processing unit" "Legend:
+🔥 -> 60% and above
+🥵 -> 45% - 59%; and
+🥶 -> 44% and below" ;;
+esac
+
 temp="$(sensors | awk '/Core 0:/ {print $3}' | sed 's/+//;s/\..*//')"
 case 1 in
 	$((temp >= 60)) ) icon="🔥" ;;

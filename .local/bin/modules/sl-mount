@@ -1,9 +1,13 @@
 #!/bin/sh
 
+case "$BUTTON" in
+	3) notify-send "🐴 / 💾 mounted drives" "Shows the currently mounted drives (aside from the main system) e.g. USB drives." ;;
+esac
+
 if [ -n "$(df -h | grep -i "/mnt$" 2>/dev/null)" ]; then
 	mounticon="🐴" && device="$(echo $(df | grep -i "/mnt$") | awk '{print $1}')"
 else
-	mounticon="🏠" && device=""
+	mounticon="💾" && device=""
 fi
 
 printf "%s%s\\n" "$mounticon" "$device"
