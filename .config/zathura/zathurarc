@@ -1,15 +1,14 @@
 set selection-clipboard clipboard
 # set recolor
-set recolor-lightcolor "#1d2021"
+set recolor-lightcolor "rgba(29,32,33,1)"
 set recolor-darkcolor "#ebdbb2"
-set default-bg "#1d2021"
+set default-bg "rgba(29,32,33,1)"
 set default-fg "#ebdbb2"
 set statusbar-bg "#1d2021"
 set statusbar-fg "#ebdbb2"
 set statusbar-h-padding 16
 set statusbar-v-padding 2
 set inputbar-fg "#ff8747"
-set page-padding 1
 set statusbar-basename true
 map r rotate
 map R reload
