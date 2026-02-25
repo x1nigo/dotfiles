@@ -1,19 +1,19 @@
 [global]
     monitor = 0
     follow = keyboard
-    width = 380
+    width = 420
     height = 1000
 	offset = 16x42
     transparency = 0
     horizontal_padding = 2
     font = Monospace 10
     format = "<b>%s</b>\n<i>%b</i>"
-	frame_color = "#b7b7b7"
+	frame_color = "#282828"
 	frame_width = 2
 
 [urgency_normal]
-    background = "#1d2021"
-    foreground = "#b7b7b7"
+    background = "#ebdbb2"
+    foreground = "#282828"
     timeout = 5
 
 [urgency_critical]
