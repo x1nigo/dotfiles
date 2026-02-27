@@ -6,52 +6,25 @@ file="$1"
 base="${file%.*}"
 ext="${file##*.}"
 
-if [[ "$WM" == "dwm" || "$WM" == "hyprland" ]]; then
-	case $ext in
-		png) sxiv "$file" ;;
-		jpeg) sxiv "$file" ;;
-		jpg) sxiv "$file" ;;
-		gif) sxiv -a "$file" ;;
-		webp) sxiv "$file" ;;
-		pdf) zathura "$file" ;;
-		epub) zathura "$file" ;;
-		azw3) zathura "$file" ;;
-		mp4) mpv "$file" ;;
-		m4a) mpv "$file" ;;
-		mkv) mpv "$file" ;;
-		opus) mpv "$file" ;;
-		webm) mpv "$file" ;;
-		docx) libreoffice "$file" ;;
-		odt) libreoffice "$file" ;;
-		doc) libreoffice "$file" ;;
-		xlsx) libreoffice "$file" ;;
-		pptx) libreoffice "$file" ;;
-		ppt) libreoffice "$file" ;;
-		*) $EDITOR "$file" ;;
-	esac
-else
-	# Provides a window swallowing function for programs. But only
-	# if not using DWM.
-	case $ext in
-		png) swallow sxiv "$file" ;;
-		jpeg) swallow sxiv "$file" ;;
-		jpg) swallow sxiv "$file" ;;
-		gif) swallow sxiv -a "$file" ;;
-		webp) swallow sxiv "$file" ;;
-		pdf) swallow zathura "$file" ;;
-		epub) swallow zathura "$file" ;;
-		azw3) swallow zathura "$file" ;;
-		mp4) swallow mpv "$file" ;;
-		m4a) swallow mpv "$file" ;;
-		mkv) swallow mpv "$file" ;;
-		opus) swallow mpv "$file" ;;
-		webm) swallow mpv "$file" ;;
-		docx) swallow libreoffice "$file" ;;
-		odt) swallow libreoffice "$file" ;;
-		doc) swallow libreoffice "$file" ;;
-		xlsx) swallow libreoffice "$file" ;;
-		pptx) swallow libreoffice "$file" ;;
-		ppt) swallow libreoffice "$file" ;;
-		*) $EDITOR "$file" ;;
-	esac
-fi
+case $ext in
+	png) sxiv "$file" ;;
+	jpeg) sxiv "$file" ;;
+	jpg) sxiv "$file" ;;
+	gif) sxiv -a "$file" ;;
+	webp) sxiv "$file" ;;
+	pdf) zathura "$file" ;;
+	epub) zathura "$file" ;;
+	azw3) zathura "$file" ;;
+	mp4) mpv "$file" ;;
+	m4a) mpv "$file" ;;
+	mkv) mpv "$file" ;;
+	opus) mpv "$file" ;;
+	webm) mpv "$file" ;;
+	docx) libreoffice "$file" ;;
+	odt) libreoffice "$file" ;;
+	doc) libreoffice "$file" ;;
+	xlsx) libreoffice "$file" ;;
+	pptx) libreoffice "$file" ;;
+	ppt) libreoffice "$file" ;;
+	*) $EDITOR "$file" ;;
+esac

@@ -10,7 +10,7 @@ selection() {
 	chosen="$(ls "$bgdir" | dmenu -i -l 10 -p "Choose a wallpaper (ESC to cancel):")"
 	[ -z "$chosen" ] && exit
 	cp "$bgdir/$chosen" $bgmain && \
-	notify-send "🖼️ New wallpaper!" "$bgdir/$chosen" -i "$bgdir/$chosen" || exit 1
+	notify-send "🌅 Wallpaper selected!" "$bgdir/$chosen" -i "$bgdir/$chosen" || exit 1
 }
 
 remove() {
@@ -18,10 +18,18 @@ remove() {
 	notify-send "🛑 Wallpaper cleared!" "Select a new wallpaper [or] execute xsetroot -solid [color]." && exit
 }
 
-while getopts "sr" z; do
+random() {
+	chosen="$(ls "$bgdir" | shuf | head -1)"
+	[ -z "$chosen" ] && exit
+	cp "$bgdir/$chosen" $bgmain && \
+	notify-send "🎱 Random wallpaper chosen!" "$bgdir/$chosen" -i "$bgdir/$chosen" || exit 1
+}
+
+while getopts "srR" z; do
 	case ${z} in
 		s) selection ;;
 		r) remove ;;
+		R) random ;;
 	esac
 done
 

@@ -2,7 +2,8 @@
 
 # Make sure the videos and their respective titles are separated by a TAB ("\t").
 vidlist="
-Sonny Teaches \"C\" Something About Life | A Bronx Tale	https://www.youtube.com/watch?v=xuc-HOuwg-Q
+Does your Window Manager Swallow?	https://www.youtube.com/watch?v=92uo5OBOKfY&pp=ygUgZG9lcyB5b3VyIHdpbmRvdyBtYW5hZ2VyIHN3YWxsb3c%3D
+Literally stop using i3-gaps & use Suckless dwm rn	https://www.youtube.com/watch?v=B5r47Q1cn_o&pp=ugUEEgJlbg%3D%3D
 "
 
 desc="$(echo "$vidlist" | sed 's/\t.*//;/^$/d' | dmenu -i -l 25 -p "What do you want to watch? (ESC to cancel):")"
