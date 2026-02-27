@@ -1,3 +1,0 @@
-#!/bin/sh
-
-groff -ms -Tpdf $HOME/.local/share/system.ms | zathura -
