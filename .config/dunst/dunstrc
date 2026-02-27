@@ -9,10 +9,10 @@
     font = Monospace 10
     format = "<b>%s</b>\n<i>%b</i>"
 	frame_color = "#282828"
-	frame_width = 2
+	frame_width = 1
 
 [urgency_normal]
-    background = "#ebdbb2"
+    background = "#458588"
     foreground = "#282828"
     timeout = 5
 
