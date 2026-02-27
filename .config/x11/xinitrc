@@ -9,7 +9,7 @@ xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
 
 # Autostart function that avoids duplication. Include programs that are
 # window manager independent.
-autostart="mpd dunst picom pipewire transmission-daemon"
+autostart="mpd dunst unclutter picom pipewire transmission-daemon"
 for program in $autostart; do
 	pgrep -x "$program" || "$program" &
 done >/dev/null 2>&1
