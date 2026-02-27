@@ -1,12 +1,12 @@
 #!/bin/sh
 
 case "$BUTTON" in
-	3) notify-send "🏠 disk space" "Shows the root directory's free space. Updates once in a while." ;;
+	3) notify-send "🏠 disk space" "Shows the root directory's used space. Updates once in a while." ;;
 esac
 
 # Checks the current storage of the root ("/") directory.
 if [ "$(df -h | awk '/\/$/ {print $5}' | sed 's/\%//')" -ge 50 ]; then
-	df -h | awk '/\/$/ {print "🚩" $4, "(" $5, "free" ")"}'
+	df -h | awk '/\/$/ {print "🚩" $4, "(" $5, "used" ")"}'
 else
-	df -h | awk '/\/$/ {print "🏠" $4, "(" $5, "free" ")"}'
+	df -h | awk '/\/$/ {print "🏠" $4, "(" $5, "used" ")"}'
 fi

@@ -4,4 +4,4 @@ case "$BUTTON" in
 	3) notify-send "💰 the price of money" "Shows the exchange rate between USD and BTC. Data comes from the \"rate.sx\" website." ;;
 esac
 
-curl -s rate.sx/btc | grep -i "avg:" | cut -d' ' -f2 | sed 's/\$//;s/\\.*//' | xargs printf "💵\$%'d\\n" 2>/dev/null
+curl -s rate.sx/btc | grep -i "avg:" | cut -d' ' -f2 | sed 's/\$//;s/\\.*//' | xargs printf "💵\$%'d (₿)\\n" 2>/dev/null

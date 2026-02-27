@@ -2,9 +2,9 @@
 
 case "$BUTTON" in
 	3) notify-send "💡 screen brightness" "Legend:
-🌅 -> 50% and above
-☔ -> 25% - 49%; and
-🌑 -> 24% and below" ;;
+🌞 -> 50% and above
+🌅 -> 35% - 49%; and
+🌑 -> 34% and below" ;;
 esac
 
 # current brightness
@@ -17,8 +17,8 @@ max_brightness=$(cat /sys/class/backlight/*/max_brightness)
 brightness_per=$((100 * curr_brightness / max_brightness))
 
 case 1 in
-	$((brightness_per >= 50)) ) icon="🌅" ;;
-	$((brightness_per >= 25)) ) icon="☔" ;;
+	$((brightness_per >= 50)) ) icon="🌞" ;;
+	$((brightness_per >= 35)) ) icon="🌅" ;;
 	$((brightness_per >= 1)) ) icon="🌑" ;;
 esac
 
