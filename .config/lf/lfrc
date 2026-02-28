@@ -37,7 +37,7 @@ cmd delete ${{
 	printf "%s\n\t" "$fx"
 	printf "delete?[y/N]"
 	read ans
-	[ $ans = "y" ] && rm -rf -- "$fx" && notify-send "🔫 File(s) deleted." "\`$fx\`"
+	[ $ans = "y" ] && rm -rf -- $fx && notify-send "🗑 File(s) deleted." "$fx"
 }}
 
 cmd newfile ${{
@@ -46,7 +46,7 @@ cmd newfile ${{
 	printf "new file: "
 	read ans
 	[ -z $ans ] && exit
-	touch "$ans" && notify-send "✍️ New file created!" "\`$ans\`"
+	touch "$ans" && notify-send "✍️ New file created!" "$ans"
 }}
 
 cmd dir ${{
@@ -55,7 +55,7 @@ cmd dir ${{
 	printf "new directory: "
 	read ans
 	[ -z $ans ] && exit
-	mkdir -p "$ans" && notify-send "📁 New directory created!" "\`$ans\`"
+	mkdir -p "$ans" && notify-send "📁 New directory created!" "$ans"
 }}
 
 # Bindings
