@@ -4,8 +4,8 @@
 # the `bookmarker` script. Hopefully, each bookmark has a unique
 # name/label for `grep` to pinpoint.
 
-desc="$(cat $HOME/.local/share/01-bookmarks | sed 's/\t.*//' | dmenu -i -l 35 -p "INSERT (ESC to cancel):")"
+desc="$(sed 's/\t.*//' $HOME/.local/share/01-bookmarks | dmenu -i -l 35 -p "INSERT (ESC to cancel):")"
 [ -z "$desc" ] && exit 1
-url="$(cat $HOME/.local/share/01-bookmarks | grep "$desc" | sed 's/.*\t//')"
+url="$(grep "$desc" $HOME/.local/share/01-bookmarks | sed 's/.*\t//')"
 # Execute the bookmark typing process.
 xdotool type "$url"
