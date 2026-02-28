@@ -18,6 +18,6 @@ cfZ="$EDITOR $HOME/.config/zathura/zathurarc" \
 cfv="$EDITOR $HOME/.config/nvim/init.vim" \
 cfx="$EDITOR $HOME/.config/x11/xinitrc" \
 cfX="$EDITOR $HOME/.config/x11/xresources" \
-cfw="$EDITOR $HOME/.config/waybar/config.jsonc" \
 cfe="$EDITOR $HOME/.local/share/00-emojis" \
 cfb="$EDITOR $HOME/.local/share/01-bookmarks" \
+cfu="$EDITOR $HOME/.local/share/02-unicode" \
