@@ -5,24 +5,13 @@ xset r rate 300 50
 # xrandr --dpi 96 # Adjust this depending on screen resolution.
 xsetroot -cursor_name left_ptr
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
-# nitrogen --restore
 
 # Autostart function that avoids duplication. Include programs that are
 # window manager independent.
-autostart="mpd dunst unclutter picom pipewire transmission-daemon"
+autostart="mpd dunst unclutter picom pipewire dm-wallpaper dwmblocks transmission-daemon"
 for program in $autostart; do
 	pgrep -x "$program" || "$program" &
 done >/dev/null 2>&1
 
-# Start the window manager (WM); without `ssh-agent`, dwm will literally shut down upon recompiling.
-# Available WMs in my config:
-# - dwm
-# - qtile
-# - xmonad
-case "$WM" in # The `WM` variable is taken from `.zprofile`.
-	"dwm") dwmblocks &
-		dm-wallpaper &
-		while true; do ssh-agent dwm; done ;;
-	"qtile") qtile start ;;
-	"xmonad") exec xmonad ;;
-esac
+# Start the dynamic window manager.
+while true; do ssh-agent dwm; done

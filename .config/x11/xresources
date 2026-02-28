@@ -18,19 +18,19 @@
 /* cyan		6		14 */
 /* white	7		15 */
 
-/* !! classic */
+/* !! 2026 */
 *.color0: #1d2021
-*.color1: #f74747
+*.color1: #f74737
 *.color2: #57e7d7
-*.color3: #f78747
+*.color3: #f76727
 *.color4: #005577
 *.color5: #8787d7
 *.color6: #57d7f7
 *.color7: #ebdbb2
 *.color8: #282828
-*.color9: #f74747
+*.color9: #f74737
 *.color10: #57e7d7
-*.color11: #f78747
+*.color11: #f76727
 *.color12: #005577
 *.color13: #8787d7
 *.color14: #57d7f7
