@@ -1,3 +1,3 @@
 #!/bin/sh
 
-killall dwmblocks ; notify-send "🧰 Restarting dwmblocks..." "Please wait a moment." && setsid dwmblocks
+killall dwmblocks ; notify-send "🧰 Restarting dwmblocks..." "Please wait a moment." && setsid -f dwmblocks
