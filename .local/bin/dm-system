@@ -7,7 +7,7 @@ else
 	sys=systemctl
 fi
 
-case $act in
+case "$act" in
 	Shutdown*) $sys poweroff ;;
 	Reboot*) $sys reboot ;;
 	Display*) xset dpms force off ;;

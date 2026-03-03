@@ -1,18 +1,14 @@
 #!/bin/sh
 
-# Use xclip to put selection to standard output.
+# To be used alongside the `dm-insert` script.
+# `xclip` needs to be installed.
+
+file="${XDG_DATA_HOME:-$HOME/.local/share}/01-bookmarks"
 bookmark="$(xclip -o)"
 [ -z $bookmark ] && notify-send "🛑 Unable to create a bookmark." "Please try again." && exit 1
-# This will be our list of bookmarks.
-file="${XDG_DATA_HOME:-$HOME/.local/share}/01-bookmarks"
 
-# Do not add if bookmark already exists in the file.
 if grep -q "^$bookmark" "$file"; then
-	notify-send "🤡 Already bookmarked!" "Don't make me laugh."
+	notify-send "🤡 Already bookmarked!" "Try again or look for a different one."
 else
-	# Make sure its label is unique and easy to identify.
-	label="$(echo cancel | dmenu -l 8 -p "Bookmark Title:")"
-	[ -z "$label" ] && notify-send "✍️ No bookmark added." "You must give it a label/description." && exit 1
-	printf "%s\t%s" "$label" "$bookmark" >> "$file" && notify-send "🔖 Bookmark added!" "\`$bookmark\`"
+	printf "%s\\n" "$bookmark" >> "$file" && notify-send "🔖 Bookmark added!" "$bookmark"
 fi
-

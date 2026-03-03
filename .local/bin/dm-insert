@@ -1,11 +1,9 @@
 #!/bin/sh
 
-# This script types out the selected bookmark in conjunction with
-# the `bookmarker` script. Hopefully, each bookmark has a unique
-# name/label for `grep` to pinpoint.
+# This script types out the selected bookmark in conjunction with the `dm-bookmark` script.
+# `xdotool` needs to be installed.
 
-desc="$(sed 's/\t.*//' $HOME/.local/share/01-bookmarks | dmenu -i -l 35 -p "INSERT (ESC to cancel):")"
-[ -z "$desc" ] && exit 1
-url="$(grep "$desc" $HOME/.local/share/01-bookmarks | sed 's/.*\t//')"
-# Execute the bookmark typing process.
+url="$(cat $HOME/.local/share/01-bookmarks | dmenu -i -l 35 -p "INSERT (ESC to cancel):" | cut -d' ' -f1)"
+[ -z "$url" ] && exit 1
+
 xdotool type "$url"

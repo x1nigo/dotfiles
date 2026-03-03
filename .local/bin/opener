@@ -7,11 +7,11 @@ base="${file%.*}"
 ext="${file##*.}"
 
 case $ext in
-	png) sxiv "$file" ;;
-	jpeg) sxiv "$file" ;;
-	jpg) sxiv "$file" ;;
-	gif) sxiv -a "$file" ;;
-	webp) sxiv "$file" ;;
+	png) nsxiv "$file" ;;
+	jpeg) nsxiv "$file" ;;
+	jpg) nsxiv "$file" ;;
+	gif) nsxiv -a "$file" ;;
+	webp) nsxiv "$file" ;;
 	pdf) zathura "$file" ;;
 	epub) zathura "$file" ;;
 	azw3) zathura "$file" ;;
