@@ -5,7 +5,7 @@
 *.alpha: 0.95
 
 !! Set a background, foreground, and cursor color:
-*.background: #1d2021
+*.background: #242729
 *.foreground: #ebdbb2
 
 /* name		dark	light */
