@@ -3,7 +3,7 @@
     follow = keyboard
     width = 420
     height = 1000
-	offset = 0x21
+	offset = 0x16
     transparency = 8
     horizontal_padding = 2
     font = Monospace 10
