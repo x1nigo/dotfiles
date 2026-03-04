@@ -8,4 +8,4 @@ Literally stop using i3-gaps & use Suckless dwm rn	https://www.youtube.com/watch
 
 desc="$(echo "$vidlist" | sed 's/\t.*//;/^$/d' | dmenu -i -l 25 -p "What do you want to watch? (ESC to cancel):")"
 [ -z "$desc" ] && exit 1
-echo "$vidlist" | grep "$desc" | sed 's/.*\t//' | xargs mpv -
+echo "$vidlist" | grep "$desc" | sed 's/.*\t//' | xargs mpv - & notify-send "🎥 Starting video..." "This may take a moment."

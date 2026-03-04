@@ -1,9 +1,12 @@
 #!/bin/sh
 
 # This script types out the selected bookmark in conjunction with the `dm-bookmark` script.
-# `xdotool` needs to be installed.
+# `xdotool` or `xclip` need to be installed.
 
 url="$(cat $HOME/.local/share/01-bookmarks | dmenu -i -l 35 -p "INSERT (ESC to cancel):" | cut -d' ' -f1)"
 [ -z "$url" ] && exit 1
 
-xdotool type "$url"
+printf "%s" "$url" | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "URL copied to clipboard." "$url"
+
+# Alternative method of output.
+# xdotool type "$url"

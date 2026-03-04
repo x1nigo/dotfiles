@@ -7,4 +7,4 @@ emojidesc="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/00-emojis | dmenu -i -l 25
 emojiicon="$(echo $emojidesc | cut -d' ' -f1)"
 [ -z "$emojidesc" ] && exit 1
 
-echo -n $emojiicon | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "Selected emoji copied to clipboard!" "$emojidesc"
+echo -n $emojiicon | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "Emoji copied to clipboard." "$emojidesc"

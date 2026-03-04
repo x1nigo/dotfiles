@@ -5,10 +5,10 @@
 
 file="${XDG_DATA_HOME:-$HOME/.local/share}/01-bookmarks"
 bookmark="$(xclip -o)"
-[ -z $bookmark ] && notify-send "🛑 Unable to create a bookmark." "Please try again." && exit 1
+[ -z $bookmark ] && notify-send "❗ Unable to create a bookmark." "Please try again." && exit 1
 
 if grep -q "^$bookmark" "$file"; then
-	notify-send "🤡 Already bookmarked!" "Try again or look for a different one."
+	notify-send "🤡 Already bookmarked." "Look for a different one."
 else
-	printf "%s\\n" "$bookmark" >> "$file" && notify-send "🔖 Bookmark added!" "$bookmark"
+	printf "%s\\n" "$bookmark" >> "$file" && notify-send "🔖 Bookmark added." "$bookmark"
 fi

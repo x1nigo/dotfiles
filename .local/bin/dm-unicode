@@ -7,4 +7,4 @@ unicode_full="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/02-unicode | dmenu -i -
 unicode="$(echo $unicode_full | cut -d' ' -f1)"
 [ -z "$unicode_full" ] && exit 1
 
-echo -n $unicode | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "Selected unicode character copied to clipboard!" "\`$unicode_full\`"
+echo -n $unicode | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "📋 Unicode character copied to clipboard." "$unicode_full"
