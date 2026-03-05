@@ -39,13 +39,13 @@ killrecordings() {
 
 # If no argument given, use `dmenu`.
 if [ -z "$1" ]; then
-	recording="$(printf "audio - record audio only without video\\nvideo - video recording without audio\\nscreenaudio - record both audio and video\\nstop - kill any current recording processes" | dmenu -i -l 6 -p "Select type of recording:")"
+	recording="$(printf "Audio - record audio only without video\\nVideo - video recording without audio\\nScreenaudio - record both audio and video\\nStop - kill any current recording processes" | dmenu -i -l 6 -p "Select type of recording:")"
 
 	case "$recording" in
-		audio*) audio ;;
-		video*) video ;;
-		screenaudio*) screenaudio ;;
-		stop*) killrecordings ;;
+		Audio*) audio ;;
+		Video*) video ;;
+		Screenaudio*) screenaudio ;;
+		Stop*) killrecordings ;;
 		*) exit ;;
 	esac
 fi
