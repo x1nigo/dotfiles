@@ -70,6 +70,6 @@ call plug#end()
 " Recompile suckless programs when saving (Uncomment if you don't need this.)
 	autocmd BufWritePost ~/.local/src/dwm/config.h,~/.local/src/st/config.h,~/.local/src/dmenu/config.h,~/.local/src/dwmblocks/blocks.h !sudo make install
 " Restart dunst after its config file is updated
-	autocmd BufWritePost ~/.config/dunst/dunstrc !killall -q dunst; setsid dunst >/dev/null 2>&1
+	autocmd BufWritePost ~/.config/dunst/dunstrc !killall -q dunst; setsid -f dunst >/dev/null 2>&1
 " Run xrdb whenever Xdefaults or Xresources are updated
 	autocmd BufWritePost .Xresources,.Xdefaults,xresources,xdefaults !xrdb %
