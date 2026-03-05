@@ -1,60 +1,60 @@
 #!/bin/sh
 
-audio() {
-	ffmpeg -f x11grab \
-	-video_size $(xrandr | grep "^Screen 0" | awk '{print $8"x"$10}' | sed 's/,//g') \
-	-framerate 25 \
-	-i $DISPLAY \
+audio() { ffmpeg \
 	-f alsa \
 	-i default \
-	-c:v libx264 \
-	-preset ultrafast \
-	-c:a aac "$HOME/$(date +'screen-%y-%m-%d-%s').mp4"
+	"$HOME/audio-$(date '+%y%b%d-%I%M').wav" & \
+	echo $! > /tmp/recordingpid
+	echo "⏺" > /tmp/recordingicon && pkill -RTMIN+4 dwmblocks
 }
 
-noaudio() {
-	ffmpeg -f x11grab \
-	-video_size $(xrandr | grep "^Screen 0" | awk '{print $8"x"$10}' | sed 's/,//g') \
-	-framerate 25 \
-	-i $DISPLAY \
-	-c:v ffvhuff "$HOME/$(date +'screen-%y-%m-%d-%s').mkv"
+video() { ffmpeg \
+	-framerate 30 \
+	-f x11grab \
+	-i "$DISPLAY" \
+	"$HOME/video-$(date '+%y%b%d-%I%M').mkv" & \
+	echo $! > /tmp/recordingpid
+	echo "🎥" > /tmp/recordingicon && pkill -RTMIN+4 dwmblocks
 }
 
-webcam() {
-	ffmpeg -f v4l2 \
-	-video_size 640x480 \
-	-i /dev/video0 \
-	-c:v libx264 \
-	-preset ultrafast "$HOME/$(date +'webcam-%y-%m-%d-%s').mp4"
+screenaudio() { ffmpeg \
+	-framerate 30 \
+	-f x11grab \
+	-i "$DISPLAY" \
+	-f alsa \
+	-i default \
+	"$HOME/screen-$(date '+%y%b%d-%I%M').mp4" & \
+	echo $! > /tmp/recordingpid
+	echo "🎥⏺" > /tmp/recordingicon && pkill -RTMIN+4 dwmblocks
 }
 
-stoprec() {
-	kill $(pidof -x ffmpeg) && notify-send "🛑 Recording process terminated."
+killrecordings() {
+	recordpid="$(cat /tmp/recordingpid)"
+	[ -z "$recordpid" ] && notify-send "❓ No recording found." "Double-check system processes." && exit
+	kill -15 "$recordpid" && \
+	rm -f /tmp/recordingpid /tmp/recordingicon && \
+	notify-send "⏹ Stopped recording." "See home directory for the file."
+	pkill -RTMIN+4 dwmblocks
 }
 
-notif() {
-	notify-send "⏺️ Recording started!" "Capturing your device $1 now..."
-}
+# If no argument given, use `dmenu`.
+if [ -z "$1" ]; then
+	recording="$(printf "audio only\\nvideo without audio\\nscreen and audio\\nstop recording" | dmenu -i -l 6 -p "Recording type:")"
 
-while getopts "anws" o; do
-	case ${o} in
-		a) audio & notif screen ;;
-		n) noaudio & notif screen ;;
-		w) webcam & notif webcam ;;
-		s) stoprec ;;
+	case "$recording" in
+		audio*) audio ;;
+		video*) video ;;
+		screen*) screenaudio ;;
+		stop*) killrecordings ;;
+		*) exit ;;
 	esac
-done
+fi
 
-pgrep -a ffmpeg && \
-	delprompt=$(printf "yes\\nno" | dmenu -p "Recording still active. End it?")
-
-case $delprompt in
-	yes) stoprec && exit ;;
-esac
-
-rectype=$(printf "%s\n" "screen with audio" "screen with no audio" "webcam only" | dmenu -p "REC:")
-case $rectype in
-	"screen with audio") audio & notif screen ;;
-	"screen with no audio") noaudio & notif screen ;;
-	"webcam only") webcam & notif webcam ;;
+# In case an argument is given:
+case "$1" in
+	audio) audio ;;
+	video) video ;;
+	screenaudio) screenaudio ;;
+	stop) killrecordings ;;
+	*) exit ;;
 esac

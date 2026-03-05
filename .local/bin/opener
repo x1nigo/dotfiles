@@ -20,6 +20,7 @@ case $ext in
 	mkv) mpv "$file" ;;
 	opus) mpv "$file" ;;
 	webm) mpv "$file" ;;
+	wav) mpv "$file" ;;
 	docx) libreoffice "$file" ;;
 	odt) libreoffice "$file" ;;
 	doc) libreoffice "$file" ;;
