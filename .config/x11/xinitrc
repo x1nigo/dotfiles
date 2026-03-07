@@ -7,7 +7,7 @@ xsetroot -cursor_name left_ptr
 xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources
 
 # Autostart function that avoids duplication.
-for program in mpd dunst unclutter picom pipewire dm-wallpaper dwmblocks transmission-daemon ; do
+for program in mpd dunst unclutter xcompmgr pipewire dm-wallpaper dwmblocks transmission-daemon ; do
 	pgrep -x "$program" || "$program" &
 done >/dev/null 2>&1
 
