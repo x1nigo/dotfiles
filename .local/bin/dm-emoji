@@ -3,7 +3,7 @@
 # This is a simple script that requires an external text file filled with emojis.
 # See ~/.local/share/00-emojis for the complete list.
 
-emojidesc="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/00-emojis | dmenu -i -l 25 -p "Copy an emoji (ESC to cancel):")"
+emojidesc="$(cat ${XDG_DATA_HOME:-$HOME/.local/share}/00-emojis | dmenu -i -l 25 -p "Select an emoji:")"
 emojiicon="$(echo $emojidesc | cut -d' ' -f1)"
 [ -z "$emojidesc" ] && exit 1
 

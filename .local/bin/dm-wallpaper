@@ -7,10 +7,10 @@ bgdir="$HOME/.local/share/backgrounds"
 
 # Select wallpaper from backgrounds folder
 selection() {
-	chosen="$(ls "$bgdir" | dmenu -i -l 10 -p "Choose a wallpaper (ESC to cancel):")"
-	[ -z "$chosen" ] && exit
+	chosen="$(ls "$bgdir" | dmenu -i -l 10 -p "Choose a wallpaper:")"
+	[ -z "$chosen" ] && exit 1
 	cp "$bgdir/$chosen" $bgmain && \
-	notify-send "🌅 Wallpaper selected." "$bgdir/$chosen" -i "$bgdir/$chosen" || exit 1
+	notify-send "🌅 Wallpaper selected." "$bgdir/$chosen" -i "$bgdir/$chosen"
 }
 
 remove() {
@@ -18,21 +18,20 @@ remove() {
 	notify-send "🛑 Wallpaper cleared." "Select a new wallpaper [or] execute xsetroot -solid [color]." && exit
 }
 
-random() {
-	chosen="$(ls "$bgdir" | shuf | head -1)"
-	[ -z "$chosen" ] && exit
-	cp "$bgdir/$chosen" $bgmain && \
-	notify-send "🎱 Random wallpaper chosen." "$bgdir/$chosen" -i "$bgdir/$chosen" || exit 1
-}
-
-while getopts "srR" z; do
+while getopts "sr" z; do
 	case ${z} in
 		s) selection ;;
 		r) remove ;;
-		R) random ;;
 	esac
 done
 
 # If given a file, then use that as wallpaper.
-! [ -z "$1" ] && cp "$1" $bgmain
-xwallpaper --zoom $bgmain # If no arguments, then just set the previous wallpaper.
+[ -f "$1" ] && cp "$1" "$bgmain" && \
+	notify-send "🌅 Wallpaper selected." "$(readlink -f "$1")" -i "$(readlink -f "$1")"
+
+# If given a directory, shuffle it then randomly pick one.
+[ -d "$1" ] && cp "$(find "$1" -name "*.jpg" -o -name ".jpeg" -o -name "*.png" -type f | shuf -n 1)" "$bgmain" && \
+	notify-send "🎱 Random wallpaper chosen."
+
+# If no arguments, then just set the previous wallpaper.
+xwallpaper --zoom $bgmain

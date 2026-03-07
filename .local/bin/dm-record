@@ -25,7 +25,7 @@ screenaudio() { ffmpeg \
 	-i default \
 	"$HOME/screen-$(date '+%y%b%d-%I%M').mp4" & \
 	echo $! > /tmp/recordingpid
-	echo "🎥⏺" > /tmp/recordingicon && pkill -RTMIN+4 dwmblocks
+	echo "⏺🎥" > /tmp/recordingicon && pkill -RTMIN+4 dwmblocks
 }
 
 killrecordings() {

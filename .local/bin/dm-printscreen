@@ -2,7 +2,7 @@
 
 selected() {
 	maim --quality=10 -u -s $HOME/selected-$(date +%y-%m-%d-%s).png \
-		&& notify-send "👉 Selected screenshot." "$HOME/selected-$(date +%y-%m-%d-%s).png"
+		&& notify-send "🖱 Selected screenshot." "$HOME/selected-$(date +%y-%m-%d-%s).png"
 }
 
 activewin() {
@@ -10,11 +10,11 @@ activewin() {
 		&& notify-send "🎯 Active window screenshot." "$HOME/active-$(date +%y-%m-%d-%s).png"
 }
 
-chosen=$(printf "%s\n" "🌅 Desktop - The entire screen" "👉 Selected area - Click and drag" "🎯 Active window - The focused window" | dmenu -i -l 6 -p "Take a picture of (ESC to cancel):")
+chosen=$(printf "%s\n" "🌅 Desktop - The entire screen" "🖱 Selected area - Click and drag" "🎯 Active window - The focused window" | dmenu -i -fn Monospace-12 -l 6 -p "Screenshot type:")
 
 case "$chosen" in
 	🌅*) maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \
 		&& notify-send "🌅 Desktop screenshot." "$HOME/desktop-$(date +'%y-%m-%d-%s').png" ; exit ;;
-	👉*) selected ;;
+	🖱*) selected ;;
 	🎯*) activewin ;;
 esac
