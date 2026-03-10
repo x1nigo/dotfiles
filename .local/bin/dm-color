@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# TODO: Think more about this.
+
+dwm_conf="$HOME/.local/src/dwm/config.h"
+dmenu_conf="$HOME/.local/src/dmenu/config.h"
+
+sys_color="$(printf "Black\\nRed\\nGreen\\nYellow\\nBlue\\nMagenta\\nCyan\\nWhite" | dmenu -i -p "Pick a system color:")"
+
+case "$sys_color" in
+	Black) ;;
+	Red) ;;
+	Green) ;;
+	Yellow) ;;
+	Blue) ;;
+	Magenta) ;;
+	Cyan) ;;
+	White) ;;
+esac
