@@ -1,7 +1,8 @@
 #!/bin/sh
 
 case "$BUTTON" in
-	3) notify-send "📅 date and time" "Notice how the clock emoji reflects the actual hour of the day/night." ;;
+	3) notify-send "📅 Date and Time" "Notice how the clock emoji reflects the actual hour of the day/night." ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 clock=$(date '+%I')

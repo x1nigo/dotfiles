@@ -1,10 +1,11 @@
 #!/bin/sh
 
 case "$BUTTON" in
-	3) notify-send "💡 screen brightness" "Legend:
+	3) notify-send "💡 Screen Brightness" "Legend:
 🌅 -> 50% and above
 ☔ -> 35% - 49%; and
 🌑 -> 34% and below" ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 # current brightness

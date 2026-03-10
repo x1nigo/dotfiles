@@ -1,7 +1,8 @@
 #!/bin/sh
 
 case "$BUTTON" in
-	3) notify-send "🐴 / 💾 mounted drives" "Shows the currently mounted drives (aside from the main system) e.g. USB drives." ;;
+	3) notify-send "🐴 / 💾 Mounted Drives" "Shows the currently mounted drives (aside from the main system) e.g. USB drives." ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 if [ -n "$(df -h | grep -i "/mnt$" 2>/dev/null)" ]; then

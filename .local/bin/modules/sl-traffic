@@ -1,7 +1,8 @@
 #!/bin/sh
 
 case "$BUTTON" in
-	3) notify-send "🔻received / 🔺transmitted" "Shows the per-second bytes received and transmitted through an internet connection." ;;
+	3) notify-send "🔻Received / 🔺Transmitted" "Shows the per-second bytes received and transmitted through an internet connection." ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 update() {

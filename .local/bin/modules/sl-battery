@@ -1,14 +1,14 @@
 #!/bin/sh
 
 case "$BUTTON" in
-	3) notify-send "⚡ battery / power status levels" "Legend:
-⚡🔋🪫🔌🛑❓, respectively
-	fully-charged;
-	discharging;
-	near-empty;
-	charging;
-	not charging; and
-	no idea" ;;
+	3) notify-send "Battery / Power" "Legend:
+⚡ -> fully-charged;
+🔋 -> discharging;
+🪫 -> near-empty;
+🔌 -> charging;
+🛑 -> not charging; and
+❓ -> unknown" ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 # Loop through all attached batteries and format the info

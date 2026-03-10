@@ -1,3 +1,9 @@
 #!/bin/sh
 
+case "$BUTTON" in
+	3) notify-send "⏺ Record Audio or Video" "Press Super+F9 to record.
+Press Super+F10 to stop." ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
+esac
+
 cat /tmp/recordingicon 2>/dev/null

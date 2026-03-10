@@ -2,7 +2,10 @@
 
 case "$BUTTON" in
 	1) $TERMINAL -e pulsemixer ;;
-	3) notify-send "🗣 microphone" "Left-click to mute/unmute." ;;
+	3) notify-send "🗣 Microphone" "Left-click to access audio mixer.
+Shift+Left-click to mute/unmute." ;;
+	4) wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 mic="$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)"

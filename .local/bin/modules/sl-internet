@@ -2,7 +2,8 @@
 
 case "$BUTTON" in
 	1) $TERMINAL -e nmtui ;;
-	3) notify-send "🌏 internet connection" "Shows the connection status. Left-click to access \"nmtui\"." ;;
+	3) notify-send "🌏 Internet Connection" "Shows the connection status. Left-click to access \"nmtui\"." ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 # Wifi

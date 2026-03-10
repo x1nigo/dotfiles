@@ -2,7 +2,10 @@
 
 case "$BUTTON" in
 	1) $TERMINAL -e pulsemixer ;;
-	3) notify-send "📢 volume / speakers" "Left-click to access audio mixer (pulsemixer)." ;;
+	3) notify-send "📢 Volume / Speakers" "Left-click to access audio mixer.
+Shift+Left-click to mute/unmute." ;;
+	4) wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 vol="$(wpctl get-volume @DEFAULT_AUDIO_SINK@)"

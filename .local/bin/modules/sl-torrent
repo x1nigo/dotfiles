@@ -1,0 +1,13 @@
+#!/bin/sh
+
+case "$BUTTON" in
+	3) notify-send "🌱 Torrent" "Legend:
+🔽 - Downloading
+🌱 - Seeding
+✅ - 100%
+🛑 - Stopped
+🕰 - Idle" ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
+esac
+
+transmission-remote -l | grep % | sed 's/.*Downloading.*/🔽/;s/.*Seeding.*/🌱/;s/.*100%.*/✅/;s/.*Stopped.*/🛑/;s/.*Idle.*/🕰/'

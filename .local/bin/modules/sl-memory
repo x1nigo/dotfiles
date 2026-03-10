@@ -2,7 +2,12 @@
 
 case "$BUTTON" in
 	1) $TERMINAL -e htop ;;
-	3) notify-send "🤖 RAM / random access memory" "Shows the current usage of RAM against the total." ;;
+	3) notify-send "🤖 RAM Usage" "Shows the current usage of RAM against the total." ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
-free --mebi | sed -n '2{p;q}' | awk '{printf ("🤖%2.2fGiB/%2.2fGiB\n", ( $3 / 1024), ($2 / 1024))}'
+# Actual usage to total RAM:
+# free --mebi | sed -n '2{p;q}' | awk '{printf ("🤖%2.2fGiB/%2.2fGiB\n", ( $3 / 1024), ($2 / 1024))}'
+
+# Percentage:
+free --mebi | awk '/Mem:/ {printf ("🤖%1.0f%%\n", ( 100 * $3 / $2 ))}'

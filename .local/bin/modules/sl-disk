@@ -1,7 +1,8 @@
 #!/bin/sh
 
 case "$BUTTON" in
-	3) notify-send "🏠 disk space" "Shows the root directory's used space. Updates once in a while." ;;
+	3) notify-send "🏠 Disk Space" "Shows the root directory's used space. Updates once in a while." ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 # Checks the current storage of the root ("/") directory.

@@ -1,7 +1,8 @@
 #!/bin/sh
 
 case "$BUTTON" in
-	3) notify-send "🪙/💲 the price of money" "Shows the exchange rate between USD and BTC. Data comes from the \"rate.sx\" website." ;;
+	3) notify-send "🪙/💲 The Price of Money" "Shows the exchange rate between USD and BTC. Data comes from the \"rate.sx\" website." ;;
+	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
 curl -s rate.sx/btc | awk '/avg:/ {print "💰" $2, $9}' | sed 's/\x1b\[[0-9;]*m//g'
