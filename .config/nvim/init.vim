@@ -37,7 +37,7 @@ call plug#end()
 	set notermguicolors
 
 " Custom Colors (set notermguicolors to enable); Enter ":hi" or ":highlight" for more information.
-"	hi Title ctermfg=5 ctermbg=none cterm=none
+	hi Title ctermfg=5 ctermbg=none cterm=bold
 	hi Comment ctermfg=4 ctermbg=none cterm=none
 
 " Set Map leader
@@ -64,6 +64,12 @@ call plug#end()
 	autocmd BufRead,BufNewFile .Xresources,.Xdefaults,xresources,xdefaults set filetype=xdefaults
 " Remove any trailing whitespaces
 	autocmd BufWritePre * :%s/\s\+$//e
+
+" Recompile all suckless programs
+	autocmd BufWritePost ~/.local/src/dwm/config.h !cd ~/.local/src/dwm && { sudo make install }
+	autocmd BufWritePost ~/.local/src/dmenu/config.h !cd ~/.local/src/dmenu && { sudo make install }
+	autocmd BufWritePost ~/.local/src/st/config.h !cd ~/.local/src/st && { sudo make install }
+	autocmd BufWritePost ~/.local/src/dwmblocks/blocks.h !cd ~/.local/src/dwmblocks && { sudo make install }
 
 " Restart dunst after its config file is updated
 	autocmd BufWritePost ~/.config/dunst/dunstrc !killall -q dunst; setsid -f dunst >/dev/null 2>&1
