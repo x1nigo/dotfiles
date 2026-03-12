@@ -7,9 +7,13 @@
     horizontal_padding = 2
     font = Monospace 10
     format = "<b>%s</b>\n<i>%b</i>"
+	frame_color = "#720000"
     timeout = 5
+
+[urgency_normal]
+    background = "#242729"
+    foreground = "#ebdbb2"
 
 [urgency_critical]
     background = "#f74747"
     foreground = "#282828"
-    timeout = 5
