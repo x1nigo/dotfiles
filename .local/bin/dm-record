@@ -25,7 +25,7 @@ screenaudio() { ffmpeg \
 	-i default \
 	"$HOME/screen-$(date '+%y%b%d-%I%M').mp4" & \
 	echo $! > /tmp/recordingpid
-	echo "⏺🎥" > /tmp/recordingicon && pkill -RTMIN+4 dwmblocks
+	echo "🖥⏺" > /tmp/recordingicon && pkill -RTMIN+4 dwmblocks
 }
 
 killrecordings() {
@@ -39,13 +39,13 @@ killrecordings() {
 
 # If no argument given, use `dmenu`.
 if [ -z "$1" ]; then
-	recording="$(printf "Audio\\nVideo\\nScreen + Audio\\nStop" | dmenu -i -l 6 -p "Select type of recording:")"
+	recording="$(printf "⏺ Audio\\n🎥 Video\\n🖥⏺ Screen + Audio\\n⏹ Stop" | dmenu -i -p "Select type of recording:")"
 
 	case "$recording" in
-		Audio*) audio ;;
-		Video*) video ;;
-		Screen*) screenaudio ;;
-		Stop*) killrecordings ;;
+		⏺*) audio ;;
+		🎥*) video ;;
+		🖥⏺*) screenaudio ;;
+		⏹*) killrecordings ;;
 		*) exit ;;
 	esac
 fi
