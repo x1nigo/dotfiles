@@ -33,5 +33,11 @@ done
 [ -d "$1" ] && cp "$(find "$1" -name "*.jpg" -o -name ".jpeg" -o -name "*.png" -type f | shuf -n 1)" "$bgmain" && \
 	notify-send "🎱 Random wallpaper chosen."
 
+# Change bg type depending on resolution.
+resolution="$(file -b "$bgmain" | sed 's/.*\(, [0-9]\+x[0-9]\+\).*/\1/;s/, //')"
+bgwidth=${resolution%%x*}
+bgheight=${resolution##*x}
+[ $bgwidth -le $bgheight ] && bgtype="--maximize" || bgtype="--zoom"
+
 # If no arguments, then just set the previous wallpaper.
-xwallpaper --zoom $bgmain
+xwallpaper "$bgtype" $bgmain # Options: zoom, center, maximize, stretch, tile
