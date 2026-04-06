@@ -10,4 +10,4 @@ case "$BUTTON" in
 	6) $TERMINAL -e $EDITOR "$0" ;;
 esac
 
-transmission-remote -l | grep % | sed 's/.*Downloading.*/🔽/;s/.*Seeding.*/🌱/;s/.*100%.*/✅/;s/.*Stopped.*/🛑/;s/.*Idle.*/🕰/'
+transmission-remote -l | grep % | sed 's/.*Downloading.*/🔽/;s/.*Seeding.*/🌱/;s/.*100%.*/✅/;s/.*Stopped.*/🛑/;s/.*Idle.*/🕰/;s/.*Up \& Down.*/🔼🔽/'
