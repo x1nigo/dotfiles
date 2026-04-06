@@ -18,40 +18,40 @@
 /* cyan		6		14 */
 /* white	7		15 */
 
-/* Desert */
-*.color0: #1d2021
-*.color1: #a52a2a
-*.color2: #cd853f
-*.color3: #f4a460
-*.color4: #875737
-*.color5: #d2691e
-*.color6: #d2b48c
-*.color7: #ebdbb2
-*.color8: #282828
-*.color9: #a52a2a
-*.color10: #cd853f
-*.color11: #f4a460
-*.color12: #875737
-*.color13: #d2691e
-*.color14: #d2b48c
+/* Gruvbox Dark */
+*.color0: #282828
+*.color1: #cc241d
+*.color2: #98971a
+*.color3: #d79921
+*.color4: #458588
+*.color5: #b16286
+*.color6: #689d6a
+*.color7: #a89984
+*.color8: #928374
+*.color9: #fb4934
+*.color10: #b8bb26
+*.color11: #fabd2f
+*.color12: #83a598
+*.color13: #d3869b
+*.color14: #8ec07c
 *.color15: #ebdbb2
 
-/* Gruvbox Dark */
-! *.color0: #282828
-! *.color1: #cc241d
-! *.color2: #98971a
-! *.color3: #d79921
-! *.color4: #458588
-! *.color5: #b16286
-! *.color6: #689d6a
-! *.color7: #a89984
-! *.color8: #928374
-! *.color9: #fb4934
-! *.color10: #b8bb26
-! *.color11: #fabd2f
-! *.color12: #83a598
-! *.color13: #d3869b
-! *.color14: #8ec07c
+/* Desert */
+! *.color0: #1d2021
+! *.color1: #a52a2a
+! *.color2: #cd853f
+! *.color3: #f4a460
+! *.color4: #875737
+! *.color5: #d2691e
+! *.color6: #d2b48c
+! *.color7: #ebdbb2
+! *.color8: #282828
+! *.color9: #a52a2a
+! *.color10: #cd853f
+! *.color11: #f4a460
+! *.color12: #875737
+! *.color13: #d2691e
+! *.color14: #d2b48c
 ! *.color15: #ebdbb2
 
 /* Wizard */
