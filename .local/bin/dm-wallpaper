@@ -27,7 +27,7 @@ done
 
 # If given a file, then use that as wallpaper.
 [ -f "$1" ] && cp "$1" "$bgmain" && \
-	notify-send "🌅 Wallpaper selected." "$(readlink -f "$1")" -i "$(readlink -f "$1")"
+	# notify-send "🌅 Wallpaper selected." "$(readlink -f "$1")" -i "$(readlink -f "$1")"
 
 # If given a directory, shuffle it then randomly pick one.
 [ -d "$1" ] && cp "$(find "$1" -name "*.jpg" -o -name ".jpeg" -o -name "*.png" -type f | shuf -n 1)" "$bgmain" && \
