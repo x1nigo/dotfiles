@@ -1,11 +1,11 @@
 !! Set a default font and font size:
-*.font: monospace:size=10
+*.font: monospace:size=10.5
 
 !! Transparency (0-1):
-*.alpha: 0.95
+*.alpha: 1.0
 
 !! Set a background, foreground, and cursor color:
-*.background: #121618
+*.background: #1d2021
 *.foreground: #ebdbb2
 
 /* name		dark	light */
