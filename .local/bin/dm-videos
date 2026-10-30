@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# TODO: For some reason, this stopped working...
+
 # Make sure the videos and their respective titles are separated by a TAB ("\t").
 vidlist="
 Does your Window Manager Swallow?	https://www.youtube.com/watch?v=92uo5OBOKfY&pp=ygUgZG9lcyB5b3VyIHdpbmRvdyBtYW5hZ2VyIHN3YWxsb3c%3D

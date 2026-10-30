@@ -7,7 +7,7 @@ bgdir="$HOME/.local/share/backgrounds"
 
 # Select wallpaper from backgrounds folder
 selection() {
-	chosen="$(ls "$bgdir" | dmenu -i -l 10 -p "Choose a wallpaper:")"
+	chosen="$(ls "$bgdir" | dmenu -fn Monospace-12 -i -l 10 -p "Choose a wallpaper:")"
 	[ -z "$chosen" ] && exit 1
 	cp "$bgdir/$chosen" $bgmain && \
 	notify-send "🌅 Wallpaper selected." "$bgdir/$chosen" -i "$bgdir/$chosen"

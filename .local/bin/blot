@@ -1,0 +1,6 @@
+#!/bin/sh
+
+file="$1"
+chmod +rw "$file"
+mv --force "$file" "qwertyasdfzxcv"
+shred -u "qwertyasdfzxcv"

@@ -7,7 +7,7 @@ url="$(cat $HOME/.local/share/01-bookmarks | dmenu -i -l 35 -p "INSERT (ESC to c
 [ -z "$url" ] && exit 1
 
 # Copy and paste version.
-printf "%s" "$url" | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "🔖 URL copied to clipboard." "$url"
+# printf "%s" "$url" | xclip -i -selection clipboard >/dev/null 2>&1 && notify-send "🔖 URL copied to clipboard." "$url"
 
 # Alternative method of output. Do no press any keys while xdotool is active.
-# xdotool type "$url"
+xdotool type "$url"

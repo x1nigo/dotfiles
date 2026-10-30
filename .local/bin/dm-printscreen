@@ -10,7 +10,7 @@ activewin() {
 		&& notify-send "🎯 Active window screenshot." "$HOME/active-$(date +%y-%m-%d-%s).png"
 }
 
-chosen=$(printf "%s\n" "🌅 Desktop - The entire screen" "🖱 Selected area - Click and drag" "🎯 Active window - The focused window" | dmenu -i -fn Monospace-12 -l 6 -p "Screenshot type:")
+chosen=$(printf "%s\n" "🌅 Desktop - The entire screen" "🖱 Selected area - Click and drag" "🎯 Active window - The focused window" | dmenu -i -fn Monospace-14 -l 6 -p "Screenshot type:")
 
 case "$chosen" in
 	🌅*) maim --quality=10 -u $HOME/desktop-$(date +'%y-%m-%d-%s').png \

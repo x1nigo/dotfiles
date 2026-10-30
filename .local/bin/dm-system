@@ -1,6 +1,6 @@
 #!/bin/sh
 
-act="$(printf "%s\n" "🖥 Shutdown - Turn the computer off" "🔃 Reboot - Restart the system" "📺 Display off - A simple black screen" | dmenu -i -fn Monospace-12 -l 6 -p "System action:")"
+act="$(printf "%s\n" "🖥 Shutdown - Turn the computer off" "🔃 Reboot - Restart the system" "📺 Display off - A simple black screen" "🔒 Lock screen - Just what it says" | dmenu -i -fn Monospace-16 -l 6 -p "System action:")"
 if ls -l /sbin/init | grep -q runit; then
 	sys=loginctl
 else
@@ -11,4 +11,5 @@ case "$act" in
 	🖥*) $sys poweroff ;;
 	🔃*) $sys reboot ;;
 	📺*) xset dpms force off ;;
+	🔒*) slock && notify-send "🔓 Screen unlocked!" "Enjoy your stay." ;;
 esac
