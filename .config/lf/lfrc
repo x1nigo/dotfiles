@@ -58,6 +58,15 @@ cmd dir ${{
 	mkdir -p "$ans" && notify-send "📁 New directory created!" "$ans"
 }}
 
+cmd blot ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "blot out?[y/N]"
+	read ans
+	[ $ans = "y" ] && blot "$fx" && notify-send "💀 File(s) blotted out." "$fx"
+}}
+
 # Bindings
 map <enter> open
 map D delete
@@ -65,4 +74,5 @@ map R rename
 map E extract
 map N newfile
 map M dir
+map B blot
 map . set hidden!
