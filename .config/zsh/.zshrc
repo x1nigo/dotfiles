@@ -8,6 +8,10 @@ stty stop undef
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc" ] && . "${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc"
 
+# Adjust width of man pages based on terminal size.
+[ $COLUMNS -ge 135 ] && WIDTH=$((COLUMNS / 2)) || WIDTH=$COLUMNS
+export MANWIDTH=$WIDTH
+
 zle-line-init() {
     zle -K viins
     echo -ne "\e[1 q" # This uses the block version of the cursor.
